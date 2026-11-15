@@ -1665,3 +1665,16 @@ body.vade-touch .breviaire.fiche .window-content .brev-grain { width: 40px; heig
 .breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet:not(.active):hover { width: 1.9rem; }
 .breviaire .brev-carte-texte, .breviaire .brev-marques-liste .brev-carte-texte { font-size: .78rem; line-height: 1.25; }
 .breviaire .brev-marques-liste img { width: 32px; height: 32px; }
+
+/* Puces (substitutions, traits) : hauteur ajustée au texte */
+.breviaire.fiche .window-content .brev-puce {
+  height: auto;
+  min-height: 0;
+  padding: .12rem .6rem .14rem;
+  line-height: 1.05;
+  gap: .05rem;
+  border-radius: 8px;
+}
+.breviaire.fiche .window-content .brev-puce span { line-height: 1.1; }
+.breviaire.fiche .window-content .brev-puce small { line-height: 1; }
+body.vade-touch .breviaire.fiche .window-content .brev-puce { min-height: 36px; }
