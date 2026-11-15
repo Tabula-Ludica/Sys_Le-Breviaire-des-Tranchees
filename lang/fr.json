@@ -159,7 +159,17 @@
       "vivres": "Vivres",
       "nerfs": "Nerfs",
       "epuise": "Épuisé",
-      "base": "Dé de base"
+      "base": "Dé de base",
+      "tester": "Test d’usure",
+      "testerDefav": "Défavorisé",
+      "test": "Test d’usure : {usure}",
+      "dejaEpuise": "{usure} : déjà épuisé.",
+      "descend": "{usure} descend à {de}.",
+      "tient": "{usure} tient bon.",
+      "uneCran": "−1 cran",
+      "tientCourt": "Tient",
+      "panique": "Nerfs épuisés : le personnage panique (phase lente).",
+      "plusRien": "La ressource est épuisée."
     },
     "Titre": {
       "bleu": "Bleu",
@@ -316,7 +326,6 @@
       "missionsCourt": "Missions",
       "jetDeMort": "Jet de Mort",
       "autres": "Autres jets",
-      "riteBientot": "La célébration des rites arrive avec la réserve commune (étape 4).",
       "edition": "Édition",
       "editionAide": "Mode édition : modifier le nom, les caractéristiques, les Spécialités et le paquetage. Désactivé : mode jeu.",
       "maitrisees": "{n} maîtrisées",
@@ -386,7 +395,9 @@
       "sansPriere": {
         "foiEpuisee": "Impossible : dé épuisé",
         "sursis": "Impossible : plus aucune prière à 9",
-        "excommunie": "Impossible : excommunié"
+        "excommunie": "Impossible : excommunié",
+        "reserveVide": "Impossible : la réserve est vide",
+        "sansMJ": "Impossible : aucun MJ connecté"
       },
       "reussite": "Réussite",
       "echec": "Échec",
@@ -440,7 +451,36 @@
       "patient": "Patient : {nom}.",
       "appliquerSoins": "Appliquer les soins",
       "soigne": "{nom} récupère {n} Blessures.",
-      "stabilise": "{nom} est stabilisé et récupère {n} Blessures."
+      "stabilise": "{nom} est stabilisé et récupère {n} Blessures.",
+      "reliqueUtilisee": "{objet} a déjà servi cette mission.",
+      "relique": "+{n}d6 à {reserve}."
+    },
+    "Reserve": {
+      "sansMJ": "Aucun MJ connecté : la réserve commune ne peut pas être modifiée.",
+      "sansMJCourt": "MJ absent",
+      "erreur": "La réserve commune n’a pas pu être mise à jour.",
+      "deplacer": "Déplacer",
+      "videTexte": "vide",
+      "aide": "{des} dés dans la réserve · {perdus} perdus jusqu’à la messe · départ : {max}",
+      "remplir": "Début de mission : {n}d6 par membre de l’escouade (+ Bénédiction papale)",
+      "escouade": "Escouade",
+      "finScene": "Fin de scène",
+      "escouadeAide": "Personnages comptés pour remplir la réserve. Sans choix, tous les personnages des joueurs comptent.",
+      "valider": "Valider",
+      "annonceMission": "Début de mission : {reserve} remplie à {n}d6.{benediction}",
+      "annonceBenediction": " Bénédiction papale : +{n}d6.",
+      "annonceMesse": "{messe} : {reserve} revient à {n}d6, les dés perdus sont rendus.",
+      "annonceScene": "Fin de scène : morphine et effets de scène effacés."
+    },
+    "Rite": {
+      "paye": "Un dé de {reserve} est dépensé.",
+      "echec": "Rite raté : {foi} −1 cran.",
+      "reserveVide": "{reserve} est vide : aucun rite possible.",
+      "raison": {
+        "autreCamp": "Rite de l’autre camp",
+        "grandRite": "Grand rite : Ferveur Expert, célébrant attitré ou Prélat",
+        "guide": "Sans Ferveur : rite guidé, défavorisé"
+      }
     }
   }
 }

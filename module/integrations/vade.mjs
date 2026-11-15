@@ -8,6 +8,8 @@ import { CARACS, SPECIALITES, USURES } from "../config.mjs";
 import { terme } from "../lexique.mjs";
 import { libelleCran, loc } from "../sheets/commun.mjs";
 import { lancerJet } from "../jets/moteur.mjs";
+import { testUsure } from "../jets/usure.mjs";
+import { etat as etatReserve } from "../reserve/reserve.mjs";
 
 const adaptateur = {
   character(actor) {
@@ -34,6 +36,7 @@ const adaptateur = {
         value: libelleCran(sys.usure[u].faces)
       })),
       { label: terme("Corruption", camp), value: sys.corruption.value },
+      { label: terme("Chapelet", camp), value: `${etatReserve().des} d6` },
       { label: loc("BREVIAIRE.Fiche.protection"), value: sys.protection }
     ];
 
@@ -48,6 +51,14 @@ const adaptateur = {
         rolls: Object.keys(SPECIALITES)
           .sort((a, b) => sys.specialites[b].rang - sys.specialites[a].rang)
           .map(s => ({ id: `spe:${s}`, label: loc(`BREVIAIRE.Specialite.${s}`), mod: String(sys.scores[s]) }))
+      },
+      {
+        id: "usure", label: loc("BREVIAIRE.Fiche.usure"), columns: 2,
+        rolls: USURES.map(u => ({
+          id: `usure:${u}`,
+          label: u === "foi" ? terme("Foi", camp) : loc(`BREVIAIRE.Usure.${u}`),
+          mod: libelleCran(sys.usure[u].faces)
+        }))
       },
       { id: "autres", label: loc("BREVIAIRE.Fiche.autres"), columns: 2, rolls: [{ id: "mort", label: loc("BREVIAIRE.Jet.mort") }] }
     ];
@@ -64,6 +75,7 @@ const adaptateur = {
     if (genre === "carac") return lancerJet(actor, { carac: cle });
     if (genre === "spe") return lancerJet(actor, { specialite: cle });
     if (genre === "mort") return lancerJet(actor, { type: "mort" });
+    if (genre === "usure") return testUsure(actor, cle);
     return lancerJet(actor, {});
   },
 
@@ -97,6 +109,14 @@ const adaptateur = {
   async useAction(actor, itemId) {
     const item = actor.items.get(itemId);
     if (item?.type === "arme") return lancerJet(actor, { armeId: itemId });
+    if (item?.type === "rite") {
+      const { celebrer } = await import("../rites/celebrer.mjs");
+      return celebrer(actor, item);
+    }
+    if (item?.type === "relique") {
+      const { utiliserRelique } = await import("../objets/utiliser.mjs");
+      return utiliserRelique(actor, item);
+    }
     if (item?.type === "equipement" && item.system.utilisation.type !== "aucune") {
       const { utiliserObjet } = await import("../objets/utiliser.mjs");
       return utiliserObjet(actor, item);

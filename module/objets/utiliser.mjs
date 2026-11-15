@@ -86,3 +86,19 @@ export async function appliquerSoins(d) {
   await cible.update(maj);
   return fmt(horsDeCombat ? "BREVIAIRE.Utiliser.stabilise" : "BREVIAIRE.Utiliser.soigne", { nom: cible.name, n: roll.total });
 }
+
+/** Relique (ou os de saint profané) : +Nd6 à la réserve commune, une fois par mission (ch. I §4, ch. VI §5). */
+export async function utiliserRelique(actor, relique) {
+  const { demander } = await import("../reserve/reserve.mjs");
+  const camp = actor.system.camp ?? game.settings.get(SYSTEME, "camp");
+  if (relique.system.utilisee) return ui.notifications.warn(fmt("BREVIAIRE.Utiliser.reliqueUtilisee", { objet: relique.name }));
+  const n = relique.system.apport || 1;
+  const res = await demander("ajouter", { n });
+  if (!res.ok) return;
+  await relique.update({ "system.utilisee": true });
+  return ChatMessage.create({
+    speaker: ChatMessage.getSpeaker({ actor }),
+    content: `<div class="brev-carte-jet brev-carte-utilisation"><header class="brev-cj-entete">${relique.img ? `<img src="${relique.img}" alt="">` : ""}<div><h3>${relique.name}</h3></div></header>
+      <p class="brev-cj-texte">${fmt("BREVIAIRE.Utiliser.relique", { n, reserve: terme("Chapelet", camp) })}</p></div>`
+  });
+}

@@ -54,8 +54,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
       couvert: aDistance ? "aucun" : "",
       portee: aDistance ? "courte" : "",
       malus: 0,
-      favorise: false,
-      defavorise: false,
+      favorise: !!demande.favorise,
+      defavorise: !!demande.defavorise,
       enjeu: actor.type === "personnage" && (demande.type ?? "action") === "action",
       priere: false,
       pacte: false

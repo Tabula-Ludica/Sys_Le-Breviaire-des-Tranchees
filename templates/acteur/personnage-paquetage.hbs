@@ -80,6 +80,7 @@
           {{#if utilisee}}<span class="brev-discret">· {{localize 'BREVIAIRE.Objet.utiliseeCourt'}}</span>{{/if}}</span>
       </div>
       <div class="brev-carte-actions">
+        {{#unless utilisee}}<button type="button" class="brev-utiliser" data-action="utiliserRelique" data-tooltip="{{localize 'BREVIAIRE.Utiliser.bouton'}}" aria-label="{{localize 'BREVIAIRE.Utiliser.bouton'}}"><i class="fa-solid fa-hand-sparkles"></i></button>{{/unless}}
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
         <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
       </div>

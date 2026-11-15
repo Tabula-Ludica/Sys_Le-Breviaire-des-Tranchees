@@ -41,7 +41,7 @@
     <span class="brev-vital-label">{{localize 'BREVIAIRE.Fiche.usure'}}</span>
     <div class="brev-mini-des">
       {{#each usures}}
-      <div class="brev-mini-de {{#if epuise}}brev-epuise{{/if}}"><div class="brev-de de-{{faces}}"><span>{{#if epuise}}✕{{else}}{{de}}{{/if}}</span></div><small>{{label}}</small></div>
+      <button type="button" class="brev-mini-de {{#if epuise}}brev-epuise{{/if}}" data-action="testUsure" data-usure="{{cle}}" data-tooltip="{{localize 'BREVIAIRE.Usure.tester'}} : {{label}}" {{#if epuise}}disabled{{/if}}><div class="brev-de de-{{faces}}"><span>{{#if epuise}}✕{{else}}{{de}}{{/if}}</span></div><small>{{label}}</small></button>
       {{/each}}
     </div>
   </div>

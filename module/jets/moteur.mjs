@@ -11,6 +11,7 @@ import { SYSTEME, SPECIALITES, SUBSTITUTIONS, DIFFICULTES, COUVERTS, PORTEES } f
 import * as R from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
 import { themeSombre } from "../settings.mjs";
+import { etat as etatReserve, demander, mjDisponible } from "../reserve/reserve.mjs";
 
 export const CARTE = "systems/breviaire/templates/chat/jet.hbs";
 const loc = cle => game.i18n.localize(cle);
@@ -60,7 +61,11 @@ export function specialiteDeLArme(arme) {
 export function raisonSansPriere(actor) {
   if (actor.type !== "personnage") return "ennemi";
   const sys = actor.system;
-  return R.raisonSansPriere({ foi: sys.usure.foi.value, corruption: sys.corruption.value, excommunie: sys.excommunie });
+  const raison = R.raisonSansPriere({ foi: sys.usure.foi.value, corruption: sys.corruption.value, excommunie: sys.excommunie });
+  if (raison) return raison;
+  if (etatReserve().des <= 0) return "reserveVide";
+  if (!mjDisponible()) return "sansMJ";
+  return null;
 }
 
 /* -------------------------------------------- */
@@ -119,11 +124,13 @@ export async function executerJet(actor, opts) {
     d20,
     enjeu: !!opts.enjeu,
     soin: opts.soin ? { ...opts.soin, applique: null } : null,
+    rite: opts.rite ?? null,
     priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, sys.corruption.value) } : null,
     pacte: pacte ? { faces: sys.deSang, resultat: deSang } : null,
     applique: {}
   };
   resoudre(d);
+  if (d.priere) await demander("priere", { retire: d.priere.retire });
   await appliquerSuites(actor, d);
 
   const data = {
@@ -161,6 +168,13 @@ export async function appliquerSuites(actor, d) {
   if (d.priere && !d.reussite && !a.foi) {
     maj["system.usure.foi.value"] = Math.max(0, sys.usure.foi.value - 1);
     a.foi = true;
+  }
+
+  // Rite raté : la Foi (ou la Haine) du célébrant descend d'un cran (ch. X)
+  if (d.rite && !d.reussite && !a.rite) {
+    const foi = maj["system.usure.foi.value"] ?? sys.usure.foi.value;
+    maj["system.usure.foi.value"] = Math.max(0, foi - 1);
+    a.rite = true;
   }
 
   if (d.pacte && !a.pacte) {
@@ -203,6 +217,7 @@ export async function appliquerSuites(actor, d) {
 /** Libellé du jet : « Tir », « Chirurgien de tranchée », « Nerf », « Menace », « Jet de Mort »… */
 function titreDuJet(d, actor) {
   if (d.type === "mort") return loc("BREVIAIRE.Jet.mort");
+  if (d.rite) return d.rite.nom;
   if (actor?.type === "ennemi") return loc("BREVIAIRE.Fiche.menace");
   if (d.substitution) return loc(`BREVIAIRE.Substitution.${d.substitution}`);
   if (d.specialite) return loc(`BREVIAIRE.Specialite.${d.specialite}`);
@@ -220,6 +235,11 @@ export async function rendreCarte(d) {
   if (d.applique.pacte) effets.push({ icone: "fa-solid fa-droplet", texte: game.i18n.format("BREVIAIRE.Jet.corruptionPlus", { corruption: t("Corruption") }) });
   for (const p of d.applique.paliers ?? []) {
     effets.push({ icone: "fa-solid fa-skull", texte: game.i18n.format("BREVIAIRE.Jet.palier", { palier: p, marque: t("Marque") }), fort: true });
+  }
+  if (d.rite) {
+    effets.push({ icone: "fa-solid fa-book-bible", texte: game.i18n.format("BREVIAIRE.Rite.paye", { reserve: t("Chapelet") }) });
+    if (d.rite.guide) effets.push({ icone: "fa-solid fa-hands", texte: loc("BREVIAIRE.Rite.raison.guide") });
+    if (d.applique.rite) effets.push({ icone: "fa-solid fa-arrow-down", texte: game.i18n.format("BREVIAIRE.Rite.echec", { foi: t("Foi") }), fort: true });
   }
   if (d.soin) {
     effets.push(d.soin.applique
@@ -239,8 +259,11 @@ export async function rendreCarte(d) {
   const apres = game.settings.get(SYSTEME, "modePriere") === "apres";
   const rattrapable = apres && !d.reussite && d.naturel !== "damnation" && actor?.type === "personnage";
 
+  const rite = d.rite ? actor?.items.get(d.rite.id) : null;
   const contexte = {
     d,
+    riteEffet: rite && d.reussite ? rite.system.effet : null,
+    sousTitreRite: d.rite ? `${loc(`BREVIAIRE.NiveauRite.${d.rite.niveau}`)} · ${loc("BREVIAIRE.Specialite.ferveur")}` : null,
     camp: d.camp,
     titre: titreDuJet(d, actor),
     acteur: { nom: actor?.name ?? "?", img: actor?.img },
@@ -312,6 +335,7 @@ async function actionCarte(message, action) {
   if (action === "prier" && !d.priere && !raisonSansPriere(actor)) {
     roll = await new Roll("1d6").evaluate();
     d.priere = { faces: 6, resultat: roll.total, retire: R.deRetire(roll.total, sys.corruption.value), apres: true };
+    await demander("priere", { retire: d.priere.retire });
   } else if (action === "pactiser" && !d.pacte) {
     roll = await new Roll(`1d${sys.deSang}`).evaluate();
     d.pacte = { faces: sys.deSang, resultat: roll.total, apres: true };

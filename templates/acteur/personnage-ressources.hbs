@@ -6,7 +6,10 @@
     {{#each usures}}
     <div class="brev-usure {{#if epuise}}brev-epuise{{/if}}">
       <span class="brev-medaillon-label">{{label}}</span>
-      <div class="brev-de de-{{faces}}" aria-label="{{de}}"><span>{{de}}</span></div>
+      <button type="button" class="brev-de-bouton" data-action="testUsure" data-usure="{{cle}}" data-tooltip="{{localize 'BREVIAIRE.Usure.tester'}}" {{#if epuise}}disabled{{/if}}>
+        <div class="brev-de de-{{faces}}" aria-label="{{de}}"><span>{{de}}</span></div>
+      </button>
+      <button type="button" class="brev-test-defav" data-action="testUsure" data-usure="{{cle}}" data-defavorise="true" {{#if epuise}}disabled{{/if}}>{{localize 'BREVIAIRE.Usure.testerDefav'}}</button>
       <div class="brev-compteur">
         <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="-1" aria-label="−1 cran"><i class="fa-solid fa-minus"></i></button>
         <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="1" aria-label="+1 cran"><i class="fa-solid fa-plus"></i></button>

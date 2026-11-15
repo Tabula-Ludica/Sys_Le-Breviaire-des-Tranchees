@@ -17,6 +17,9 @@ import { FicheEnnemi } from "./module/sheets/fiche-ennemi.mjs";
 import { FicheObjet } from "./module/sheets/fiche-objet.mjs";
 import { brancherVade } from "./module/integrations/vade.mjs";
 import * as moteur from "./module/jets/moteur.mjs";
+import { testUsure } from "./module/jets/usure.mjs";
+import * as reserve from "./module/reserve/reserve.mjs";
+import { rendreWidget, finDeScene } from "./module/reserve/widget.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
 
@@ -70,19 +73,32 @@ Hooks.once("init", () => {
   };
 
   enregistrerReglages();
+  reserve.enregistrerRequetes();
+  // La réserve et l'escouade sont diffusées à tous les clients : chacun redessine son widget
+  for (const cle of ["reserve", "escouade"]) {
+    const reglage = game.settings.settings.get(`breviaire.${cle}`);
+    if (reglage) reglage.onChange = () => rendreWidget();
+  }
   enregistrerHelpers();
   enregistrerFiches();
   foundry.applications.handlebars.loadTemplates(PARTIELS);
   brancherVade();
 
   // API publique : game.system.api (macros, autres modules)
-  game.system.api = { regles, terme, campDuMonde, config: CONFIG_BREVIAIRE, lancerJet: moteur.lancerJet, executerJet: moteur.executerJet };
+  game.system.api = {
+    regles, terme, campDuMonde, config: CONFIG_BREVIAIRE,
+    lancerJet: moteur.lancerJet, executerJet: moteur.executerJet, testUsure,
+    reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene
+  };
 });
 
 // Boutons des cartes de jet : branchés message par message (fonctionne aussi dans le chat de Vade)
 Hooks.on("renderChatMessageHTML", (message, html) => moteur.brancherCarte(message, html));
 
 Hooks.once("ready", () => {
-  // Le thème des fiches suit le camp de la campagne (variante sombre pour les Damnés).
   document.body.dataset.breviaireCamp = campDuMonde();
+  rendreWidget();
 });
+
+// Le widget signale l'absence de MJ (la prière passe par lui)
+Hooks.on("userConnected", () => rendreWidget());

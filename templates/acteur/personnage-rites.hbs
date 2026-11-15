@@ -3,10 +3,11 @@
   <h3 class="brev-panneau-titre"><i class="fa-solid fa-book-bible"></i> {{libelles.rites}} <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="rite" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button></h3>
   <ul class="brev-cartes">
     {{#each rites}}
-    <li class="brev-carte {{#if grand}}brev-grand-rite{{/if}}" data-item-id="{{id}}">
+    <li class="brev-carte {{#if grand}}brev-grand-rite{{/if}} {{#unless accessible}}brev-range{{/unless}}" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <button type="button" class="brev-carte-corps" data-action="celebrer">
+      <button type="button" class="brev-carte-corps" data-action="celebrer" {{#unless accessible}}disabled{{/unless}}>
         <b>{{name}}</b>
+        {{#if raison}}<small class="brev-alerte-texte">{{raison}}</small>{{/if}}
         <span class="brev-stats"><span class="brev-discret">{{niveau}}</span>{{#if portee}}<span><i class="fa-solid fa-ruler-horizontal"></i> {{portee}}</span>{{/if}}{{#if duree}}<span><i class="fa-regular fa-hourglass"></i> {{duree}}</span>{{/if}}</span>
       </button>
       <div class="brev-carte-actions">

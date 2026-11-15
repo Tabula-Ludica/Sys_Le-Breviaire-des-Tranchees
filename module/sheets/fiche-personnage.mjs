@@ -9,6 +9,8 @@ import { FACES, CRAN_MAX, CORRUPTION_MAX, TITRES, changerCran } from "../logique
 import { terme } from "../lexique.mjs";
 import { FicheBreviaire, CHEMIN, loc, libelleCran, choixLocalises, enrichir } from "./commun.mjs";
 import { lancerJet } from "../jets/moteur.mjs";
+import { testUsure } from "../jets/usure.mjs";
+import { celebrer, acces } from "../rites/celebrer.mjs";
 
 const PIPS = ["○○", "●○", "●●"];
 
@@ -39,7 +41,9 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       basculerBlessureGrave: this.#basculerBlessureGrave,
       supprimerBlessureGrave: this.#supprimerBlessureGrave,
       celebrer: this.#celebrer,
-      jetDeMort: this.#jetDeMort
+      jetDeMort: this.#jetDeMort,
+      testUsure: this.#testUsure,
+      utiliserRelique: this.#utiliserRelique
     }
   };
 
@@ -199,6 +203,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       };
     });
     context.rites = parType("rite").map(i => ({
+      ...(a => ({ accessible: a.ok, guide: !!a.defavorise, raison: a.raison ? loc(`BREVIAIRE.Rite.raison.${a.raison}`) : "" }))(acces(actor, i)),
       id: i.id, name: i.name, img: i.img, grand: i.system.niveau === "grand",
       niveau: loc(`BREVIAIRE.NiveauRite.${i.system.niveau}`),
       portee: i.system.portee != null ? `${i.system.portee} m` : "", duree: i.system.duree
@@ -230,8 +235,22 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     return lancerJet(this.document, { type: "mort" });
   }
 
-  static #celebrer() {
-    ui.notifications.info("BREVIAIRE.Fiche.riteBientot", { localize: true });
+  static #celebrer(event, target) {
+    const rite = this._objetDe(target);
+    if (rite) return celebrer(this.document, rite);
+  }
+
+  /** Test d'usure : clic sur le dé ; le bouton « défavorisé » lance deux dés et garde le plus bas. */
+  static #testUsure(event, target) {
+    const { usure, defavorise } = target.dataset;
+    return testUsure(this.document, usure, { defavorise: defavorise === "true" });
+  }
+
+  static async #utiliserRelique(event, target) {
+    const relique = this._objetDe(target);
+    if (!relique) return;
+    const { utiliserRelique } = await import("../objets/utiliser.mjs");
+    return utiliserRelique(this.document, relique);
   }
 
   /** Rang d'une Spécialité : non maîtrisée → Formé → Expert → non maîtrisée. */
