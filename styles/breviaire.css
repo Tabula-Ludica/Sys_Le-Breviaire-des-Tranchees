@@ -691,3 +691,82 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   .breviaire .brev-grille-ennemi { grid-template-columns: repeat(2, 1fr); }
 }
 .breviaire .brev-corps-objet { padding-block: .8rem 1.4rem; }
+
+/* =====================================================================
+   Version sombre (Fidèles) : parchemin vieilli, bords brûlés,
+   entête et onglets sur un bandeau de cuir.
+   ===================================================================== */
+.breviaire.fiche.camp-fideles {
+  --brev-fond: #c9b383;
+  --brev-fond-clair: #d8c497;
+  --brev-fond-sombre: #b09866;
+  --brev-champ: rgba(250, 240, 215, .45);
+  --brev-encre: #22180f;
+  --brev-encre-douce: #57432e;
+  --brev-trait: rgba(45, 28, 12, .3);
+  --brev-cuir: #1d1712;
+  --brev-cuir-2: #2b221a;
+}
+.breviaire.fiche.camp-damnes { --brev-cuir: #0f0b09; --brev-cuir-2: #1b1410; }
+
+.breviaire.fiche.camp-fideles .window-content {
+  background:
+    var(--brev-grain),
+    radial-gradient(ellipse at 50% 30%, rgba(255, 240, 200, .25), transparent 65%),
+    radial-gradient(ellipse at 0% 100%, rgba(90, 20, 10, .22), transparent 45%),
+    radial-gradient(ellipse at 100% 100%, rgba(60, 30, 10, .25), transparent 45%),
+    var(--brev-fond);
+  background-blend-mode: multiply, normal, normal, normal, normal;
+  box-shadow: inset 0 0 120px rgba(45, 22, 5, .55), inset 0 0 18px rgba(30, 15, 5, .5);
+}
+
+/* Bandeau de cuir : entête + onglets */
+.breviaire.fiche .window-content > .brev-entete,
+.breviaire.fiche .window-content > .brev-onglets {
+  background:
+    var(--brev-grain),
+    linear-gradient(180deg, var(--brev-cuir-2), var(--brev-cuir));
+  background-blend-mode: soft-light, normal;
+}
+.breviaire.fiche .window-content > .brev-entete {
+  --brev-encre: #efe2c6;
+  --brev-encre-douce: #b9a685;
+  --brev-champ: rgba(0, 0, 0, .35);
+  --brev-trait: rgba(239, 226, 198, .2);
+  --brev-fond-clair: #3a2f25;
+  --brev-fond-sombre: #1f1914;
+  color: var(--brev-encre);
+  border-bottom: none;
+  box-shadow: none;
+}
+.breviaire.fiche .window-content > .brev-entete .brev-nom { color: #e4c27c; text-shadow: 0 0 16px rgba(173, 36, 24, .55), 0 1px 0 #000; }
+.breviaire.fiche .window-content > .brev-entete .brev-medaillon-label { color: var(--brev-or-clair); }
+.breviaire.fiche .window-content > .brev-entete .brev-medaillon-sang .brev-medaillon-label { color: var(--brev-sur-sang); }
+.breviaire.fiche .window-content > .brev-entete .brev-compteur button { color: var(--brev-or-clair); }
+.breviaire.fiche .window-content > .brev-entete .brev-cadre-portrait::before,
+.breviaire.fiche .window-content > .brev-entete .brev-cadre-portrait::after { background: var(--brev-cuir); color: var(--brev-or-clair); }
+.breviaire.fiche .window-content > .brev-entete select option { color: #1a1410; }
+
+.breviaire.fiche .window-content > .brev-onglets {
+  padding-top: .1rem;
+  border-bottom: 3px solid var(--brev-sang);
+  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .6);
+}
+.breviaire.fiche .window-content .brev-onglets .brev-onglet {
+  color: #b9a685;
+  border-color: rgba(239, 226, 198, .15);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(0, 0, 0, .25));
+}
+.breviaire.fiche .window-content .brev-onglets .brev-onglet.active { color: var(--brev-sur-sang); background: var(--brev-sang-degrade); border-color: var(--brev-sang); }
+
+/* Blocs du contenu plus profonds */
+.breviaire.camp-fideles .brev-bloc-carac,
+.breviaire.camp-fideles .brev-carte,
+.breviaire.camp-fideles .brev-usure {
+  background: linear-gradient(180deg, rgba(255, 245, 215, .32), rgba(120, 90, 45, .1));
+  box-shadow: 0 1px 2px rgba(30, 15, 5, .35), 0 4px 12px rgba(30, 15, 5, .2);
+}
+.breviaire.camp-fideles .brev-resume > div,
+.breviaire.camp-fideles .brev-stat { background: linear-gradient(180deg, #dcc89c, #b9a06e); }
+.breviaire.fiche.camp-fideles { --brev-or: #85651f; }
+.breviaire.fiche.camp-fideles .window-content > .brev-entete { --brev-or: #b8975a; }
