@@ -794,3 +794,253 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   box-shadow: none;
 }
 .breviaire.fiche.brev-etroit > .brev-onglets .brev-onglet.active { background: var(--brev-sang-degrade); border-color: var(--brev-sang); }
+
+/* =====================================================================
+   Fiche de personnage, mise en page « dnd5e » :
+   bandeau de titre, colonne de cuir à gauche (portrait et valeurs vitales),
+   pages des onglets à droite. Barre d'onglets sombre collée au bord droit.
+   ===================================================================== */
+.breviaire.fiche.personnage .window-content {
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "bandeau bandeau" "colonne page";
+  overflow: hidden;
+}
+.breviaire.fiche.personnage .window-content > .brev-page { grid-area: page; overflow-y: auto; padding-inline: 1.1rem; }
+
+/* Bandeau */
+.breviaire .brev-bandeau {
+  grid-area: bandeau;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  padding-block: .8rem .7rem;
+  color: #efe2c6;
+  background:
+    var(--brev-grain),
+    radial-gradient(ellipse at 70% 0%, rgba(173, 36, 24, .45), transparent 60%),
+    radial-gradient(ellipse at 10% 120%, rgba(173, 36, 24, .25), transparent 50%),
+    linear-gradient(180deg, var(--brev-cuir-2), var(--brev-cuir));
+  background-blend-mode: soft-light, normal, normal, normal;
+  border-bottom: 2px solid var(--brev-or);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .6);
+  overflow: hidden;
+  --brev-encre: #efe2c6;
+  --brev-encre-douce: #b9a685;
+  --brev-champ: rgba(0, 0, 0, .35);
+  --brev-trait: rgba(239, 226, 198, .2);
+}
+.breviaire .brev-bandeau::after {
+  content: "✠";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 7rem;
+  line-height: 1;
+  color: rgba(214, 183, 115, .07);
+  pointer-events: none;
+}
+.breviaire .brev-bandeau-nom { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1rem; }
+.breviaire.fiche .window-content .brev-bandeau .brev-nom {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 100%;
+  field-sizing: content;
+  font-size: 2.4rem;
+  color: #e4c27c;
+  text-shadow: 0 0 18px rgba(173, 36, 24, .6), 0 2px 0 #000;
+}
+.breviaire.fiche .window-content .brev-bandeau .brev-surnom { flex: 1 1 10rem; width: auto; color: #b9a685; }
+.breviaire .brev-bandeau .brev-ruban { color: #e8d8b8; }
+.breviaire .brev-bandeau .brev-ruban select option { color: #1a1410; }
+.breviaire .brev-bandeau .brev-sceau-titre { margin-left: auto; }
+
+/* Colonne de cuir */
+.breviaire .brev-colonne {
+  grid-area: colonne;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  padding: 1rem .9rem 1.2rem;
+  overflow-y: auto;
+  color: #efe2c6;
+  background:
+    var(--brev-grain),
+    linear-gradient(180deg, var(--brev-cuir), var(--brev-cuir-2));
+  background-blend-mode: soft-light, normal;
+  border-right: 2px solid var(--brev-or);
+  box-shadow: 4px 0 10px -4px rgba(0, 0, 0, .55);
+}
+.breviaire .brev-portrait-bloc { position: relative; }
+.breviaire .brev-colonne .brev-cadre-portrait { padding: 5px; }
+.breviaire .brev-colonne .brev-cadre-portrait::before,
+.breviaire .brev-colonne .brev-cadre-portrait::after { background: var(--brev-cuir); color: var(--brev-or-clair); }
+.breviaire .brev-colonne .brev-portrait { width: 100%; height: auto; aspect-ratio: 1; }
+
+.breviaire .brev-sous-portrait {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  margin-top: -2.2rem;
+  position: relative;
+}
+.breviaire .brev-bouclier {
+  position: relative;
+  width: 4.2rem;
+  height: 4.8rem;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  background: var(--brev-or-degrade);
+  clip-path: polygon(50% 100%, 98% 72%, 98% 8%, 50% 0, 2% 8%, 2% 72%);
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, .6));
+}
+.breviaire .brev-bouclier::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: radial-gradient(circle at 50% 35%, #3b2f25, #15100c);
+  clip-path: polygon(50% 100%, 98% 72%, 98% 8%, 50% 0, 2% 8%, 2% 72%);
+}
+.breviaire .brev-bouclier b { position: relative; font-size: 1.8rem; line-height: 1; color: #f3e3c0; margin-top: -.4rem; }
+.breviaire .brev-bouclier small { position: relative; font-size: .75rem; color: var(--brev-or-clair); }
+.breviaire .brev-mort-mini { display: flex; justify-content: center; gap: .1rem; padding-top: 1.4rem; }
+.breviaire.fiche .window-content .brev-crane {
+  min-width: 1.6rem;
+  width: 1.6rem;
+  min-height: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  font-size: .8rem;
+  color: rgba(239, 226, 198, .35);
+  border: 1px solid rgba(214, 183, 115, .45);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .35);
+}
+body.vade-touch .breviaire.fiche .window-content .brev-crane { min-width: 2.2rem; width: 2.2rem; min-height: 2.2rem; height: 2.2rem; }
+.breviaire.fiche .window-content .brev-crane.pleine { color: var(--brev-sur-sang); background: var(--brev-sang-degrade); border-color: var(--brev-or-clair); }
+.breviaire .brev-sang-mini { display: flex; flex-direction: column; align-items: center; padding-top: 1.4rem; color: #e0574b; }
+.breviaire .brev-sang-mini i { font-size: .8rem; }
+.breviaire .brev-sang-mini b { font-size: 1.1rem; color: #f3e3c0; }
+
+/* Losanges (déplacement, missions) */
+.breviaire .brev-losanges { display: flex; justify-content: center; gap: .6rem; }
+.breviaire .brev-losange { display: flex; flex-direction: column; align-items: center; gap: .15rem; }
+.breviaire .brev-losange b {
+  display: grid;
+  place-items: center;
+  width: 4.6rem;
+  height: 2.2rem;
+  font-size: 1.15rem;
+  color: #1d1712;
+  background: var(--brev-or-degrade);
+  clip-path: polygon(16% 0, 84% 0, 100% 50%, 84% 100%, 16% 100%, 0 50%);
+}
+.breviaire .brev-losange b small { font-size: .7rem; margin-left: .1rem; }
+.breviaire .brev-losange span { font-family: var(--brev-capitales); font-weight: 600; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brev-or-clair); }
+
+/* Valeurs vitales */
+.breviaire .brev-vital { display: flex; flex-direction: column; gap: .3rem; }
+.breviaire .brev-vital-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--brev-or-clair);
+}
+.breviaire .brev-vital-label small { font-family: var(--brev-serif); font-size: .8rem; letter-spacing: 0; text-transform: none; font-style: italic; color: #b9a685; }
+.breviaire .brev-vital-barre {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--brev-or);
+  background:
+    linear-gradient(90deg, rgba(173, 36, 24, .85) var(--part), rgba(0, 0, 0, .45) var(--part));
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .6);
+}
+.breviaire .brev-vital-barre b { font-size: 1.3rem; color: #fff1d6; text-shadow: 0 1px 2px #000; }
+.breviaire .brev-vital-barre b small { font-size: .85rem; color: #e8d3ad; }
+.breviaire.fiche .window-content .brev-vital-barre button { color: #f3e3c0; }
+.breviaire .brev-vital.brev-alerte .brev-vital-barre { border-color: #ef5b3c; box-shadow: 0 0 10px rgba(239, 91, 60, .6); }
+.breviaire .brev-vital.brev-alerte { box-shadow: none; }
+
+.breviaire .brev-mini-chapelet { position: relative; display: flex; justify-content: space-between; align-items: center; padding: .2rem .1rem; }
+.breviaire .brev-mini-chapelet::before { content: ""; position: absolute; left: .3rem; right: .3rem; top: 50%; height: 1px; background: var(--brev-or); opacity: .6; }
+.breviaire .brev-mini-chapelet span { position: relative; width: .8rem; height: .8rem; border-radius: 50%; background: #3a2f25; border: 1px solid var(--brev-or); }
+.breviaire .brev-mini-chapelet span.palier { width: 1.05rem; height: 1.05rem; border-color: var(--brev-or-clair); }
+.breviaire .brev-mini-chapelet span.pleine { background: radial-gradient(circle at 35% 30%, #e0574b, #7d1710); box-shadow: 0 0 5px rgba(224, 87, 75, .7); }
+
+.breviaire .brev-mini-des { display: grid; grid-template-columns: repeat(4, 1fr); gap: .3rem; }
+.breviaire .brev-mini-de { display: flex; flex-direction: column; align-items: center; gap: .1rem; }
+.breviaire .brev-mini-de .brev-de { width: 2.5rem; height: 2.5rem; }
+.breviaire .brev-mini-de .brev-de span { font-size: .78rem; }
+.breviaire .brev-mini-de .brev-de.de-4 span { margin-top: .7rem; font-size: .7rem; }
+.breviaire .brev-mini-de .brev-de.de-0 span { margin-top: .7rem; font-size: .7rem; }
+.breviaire .brev-mini-de small { font-size: .68rem; color: #b9a685; text-align: center; line-height: 1.1; }
+
+/* Barre d'onglets sombre collée au bord droit (style dnd5e) */
+.breviaire.fiche:not(.brev-etroit) > .brev-onglets {
+  top: 7.5rem;
+  gap: .3rem;
+  padding: .45rem .35rem;
+  background:
+    var(--brev-grain),
+    linear-gradient(90deg, var(--brev-cuir), var(--brev-cuir-2));
+  background-blend-mode: soft-light, normal;
+  border: 1px solid var(--brev-or);
+  border-left: none;
+  border-radius: 0 9px 9px 0;
+  box-shadow: 4px 3px 10px rgba(0, 0, 0, .5);
+}
+.breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet,
+.breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet.active {
+  width: 2.3rem;
+  height: 2.3rem;
+  padding: 0;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: none;
+  background: transparent;
+  color: var(--brev-or-clair);
+}
+.breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet.active {
+  color: #1d1712;
+  background: var(--brev-or-degrade);
+  box-shadow: 0 0 8px rgba(214, 183, 115, .45);
+}
+@media (hover: hover) {
+  .breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet:not(.active):hover { width: 2.3rem; background: rgba(214, 183, 115, .15); color: #fff1d6; }
+}
+body.vade-touch .breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet { width: 2.75rem; height: 2.75rem; }
+
+.breviaire.fiche.personnage .brev-grille-caracs { grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); }
+
+/* Fiche étroite (classe posée par la fiche sous 700 px ou en panneau Vade) : une colonne qui défile */
+.breviaire.fiche.personnage.brev-etroit .window-content { display: block; overflow-y: auto; }
+.breviaire.fiche.personnage.brev-etroit .window-content > .brev-page { overflow: visible; }
+.breviaire.brev-etroit .brev-colonne {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: .6rem .9rem;
+    border-right: none;
+    border-bottom: 2px solid var(--brev-or);
+    overflow: visible;
+  }
+.breviaire.brev-etroit .brev-portrait-bloc { grid-row: span 4; }
+.breviaire.brev-etroit .brev-sous-portrait { margin-top: -1.6rem; grid-template-columns: 1fr; justify-items: center; }
+.breviaire.brev-etroit .brev-mort-mini,
+.breviaire.brev-etroit .brev-sang-mini { display: none; }
+.breviaire.brev-etroit .brev-bouclier { width: 3.2rem; height: 3.7rem; }
+.breviaire.brev-etroit .brev-bouclier b { font-size: 1.4rem; }
+.breviaire.brev-etroit .brev-losanges { justify-content: flex-start; }
+.breviaire.fiche.brev-etroit .window-content .brev-bandeau .brev-nom { font-size: 1.8rem; }
+.breviaire .brev-losange b { display: flex; align-items: center; justify-content: center; }
+.breviaire .brev-colonne .brev-cadre-portrait::after { bottom: auto; top: -.5rem; right: -.5rem; }

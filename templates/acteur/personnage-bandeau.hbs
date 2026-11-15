@@ -1,0 +1,12 @@
+<header class="brev-bandeau">
+  <div class="brev-bandeau-nom">
+    <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
+    <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{localize 'BREVIAIRE.Fiche.surnom'}}">
+  </div>
+  <div class="brev-ruban">
+    <select name="system.rang" aria-label="{{localize 'BREVIAIRE.Fiche.rang'}}">{{selectOptions rangs selected=system.rang}}</select>
+    {{#if system.affectation.nom}}<span class="brev-sep">✠</span><span>{{system.affectation.nom}}</span>{{/if}}
+    {{#if system.origine.nom}}<span class="brev-sep">✠</span><span>{{system.origine.nom}}</span>{{/if}}
+    <span class="brev-sceau-titre">{{titre}}</span>
+  </div>
+</header>

@@ -87,7 +87,7 @@ export function FicheBreviaire(Base) {
     }
 
     /** Largeur sous laquelle les onglets latéraux repassent en barre horizontale. */
-    static LARGEUR_ETROITE = 560;
+    static LARGEUR_ETROITE = 700;
 
     #observateur = null;
 

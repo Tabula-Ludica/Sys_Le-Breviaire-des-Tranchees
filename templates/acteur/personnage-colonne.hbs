@@ -1,0 +1,48 @@
+<aside class="brev-colonne">
+  <div class="brev-portrait-bloc">
+    <div class="brev-cadre-portrait">
+      <img class="brev-portrait" src="{{document.img}}" alt="{{document.name}}" data-action="changerImage">
+    </div>
+    <div class="brev-sous-portrait">
+      <div class="brev-mort-mini" title="{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}">
+        {{#each mort}}<button type="button" class="brev-crane {{#if coche}}pleine{{/if}}" data-action="mort" data-index="{{index}}" aria-pressed="{{coche}}" aria-label="{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}"><i class="fa-solid fa-skull"></i></button>{{/each}}
+      </div>
+      <div class="brev-bouclier" title="{{localize 'BREVIAIRE.Fiche.protection'}}">
+        <b>{{system.protection}}</b>{{#if system.protectionBouclier}}<small>+{{system.protectionBouclier}}</small>{{/if}}
+      </div>
+      <div class="brev-sang-mini" title="{{localize 'BREVIAIRE.Fiche.deSangCourt'}}">
+        <i class="fa-solid fa-droplet"></i><b>{{corruption.deSang}}</b>
+      </div>
+    </div>
+  </div>
+
+  <div class="brev-losanges">
+    <div class="brev-losange"><b>{{system.deplacement}}<small>m</small></b><span>{{localize 'BREVIAIRE.Fiche.deplacement'}}</span></div>
+    <div class="brev-losange"><b>{{system.missions}}</b><span>{{localize 'BREVIAIRE.Fiche.missionsCourt'}}</span></div>
+  </div>
+
+  <div class="brev-vital {{#if horsDeCombat}}brev-alerte{{/if}}">
+    <span class="brev-vital-label">{{localize 'BREVIAIRE.Fiche.blessures'}}</span>
+    <div class="brev-vital-barre" style="--part: {{blessuresPart}}%">
+      <button type="button" data-action="blessures" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus"></i></button>
+      <b>{{system.blessures.value}} <small>/ {{system.blessures.max}}</small></b>
+      <button type="button" data-action="blessures" data-delta="1" aria-label="+1"><i class="fa-solid fa-plus"></i></button>
+    </div>
+  </div>
+
+  <div class="brev-vital">
+    <span class="brev-vital-label">{{corruption.label}} <small>{{corruption.etat}}</small></span>
+    <div class="brev-mini-chapelet">
+      {{#each corruption.cases}}<span class="{{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}}"></span>{{/each}}
+    </div>
+  </div>
+
+  <div class="brev-vital">
+    <span class="brev-vital-label">{{localize 'BREVIAIRE.Fiche.usure'}}</span>
+    <div class="brev-mini-des">
+      {{#each usures}}
+      <div class="brev-mini-de {{#if epuise}}brev-epuise{{/if}}"><div class="brev-de de-{{faces}}"><span>{{#if epuise}}✕{{else}}{{de}}{{/if}}</span></div><small>{{label}}</small></div>
+      {{/each}}
+    </div>
+  </div>
+</aside>

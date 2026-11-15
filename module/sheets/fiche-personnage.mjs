@@ -22,7 +22,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
   static DEFAULT_OPTIONS = {
     classes: ["personnage"],
-    position: { width: 720, height: 800 },
+    position: { width: 900, height: 820 },
     actions: {
       jet: this.#jet,
       rangSpecialite: this.#rangSpecialite,
@@ -40,7 +40,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   };
 
   static PARTS = {
-    entete: { template: `${CHEMIN}/acteur/personnage-entete.hbs` },
+    bandeau: { template: `${CHEMIN}/acteur/personnage-bandeau.hbs` },
+    colonne: { template: `${CHEMIN}/acteur/personnage-colonne.hbs`, scrollable: [""] },
     front: { template: `${CHEMIN}/acteur/personnage-front.hbs`, scrollable: [""] },
     ressources: { template: `${CHEMIN}/acteur/personnage-ressources.hbs`, scrollable: [""] },
     paquetage: { template: `${CHEMIN}/acteur/personnage-paquetage.hbs`, scrollable: [""] },
@@ -109,6 +110,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     context.choixBlessuresGraves = choixLocalises(BLESSURES_GRAVES, "BREVIAIRE.BlessureGrave");
     context.mort = [0, 1, 2].map(i => ({ index: i, coche: i < sys.mort.echecs }));
     context.horsDeCombat = sys.blessures.value === 0;
+    context.blessuresPart = sys.blessures.max ? Math.round(100 * sys.blessures.value / sys.blessures.max) : 0;
 
     context.corruption = {
       label: t("Corruption"),
