@@ -1,0 +1,40 @@
+<div class="brev-carte-jet camp-{{camp}} {{#if d.reussite}}reussite{{else}}echec{{/if}} {{#if d.naturel}}naturel-{{d.naturel}}{{/if}}">
+  <header class="brev-cj-entete">
+    {{#if acteur.img}}<img src="{{acteur.img}}" alt="">{{/if}}
+    <div>
+      <h3>{{titre}}</h3>
+      <small>{{#if carac}}{{carac}} {{d.base}}{{#if bonus}} + {{bonus}}{{/if}}{{else}}{{d.base}}{{/if}}{{#if d.modificateur}} · {{localize 'BREVIAIRE.Jet.situation'}} {{d.modificateur}}{{/if}}{{#if mode}} · {{mode}}{{/if}}</small>
+      {{#if arme}}<small class="brev-cj-arme"><i class="fa-solid fa-gun"></i> {{arme.nom}} ({{arme.degats}})</small>{{/if}}
+    </div>
+    <div class="brev-cj-score" title="{{localize 'BREVIAIRE.Jet.scoreVise'}}"><span>≤</span><b>{{d.score}}</b></div>
+  </header>
+
+  <div class="brev-cj-des">
+    {{#each des}}<span class="brev-cj-d20 {{#if garde}}garde{{else}}{{#if ../gardeUnique}}ecarte{{/if}}{{/if}} {{naturel}}">{{v}}</span>{{/each}}
+    {{#if d.priere}}<span class="brev-cj-op">−</span><span class="brev-cj-d6 {{#if d.priere.retire}}retire{{/if}}" title="{{libellePriere}}"><i class="fa-solid fa-hands-praying"></i>{{d.priere.resultat}}</span>{{/if}}
+    {{#if d.pacte}}<span class="brev-cj-op">−</span><span class="brev-cj-sang" title="d{{d.pacte.faces}}"><i class="fa-solid fa-droplet"></i>{{d.pacte.resultat}}</span>{{/if}}
+    {{#if d.soustraction}}<span class="brev-cj-op">=</span><span class="brev-cj-total">{{d.total}}</span>{{/if}}
+  </div>
+
+  <div class="brev-cj-verdict">
+    {{#if libelleNaturel}}<b class="brev-cj-naturel">{{libelleNaturel}}</b>{{/if}}
+    <b>{{#if d.reussite}}{{localize 'BREVIAIRE.Jet.reussite'}}{{else}}{{localize 'BREVIAIRE.Jet.echec'}}{{/if}}</b>
+    {{#unless d.naturel}}<small>{{#if d.reussite}}{{localize 'BREVIAIRE.Jet.marge'}}{{else}}{{localize 'BREVIAIRE.Jet.manque'}}{{/if}} {{ecart}}</small>{{/unless}}
+  </div>
+
+  {{#if tirageArcane}}<p class="brev-cj-arcane"><i class="fa-solid fa-layer-group"></i> {{tirageArcane}}</p>{{/if}}
+
+  {{#if effets.length}}
+  <ul class="brev-cj-effets">
+    {{#each effets}}<li class="{{#if fort}}fort{{/if}}"><i class="{{icone}}"></i> {{texte}}</li>{{/each}}
+  </ul>
+  {{/if}}
+
+  {{#if (or boutons.prier boutons.pactiser boutons.degats)}}
+  <div class="brev-cj-boutons">
+    {{#if boutons.prier}}<button type="button" data-brev-action="prier"><i class="fa-solid fa-hands-praying"></i> {{libelles.prier}}</button>{{/if}}
+    {{#if boutons.pactiser}}<button type="button" data-brev-action="pactiser"><i class="fa-solid fa-droplet"></i> {{libelles.pactiser}}</button>{{/if}}
+    {{#if boutons.degats}}<button type="button" data-brev-action="degats"><i class="fa-solid fa-burst"></i> {{localize 'BREVIAIRE.Jet.degats'}}</button>{{/if}}
+  </div>
+  {{/if}}
+</div>

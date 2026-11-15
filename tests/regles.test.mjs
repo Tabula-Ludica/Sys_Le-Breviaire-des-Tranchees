@@ -79,3 +79,16 @@ test("dégâts : exemple Lucien, Brutal, Sacré, Blessure grave après Protectio
   assert.equal(R.calculerDegats({ de: 5, protection: 2, sacre: true, impie: false }).degats, 3);
   assert.equal(R.calculerDegats({ de: 4, protection: 4, ignoreProtection: true }).degats, 4);
 });
+
+test("prière : qui peut prier, dé retiré, coche", () => {
+  assert.equal(R.raisonSansPriere({ foi: 0, corruption: 0 }), "foiEpuisee");
+  assert.equal(R.raisonSansPriere({ foi: 3, corruption: 9 }), "sursis");
+  assert.equal(R.raisonSansPriere({ foi: 3, corruption: 4 }), null);
+  assert.equal(R.deRetire(1, 0), true);
+  assert.equal(R.deRetire(2, 5), false);
+  assert.equal(R.deRetire(2, 6), true);
+  assert.equal(R.meriteCoche({ enjeu: true, reussite: false }), true);
+  assert.equal(R.meriteCoche({ enjeu: true, reussite: false, priere: true }), false);
+  assert.equal(R.meriteCoche({ enjeu: true, reussite: true, naturel: "miracle" }), true);
+  assert.equal(R.meriteCoche({ enjeu: false, reussite: false }), false);
+});

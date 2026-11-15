@@ -7,6 +7,7 @@
 import { CARACS, SPECIALITES, USURES } from "../config.mjs";
 import { terme } from "../lexique.mjs";
 import { libelleCran, loc } from "../sheets/commun.mjs";
+import { lancerJet } from "../jets/moteur.mjs";
 
 const adaptateur = {
   character(actor) {
@@ -47,7 +48,8 @@ const adaptateur = {
         rolls: Object.keys(SPECIALITES)
           .sort((a, b) => sys.specialites[b].rang - sys.specialites[a].rang)
           .map(s => ({ id: `spe:${s}`, label: loc(`BREVIAIRE.Specialite.${s}`), mod: String(sys.scores[s]) }))
-      }
+      },
+      { id: "autres", label: loc("BREVIAIRE.Fiche.autres"), columns: 2, rolls: [{ id: "mort", label: loc("BREVIAIRE.Jet.mort") }] }
     ];
 
     return {
@@ -58,7 +60,11 @@ const adaptateur = {
   },
 
   async roll(actor, id) {
-    ui.notifications.info("BREVIAIRE.Fiche.jetBientot", { localize: true });
+    const [genre, cle] = id.split(":");
+    if (genre === "carac") return lancerJet(actor, { carac: cle });
+    if (genre === "spe") return lancerJet(actor, { specialite: cle });
+    if (genre === "mort") return lancerJet(actor, { type: "mort" });
+    return lancerJet(actor, {});
   },
 
   async adjustResource(actor, id, delta) {
@@ -89,7 +95,9 @@ const adaptateur = {
   },
 
   async useAction(actor, itemId) {
-    actor.items.get(itemId)?.sheet.render(true);
+    const item = actor.items.get(itemId);
+    if (item?.type === "arme") return lancerJet(actor, { armeId: itemId });
+    item?.sheet.render(true);
   },
 
   rollData(actor) {

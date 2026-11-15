@@ -4,6 +4,7 @@
 
 import { TRAITS, ROLES_ENNEMI, CAMPS } from "../config.mjs";
 import { FicheBreviaire, CHEMIN, loc, choixLocalises, enrichir } from "./commun.mjs";
+import { lancerJet } from "../jets/moteur.mjs";
 
 export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.ActorSheetV2) {
   static DEFAULT_OPTIONS = {
@@ -43,8 +44,9 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
     return context;
   }
 
-  static #jet() {
-    ui.notifications.info("BREVIAIRE.Fiche.jetBientot", { localize: true });
+  /** Jet sous la Menace, avec ou sans arme. */
+  static #jet(event, target) {
+    return lancerJet(this.document, { type: "action", armeId: target.dataset.arme });
   }
 
   static #blessures(event, target) {

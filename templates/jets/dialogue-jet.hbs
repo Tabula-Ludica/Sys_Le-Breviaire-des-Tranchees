@@ -1,0 +1,67 @@
+<div class="brev-dialogue">
+  <div class="brev-apercu {{#if apercu.impossible}}brev-impossible{{/if}}">
+    <span>{{localize 'BREVIAIRE.Jet.scoreVise'}}</span>
+    <b>{{apercu.score}}</b>
+    <small>{{apercu.detail}}</small>
+    <em class="brev-apercu-plafond" {{#unless apercu.plafonne}}hidden{{/unless}}>{{localize 'BREVIAIRE.Jet.plafond'}}</em>
+  </div>
+
+  {{#if arme}}
+  <p class="brev-dialogue-arme"><i class="fa-solid fa-gun"></i> <b>{{arme.nom}}</b> · {{arme.degats}}{{#if arme.portee}} · {{arme.portee}}{{/if}}</p>
+  {{/if}}
+
+  <div class="brev-champs">
+    {{#if personnage}}{{#unless mort}}
+    <label><span>{{localize 'BREVIAIRE.Fiche.specialites'}}</span>
+      <select name="specialite">{{selectOptions choix.specialites selected=e.specialite}}</select></label>
+    {{#if e.specialite}}
+    {{#if aSubstitutions}}
+    <label><span>{{localize 'BREVIAIRE.Fiche.substitutions'}}</span>
+      <select name="substitution">{{selectOptions choix.substitutions selected=e.substitution}}</select></label>
+    {{/if}}
+    <label><span>{{localize 'BREVIAIRE.Jet.autreCarac'}}</span>
+      <select name="carac">{{selectOptions choix.caracs selected=e.carac}}</select></label>
+    {{else}}
+    <label><span>{{localize 'BREVIAIRE.Fiche.caracteristiques'}}</span>
+      <select name="carac">{{selectOptions choix.caracsSeules selected=e.carac}}</select></label>
+    {{/if}}
+    {{/unless}}{{/if}}
+
+    {{#unless mort}}
+    <label><span>{{localize 'BREVIAIRE.Jet.difficulte'}}</span>
+      <select name="difficulte">{{selectOptions choix.difficultes selected=e.difficulte}}</select></label>
+    {{/unless}}
+    {{#if combat}}
+    <label><span>{{localize 'BREVIAIRE.Jet.couvert'}}</span>
+      <select name="couvert">{{selectOptions choix.couverts selected=e.couvert}}</select></label>
+    <label><span>{{localize 'BREVIAIRE.Jet.portee'}}</span>
+      <select name="portee">{{selectOptions choix.portees selected=e.portee}}</select></label>
+    {{/if}}
+    <label><span>{{localize 'BREVIAIRE.Jet.malus'}}</span>
+      <input type="number" name="malus" value="{{e.malus}}" step="1"></label>
+  </div>
+  <p class="brev-note">{{localize 'BREVIAIRE.Jet.noteMalus'}}</p>
+
+  <div class="brev-cases">
+    <label class="brev-case-texte"><input type="checkbox" name="favorise" {{checked e.favorise}}> {{localize 'BREVIAIRE.Jet.favorise'}}</label>
+    <label class="brev-case-texte"><input type="checkbox" name="defavorise" {{checked e.defavorise}}> {{localize 'BREVIAIRE.Jet.defavorise'}}</label>
+    {{#if personnage}}{{#unless mort}}
+    <label class="brev-case-texte"><input type="checkbox" name="enjeu" {{checked e.enjeu}}> {{localize 'BREVIAIRE.Jet.enjeu'}}</label>
+    {{/unless}}{{/if}}
+  </div>
+
+  {{#if personnage}}{{#if priere.avant}}
+  <div class="brev-forcer">
+    <label class="brev-forcer-option {{#unless priere.possible}}brev-desactive{{/unless}}">
+      <input type="checkbox" name="priere" {{checked e.priere}} {{#unless priere.possible}}disabled{{/unless}}>
+      <span><b><i class="fa-solid fa-hands-praying"></i> {{priere.libelle}}</b><small>{{#if priere.possible}}{{localize 'BREVIAIRE.Jet.aidePriere'}}{{else}}{{priere.raison}}{{/if}}</small></span>
+    </label>
+    <label class="brev-forcer-option brev-pacte">
+      <input type="checkbox" name="pacte" {{checked e.pacte}}>
+      <span><b><i class="fa-solid fa-droplet"></i> {{localize 'BREVIAIRE.Jet.pactiser'}} ({{deSang}})</b><small>{{localize 'BREVIAIRE.Jet.aidePacte'}} +1 {{corruption}}</small></span>
+    </label>
+  </div>
+  {{/if}}{{/if}}
+
+  <button type="submit" class="brev-lancer"><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Jet.lancer'}}</button>
+</div>

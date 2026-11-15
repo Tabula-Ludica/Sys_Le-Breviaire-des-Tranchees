@@ -1044,3 +1044,205 @@ body.vade-touch .breviaire.fiche:not(.brev-etroit) > .brev-onglets .brev-onglet 
 .breviaire.fiche.brev-etroit .window-content .brev-bandeau .brev-nom { font-size: 1.8rem; }
 .breviaire .brev-losange b { display: flex; align-items: center; justify-content: center; }
 .breviaire .brev-colonne .brev-cadre-portrait::after { bottom: auto; top: -.5rem; right: -.5rem; }
+
+/* =====================================================================
+   Dialogue de jet
+   ===================================================================== */
+.breviaire.dialogue-jet {
+  --brev-fond: #c9b383; --brev-fond-clair: #d8c497; --brev-fond-sombre: #b09866;
+  --brev-champ: rgba(250, 240, 215, .45); --brev-encre: #22180f; --brev-encre-douce: #57432e;
+  --brev-or: #85651f; --brev-or-clair: #d6b773; --brev-sang: #7d1710; --brev-sang-vif: #ad2418;
+  --brev-sang-degrade: linear-gradient(180deg, #9a2216 0%, #6e130c 100%);
+  --brev-or-degrade: linear-gradient(180deg, #e2c482 0%, #b08a42 55%, #8c6a2c 100%);
+  --brev-sur-sang: #f6e7c8; --brev-trait: rgba(45, 28, 12, .3);
+  --brev-cible: 36px;
+  --brev-serif: "EB Garamond", Garamond, Georgia, serif;
+  --brev-capitales: "Cormorant SC", "EB Garamond", Georgia, serif;
+  max-width: 100vw;
+}
+body.vade-touch .breviaire.dialogue-jet { --brev-cible: 44px; }
+.breviaire.dialogue-jet .window-content {
+  padding: .9rem 1rem 1rem;
+  color: var(--brev-encre);
+  font-family: var(--brev-serif);
+  font-size: 1rem;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 240, 200, .35), transparent 60%), var(--brev-fond);
+  box-shadow: inset 0 0 60px rgba(45, 22, 5, .45);
+}
+.breviaire.dialogue-jet .brev-dialogue { display: flex; flex-direction: column; gap: .7rem; }
+.breviaire.dialogue-jet .brev-apercu {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "label score" "detail score" "plafond plafond";
+  align-items: center;
+  padding: .5rem .8rem;
+  color: var(--brev-sur-sang);
+  background: var(--brev-sang-degrade);
+  border: 1px solid var(--brev-or-clair);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+}
+.breviaire.dialogue-jet .brev-apercu span { grid-area: label; font-family: var(--brev-capitales); font-weight: 600; letter-spacing: .12em; text-transform: uppercase; font-size: .85rem; color: var(--brev-or-clair); }
+.breviaire.dialogue-jet .brev-apercu b { grid-area: score; font-size: 2.6rem; line-height: 1; }
+.breviaire.dialogue-jet .brev-apercu small { grid-area: detail; color: #ecd7b8; }
+.breviaire.dialogue-jet .brev-apercu em { grid-area: plafond; font-size: .8rem; color: #ffcf9e; }
+.breviaire.dialogue-jet .brev-apercu.brev-impossible b { color: #ff9a85; }
+.breviaire.dialogue-jet .brev-dialogue-arme { margin: 0; }
+.breviaire.dialogue-jet .brev-champs { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .45rem .8rem; }
+.breviaire.dialogue-jet .brev-champs label { display: flex; flex-direction: column; gap: .15rem; }
+.breviaire.dialogue-jet .brev-champs label > span { font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-sang); }
+.breviaire.dialogue-jet select,
+.breviaire.dialogue-jet input[type="number"] {
+  min-height: var(--brev-cible);
+  font-family: var(--brev-serif);
+  font-size: 1rem;
+  color: var(--brev-encre);
+  background: var(--brev-champ);
+  border: 1px solid var(--brev-trait);
+}
+.breviaire.dialogue-jet .brev-note { margin: -.3rem 0 0; font-size: .8rem; font-style: italic; color: var(--brev-encre-douce); }
+.breviaire.dialogue-jet .brev-cases { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+.breviaire.dialogue-jet .brev-case-texte { display: inline-flex; align-items: center; gap: .4rem; min-height: var(--brev-cible); }
+.breviaire.dialogue-jet input[type="checkbox"] { accent-color: var(--brev-sang); width: 1.15rem; height: 1.15rem; }
+.breviaire.dialogue-jet .brev-forcer { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.breviaire.dialogue-jet .brev-forcer-option {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: .5rem .6rem;
+  border: 1px solid var(--brev-or);
+  background: linear-gradient(180deg, rgba(255, 245, 215, .4), rgba(120, 90, 45, .1));
+  cursor: pointer;
+}
+.breviaire.dialogue-jet .brev-forcer-option > span { display: flex; flex-direction: column; }
+.breviaire.dialogue-jet .brev-forcer-option small { font-size: .8rem; color: var(--brev-encre-douce); }
+.breviaire.dialogue-jet .brev-forcer-option:has(input:checked) { border-color: var(--brev-sang); box-shadow: inset 0 0 0 1px var(--brev-sang); background: rgba(173, 36, 24, .12); }
+.breviaire.dialogue-jet .brev-pacte b { color: var(--brev-sang); }
+.breviaire.dialogue-jet .brev-desactive { opacity: .5; cursor: not-allowed; }
+.breviaire.dialogue-jet .brev-lancer {
+  min-height: calc(var(--brev-cible) + 6px);
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: .1em;
+  color: #1d1712;
+  background: var(--brev-or-degrade);
+  border: 1px solid #6d4e24;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+}
+@container (max-width: 380px) { .breviaire.dialogue-jet .brev-forcer { grid-template-columns: 1fr; } }
+
+/* =====================================================================
+   Carte de jet dans le chat
+   ===================================================================== */
+.brev-carte-jet {
+  --cj-fond: #e6d6b0;
+  --cj-encre: #22180f;
+  --cj-doux: #5f4a34;
+  --cj-or: #9a7632;
+  --cj-sang: #8a1a12;
+  margin: -2px -2px 0;
+  padding: .5rem .55rem .55rem;
+  color: var(--cj-encre);
+  font-family: "EB Garamond", Garamond, Georgia, serif;
+  font-size: 15px;
+  line-height: 1.3;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 250, 230, .5), transparent 65%), var(--cj-fond);
+  border: 1px solid var(--cj-or);
+  box-shadow: inset 0 0 25px rgba(70, 40, 10, .25);
+}
+.brev-carte-jet.camp-damnes {
+  --cj-fond: #261d17;
+  --cj-encre: #eadbc5;
+  --cj-doux: #b29b80;
+  --cj-or: #b48a4a;
+  --cj-sang: #e0574b;
+  background: radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .2), transparent 60%), var(--cj-fond);
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, .6);
+}
+.brev-carte-jet .brev-cj-entete { display: flex; align-items: center; gap: .45rem; padding-bottom: .4rem; border-bottom: 1px solid var(--cj-or); }
+.brev-carte-jet .brev-cj-entete img { width: 34px; height: 34px; border: 1px solid var(--cj-or); object-fit: cover; flex: none; }
+.brev-carte-jet .brev-cj-entete > div:not(.brev-cj-score) { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.brev-carte-jet h3 { margin: 0; padding: 0; border: none; font-family: "Cormorant SC", "EB Garamond", serif; font-weight: 600; font-size: 1.2rem; letter-spacing: .05em; color: var(--cj-sang); }
+.brev-carte-jet small { color: var(--cj-doux); font-size: .82rem; }
+.brev-carte-jet .brev-cj-score {
+  display: flex;
+  align-items: baseline;
+  gap: .1rem;
+  padding: .1rem .45rem;
+  color: #f6e7c8;
+  background: linear-gradient(180deg, #9a2216, #6e130c);
+  border: 1px solid #d6b773;
+}
+.brev-carte-jet .brev-cj-score span { font-size: .8rem; }
+.brev-carte-jet .brev-cj-score b { font-size: 1.35rem; }
+
+.brev-carte-jet .brev-cj-des { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .3rem; padding: .55rem 0 .35rem; }
+.brev-carte-jet .brev-cj-d20,
+.brev-carte-jet .brev-cj-d6,
+.brev-carte-jet .brev-cj-sang,
+.brev-carte-jet .brev-cj-total {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.2rem;
+  height: 2.2rem;
+  padding: 0 .3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.brev-carte-jet .brev-cj-d20 {
+  color: #22180f;
+  background: radial-gradient(circle at 35% 30%, #fffaf0, #d8c597);
+  clip-path: polygon(50% 0, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  min-width: 2.5rem;
+  height: 2.7rem;
+}
+.brev-carte-jet .brev-cj-d20.ecarte { opacity: .35; text-decoration: line-through; }
+.brev-carte-jet .brev-cj-d20.un { background: radial-gradient(circle at 35% 30%, #fff8d8, #e2c06a); color: #6e4b00; }
+.brev-carte-jet .brev-cj-d20.vingt { background: radial-gradient(circle at 35% 30%, #d0402e, #4a0a06); color: #ffe2cf; }
+.brev-carte-jet .brev-cj-d6 { gap: .15rem; display: inline-flex; color: #22180f; background: #f3ead3; border: 1px solid var(--cj-or); border-radius: 5px; font-size: 1.05rem; }
+.brev-carte-jet .brev-cj-d6 i, .brev-carte-jet .brev-cj-sang i { font-size: .7rem; }
+.brev-carte-jet .brev-cj-d6.retire { text-decoration: line-through; color: #8a1a12; }
+.brev-carte-jet .brev-cj-sang { gap: .15rem; display: inline-flex; color: #ffe2cf; background: linear-gradient(180deg, #b3261b, #5e0f09); border-radius: 50%; font-size: 1.05rem; }
+.brev-carte-jet .brev-cj-op { color: var(--cj-doux); font-size: 1.1rem; }
+.brev-carte-jet .brev-cj-total { border-bottom: 2px solid var(--cj-or); font-size: 1.35rem; }
+
+.brev-carte-jet .brev-cj-verdict {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: .2rem .5rem;
+  padding: .3rem;
+  font-family: "Cormorant SC", "EB Garamond", serif;
+  font-size: 1.3rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--cj-or);
+  border-bottom: 1px solid var(--cj-or);
+}
+.brev-carte-jet.reussite .brev-cj-verdict { color: #2f5a1f; background: rgba(90, 140, 60, .12); }
+.brev-carte-jet.echec .brev-cj-verdict { color: var(--cj-sang); background: rgba(173, 36, 24, .1); }
+.brev-carte-jet.camp-damnes.reussite .brev-cj-verdict { color: #a7d58a; }
+.brev-carte-jet .brev-cj-verdict small { font-family: "EB Garamond", serif; text-transform: none; letter-spacing: 0; font-size: .9rem; }
+.brev-carte-jet .brev-cj-naturel { padding: 0 .4rem; border: 1px solid currentColor; }
+.brev-carte-jet.naturel-miracle .brev-cj-verdict { color: #7a5500; background: linear-gradient(90deg, transparent, rgba(226, 192, 106, .45), transparent); }
+.brev-carte-jet.naturel-damnation .brev-cj-verdict { color: #fff1e8; background: linear-gradient(90deg, #4a0a06, #9a2216, #4a0a06); }
+.brev-carte-jet .brev-cj-arcane { margin: .4rem 0 0; font-style: italic; font-size: .9rem; }
+.brev-carte-jet .brev-cj-effets { list-style: none; margin: .4rem 0 0; padding: 0; font-size: .9rem; }
+.brev-carte-jet .brev-cj-effets li { display: flex; gap: .4rem; align-items: baseline; padding: .1rem 0; }
+.brev-carte-jet .brev-cj-effets i { width: 1rem; text-align: center; color: var(--cj-or); }
+.brev-carte-jet .brev-cj-effets li.fort { font-weight: 600; color: var(--cj-sang); }
+.brev-carte-jet .brev-cj-boutons { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
+.brev-carte-jet .brev-cj-boutons button {
+  flex: 1 1 6rem;
+  min-height: 36px;
+  font-family: "Cormorant SC", "EB Garamond", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: .05em;
+  color: #f6e7c8;
+  background: linear-gradient(180deg, #9a2216, #6e130c);
+  border: 1px solid #d6b773;
+}
+body.vade-touch .brev-carte-jet .brev-cj-boutons button { min-height: 44px; }
+.brev-flavor small { color: #777; }

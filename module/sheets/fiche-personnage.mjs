@@ -8,6 +8,7 @@ import { CARACS, SPECIALITES, SUBSTITUTIONS, USURES, RANGS, BLESSURES_GRAVES } f
 import { FACES, CRAN_MAX, CORRUPTION_MAX, changerCran } from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
 import { FicheBreviaire, CHEMIN, loc, libelleCran, choixLocalises, enrichir } from "./commun.mjs";
+import { lancerJet } from "../jets/moteur.mjs";
 
 const PIPS = ["○○", "●○", "●●"];
 
@@ -35,7 +36,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       ajouterBlessureGrave: this.#ajouterBlessureGrave,
       basculerBlessureGrave: this.#basculerBlessureGrave,
       supprimerBlessureGrave: this.#supprimerBlessureGrave,
-      celebrer: this.#celebrer
+      celebrer: this.#celebrer,
+      jetDeMort: this.#jetDeMort
     }
   };
 
@@ -181,13 +183,18 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   /*  Actions                                     */
   /* -------------------------------------------- */
 
-  /** Jet d'action : le moteur arrive à l'étape 3. */
+  /** Jet d'action : caractéristique, Spécialité (avec ou sans substitution) ou arme. */
   static #jet(event, target) {
-    ui.notifications.info("BREVIAIRE.Fiche.jetBientot", { localize: true });
+    const { carac, specialite, substitution, arme } = target.dataset;
+    return lancerJet(this.document, { type: "action", carac, specialite, substitution, armeId: arme });
+  }
+
+  static #jetDeMort() {
+    return lancerJet(this.document, { type: "mort" });
   }
 
   static #celebrer() {
-    ui.notifications.info("BREVIAIRE.Fiche.jetBientot", { localize: true });
+    ui.notifications.info("BREVIAIRE.Fiche.riteBientot", { localize: true });
   }
 
   /** Rang d'une Spécialité : non maîtrisée → Formé → Expert → non maîtrisée. */

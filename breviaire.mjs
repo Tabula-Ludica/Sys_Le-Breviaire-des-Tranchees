@@ -16,11 +16,14 @@ import { FichePersonnage } from "./module/sheets/fiche-personnage.mjs";
 import { FicheEnnemi } from "./module/sheets/fiche-ennemi.mjs";
 import { FicheObjet } from "./module/sheets/fiche-objet.mjs";
 import { brancherVade } from "./module/integrations/vade.mjs";
+import * as moteur from "./module/jets/moteur.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
 
 /** Gabarits partagés : préchargés et enregistrés comme partiels. */
 const PARTIELS = [
+  "jets/dialogue-jet.hbs",
+  "chat/jet.hbs",
   "objet/usure-ajustements.hbs",
   ...TYPES_OBJET.map(t => `objet/${t}.hbs`)
 ].map(p => `systems/breviaire/templates/${p}`);
@@ -73,8 +76,11 @@ Hooks.once("init", () => {
   brancherVade();
 
   // API publique : game.system.api (macros, autres modules)
-  game.system.api = { regles, terme, campDuMonde, config: CONFIG_BREVIAIRE };
+  game.system.api = { regles, terme, campDuMonde, config: CONFIG_BREVIAIRE, lancerJet: moteur.lancerJet, executerJet: moteur.executerJet };
 });
+
+// Boutons des cartes de jet : branchés message par message (fonctionne aussi dans le chat de Vade)
+Hooks.on("renderChatMessageHTML", (message, html) => moteur.brancherCarte(message, html));
 
 Hooks.once("ready", () => {
   // Le thème des fiches suit le camp de la campagne (variante sombre pour les Damnés).

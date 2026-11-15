@@ -159,3 +159,27 @@ export function calculerDegats({ de, protection = 0, brutal = false, sacre = fal
 
 /** Phase d'initiative : 4 assaut éclair (1er tour), 3 rapide, 2 ennemis, 1 lente. */
 export const PHASES = { eclair: 4, rapide: 3, ennemis: 2, lente: 1 };
+
+/* -------------------------------------------- */
+/*  Prière et pacte (ch. I §2, ch. IX)          */
+/* -------------------------------------------- */
+
+/**
+ * Peut-on prier (ou invoquer) ? Raison du refus sinon.
+ * Foi épuisée (ch. I), Corruption 9 ou plus (ch. IX), excommunié (ch. IX §4).
+ */
+export function raisonSansPriere({ foi, corruption, excommunie = false }) {
+  if (foi <= 0) return "foiEpuisee";
+  if (corruption >= 9) return "sursis";
+  if (excommunie) return "excommunie";
+  return null;
+}
+
+/** Le dé de prière est-il retiré de la réserve ? Sur 1, ou sur 1–2 à partir de Corruption 6 (Souillé). */
+export const deRetire = (resultat, corruption) => resultat === 1 || (corruption >= 6 && resultat === 2);
+
+/**
+ * Coche d'expérience (ch. V) : jet à enjeu raté, ou 1 naturel, sans prière ni pacte.
+ */
+export const meriteCoche = ({ enjeu, reussite, naturel, priere, pacte }) =>
+  !!enjeu && !priere && !pacte && (!reussite || naturel === "miracle");
