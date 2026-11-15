@@ -1,0 +1,71 @@
+<div class="brev-ennemi">
+  <header class="brev-entete">
+    <img class="brev-portrait" src="{{document.img}}" alt="{{document.name}}" data-action="changerImage">
+    <div class="brev-identite">
+      <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
+      <div class="brev-ligne">
+        <select name="system.role">{{selectOptions roles selected=system.role}}</select>
+        <select name="system.camp">{{selectOptions camps selected=system.camp}}</select>
+      </div>
+    </div>
+  </header>
+
+  <div class="brev-grille-ennemi">
+    <div class="brev-stat brev-menace">
+      <button type="button" class="brev-jauge-label" data-action="jet">{{localize 'BREVIAIRE.Fiche.menace'}}</button>
+      <input type="number" name="system.menace" value="{{system.menace}}" min="1" max="19">
+    </div>
+    <div class="brev-stat">
+      <span class="brev-jauge-label">{{localize 'BREVIAIRE.Fiche.blessures'}}</span>
+      <div class="brev-compteur">
+        <button type="button" data-action="blessures" data-delta="-1" aria-label="−1">−</button>
+        <b>{{system.blessures.value}}</b>
+        <button type="button" data-action="blessures" data-delta="1" aria-label="+1">+</button>
+      </div>
+      <label class="brev-base"><span>max</span><input type="number" name="system.blessures.max" value="{{system.blessures.max}}" min="0"></label>
+    </div>
+    <div class="brev-stat">
+      <span class="brev-jauge-label">{{localize 'BREVIAIRE.Fiche.protection'}}</span>
+      <input type="number" name="system.protection" value="{{system.protection}}" min="0">
+    </div>
+    <div class="brev-stat">
+      <span class="brev-jauge-label">{{localize 'BREVIAIRE.Fiche.deplacement'}}</span>
+      <div class="brev-unite"><input type="number" name="system.deplacement" value="{{system.deplacement}}" min="0" step="1.5"><span>m</span></div>
+    </div>
+  </div>
+
+  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.traits'}}</h3>
+  <div class="brev-puces">
+    {{#each traits}}
+    <button type="button" class="brev-puce {{#if actif}}active{{/if}}" data-action="trait" data-trait="{{cle}}" aria-pressed="{{actif}}">{{label}}</button>
+    {{/each}}
+  </div>
+  <input type="text" class="brev-plein" name="system.traitsLibres" value="{{system.traitsLibres}}" placeholder="{{localize 'BREVIAIRE.Fiche.traitsLibres'}}">
+
+  <div class="brev-entete-liste">
+    <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.attaques'}}</h3>
+    <button type="button" data-action="creerObjet" data-type="arme" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+  </div>
+  <ul class="brev-liste brev-objets">
+    {{#each attaques}}
+    <li data-item-id="{{id}}">
+      <img src="{{img}}" alt="">
+      <button type="button" class="brev-objet-nom" data-action="jet" data-arme="{{id}}">
+        <b>{{name}}</b><small>{{degats}}{{#if portee}} · {{portee}}{{/if}}{{#if particularites}} · {{particularites}}{{/if}}</small>
+      </button>
+      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+    </li>
+    {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
+    {{#each autres}}
+    <li data-item-id="{{id}}">
+      <img src="{{img}}" alt=""><div class="brev-objet-nom"><b>{{name}}</b></div>
+      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+    </li>
+    {{/each}}
+  </ul>
+
+  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.notes'}}</h3>
+  {{formInput systemFields.notes value=system.notes enriched=notesHTML toggled=true}}
+</div>

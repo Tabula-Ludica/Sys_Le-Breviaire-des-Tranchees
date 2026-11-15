@@ -1,0 +1,24 @@
+<header class="brev-entete">
+  <img class="brev-portrait" src="{{document.img}}" alt="{{document.name}}" data-action="changerImage">
+  <div class="brev-identite">
+    <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
+    <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{localize 'BREVIAIRE.Fiche.surnom'}}">
+    <div class="brev-ligne">
+      <select name="system.rang" aria-label="{{localize 'BREVIAIRE.Fiche.rang'}}">
+        {{selectOptions rangs selected=system.rang}}
+      </select>
+      <span class="brev-etiquette">{{system.affectation.nom}}</span>
+      <span class="brev-etiquette">{{system.origine.nom}}</span>
+      <span class="brev-etiquette brev-titre">{{titre}}</span>
+    </div>
+  </div>
+  <div class="brev-jauge brev-jauge-blessures {{#if horsDeCombat}}brev-alerte{{/if}}">
+    <span class="brev-jauge-label">{{localize 'BREVIAIRE.Fiche.blessures'}}</span>
+    <div class="brev-compteur">
+      <button type="button" data-action="blessures" data-delta="-1" aria-label="−1">−</button>
+      <b>{{system.blessures.value}}<small>/{{system.blessures.max}}</small></b>
+      <button type="button" data-action="blessures" data-delta="1" aria-label="+1">+</button>
+    </div>
+    <span class="brev-jauge-pied">{{localize 'BREVIAIRE.Fiche.protection'}} {{system.protection}}{{#if system.protectionBouclier}} (+{{system.protectionBouclier}}){{/if}} · {{system.deplacement}} m</span>
+  </div>
+</header>

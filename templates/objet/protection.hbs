@@ -1,0 +1,8 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.typeProtection'}}</span><select name="system.type">{{selectOptions choix.typesProtection selected=system.type}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.valeur'}}</span><input type="number" name="system.valeur" value="{{system.valeur}}" min="0"></label>
+  <label class="brev-case-texte"><input type="checkbox" name="system.lourde" {{checked system.lourde}}> {{localize 'BREVIAIRE.Objet.lourde'}}</label>
+  <label class="brev-case-texte"><input type="checkbox" name="system.equipee" {{checked system.equipee}}> {{localize 'BREVIAIRE.Fiche.equipee'}}</label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+{{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

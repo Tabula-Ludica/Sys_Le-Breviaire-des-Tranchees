@@ -1,0 +1,19 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.camps selected=system.camp}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.cle'}}</span><input type="text" name="system.cle" value="{{system.cle}}"></label>
+  <label><span>{{localize 'BREVIAIRE.Fiche.protectionNaturelle'}}</span><input type="number" name="system.protectionNaturelle" value="{{system.protectionNaturelle}}" min="0"></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.corruptionDepart'}}</span><input type="number" name="system.corruptionDepart" value="{{system.corruptionDepart}}" min="0"></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.particularite'}}</span><input type="text" name="system.particularite.nom" value="{{system.particularite.nom}}"></label>
+  <label class="brev-large"><span></span><textarea name="system.particularite.texte" rows="2">{{system.particularite.texte}}</textarea></label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.specialitesFormees'}}</h3>
+<multi-checkbox class="brev-multi" name="system.specialites">{{selectOptions choix.specialites selected=specialitesListe}}</multi-checkbox>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.substitutions'}}</h3>
+<multi-checkbox class="brev-multi" name="system.substitutions">{{selectOptions choix.substitutions selected=substitutionsListe}}</multi-checkbox>
+{{#if system.options.length}}
+<h3 class="brev-titre-section">{{system.titreOption}}</h3>
+<ul class="brev-liste">{{#each system.options}}<li><b>{{nom}}</b></li>{{/each}}</ul>
+{{/if}}
+{{> "systems/breviaire/templates/objet/usure-ajustements.hbs"}}
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+{{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

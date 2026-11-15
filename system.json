@@ -2,7 +2,7 @@
   "id": "breviaire",
   "title": "Le Bréviaire des Tranchées",
   "description": "Système de jeu de rôle non officiel dans l'univers de Trench Crusade : jets sous le score, dés d'usure, Chapelet et Calice, Paquet du Destin, combat par phases. Un projet Tabula Ludica.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "compatibility": {
     "minimum": "14",
     "verified": "14"

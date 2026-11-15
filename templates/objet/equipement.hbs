@@ -1,0 +1,6 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.quantite'}}</span><input type="number" name="system.quantite" value="{{system.quantite}}" min="0"></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.campsOuCommun selected=system.camp}}</select></label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+{{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

@@ -1,0 +1,6 @@
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.ajustementsUsure'}}</h3>
+<div class="brev-champs brev-champs-court">
+  {{#each usures}}
+  <label><span>{{label}}</span><input type="number" name="{{nom}}" value="{{valeur}}" min="-4" max="4"></label>
+  {{/each}}
+</div>

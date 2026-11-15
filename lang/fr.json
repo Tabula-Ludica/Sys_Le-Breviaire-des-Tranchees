@@ -15,15 +15,12 @@
       "affectation": "Affectation"
     }
   },
-
   "BREVIAIRE": {
     "Systeme": "Le Bréviaire des Tranchées",
-
     "Camp": {
       "fideles": "Les Fidèles",
       "damnes": "Les Damnés"
     },
-
     "Reglages": {
       "camp": {
         "nom": "Camp de la campagne",
@@ -36,7 +33,6 @@
         "apres": "Après un jet raté (variante)"
       }
     },
-
     "Lexique": {
       "fideles": {
         "Prier": "Prier",
@@ -103,7 +99,6 @@
         }
       }
     },
-
     "Carac": {
       "chair": "Chair",
       "nerf": "Nerf",
@@ -111,7 +106,6 @@
       "verbe": "Verbe",
       "ame": "Âme"
     },
-
     "Specialite": {
       "melee": "Mêlée",
       "terrassement": "Terrassement",
@@ -141,13 +135,11 @@
       "endurcissement": "Endurcissement",
       "volonte": "Volonté"
     },
-
     "RangSpecialite": {
       "0": "Non maîtrisée",
       "1": "Formé",
       "2": "Expert"
     },
-
     "Substitution": {
       "precheAuxArmes": "Prêche aux armes",
       "brute": "Brute",
@@ -155,7 +147,6 @@
       "chirurgienDeTranchee": "Chirurgien de tranchée",
       "instinctDeLaBete": "Instinct de la bête"
     },
-
     "Usure": {
       "munitions": "Munitions",
       "vivres": "Vivres",
@@ -163,32 +154,27 @@
       "epuise": "Épuisé",
       "base": "Dé de base"
     },
-
     "Titre": {
       "bleu": "Bleu",
       "briscard": "Briscard",
       "veteran": "Vétéran",
       "revenant": "Revenant"
     },
-
     "Difficulte": {
       "facile": "Facile",
       "normale": "Normale",
       "difficile": "Difficile",
       "desesperee": "Désespérée"
     },
-
     "Couvert": {
       "aucun": "Aucun",
       "leger": "Léger",
       "lourd": "Lourd"
     },
-
     "Portee": {
       "courte": "Courte",
       "longue": "Longue"
     },
-
     "Trait": {
       "effroi": "Effroi",
       "demon": "Démon",
@@ -203,7 +189,6 @@
       "grand": "Grand",
       "rapide": "Rapide"
     },
-
     "Particularite": {
       "brutal": "Brutal",
       "allonge": "Allonge",
@@ -220,21 +205,18 @@
       "zone": "Zone",
       "neBlesseQueImpie": "Ne blesse que l'impie"
     },
-
     "CategorieArme": {
       "melee": "Corps à corps",
       "distance": "À distance",
       "lancer": "Lancée",
       "explosif": "Explosif"
     },
-
     "TypeProtection": {
       "casque": "Casque",
       "armure": "Armure",
       "bouclier": "Bouclier",
       "naturelle": "Naturelle"
     },
-
     "BlessureGrave": {
       "commotion": "Commotion",
       "bras": "Bras touché",
@@ -243,7 +225,6 @@
       "hemorragie": "Hémorragie",
       "mutilation": "Mutilation"
     },
-
     "Etat": {
       "panique": "Paniqué",
       "horsDeCombat": "Hors de combat",
@@ -252,23 +233,110 @@
       "viseur": "Viseur",
       "stabilise": "Stabilisé"
     },
-
     "RoleEnnemi": {
       "chair": "Chair à canon",
       "aguerri": "Soldat aguerri",
       "elite": "Élite",
       "monstre": "Monstre"
     },
-
     "NiveauRite": {
       "mineur": "Rite mineur",
       "grand": "Grand rite"
     },
-
     "OppositionRite": {
       "aucune": "Aucune",
       "menace": "Contre la Menace",
       "ame": "Contre l'Âme"
+    },
+    "Onglet": {
+      "front": "Front",
+      "ressources": "Ressources",
+      "paquetage": "Paquetage",
+      "rites": "Rites",
+      "histoire": "Histoire"
+    },
+    "Fiche": {
+      "personnage": "Fiche de personnage du Bréviaire",
+      "ennemi": "Fiche d’ennemi du Bréviaire",
+      "objet": "Fiche d’objet du Bréviaire",
+      "nom": "Nom",
+      "surnom": "Surnom de tranchée",
+      "rang": "Rang",
+      "blessures": "Blessures",
+      "protection": "Protection",
+      "deplacement": "Déplacement",
+      "menace": "Menace",
+      "caracteristiques": "Caractéristiques",
+      "specialites": "Spécialités",
+      "substitutions": "Substitutions",
+      "coche": "Coche d’expérience",
+      "cocheAide": "coche d’expérience",
+      "usure": "Dés d’usure",
+      "blessuresGraves": "Blessures graves",
+      "sequelle": "Séquelle ou précision",
+      "active": "Active",
+      "soignee": "Soignée",
+      "ajouterBlessureGrave": "Ajouter une Blessure grave",
+      "jetsDeMort": "Jets de Mort",
+      "deSang": "dé de Sang",
+      "suivi": "Suivi",
+      "missions": "Missions survécues",
+      "protectionNaturelle": "Protection naturelle",
+      "excommunie": "Excommunié",
+      "aucune": "Aucune.",
+      "glisser": "Glisse un objet ici depuis un compendium ou la barre latérale.",
+      "ajouter": "Ajouter",
+      "editer": "Modifier",
+      "supprimer": "Supprimer",
+      "supprimerConfirmer": "Supprimer « {nom} » ?",
+      "nouveau": "Nouveau : {type}",
+      "equipee": "Équipé",
+      "detail": "Signe distinctif",
+      "arcanes": "Les trois arcanes",
+      "lien": "Ce qu’un autre a fait pour lui",
+      "biographie": "Biographie",
+      "traits": "Traits",
+      "traitsLibres": "Autres traits ou règles spéciales",
+      "attaques": "Attaques",
+      "notes": "Notes du MJ",
+      "description": "Description",
+      "commun": "Commun aux deux camps",
+      "jetBientot": "Les jets arrivent à l’étape 3 : pour l’instant, la fiche sert à saisir et à vérifier les données."
+    },
+    "Objet": {
+      "categorie": "Catégorie",
+      "degats": "Dégâts",
+      "porteeCourte": "Portée courte",
+      "porteeLongue": "Portée longue",
+      "allonge": "Allonge",
+      "zone": "Rayon de zone",
+      "quantite": "Quantité",
+      "quantiteAide": "vide = dé de Munitions",
+      "particularites": "Particularités",
+      "typeProtection": "Type",
+      "valeur": "Valeur",
+      "lourde": "Lourde (déplacement 6 m)",
+      "camp": "Camp",
+      "apport": "Apport à la réserve",
+      "utilisee": "Déjà utilisée cette mission",
+      "numero": "Numéro",
+      "sens": "Sens",
+      "grace": "Grâce",
+      "damnation": "Damnation",
+      "titreEffet": "Titre",
+      "niveau": "Niveau",
+      "portee": "Portée",
+      "duree": "Durée",
+      "opposition": "Jet en opposition",
+      "horsCombat": "Hors combat seulement",
+      "effet": "Effet",
+      "cle": "Identifiant",
+      "corruptionDepart": "Corruption / Faveur de départ",
+      "particularite": "Particularité",
+      "specialitesFormees": "Spécialités (Formé)",
+      "dotation": "Dotation",
+      "note": "Particularité",
+      "ajustementsUsure": "Ajustements des dés d’usure (en crans)"
     }
   }
 }

@@ -1,0 +1,16 @@
+<section class="tab brev-rites {{onglet.cssClass}}" data-group="primary" data-tab="rites">
+  <div class="brev-entete-liste">
+    <h3 class="brev-titre-section">{{libelles.rites}}</h3>
+    <button type="button" data-action="creerObjet" data-type="rite" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+  </div>
+  <ul class="brev-liste brev-objets">
+    {{#each rites}}
+    <li data-item-id="{{id}}">
+      <img src="{{img}}" alt="">
+      <button type="button" class="brev-objet-nom" data-action="celebrer"><b>{{name}}</b><small>{{niveau}}</small></button>
+      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+    </li>
+    {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
+  </ul>
+</section>

@@ -1,0 +1,22 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.numero'}}</span><input type="number" name="system.numero" value="{{system.numero}}" min="1" max="22"> <b>{{system.chiffre}}</b></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.camps selected=system.camp}}</select></label>
+  <label class="brev-large"><span>{{localize 'BREVIAIRE.Objet.sens'}}</span><input type="text" name="system.sens" value="{{system.sens}}"></label>
+</div>
+<div class="brev-effets-arcane">
+  <fieldset class="brev-grace">
+    <legend>{{localize 'BREVIAIRE.Objet.grace'}}</legend>
+    <input type="text" name="system.grace.titre" value="{{system.grace.titre}}" placeholder="{{localize 'BREVIAIRE.Objet.titreEffet'}}">
+    <textarea name="system.grace.texte" rows="3">{{system.grace.texte}}</textarea>
+  </fieldset>
+  <fieldset class="brev-damnation">
+    <legend>{{localize 'BREVIAIRE.Objet.damnation'}}</legend>
+    <input type="text" name="system.damnation.titre" value="{{system.damnation.titre}}" placeholder="{{localize 'BREVIAIRE.Objet.titreEffet'}}">
+    <textarea name="system.damnation.texte" rows="3">{{system.damnation.texte}}</textarea>
+  </fieldset>
+  <fieldset class="brev-marque">
+    <legend>{{libelles.marque}}</legend>
+    <input type="text" name="system.marque.titre" value="{{system.marque.titre}}" placeholder="{{localize 'BREVIAIRE.Objet.titreEffet'}}">
+    <textarea name="system.marque.texte" rows="3">{{system.marque.texte}}</textarea>
+  </fieldset>
+</div>

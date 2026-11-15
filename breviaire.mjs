@@ -12,6 +12,32 @@ import {
 import { BreviaireActor, BreviaireItem } from "./module/documents.mjs";
 import { enregistrerReglages } from "./module/settings.mjs";
 import { enregistrerHelpers, terme, campDuMonde } from "./module/lexique.mjs";
+import { FichePersonnage } from "./module/sheets/fiche-personnage.mjs";
+import { FicheEnnemi } from "./module/sheets/fiche-ennemi.mjs";
+import { FicheObjet } from "./module/sheets/fiche-objet.mjs";
+import { brancherVade } from "./module/integrations/vade.mjs";
+
+const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
+
+/** Gabarits partagés : préchargés et enregistrés comme partiels. */
+const PARTIELS = [
+  "partiels/onglets.hbs",
+  "objet/usure-ajustements.hbs",
+  ...TYPES_OBJET.map(t => `objet/${t}.hbs`)
+].map(p => `systems/breviaire/templates/${p}`);
+
+function enregistrerFiches() {
+  const { DocumentSheetConfig } = foundry.applications.apps;
+  DocumentSheetConfig.registerSheet(Actor, "breviaire", FichePersonnage, {
+    types: ["personnage"], makeDefault: true, label: "BREVIAIRE.Fiche.personnage"
+  });
+  DocumentSheetConfig.registerSheet(Actor, "breviaire", FicheEnnemi, {
+    types: ["ennemi"], makeDefault: true, label: "BREVIAIRE.Fiche.ennemi"
+  });
+  DocumentSheetConfig.registerSheet(Item, "breviaire", FicheObjet, {
+    types: TYPES_OBJET, makeDefault: true, label: "BREVIAIRE.Fiche.objet"
+  });
+}
 
 Hooks.once("init", () => {
   console.log("Bréviaire | Initialisation du système");
@@ -43,6 +69,9 @@ Hooks.once("init", () => {
 
   enregistrerReglages();
   enregistrerHelpers();
+  enregistrerFiches();
+  foundry.applications.handlebars.loadTemplates(PARTIELS);
+  brancherVade();
 
   // API publique : game.system.api (macros, autres modules)
   game.system.api = { regles, terme, campDuMonde, config: CONFIG_BREVIAIRE };

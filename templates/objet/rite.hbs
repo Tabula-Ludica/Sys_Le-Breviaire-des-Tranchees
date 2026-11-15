@@ -1,0 +1,10 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.camps selected=system.camp}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.niveau'}}</span><select name="system.niveau">{{selectOptions choix.niveaux selected=system.niveau}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.portee'}}</span><div class="brev-unite"><input type="number" name="system.portee" value="{{system.portee}}" min="0"><span>m</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.duree'}}</span><input type="text" name="system.duree" value="{{system.duree}}"></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.opposition'}}</span><select name="system.opposition">{{selectOptions choix.oppositions selected=system.opposition}}</select></label>
+  <label class="brev-case-texte"><input type="checkbox" name="system.horsCombat" {{checked system.horsCombat}}> {{localize 'BREVIAIRE.Objet.horsCombat'}}</label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.effet'}}</h3>
+{{formInput systemFields.effet value=system.effet enriched=effetHTML toggled=true}}

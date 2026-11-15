@@ -1,0 +1,7 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.apport'}}</span><div class="brev-unite"><input type="number" name="system.apport" value="{{system.apport}}" min="0" max="6"><span>d6</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.campsOuCommun selected=system.camp}}</select></label>
+  <label class="brev-case-texte"><input type="checkbox" name="system.utilisee" {{checked system.utilisee}}> {{localize 'BREVIAIRE.Objet.utilisee'}}</label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+{{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

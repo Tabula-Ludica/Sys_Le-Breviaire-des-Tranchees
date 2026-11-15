@@ -1,11 +1,375 @@
-/* Le Bréviaire des Tranchées — styles (les fiches arrivent à l'étape 2). */
-:root {
-  --brev-nuit: #141210;
-  --brev-parchemin: #e9dcbc;
-  --brev-parchemin-ombre: #c9b68c;
+/* =====================================================================
+   Le Bréviaire des Tranchées — styles des fiches
+   Reprend la palette du site (assets/breviaire.css) : parchemin, or, rouge sombre.
+   Variante sombre pour les Damnés (.camp-damnes).
+
+   Compatibilité Vade : aucune largeur minimale, mise en page fluide
+   (container queries sur le contenu de la fenêtre), cibles d'au moins 44 px
+   sur écran tactile (body.vade-touch), rien qui ne marche qu'au survol.
+   ===================================================================== */
+
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 400; font-style: italic; font-display: swap; src: url("../fonts/eb-garamond-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 500; font-style: normal; font-display: swap; src: url("../fonts/eb-garamond-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-style: normal; font-display: swap; src: url("../fonts/eb-garamond-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant SC"; font-weight: 500; font-display: swap; src: url("../fonts/cormorant-sc-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Cormorant SC"; font-weight: 600; font-display: swap; src: url("../fonts/cormorant-sc-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "UnifrakturMaguntia"; font-weight: 400; font-display: swap; src: url("../fonts/unifrakturmaguntia-latin-400-normal.woff2") format("woff2"); }
+
+.breviaire.fiche {
+  /* Palette Fidèles (parchemin) */
+  --brev-fond: #e9dcbc;
+  --brev-fond-2: #ded0aa;
+  --brev-fond-champ: rgba(255, 250, 235, .55);
   --brev-encre: #2a1f16;
-  --brev-sang: #8a1a12;
-  --brev-sang-vif: #b3261b;
+  --brev-encre-douce: #5a4836;
   --brev-or: #b8975a;
   --brev-or-pale: #d8c08a;
+  --brev-sang: #8a1a12;
+  --brev-sang-vif: #b3261b;
+  --brev-trait: rgba(42, 31, 22, .25);
+  --brev-cible: 36px;
+
+  --brev-serif: "EB Garamond", Garamond, Georgia, serif;
+  --brev-capitales: "Cormorant SC", "EB Garamond", Georgia, serif;
+  --brev-gothique: "UnifrakturMaguntia", "EB Garamond", serif;
+}
+
+/* Variante damnée : boue, braise et sang */
+.breviaire.fiche.camp-damnes {
+  --brev-fond: #221d18;
+  --brev-fond-2: #2e2720;
+  --brev-fond-champ: rgba(0, 0, 0, .35);
+  --brev-encre: #eadbc8;
+  --brev-encre-douce: #b9a58c;
+  --brev-or: #c9a35f;
+  --brev-or-pale: #e0c48a;
+  --brev-sang: #b3261b;
+  --brev-sang-vif: #e0574b;
+  --brev-trait: rgba(234, 219, 200, .2);
+}
+
+body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
+
+/* ---------- Fenêtre ---------- */
+.breviaire.fiche .window-content {
+  container-type: inline-size;
+  padding: 0;
+  gap: 0;
+  color: var(--brev-encre);
+  font-family: var(--brev-serif);
+  font-size: 1rem;
+  line-height: 1.4;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(138, 26, 18, .10), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(184, 151, 90, .12), transparent 50%),
+    var(--brev-fond);
+}
+.breviaire.fiche .window-content > * { padding-inline: .9rem; }
+
+.breviaire.fiche input,
+.breviaire.fiche select,
+.breviaire.fiche textarea {
+  font-family: var(--brev-serif);
+  font-size: 1rem;
+  color: var(--brev-encre);
+  background: var(--brev-fond-champ);
+  border: 1px solid var(--brev-trait);
+  border-radius: 3px;
+  min-height: var(--brev-cible);
+}
+.breviaire.fiche input[type="checkbox"] { min-height: auto; width: 1.2rem; height: 1.2rem; }
+.breviaire.fiche input[type="number"] { text-align: center; }
+.breviaire.fiche select option { color: #000; background: #fff; }
+
+.breviaire.fiche button {
+  font-family: var(--brev-serif);
+  color: var(--brev-encre);
+  background: transparent;
+  border: 1px solid var(--brev-trait);
+  border-radius: 3px;
+  min-height: var(--brev-cible);
+  min-width: var(--brev-cible);
+  line-height: 1.1;
+  cursor: pointer;
+  box-shadow: none;
+}
+.breviaire.fiche button:focus-visible { outline: 2px solid var(--brev-sang-vif); outline-offset: 1px; }
+.breviaire.fiche button:active { background: var(--brev-fond-2); }
+
+/* ---------- Entête ---------- */
+.breviaire .brev-entete {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  padding-block: .8rem;
+  border-bottom: 2px solid var(--brev-or);
+}
+.breviaire .brev-portrait {
+  width: 84px;
+  height: 84px;
+  flex: none;
+  object-fit: cover;
+  border: 2px solid var(--brev-or);
+  box-shadow: 0 0 0 3px var(--brev-fond), 0 0 0 4px var(--brev-trait);
+  cursor: pointer;
+}
+.breviaire .brev-identite { flex: 1 1 14rem; min-width: 0; display: flex; flex-direction: column; gap: .3rem; }
+.breviaire.fiche .brev-nom {
+  font-family: var(--brev-gothique);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  border: none;
+  border-bottom: 1px dashed transparent;
+  background: transparent;
+  color: var(--brev-sang);
+  padding: 0;
+  height: auto;
+}
+.breviaire.fiche .brev-nom:focus { border-bottom-color: var(--brev-or); }
+.breviaire.fiche .brev-surnom { font-style: italic; border: none; background: transparent; padding: 0; min-height: 1.6rem; }
+.breviaire .brev-ligne { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.breviaire .brev-ligne select { width: auto; }
+.breviaire .brev-etiquette:empty { display: none; }
+.breviaire .brev-etiquette {
+  font-family: var(--brev-capitales);
+  letter-spacing: .06em;
+  padding: .15rem .5rem;
+  border: 1px solid var(--brev-trait);
+  border-radius: 2px;
+}
+.breviaire .brev-titre { color: var(--brev-sang); border-color: var(--brev-sang); }
+
+/* ---------- Jauges et compteurs ---------- */
+.breviaire .brev-jauge,
+.breviaire .brev-usure,
+.breviaire .brev-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  padding: .4rem .6rem;
+  border: 1px solid var(--brev-or);
+  background: var(--brev-fond-2);
+}
+.breviaire .brev-jauge-label {
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  color: var(--brev-sang);
+}
+.breviaire .brev-jauge-pied { font-size: .85rem; color: var(--brev-encre-douce); }
+.breviaire .brev-compteur { display: flex; align-items: center; gap: .3rem; }
+.breviaire .brev-compteur b { font-size: 1.6rem; min-width: 3.2rem; text-align: center; }
+.breviaire .brev-compteur b small { font-size: .9rem; color: var(--brev-encre-douce); }
+.breviaire .brev-compteur button { font-size: 1.3rem; font-weight: 600; }
+.breviaire .brev-alerte { border-color: var(--brev-sang-vif); box-shadow: inset 0 0 0 1px var(--brev-sang-vif); }
+
+/* ---------- Onglets ---------- */
+.breviaire .brev-onglets {
+  display: flex;
+  border-bottom: 1px solid var(--brev-or);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.breviaire .brev-onglets .item {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  min-height: var(--brev-cible);
+  padding: .3rem .7rem;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--brev-encre-douce);
+  border-bottom: 3px solid transparent;
+  text-shadow: none;
+}
+.breviaire .brev-onglets .item.active { color: var(--brev-sang); border-bottom-color: var(--brev-sang); }
+
+.breviaire.fiche .tab { display: none; padding-block: .6rem 1.2rem; }
+.breviaire.fiche .tab.active { display: block; }
+
+/* ---------- Titres et listes ---------- */
+.breviaire .brev-titre-section {
+  margin: 1rem 0 .4rem;
+  padding: 0 0 .15rem;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: .06em;
+  color: var(--brev-sang);
+  border-bottom: 1px solid var(--brev-trait);
+}
+.breviaire .brev-titre-section small { color: var(--brev-encre-douce); font-size: .9rem; }
+.breviaire .brev-legende { font-size: .85rem; color: var(--brev-encre-douce); margin: 0 0 .5rem; }
+
+.breviaire .brev-entete-liste { display: flex; align-items: flex-end; gap: .5rem; }
+.breviaire .brev-entete-liste .brev-titre-section { flex: 1; }
+.breviaire .brev-entete-liste button { margin-bottom: .4rem; }
+
+.breviaire .brev-liste { list-style: none; margin: 0; padding: 0; }
+.breviaire .brev-liste > li {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .25rem 0;
+  border-bottom: 1px solid var(--brev-trait);
+}
+.breviaire .brev-liste > li > img { width: 36px; height: 36px; flex: none; border: 1px solid var(--brev-trait); object-fit: cover; }
+.breviaire .brev-liste .brev-vide { color: var(--brev-encre-douce); font-style: italic; border: none; }
+.breviaire .brev-liste button { border-color: transparent; }
+
+.breviaire .brev-objet-nom {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.breviaire.fiche button.brev-objet-nom { border-color: transparent; padding: .2rem .3rem; }
+.breviaire .brev-objet-nom small { color: var(--brev-encre-douce); font-size: .85rem; }
+.breviaire .brev-range { opacity: .55; }
+
+/* ---------- Front : caractéristiques et Spécialités ---------- */
+.breviaire .brev-grille-caracs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  gap: .7rem;
+}
+.breviaire .brev-bloc-carac { border: 1px solid var(--brev-or); background: var(--brev-fond-2); }
+.breviaire .brev-carac {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .4rem;
+  background: var(--brev-sang);
+}
+.breviaire.fiche .brev-carac-jet {
+  flex: 1;
+  color: #f6ead0;
+  border: none;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: .08em;
+  text-align: left;
+}
+.breviaire.fiche .brev-carac input {
+  width: 3.4rem;
+  flex: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #f6ead0;
+  background: rgba(0, 0, 0, .2);
+  border-color: rgba(255, 255, 255, .25);
+}
+
+.breviaire .brev-specialites { list-style: none; margin: 0; padding: .2rem .3rem; }
+.breviaire .brev-specialite {
+  display: grid;
+  grid-template-columns: auto 1fr auto 2.2rem;
+  align-items: center;
+  gap: .15rem;
+}
+.breviaire .brev-specialite + .brev-specialite { border-top: 1px dotted var(--brev-trait); }
+.breviaire.fiche .brev-specialite button { border-color: transparent; }
+.breviaire .brev-pips { font-size: .9rem; letter-spacing: -.1em; color: var(--brev-sang); white-space: nowrap; }
+.breviaire.fiche .brev-nom-jet { text-align: left; padding: 0 .25rem; }
+.breviaire .brev-specialite.rang-0 .brev-nom-jet { color: var(--brev-encre-douce); }
+.breviaire .brev-specialite.rang-2 .brev-nom-jet { font-weight: 600; }
+.breviaire .brev-score { text-align: right; font-weight: 600; font-size: 1.05rem; }
+.breviaire .brev-substitution .brev-nom-jet { font-style: italic; }
+.breviaire .brev-substitution small { color: var(--brev-encre-douce); }
+.breviaire.fiche .brev-coche { color: transparent; }
+.breviaire.fiche .brev-coche::before { content: "☐"; color: var(--brev-encre-douce); font-size: 1rem; }
+.breviaire.fiche .brev-coche i { display: none; }
+.breviaire.fiche .brev-coche.coche::before { content: "☑"; color: var(--brev-sang-vif); }
+
+/* ---------- Puces (substitutions, traits) ---------- */
+.breviaire .brev-puces { display: flex; flex-wrap: wrap; gap: .35rem; }
+.breviaire.fiche .brev-puce {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: .25rem .6rem;
+  border-radius: 999px;
+  border-color: var(--brev-trait);
+}
+.breviaire .brev-puce small { font-size: .75rem; color: var(--brev-encre-douce); }
+.breviaire.fiche .brev-puce.active { background: var(--brev-sang); border-color: var(--brev-sang); color: #f6ead0; }
+.breviaire .brev-puce.active small { color: #ecd7b8; }
+
+/* ---------- Ressources ---------- */
+.breviaire .brev-grille-usure { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .6rem; }
+.breviaire .brev-epuise { border-color: var(--brev-sang-vif); }
+.breviaire .brev-epuise b { color: var(--brev-sang-vif); font-size: 1.1rem; }
+.breviaire .brev-base { display: flex; align-items: center; gap: .3rem; font-size: .8rem; color: var(--brev-encre-douce); }
+.breviaire .brev-base select, .breviaire .brev-base input { min-height: 30px; width: auto; }
+
+.breviaire .brev-graves > li { flex-wrap: wrap; }
+.breviaire .brev-graves select { flex: 0 1 12rem; }
+.breviaire .brev-graves input[type="text"] { flex: 1 1 10rem; }
+.breviaire .brev-soignee { opacity: .55; }
+.breviaire.fiche .brev-ajouter { margin-top: .4rem; padding-inline: .7rem; }
+
+.breviaire .brev-mort, .breviaire .brev-corruption { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; }
+.breviaire.fiche .brev-case { width: var(--brev-cible); padding: 0; font-weight: 600; }
+.breviaire.fiche .brev-case.palier { border-color: var(--brev-or); border-width: 2px; }
+.breviaire.fiche .brev-case.pleine { background: var(--brev-sang); border-color: var(--brev-sang); color: #f6ead0; }
+.breviaire .brev-case-texte { display: inline-flex; align-items: center; gap: .4rem; }
+
+.breviaire .brev-marques .brev-marque-texte { flex: 1; display: flex; flex-direction: column; }
+.breviaire .brev-marques .brev-marque-texte span { font-size: .9rem; }
+
+/* ---------- Champs étiquetés ---------- */
+.breviaire .brev-champs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: .45rem .9rem;
+}
+.breviaire .brev-champs > label { display: flex; flex-direction: column; gap: .15rem; }
+.breviaire .brev-champs > label > span { font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-encre-douce); font-size: .95rem; }
+.breviaire .brev-champs > label.brev-case-texte { flex-direction: row; align-items: center; }
+.breviaire .brev-champs .brev-large { grid-column: 1 / -1; }
+.breviaire .brev-champs-court { grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
+.breviaire .brev-unite { display: flex; align-items: center; gap: .3rem; }
+.breviaire .brev-unite input { flex: 1; min-width: 0; }
+.breviaire.fiche .brev-plein { width: 100%; margin-top: .4rem; }
+
+.breviaire .brev-multi { display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
+.breviaire .brev-multi label { display: inline-flex; align-items: center; gap: .3rem; min-height: var(--brev-cible); }
+
+/* Éditeur de texte riche */
+.breviaire.fiche prose-mirror { min-height: 8rem; background: var(--brev-fond-champ); border: 1px solid var(--brev-trait); }
+.breviaire.fiche prose-mirror .editor-content { padding: .4rem .6rem; }
+
+/* ---------- Ennemi ---------- */
+.breviaire .brev-grille-ennemi { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .5rem; margin-top: .7rem; }
+.breviaire .brev-stat input[type="number"] { width: 4.5rem; font-size: 1.4rem; font-weight: 600; }
+.breviaire .brev-menace { border-color: var(--brev-sang); }
+.breviaire.fiche .brev-menace .brev-jauge-label { border: none; min-height: auto; }
+
+/* ---------- Arcane ---------- */
+.breviaire .brev-effets-arcane { display: grid; gap: .6rem; margin-top: .6rem; }
+.breviaire .brev-effets-arcane fieldset { display: flex; flex-direction: column; gap: .3rem; border: 1px solid var(--brev-trait); padding: .5rem; }
+.breviaire .brev-effets-arcane legend { font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-sang); padding: 0 .3rem; }
+.breviaire .brev-grace { border-color: var(--brev-or) !important; }
+.breviaire .brev-damnation { border-color: var(--brev-sang) !important; }
+
+/* ---------- Écrans étroits (téléphone en plein écran via Vade, panneau étroit) ---------- */
+@container (max-width: 520px) {
+  .breviaire .brev-portrait { width: 64px; height: 64px; }
+  .breviaire.fiche .brev-nom { font-size: 1.5rem; }
+  .breviaire .brev-jauge-blessures { flex: 1 1 100%; flex-direction: row; justify-content: space-between; }
+  .breviaire .brev-onglets .item span { display: none; }
+  .breviaire .brev-onglets .item i { font-size: 1.15rem; }
+  .breviaire .brev-grille-caracs { grid-template-columns: 1fr; }
+  .breviaire .brev-champs { grid-template-columns: 1fr; }
 }

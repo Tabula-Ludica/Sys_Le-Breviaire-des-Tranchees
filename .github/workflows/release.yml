@@ -52,7 +52,7 @@ jobs:
           mv system.tmp.json system.json
 
       - name: Créer l'archive
-        run: zip -r breviaire.zip system.json breviaire.mjs module styles lang README.md
+        run: zip -r breviaire.zip system.json breviaire.mjs module templates styles fonts lang README.md
 
       - name: Joindre à la release
         uses: softprops/action-gh-release@v2

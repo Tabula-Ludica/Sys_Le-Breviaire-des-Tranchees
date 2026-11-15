@@ -1,0 +1,14 @@
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Objet.categorie'}}</span><select name="system.categorie">{{selectOptions choix.categories selected=system.categorie}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.degats'}}</span><input type="text" name="system.degats" value="{{system.degats}}" placeholder="1d8"></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.porteeCourte'}}</span><div class="brev-unite"><input type="number" name="system.porteeCourte" value="{{system.porteeCourte}}" min="0"><span>m</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.porteeLongue'}}</span><div class="brev-unite"><input type="number" name="system.porteeLongue" value="{{system.porteeLongue}}" min="0"><span>m</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.allonge'}}</span><div class="brev-unite"><input type="number" name="system.allonge" value="{{system.allonge}}" min="0" step="1.5"><span>m</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.zone'}}</span><div class="brev-unite"><input type="number" name="system.zone" value="{{system.zone}}" min="0"><span>m</span></div></label>
+  <label><span>{{localize 'BREVIAIRE.Objet.quantite'}}</span><input type="number" name="system.quantite" value="{{system.quantite}}" min="0" placeholder="{{localize 'BREVIAIRE.Objet.quantiteAide'}}"></label>
+  <label class="brev-case-texte"><input type="checkbox" name="system.equipee" {{checked system.equipee}}> {{localize 'BREVIAIRE.Fiche.equipee'}}</label>
+</div>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.particularites'}}</h3>
+<multi-checkbox class="brev-multi" name="system.particularites">{{selectOptions choix.particularites selected=particularitesListe}}</multi-checkbox>
+<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+{{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}
