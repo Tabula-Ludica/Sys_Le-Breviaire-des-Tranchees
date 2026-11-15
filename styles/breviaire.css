@@ -1,0 +1,11 @@
+/* Le Bréviaire des Tranchées — styles (les fiches arrivent à l'étape 2). */
+:root {
+  --brev-nuit: #141210;
+  --brev-parchemin: #e9dcbc;
+  --brev-parchemin-ombre: #c9b68c;
+  --brev-encre: #2a1f16;
+  --brev-sang: #8a1a12;
+  --brev-sang-vif: #b3261b;
+  --brev-or: #b8975a;
+  --brev-or-pale: #d8c08a;
+}

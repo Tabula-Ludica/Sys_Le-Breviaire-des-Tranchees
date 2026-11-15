@@ -1,0 +1,274 @@
+{
+  "TYPES": {
+    "Actor": {
+      "personnage": "Personnage",
+      "ennemi": "Ennemi"
+    },
+    "Item": {
+      "arme": "Arme",
+      "protection": "Protection",
+      "equipement": "Équipement",
+      "relique": "Relique",
+      "arcane": "Arcane",
+      "rite": "Rite",
+      "origine": "Origine",
+      "affectation": "Affectation"
+    }
+  },
+
+  "BREVIAIRE": {
+    "Systeme": "Le Bréviaire des Tranchées",
+
+    "Camp": {
+      "fideles": "Les Fidèles",
+      "damnes": "Les Damnés"
+    },
+
+    "Reglages": {
+      "camp": {
+        "nom": "Camp de la campagne",
+        "aide": "Change le vocabulaire (prier ou invoquer, Chapelet ou Calice…), le paquet d'arcanes, le créateur de personnage et le thème des fiches. La page se recharge."
+      },
+      "modePriere": {
+        "nom": "Moment de la prière et du pacte",
+        "aide": "Les règles (ch. I) font décider la prière et le pacte avant de lancer le d20. L'autre mode ajoute des boutons Prier et Pactiser sur la carte d'un jet raté.",
+        "avant": "Avant le jet (règles)",
+        "apres": "Après un jet raté (variante)"
+      }
+    },
+
+    "Lexique": {
+      "fideles": {
+        "Prier": "Prier",
+        "Priere": "Prière",
+        "Chapelet": "Chapelet",
+        "Foi": "Foi",
+        "Corruption": "Corruption",
+        "Marque": "Marque",
+        "Marques": "Marques",
+        "Tentation": "Tentation",
+        "Messe": "Messe",
+        "Paquet": "Tarot saint",
+        "Passe": "Passé",
+        "Serment": "Serment",
+        "Peche": "Péché",
+        "Jugement": "Soupçon",
+        "Perdu": "Perdu",
+        "Celebrant": "Aumônier",
+        "Rites": "Rites",
+        "Rang": {
+          "conscrit": "Conscrit",
+          "sousofficier": "Sous-officier",
+          "officier": "Officier",
+          "prelat": "Prélat"
+        },
+        "Etat": {
+          "intact": "Intact",
+          "touche": "Touché",
+          "souille": "Souillé",
+          "sursis": "Damné en sursis",
+          "perdu": "Perdu"
+        }
+      },
+      "damnes": {
+        "Prier": "Invoquer",
+        "Priere": "Invocation",
+        "Chapelet": "Calice",
+        "Foi": "Haine",
+        "Corruption": "Faveur",
+        "Marque": "Don",
+        "Marques": "Dons",
+        "Tentation": "Ordre",
+        "Messe": "Messe noire",
+        "Paquet": "Tarot noir",
+        "Passe": "Passé",
+        "Serment": "Pacte",
+        "Peche": "Remords",
+        "Jugement": "Disgrâce",
+        "Perdu": "Dévoré",
+        "Celebrant": "Prédicateur noir",
+        "Rites": "Rites noirs",
+        "Rang": {
+          "conscrit": "Damné du rang",
+          "sousofficier": "Sergent de légion",
+          "officier": "Commandeur",
+          "prelat": "Élu"
+        },
+        "Etat": {
+          "intact": "Sans maître",
+          "touche": "Remarqué",
+          "souille": "Favori",
+          "sursis": "Au bord",
+          "perdu": "Dévoré"
+        }
+      }
+    },
+
+    "Carac": {
+      "chair": "Chair",
+      "nerf": "Nerf",
+      "esprit": "Esprit",
+      "verbe": "Verbe",
+      "ame": "Âme"
+    },
+
+    "Specialite": {
+      "melee": "Mêlée",
+      "terrassement": "Terrassement",
+      "endurance": "Endurance",
+      "portage": "Portage",
+      "athletisme": "Athlétisme",
+      "tir": "Tir",
+      "lancer": "Lancer",
+      "discretion": "Discrétion",
+      "esquive": "Esquive",
+      "conduite": "Conduite",
+      "coupDeMain": "Coup de main",
+      "medecine": "Médecine",
+      "mecanique": "Mécanique",
+      "explosifs": "Explosifs",
+      "tactique": "Tactique",
+      "vigilance": "Vigilance",
+      "erudition": "Érudition",
+      "commandement": "Commandement",
+      "persuasion": "Persuasion",
+      "tromperie": "Tromperie",
+      "intimidation": "Intimidation",
+      "debrouille": "Débrouille",
+      "ferveur": "Ferveur",
+      "exorcisme": "Exorcisme",
+      "pressentiment": "Pressentiment",
+      "endurcissement": "Endurcissement",
+      "volonte": "Volonté"
+    },
+
+    "RangSpecialite": {
+      "0": "Non maîtrisée",
+      "1": "Formé",
+      "2": "Expert"
+    },
+
+    "Substitution": {
+      "precheAuxArmes": "Prêche aux armes",
+      "brute": "Brute",
+      "calculBalistique": "Calcul balistique",
+      "chirurgienDeTranchee": "Chirurgien de tranchée",
+      "instinctDeLaBete": "Instinct de la bête"
+    },
+
+    "Usure": {
+      "munitions": "Munitions",
+      "vivres": "Vivres",
+      "nerfs": "Nerfs",
+      "epuise": "Épuisé",
+      "base": "Dé de base"
+    },
+
+    "Titre": {
+      "bleu": "Bleu",
+      "briscard": "Briscard",
+      "veteran": "Vétéran",
+      "revenant": "Revenant"
+    },
+
+    "Difficulte": {
+      "facile": "Facile",
+      "normale": "Normale",
+      "difficile": "Difficile",
+      "desesperee": "Désespérée"
+    },
+
+    "Couvert": {
+      "aucun": "Aucun",
+      "leger": "Léger",
+      "lourd": "Lourd"
+    },
+
+    "Portee": {
+      "courte": "Courte",
+      "longue": "Longue"
+    },
+
+    "Trait": {
+      "effroi": "Effroi",
+      "demon": "Démon",
+      "impie": "Impie",
+      "sacre": "Sacré",
+      "fanatique": "Fanatique",
+      "insensible": "Insensible",
+      "meute": "Meute",
+      "chef": "Chef",
+      "lunette": "Lunette",
+      "lourd": "Lourd",
+      "grand": "Grand",
+      "rapide": "Rapide"
+    },
+
+    "Particularite": {
+      "brutal": "Brutal",
+      "allonge": "Allonge",
+      "rafale": "Rafale",
+      "lourde": "Lourde",
+      "sacree": "Sacrée",
+      "impie": "Impie",
+      "discret": "Discret",
+      "deuxMains": "Deux mains",
+      "lunette": "Lunette",
+      "enflamme": "Enflammé",
+      "baionnette": "Accepte une baïonnette",
+      "contact": "Utilisable au contact",
+      "zone": "Zone",
+      "neBlesseQueImpie": "Ne blesse que l'impie"
+    },
+
+    "CategorieArme": {
+      "melee": "Corps à corps",
+      "distance": "À distance",
+      "lancer": "Lancée",
+      "explosif": "Explosif"
+    },
+
+    "TypeProtection": {
+      "casque": "Casque",
+      "armure": "Armure",
+      "bouclier": "Bouclier",
+      "naturelle": "Naturelle"
+    },
+
+    "BlessureGrave": {
+      "commotion": "Commotion",
+      "bras": "Bras touché",
+      "jambe": "Jambe touchée",
+      "oeil": "Éclat dans l'œil",
+      "hemorragie": "Hémorragie",
+      "mutilation": "Mutilation"
+    },
+
+    "Etat": {
+      "panique": "Paniqué",
+      "horsDeCombat": "Hors de combat",
+      "hemorragie": "Hémorragie",
+      "immobilise": "Immobilisé",
+      "viseur": "Viseur",
+      "stabilise": "Stabilisé"
+    },
+
+    "RoleEnnemi": {
+      "chair": "Chair à canon",
+      "aguerri": "Soldat aguerri",
+      "elite": "Élite",
+      "monstre": "Monstre"
+    },
+
+    "NiveauRite": {
+      "mineur": "Rite mineur",
+      "grand": "Grand rite"
+    },
+
+    "OppositionRite": {
+      "aucune": "Aucune",
+      "menace": "Contre la Menace",
+      "ame": "Contre l'Âme"
+    }
+  }
+}

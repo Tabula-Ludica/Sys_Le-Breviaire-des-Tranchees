@@ -1,0 +1,9 @@
+{
+  "name": "breviaire",
+  "private": true,
+  "type": "module",
+  "description": "Système Foundry VTT v14 « Le Bréviaire des Tranchées »",
+  "scripts": {
+    "test": "node --test"
+  }
+}
