@@ -8,6 +8,7 @@ import { SYSTEME, CARACS, SPECIALITES, SUBSTITUTIONS, DIFFICULTES, COUVERTS, POR
 import { MALUS_PLANCHER } from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
 import { calculer, raisonSansPriere, specialiteDeLArme } from "./moteur.mjs";
+import { themeSombre } from "../settings.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const loc = cle => game.i18n.localize(cle);
@@ -139,6 +140,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
 
   _onFirstRender(context, options) {
     super._onFirstRender(context, options);
+    const camp = this.#actor.type === "personnage" ? this.#actor.system.camp : game.settings.get(SYSTEME, "camp");
+    this.element.classList.add(themeSombre(camp) ? "brev-sombre" : "brev-clair");
     this.element.addEventListener("change", () => {
       if (this.#lire()) return this.render();
       const a = this.#apercu();

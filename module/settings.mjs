@@ -29,6 +29,26 @@ export function enregistrerReglages() {
     default: "avant"
   });
 
+  game.settings.register(SYSTEME, "theme", {
+    name: "BREVIAIRE.Reglages.theme.nom",
+    hint: "BREVIAIRE.Reglages.theme.aide",
+    scope: "client",
+    config: true,
+    type: String,
+    choices: {
+      sombre: "BREVIAIRE.Reglages.theme.sombre",
+      parchemin: "BREVIAIRE.Reglages.theme.parchemin",
+      camp: "BREVIAIRE.Reglages.theme.camp"
+    },
+    default: "sombre",
+    onChange: () => {
+      for (const app of foundry.applications.instances.values()) {
+        if (app.element?.classList.contains("breviaire")) app.render();
+      }
+      ui.chat?.render?.();
+    }
+  });
+
   // Réserve commune : seul le MJ l'écrit (les joueurs passent par une requête, étape 4).
   game.settings.register(SYSTEME, "reserve", {
     scope: "world",
@@ -52,4 +72,10 @@ export function enregistrerReglages() {
     type: Object,
     default: {}
   });
+}
+
+/** Thème sombre pour ce camp, selon le réglage personnel « Thème des fiches ». */
+export function themeSombre(camp) {
+  const theme = game.settings.get(SYSTEME, "theme");
+  return theme === "sombre" || (theme === "camp" && camp === "damnes");
 }

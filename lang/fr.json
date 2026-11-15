@@ -31,6 +31,13 @@
         "aide": "Les règles (ch. I) font décider la prière et le pacte avant de lancer le d20. L'autre mode ajoute des boutons Prier et Pactiser sur la carte d'un jet raté.",
         "avant": "Avant le jet (règles)",
         "apres": "Après un jet raté (variante)"
+      },
+      "theme": {
+        "nom": "Thème des fiches",
+        "aide": "Réglage personnel : apparence des fiches, du dialogue de jet et des cartes de chat sur cet ordinateur.",
+        "sombre": "Sombre (cuir et braise)",
+        "parchemin": "Parchemin",
+        "camp": "Selon le camp (parchemin pour les Fidèles, sombre pour les Damnés)"
       }
     },
     "Lexique": {

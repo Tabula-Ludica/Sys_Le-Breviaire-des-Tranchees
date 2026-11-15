@@ -88,6 +88,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       })
     }));
 
+    context.aSubstitution = sys.substitutions.size > 0;
+
     // Liste des Spécialités façon « compétences » de dnd5e : ordre alphabétique, abréviation de la caractéristique
     const lang = game.i18n.lang;
     context.specialitesListe = context.caracs

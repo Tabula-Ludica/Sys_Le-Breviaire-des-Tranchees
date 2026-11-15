@@ -10,6 +10,7 @@
 import { SYSTEME, SPECIALITES, SUBSTITUTIONS, DIFFICULTES, COUVERTS, PORTEES } from "../config.mjs";
 import * as R from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
+import { themeSombre } from "../settings.mjs";
 
 export const CARTE = "systems/breviaire/templates/chat/jet.hbs";
 const loc = cle => game.i18n.localize(cle);
@@ -268,6 +269,8 @@ export async function rendreCarte(d) {
 export function brancherCarte(message, html) {
   const d = message.getFlag(SYSTEME, "jet");
   if (!d) return;
+  // Thème de la carte selon le réglage personnel de chaque joueur
+  html.querySelector(".brev-carte-jet")?.classList.add(themeSombre(d.camp) ? "brev-sombre" : "brev-clair");
   const actor = fromUuidSync(d.acteur);
   for (const bouton of html.querySelectorAll("[data-brev-action]")) {
     if (!actor?.isOwner) { bouton.remove(); continue; }

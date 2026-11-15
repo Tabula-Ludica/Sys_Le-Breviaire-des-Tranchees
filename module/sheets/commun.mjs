@@ -6,6 +6,8 @@
  * rien qui ne fonctionne qu'au survol.
  */
 
+import { themeSombre } from "../settings.mjs";
+
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
@@ -148,8 +150,9 @@ export function FicheBreviaire(Base) {
     /** Le thème suit le camp (variante sombre pour les Damnés) ; l'onglet actif est réappliqué. */
     _onRender(context, options) {
       super._onRender?.(context, options);
-      this.element.classList.toggle("camp-damnes", this.camp === "damnes");
-      this.element.classList.toggle("camp-fideles", this.camp !== "damnes");
+      const sombre = themeSombre(this.camp);
+      this.element.classList.toggle("brev-sombre", sombre);
+      this.element.classList.toggle("brev-clair", !sombre);
       this.element.classList.toggle("brev-edition", this.edition);
       this.element.classList.toggle("brev-lecture", !this.edition);
       // Mode jeu : les champs de structure sont verrouillés (sauf ceux marqués .brev-jeu)

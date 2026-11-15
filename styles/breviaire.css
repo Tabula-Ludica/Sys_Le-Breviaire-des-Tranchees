@@ -41,7 +41,7 @@
   --brev-gothique: "UnifrakturMaguntia", "EB Garamond", serif;
 }
 
-.breviaire.fiche.camp-damnes {
+.breviaire.fiche.brev-sombre {
   --brev-fond: #241c17;
   --brev-fond-clair: #2f251e;
   --brev-fond-sombre: #1a1410;
@@ -79,7 +79,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   background-blend-mode: multiply, normal, normal, normal;
   box-shadow: inset 0 0 70px rgba(60, 35, 10, .28);
 }
-.breviaire.fiche.camp-damnes .window-content {
+.breviaire.fiche.brev-sombre .window-content {
   background:
     var(--brev-grain),
     radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .16), transparent 55%),
@@ -196,7 +196,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   border-bottom: 1px solid var(--brev-or);
   box-shadow: 0 3px 0 -2px var(--brev-or);
 }
-.breviaire.camp-damnes .brev-entete { background: linear-gradient(180deg, rgba(0, 0, 0, .35), transparent); }
+.breviaire.brev-sombre .brev-entete { background: linear-gradient(180deg, rgba(0, 0, 0, .35), transparent); }
 
 .breviaire .brev-cadre-portrait {
   position: relative;
@@ -247,7 +247,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   color: var(--brev-sang);
   text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 }
-.breviaire.fiche.camp-damnes .window-content .brev-nom { text-shadow: 0 0 18px rgba(239, 91, 60, .45); }
+.breviaire.fiche.brev-sombre .window-content .brev-nom { text-shadow: 0 0 18px rgba(239, 91, 60, .45); }
 .breviaire.fiche .window-content .brev-nom:focus { border-bottom-color: var(--brev-or); box-shadow: none; }
 .breviaire.fiche .window-content .brev-surnom {
   font-style: italic;
@@ -321,7 +321,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   border: 1px solid var(--brev-or);
   box-shadow: var(--brev-ombre);
 }
-.breviaire.camp-damnes .brev-bloc-carac { background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(0, 0, 0, .15)); }
+.breviaire.brev-sombre .brev-bloc-carac { background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(0, 0, 0, .15)); }
 .breviaire .brev-carac {
   display: flex;
   align-items: center;
@@ -354,7 +354,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   box-shadow: 0 0 0 2px var(--brev-sang), 0 2px 6px rgba(0, 0, 0, .4);
   -moz-appearance: textfield;
 }
-.breviaire.fiche.camp-damnes .window-content .brev-carac-valeur { background: radial-gradient(circle at 35% 30%, #4a3a2d, #1c1511); color: var(--brev-or-clair); }
+.breviaire.fiche.brev-sombre .window-content .brev-carac-valeur { background: radial-gradient(circle at 35% 30%, #4a3a2d, #1c1511); color: var(--brev-or-clair); }
 .breviaire .brev-carac-valeur::-webkit-inner-spin-button { -webkit-appearance: none; }
 
 .breviaire .brev-specialites { list-style: none; margin: 0; padding: .15rem .35rem .3rem; }
@@ -422,8 +422,8 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .35));
 }
 .breviaire .brev-de span { font-weight: 600; font-size: 1.15rem; color: var(--brev-sang); margin-top: .35rem; }
-.breviaire.camp-damnes .brev-de { background: radial-gradient(circle at 35% 30%, #5b4636, #2a1f18 70%, #160f0b); }
-.breviaire.camp-damnes .brev-de span { color: var(--brev-or-clair); }
+.breviaire.brev-sombre .brev-de { background: radial-gradient(circle at 35% 30%, #5b4636, #2a1f18 70%, #160f0b); }
+.breviaire.brev-sombre .brev-de span { color: var(--brev-or-clair); }
 .breviaire .brev-de.de-4  { clip-path: polygon(50% 4%, 97% 92%, 3% 92%); }
 .breviaire .brev-de.de-4 span { margin-top: 1.1rem; font-size: 1rem; }
 .breviaire .brev-de.de-6  { clip-path: inset(10% round 10%); }
@@ -473,7 +473,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   border: 1px solid var(--brev-or);
   box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
 }
-.breviaire.fiche.camp-damnes .window-content .brev-grain { background: radial-gradient(circle at 35% 30%, #4d3c2f, #1e1612); }
+.breviaire.fiche.brev-sombre .window-content .brev-grain { background: radial-gradient(circle at 35% 30%, #4d3c2f, #1e1612); }
 .breviaire.fiche .window-content .brev-grain.palier { width: calc(var(--brev-cible) + 8px); height: calc(var(--brev-cible) + 8px); border-width: 2px; color: var(--brev-or); font-size: 1.1rem; }
 .breviaire.fiche .window-content .brev-grain.pleine {
   color: var(--brev-sur-sang);
@@ -495,7 +495,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   border-left: 3px solid var(--brev-or);
   box-shadow: var(--brev-ombre);
 }
-.breviaire.camp-damnes .brev-carte { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
+.breviaire.brev-sombre .brev-carte { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
 .breviaire .brev-carte > img { width: 44px; height: 44px; flex: none; object-fit: cover; border: 1px solid var(--brev-or); background: var(--brev-fond-sombre); }
 .breviaire .brev-carte-corps { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; }
 .breviaire.fiche .window-content button.brev-carte-corps { align-items: flex-start; justify-content: center; flex-direction: column; text-align: left; padding: .1rem .2rem; }
@@ -637,10 +637,10 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire .brev-quantite-ligne b { font-size: 1.1rem; }
 .breviaire .brev-cartes-compactes { grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
 .breviaire .brev-medaillon-label { white-space: nowrap; }
-.breviaire.camp-damnes .brev-medaillon-label,
-.breviaire.camp-damnes .brev-resume span,
-.breviaire.camp-damnes .brev-stat .brev-jauge-label,
-.breviaire.camp-damnes .brev-champs > label > span { color: var(--brev-sang-vif); }
+.breviaire.brev-sombre .brev-medaillon-label,
+.breviaire.brev-sombre .brev-resume span,
+.breviaire.brev-sombre .brev-stat .brev-jauge-label,
+.breviaire.brev-sombre .brev-champs > label > span { color: var(--brev-sang-vif); }
 
 @container (max-width: 560px) {
   .breviaire .brev-medaillons { grid-template-columns: repeat(3, 1fr); }
@@ -661,7 +661,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
    Version sombre (Fidèles) : parchemin vieilli, bords brûlés,
    entête et onglets sur un bandeau de cuir.
    ===================================================================== */
-.breviaire.fiche.camp-fideles {
+.breviaire.fiche.brev-clair {
   --brev-fond: #c9b383;
   --brev-fond-clair: #d8c497;
   --brev-fond-sombre: #b09866;
@@ -672,9 +672,9 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   --brev-cuir: #1d1712;
   --brev-cuir-2: #2b221a;
 }
-.breviaire.fiche.camp-damnes { --brev-cuir: #0f0b09; --brev-cuir-2: #1b1410; }
+.breviaire.fiche.brev-sombre { --brev-cuir: #0f0b09; --brev-cuir-2: #1b1410; }
 
-.breviaire.fiche.camp-fideles .window-content {
+.breviaire.fiche.brev-clair .window-content {
   background:
     var(--brev-grain),
     radial-gradient(ellipse at 50% 30%, rgba(255, 240, 200, .25), transparent 65%),
@@ -712,16 +712,16 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire.fiche .window-content > .brev-entete select option { color: #1a1410; }
 
 /* Blocs du contenu plus profonds */
-.breviaire.camp-fideles .brev-bloc-carac,
-.breviaire.camp-fideles .brev-carte,
-.breviaire.camp-fideles .brev-usure {
+.breviaire.brev-clair .brev-bloc-carac,
+.breviaire.brev-clair .brev-carte,
+.breviaire.brev-clair .brev-usure {
   background: linear-gradient(180deg, rgba(255, 245, 215, .32), rgba(120, 90, 45, .1));
   box-shadow: 0 1px 2px rgba(30, 15, 5, .35), 0 4px 12px rgba(30, 15, 5, .2);
 }
-.breviaire.camp-fideles .brev-resume > div,
-.breviaire.camp-fideles .brev-stat { background: linear-gradient(180deg, #dcc89c, #b9a06e); }
-.breviaire.fiche.camp-fideles { --brev-or: #85651f; }
-.breviaire.fiche.camp-fideles .window-content > .brev-entete { --brev-or: #b8975a; }
+.breviaire.brev-clair .brev-resume > div,
+.breviaire.brev-clair .brev-stat { background: linear-gradient(180deg, #dcc89c, #b9a06e); }
+.breviaire.fiche.brev-clair { --brev-or: #85651f; }
+.breviaire.fiche.brev-clair .window-content > .brev-entete { --brev-or: #b8975a; }
 
 /* =====================================================================
    Onglets latéraux (comme dnd5e) : signets de cuir qui dépassent
@@ -1150,7 +1150,7 @@ body.vade-touch .breviaire.dialogue-jet { --brev-cible: 44px; }
   border: 1px solid var(--cj-or);
   box-shadow: inset 0 0 25px rgba(70, 40, 10, .25);
 }
-.brev-carte-jet.camp-damnes {
+.brev-carte-jet.brev-sombre {
   --cj-fond: #261d17;
   --cj-encre: #eadbc5;
   --cj-doux: #b29b80;
@@ -1222,7 +1222,7 @@ body.vade-touch .breviaire.dialogue-jet { --brev-cible: 44px; }
 }
 .brev-carte-jet.reussite .brev-cj-verdict { color: #2f5a1f; background: rgba(90, 140, 60, .12); }
 .brev-carte-jet.echec .brev-cj-verdict { color: var(--cj-sang); background: rgba(173, 36, 24, .1); }
-.brev-carte-jet.camp-damnes.reussite .brev-cj-verdict { color: #a7d58a; }
+.brev-carte-jet.brev-sombre.reussite .brev-cj-verdict { color: #a7d58a; }
 .brev-carte-jet .brev-cj-verdict small { font-family: "EB Garamond", serif; text-transform: none; letter-spacing: 0; font-size: .9rem; }
 .brev-carte-jet .brev-cj-naturel { padding: 0 .4rem; border: 1px solid currentColor; }
 .brev-carte-jet.naturel-miracle .brev-cj-verdict { color: #7a5500; background: linear-gradient(90deg, transparent, rgba(226, 192, 106, .45), transparent); }
@@ -1315,7 +1315,7 @@ body.vade-touch .brev-carte-jet .brev-cj-boutons button { min-height: 44px; }
   color: var(--brev-sang);
   -webkit-text-fill-color: var(--brev-sang);
 }
-.breviaire.fiche.camp-damnes.brev-lecture .window-content .brev-carac-valeur:disabled {
+.breviaire.fiche.brev-sombre.brev-lecture .window-content .brev-carac-valeur:disabled {
   background: radial-gradient(circle at 35% 30%, #4a3a2d, #1c1511);
   color: var(--brev-or-clair);
   -webkit-text-fill-color: var(--brev-or-clair);
@@ -1367,7 +1367,7 @@ body.vade-touch .brev-carte-jet .brev-cj-boutons button { min-height: 44px; }
   border: 1px solid rgba(124, 90, 30, .28);
   clip-path: inherit;
 }
-.breviaire.camp-damnes .brev-panneau {
+.breviaire.brev-sombre .brev-panneau {
   --panneau-fond: linear-gradient(180deg, #2f251e 0%, #1c1612 100%);
   background: linear-gradient(180deg, #b48a4a, #5c4220);
 }
@@ -1478,7 +1478,7 @@ body.vade-touch .breviaire.fiche .window-content .brev-panneau-titre .brev-ajout
   background: var(--brev-or-degrade);
   border-radius: 2px;
 }
-.breviaire.camp-damnes .brev-carac-boite::before { background: linear-gradient(180deg, #2a0f0a, #0d0806); }
+.breviaire.brev-sombre .brev-carac-boite::before { background: linear-gradient(180deg, #2a0f0a, #0d0806); }
 
 /* ---------- Front ---------- */
 .breviaire .brev-front-grille { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 .9rem; align-items: start; }
@@ -1491,7 +1491,7 @@ body.vade-touch .breviaire.fiche .window-content .brev-panneau-titre .brev-ajout
   border-bottom: 1px solid rgba(124, 90, 30, .2);
 }
 .breviaire .brev-ligne-spe:nth-child(even) { background: rgba(255, 255, 255, .12); }
-.breviaire.camp-damnes .brev-ligne-spe:nth-child(even) { background: rgba(255, 255, 255, .03); }
+.breviaire.brev-sombre .brev-ligne-spe:nth-child(even) { background: rgba(255, 255, 255, .03); }
 .breviaire .brev-ligne-spe:last-child { border-bottom: none; }
 .breviaire .brev-abrev { font-family: var(--brev-capitales); font-weight: 600; font-size: .8rem; letter-spacing: .08em; color: var(--brev-or); }
 .breviaire .brev-ligne-spe.rang-0 .brev-nom-jet { color: var(--brev-encre-douce); }
@@ -1540,3 +1540,16 @@ body.vade-touch .breviaire.fiche .window-content .brev-panneau-titre .brev-ajout
   .breviaire .brev-front-grille { grid-template-columns: 1fr; }
 }
 .breviaire .brev-bandeau::after { content: none; }
+.breviaire.fiche.brev-edition .brev-seulement-lecture { display: none; }
+
+/* Dialogue de jet en thème sombre */
+.breviaire.dialogue-jet.brev-sombre {
+  --brev-fond: #241c17; --brev-champ: rgba(0, 0, 0, .35); --brev-encre: #eadbc5; --brev-encre-douce: #b29b80;
+  --brev-or: #b48a4a; --brev-sang: #e0574b; --brev-trait: rgba(234, 219, 197, .18);
+}
+.breviaire.dialogue-jet.brev-sombre .window-content {
+  background: radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .14), transparent 55%), var(--brev-fond);
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, .6);
+}
+.breviaire.dialogue-jet.brev-sombre .brev-forcer-option { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
+.breviaire.dialogue-jet.brev-sombre select option { color: #1a1410; }
