@@ -25,7 +25,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
   static DEFAULT_OPTIONS = {
     classes: ["personnage"],
-    position: { width: 900, height: 820 },
+    position: { width: 820, height: 880 },
     actions: {
       jet: this.#jet,
       rangSpecialite: this.#rangSpecialite,
