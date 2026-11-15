@@ -97,6 +97,10 @@ const adaptateur = {
   async useAction(actor, itemId) {
     const item = actor.items.get(itemId);
     if (item?.type === "arme") return lancerJet(actor, { armeId: itemId });
+    if (item?.type === "equipement" && item.system.utilisation.type !== "aucune") {
+      const { utiliserObjet } = await import("../objets/utiliser.mjs");
+      return utiliserObjet(actor, item);
+    }
     item?.sheet.render(true);
   },
 

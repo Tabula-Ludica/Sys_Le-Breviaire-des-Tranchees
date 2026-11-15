@@ -4,7 +4,7 @@
 
 import {
   CAMPS, SPECIALITES, SUBSTITUTIONS, USURES, PARTICULARITES, CATEGORIES_ARME, TYPES_PROTECTION,
-  NIVEAUX_RITE, OPPOSITIONS_RITE
+  NIVEAUX_RITE, OPPOSITIONS_RITE, UTILISATIONS
 } from "../config.mjs";
 import { terme } from "../lexique.mjs";
 import { FicheBreviaire, CHEMIN, loc, choixLocalises, enrichir } from "./commun.mjs";
@@ -43,7 +43,9 @@ export class FicheObjet extends FicheBreviaire(foundry.applications.sheets.ItemS
       oppositions: choixLocalises(OPPOSITIONS_RITE, "BREVIAIRE.OppositionRite"),
       specialites: choixLocalises(Object.keys(SPECIALITES), "BREVIAIRE.Specialite"),
       specialitesOuAucune: { "": "—", ...choixLocalises(Object.keys(SPECIALITES), "BREVIAIRE.Specialite") },
-      substitutions: choixLocalises(Object.keys(SUBSTITUTIONS), "BREVIAIRE.Substitution")
+      substitutions: choixLocalises(Object.keys(SUBSTITUTIONS), "BREVIAIRE.Substitution"),
+      utilisations: choixLocalises(UTILISATIONS, "BREVIAIRE.Utilisation"),
+      usures: Object.fromEntries(USURES.map(u => [u, u === "foi" ? terme("Foi", this.camp) : loc(`BREVIAIRE.Usure.${u}`)]))
     };
     // Valeurs des champs Set, en tableaux pour <multi-select>
     for (const champ of ["particularites", "specialites", "formes", "substitutions"]) {

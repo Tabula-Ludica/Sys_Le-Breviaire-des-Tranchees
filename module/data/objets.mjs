@@ -4,7 +4,7 @@
 
 import {
   CAMPS, SPECIALITES, SUBSTITUTIONS, USURES, PARTICULARITES, CATEGORIES_ARME, TYPES_PROTECTION,
-  NIVEAUX_RITE, OPPOSITIONS_RITE
+  NIVEAUX_RITE, OPPOSITIONS_RITE, UTILISATIONS
 } from "../config.mjs";
 
 const f = foundry.data.fields;
@@ -59,6 +59,13 @@ export class EquipementData extends foundry.abstract.TypeDataModel {
     return {
       quantite: entier(1, 0, 999),
       camp: campOuCommun(),
+      // Ce que fait le bouton « Utiliser » : soigner (jet de Médecine), morphine, remonter un dé d'usure…
+      utilisation: new f.SchemaField({
+        type: choix(UTILISATIONS, "aucune"),
+        usure: choix(USURES, "munitions"),
+        crans: entier(1, 1, 4),
+        consomme: new f.BooleanField({ initial: false })
+      }),
       description: html()
     };
   }

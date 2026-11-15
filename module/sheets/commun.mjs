@@ -52,7 +52,8 @@ export function FicheBreviaire(Base) {
         changerImage: this.#changerImage,
         onglet: this.#onglet,
         quantite: this.#quantite,
-        basculerEdition: this.#basculerEdition
+        basculerEdition: this.#basculerEdition,
+        utiliser: this.#utiliser
       }
     };
 
@@ -179,6 +180,14 @@ export function FicheBreviaire(Base) {
         el.classList.toggle("active", oui);
         if (el.matches("button")) el.setAttribute("aria-selected", String(oui));
       }
+    }
+
+    /** Bouton « Utiliser » d'un objet d'équipement (soins, morphine, ravitaillement…). */
+    static async #utiliser(event, target) {
+      const objet = this._objetDe(target);
+      if (!objet) return;
+      const { utiliserObjet } = await import("../objets/utiliser.mjs");
+      return utiliserObjet(this.document, objet);
     }
 
     /** Quantité d'un objet : +1 / −1 (jamais sous 0). */

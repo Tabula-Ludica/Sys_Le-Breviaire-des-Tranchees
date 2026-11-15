@@ -118,6 +118,7 @@ export async function executerJet(actor, opts) {
     des,
     d20,
     enjeu: !!opts.enjeu,
+    soin: opts.soin ? { ...opts.soin, applique: null } : null,
     priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, sys.corruption.value) } : null,
     pacte: pacte ? { faces: sys.deSang, resultat: deSang } : null,
     applique: {}
@@ -220,6 +221,11 @@ export async function rendreCarte(d) {
   for (const p of d.applique.paliers ?? []) {
     effets.push({ icone: "fa-solid fa-skull", texte: game.i18n.format("BREVIAIRE.Jet.palier", { palier: p, marque: t("Marque") }), fort: true });
   }
+  if (d.soin) {
+    effets.push(d.soin.applique
+      ? { icone: "fa-solid fa-kit-medical", texte: d.soin.applique, fort: true }
+      : { icone: "fa-solid fa-user-injured", texte: game.i18n.format("BREVIAIRE.Utiliser.patient", { nom: d.soin.nom }) });
+  }
   if (d.applique.coche) effets.push({ icone: "fa-solid fa-check", texte: game.i18n.format("BREVIAIRE.Jet.coche", { specialite: loc(`BREVIAIRE.Specialite.${d.specialite}`) }) });
   if (d.type === "mort") {
     effets.push(d.applique.mortTotal
@@ -254,7 +260,8 @@ export async function rendreCarte(d) {
     boutons: {
       prier: rattrapable && !d.priere && !raisonSansPriere(actor),
       pactiser: rattrapable && !d.pacte,
-      degats: !!arme && d.reussite
+      degats: !!arme && d.reussite,
+      soigner: !!d.soin && d.reussite && !d.soin.applique
     },
     libelles: { prier: t("Prier"), pactiser: loc("BREVIAIRE.Jet.pactiser") }
   };
@@ -289,6 +296,15 @@ async function actionCarte(message, action) {
   if (!actor) return;
 
   if (action === "degats") return lancerDegats(actor, d.armeId);
+
+  if (action === "soigner") {
+    if (!d.soin || d.soin.applique) return;
+    const { appliquerSoins } = await import("../objets/utiliser.mjs");
+    const texte = await appliquerSoins(d);
+    if (!texte) return;
+    d.soin.applique = texte;
+    return message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
+  }
 
   // Prière ou pacte après coup (variante)
   const sys = actor.system;

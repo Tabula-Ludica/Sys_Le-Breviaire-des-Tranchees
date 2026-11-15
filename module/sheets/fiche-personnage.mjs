@@ -124,6 +124,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     context.choixBlessuresGraves = choixLocalises(BLESSURES_GRAVES, "BREVIAIRE.BlessureGrave");
     context.mort = [0, 1, 2].map(i => ({ index: i, coche: i < sys.mort.echecs }));
     context.horsDeCombat = sys.blessures.value === 0;
+    context.morphine = !!sys.usages.scene?.morphine;
     context.blessuresPart = sys.blessures.max ? Math.round(100 * sys.blessures.value / sys.blessures.max) : 0;
 
     context.corruption = {
@@ -189,7 +190,14 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       type: loc(`BREVIAIRE.TypeProtection.${i.system.type}`)
     }));
     context.reliques = parType("relique").map(i => ({ id: i.id, name: i.name, img: i.img, apport: i.system.apport, utilisee: i.system.utilisee }));
-    context.equipement = parType("equipement").map(i => ({ id: i.id, name: i.name, img: i.img, quantite: i.system.quantite }));
+    context.equipement = parType("equipement").map(i => {
+      const u = i.system.utilisation;
+      return {
+        id: i.id, name: i.name, img: i.img, quantite: i.system.quantite,
+        utilisable: u.type !== "aucune",
+        utilisation: u.type !== "aucune" ? loc(`BREVIAIRE.Utilisation.${u.type}`) : ""
+      };
+    });
     context.rites = parType("rite").map(i => ({
       id: i.id, name: i.name, img: i.img, grand: i.system.niveau === "grand",
       niveau: loc(`BREVIAIRE.NiveauRite.${i.system.niveau}`),

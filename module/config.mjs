@@ -69,3 +69,6 @@ export const OPPOSITIONS_RITE = ["aucune", "menace", "ame"];
 
 /** Déplacements (ch. IV §3), en mètres. */
 export const DEPLACEMENT = { normal: 9, lourd: 6, ramper: 3, porter: 4.5, rapide: 15 };
+
+/** Utilisations d'un objet d'équipement (ch. IV §7, ch. VI §5). */
+export const UTILISATIONS = ["aucune", "soin", "morphine", "usure", "consommable"];

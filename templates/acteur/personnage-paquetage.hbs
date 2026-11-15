@@ -95,8 +95,9 @@
     {{#each equipement}}
     <li class="brev-carte" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <button type="button" class="brev-carte-corps" data-action="editerObjet"><b>{{name}}</b></button>
+      <button type="button" class="brev-carte-corps" data-action="editerObjet"><b>{{name}}</b>{{#if utilisation}}<small class="brev-discret">{{utilisation}}</small>{{/if}}</button>
       <div class="brev-carte-actions">
+        {{#if utilisable}}<button type="button" class="brev-utiliser" data-action="utiliser" data-tooltip="{{localize 'BREVIAIRE.Utiliser.bouton'}}" aria-label="{{localize 'BREVIAIRE.Utiliser.bouton'}}"><i class="fa-solid fa-hand-holding-medical"></i></button>{{/if}}
         <div class="brev-quantite">
           <button type="button" data-action="quantite" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus"></i></button>
           <b>×{{quantite}}</b>

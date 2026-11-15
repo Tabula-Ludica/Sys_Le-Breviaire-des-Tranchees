@@ -415,6 +415,32 @@
       "esprit": "ESP",
       "verbe": "VER",
       "ame": "ÂME"
+    },
+    "Utilisation": {
+      "aucune": "Aucune",
+      "soin": "Soigner (jet de Médecine)",
+      "morphine": "Morphine",
+      "usure": "Remonter un dé d’usure",
+      "consommable": "Consommable"
+    },
+    "Utiliser": {
+      "bouton": "Utiliser",
+      "titre": "Utilisation",
+      "type": "Effet du bouton Utiliser",
+      "de": "Dé d’usure",
+      "crans": "Crans",
+      "consomme": "En retirer un à chaque utilisation",
+      "aide": "Le patient est le token ciblé (touche T, ou appui long avec Vade), sinon le personnage lui-même.",
+      "plusAucun": "Plus de {objet} dans le paquetage.",
+      "pasLeDroit": "Vous ne pouvez pas modifier la fiche de {nom} : demandez au MJ.",
+      "morphine": "{nom} prend de la morphine : il ignore les effets de ses Blessures graves jusqu’à la fin de la scène.",
+      "usure": "{usure} remonte à {de}.",
+      "consommable": "{objet} : utilisé.",
+      "reste": "Il en reste {n}.",
+      "patient": "Patient : {nom}.",
+      "appliquerSoins": "Appliquer les soins",
+      "soigne": "{nom} récupère {n} Blessures.",
+      "stabilise": "{nom} est stabilisé et récupère {n} Blessures."
     }
   }
 }

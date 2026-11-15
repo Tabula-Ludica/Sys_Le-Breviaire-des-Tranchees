@@ -2,5 +2,15 @@
   <label><span>{{localize 'BREVIAIRE.Objet.quantite'}}</span><input type="number" name="system.quantite" value="{{system.quantite}}" min="0"></label>
   <label><span>{{localize 'BREVIAIRE.Objet.camp'}}</span><select name="system.camp">{{selectOptions choix.campsOuCommun selected=system.camp}}</select></label>
 </div>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Utiliser.titre'}}</span></h3>
+<div class="brev-champs">
+  <label><span>{{localize 'BREVIAIRE.Utiliser.type'}}</span><select name="system.utilisation.type">{{selectOptions choix.utilisations selected=system.utilisation.type}}</select></label>
+  {{#if (eq system.utilisation.type "usure")}}
+  <label><span>{{localize 'BREVIAIRE.Utiliser.de'}}</span><select name="system.utilisation.usure">{{selectOptions choix.usures selected=system.utilisation.usure}}</select></label>
+  <label><span>{{localize 'BREVIAIRE.Utiliser.crans'}}</span><input type="number" name="system.utilisation.crans" value="{{system.utilisation.crans}}" min="1" max="4"></label>
+  {{/if}}
+  <label class="brev-case-texte"><input type="checkbox" name="system.utilisation.consomme" {{checked system.utilisation.consomme}}> {{localize 'BREVIAIRE.Utiliser.consomme'}}</label>
+</div>
+<p class="brev-note">{{localize 'BREVIAIRE.Utiliser.aide'}}</p>
 <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.description'}}</span></h3>
 {{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

@@ -30,10 +30,11 @@
   </ul>
   {{/if}}
 
-  {{#if (or boutons.prier boutons.pactiser boutons.degats)}}
+  {{#if (or boutons.prier boutons.pactiser boutons.degats boutons.soigner)}}
   <div class="brev-cj-boutons">
     {{#if boutons.prier}}<button type="button" data-brev-action="prier"><i class="fa-solid fa-hands-praying"></i> {{libelles.prier}}</button>{{/if}}
     {{#if boutons.pactiser}}<button type="button" data-brev-action="pactiser"><i class="fa-solid fa-droplet"></i> {{libelles.pactiser}}</button>{{/if}}
+    {{#if boutons.soigner}}<button type="button" data-brev-action="soigner"><i class="fa-solid fa-kit-medical"></i> {{localize 'BREVIAIRE.Utiliser.appliquerSoins'}}</button>{{/if}}
     {{#if boutons.degats}}<button type="button" data-brev-action="degats"><i class="fa-solid fa-burst"></i> {{localize 'BREVIAIRE.Jet.degats'}}</button>{{/if}}
   </div>
   {{/if}}

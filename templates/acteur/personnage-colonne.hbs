@@ -22,7 +22,7 @@
   </div>
 
   <div class="brev-vital {{#if horsDeCombat}}brev-alerte{{/if}}">
-    <span class="brev-vital-label">{{localize 'BREVIAIRE.Fiche.blessures'}}</span>
+    <span class="brev-vital-label">{{localize 'BREVIAIRE.Fiche.blessures'}}{{#if morphine}}<i class="fa-solid fa-syringe brev-morphine" data-tooltip="{{localize 'BREVIAIRE.Utilisation.morphine'}}"></i>{{/if}}</span>
     <div class="brev-vital-barre" style="--part: {{blessuresPart}}%">
       <button type="button" data-action="blessures" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus"></i></button>
       <b>{{system.blessures.value}} <small>/ {{system.blessures.max}}</small></b>
