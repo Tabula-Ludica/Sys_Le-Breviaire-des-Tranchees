@@ -1246,3 +1246,89 @@ body.vade-touch .breviaire.dialogue-jet { --brev-cible: 44px; }
 }
 body.vade-touch .brev-carte-jet .brev-cj-boutons button { min-height: 44px; }
 .brev-flavor small { color: #777; }
+
+/* =====================================================================
+   Mode jeu / mode édition (comme dnd5e)
+   ===================================================================== */
+.breviaire.fiche.brev-lecture .brev-seulement-edition { display: none !important; }
+
+/* Interrupteur */
+.breviaire.fiche .window-content .brev-interrupteur {
+  margin-left: auto;
+  gap: .45rem;
+  padding: 0 .3rem;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--brev-encre-douce);
+  align-self: center;
+}
+.breviaire .brev-interrupteur-piste {
+  position: relative;
+  width: 2.4rem;
+  height: 1.3rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, .45);
+  border: 1px solid var(--brev-or);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .6);
+  transition: background .15s ease;
+}
+.breviaire .brev-interrupteur-bouton {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.3rem - 6px);
+  height: calc(1.3rem - 6px);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff3d6, #b9a072);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+  transition: transform .15s ease;
+}
+.breviaire .brev-interrupteur.actif .brev-interrupteur-piste { background: var(--brev-sang-degrade); }
+.breviaire .brev-interrupteur.actif .brev-interrupteur-bouton { transform: translateX(1.1rem); }
+.breviaire.fiche .window-content .brev-interrupteur.actif { color: var(--brev-or-clair); }
+.breviaire .brev-bandeau-nom { align-items: center; }
+.breviaire .brev-ligne-nom { display: flex; align-items: center; gap: .6rem; }
+.breviaire .brev-ligne-nom .brev-nom { flex: 1; min-width: 0; }
+
+/* Champs verrouillés en mode jeu : du texte, pas des cases à remplir */
+.breviaire.fiche.brev-lecture .window-content :is(input, select, textarea):disabled {
+  opacity: 1;
+  cursor: default;
+  color: inherit;
+  -webkit-text-fill-color: currentColor;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.breviaire.fiche.brev-lecture .window-content input[type="checkbox"]:disabled { appearance: auto; -webkit-appearance: checkbox; }
+.breviaire.fiche.brev-lecture .window-content input:disabled::placeholder { color: transparent; }
+/* Les sceaux gardent leur habillage */
+.breviaire.fiche.brev-lecture .window-content .brev-carac-valeur:disabled {
+  background: radial-gradient(circle at 35% 30%, #fff8e6, #e2cf9f);
+  border: 2px solid var(--brev-or-clair);
+  box-shadow: 0 0 0 2px var(--brev-sang), 0 2px 6px rgba(0, 0, 0, .4);
+  color: var(--brev-sang);
+  -webkit-text-fill-color: var(--brev-sang);
+}
+.breviaire.fiche.camp-damnes.brev-lecture .window-content .brev-carac-valeur:disabled {
+  background: radial-gradient(circle at 35% 30%, #4a3a2d, #1c1511);
+  color: var(--brev-or-clair);
+  -webkit-text-fill-color: var(--brev-or-clair);
+}
+.breviaire.fiche.brev-lecture .window-content .brev-menace input:disabled {
+  background: radial-gradient(circle at 35% 30%, #fff8e6, #e2cf9f);
+  border: 2px solid var(--brev-or-clair);
+  color: var(--brev-sang);
+  -webkit-text-fill-color: var(--brev-sang);
+}
+.breviaire.fiche.brev-lecture .window-content .brev-bandeau .brev-ruban select:disabled { padding-left: 0; font-family: var(--brev-capitales); }
+/* En mode jeu, les pastilles de rang et les puces actives s'affichent sans être cliquables */
+.breviaire.fiche.brev-lecture .window-content :is(.brev-specialite .brev-pips, .brev-puce) { pointer-events: none; }
+.breviaire.fiche.brev-lecture .brev-portrait { cursor: default; }
+/* En mode édition, un liseré rappelle qu'on modifie la fiche */
+.breviaire.fiche.brev-edition .window-content .brev-carac-valeur { outline: 1px dashed var(--brev-or-clair); outline-offset: 3px; }

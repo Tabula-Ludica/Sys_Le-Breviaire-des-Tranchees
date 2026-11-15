@@ -7,6 +7,8 @@ import { FicheBreviaire, CHEMIN, loc, choixLocalises, enrichir } from "./commun.
 import { lancerJet } from "../jets/moteur.mjs";
 
 export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.ActorSheetV2) {
+  static MODE_EDITION = true;
+
   static DEFAULT_OPTIONS = {
     classes: ["ennemi"],
     position: { width: 520, height: 640 },
@@ -55,6 +57,7 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
   }
 
   static #trait(event, target) {
+    if (!this.edition) return;
     const cle = target.dataset.trait;
     const traits = new Set(this.document.system.traits);
     traits.has(cle) ? traits.delete(cle) : traits.add(cle);

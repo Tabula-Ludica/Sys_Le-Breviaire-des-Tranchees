@@ -49,11 +49,28 @@ export function FicheBreviaire(Base) {
         basculerEquipe: this.#basculerEquipe,
         changerImage: this.#changerImage,
         onglet: this.#onglet,
-        quantite: this.#quantite
+        quantite: this.#quantite,
+        basculerEdition: this.#basculerEdition
       }
     };
 
     tabGroups = { primary: this.constructor.ONGLETS[0]?.id };
+
+    /** Fiches avec mode jeu / mode édition (comme dnd5e). Les fiches d'objets restent toujours modifiables. */
+    static MODE_EDITION = false;
+
+    #edition = false;
+
+    /** Mode édition actif ? Toujours faux si l'utilisateur ne peut pas modifier le document. */
+    get edition() {
+      if (!this.isEditable) return false;
+      return this.constructor.MODE_EDITION ? this.#edition : true;
+    }
+
+    static #basculerEdition() {
+      this.#edition = !this.#edition;
+      this.render();
+    }
 
     /** Camp affiché par la fiche : celui du document s'il en a un, sinon celui du monde. */
     get camp() {
@@ -69,6 +86,8 @@ export function FicheBreviaire(Base) {
         systemFields: doc.system.schema.fields,
         camp: this.camp,
         config: CONFIG.BREVIAIRE,
+        edition: this.edition,
+        avecModeEdition: this.constructor.MODE_EDITION && this.isEditable,
         onglets: this.constructor.ONGLETS.map(o => ({
           ...o,
           label: o.label ?? `BREVIAIRE.Onglet.${o.id}`,
@@ -131,6 +150,14 @@ export function FicheBreviaire(Base) {
       super._onRender?.(context, options);
       this.element.classList.toggle("camp-damnes", this.camp === "damnes");
       this.element.classList.toggle("camp-fideles", this.camp !== "damnes");
+      this.element.classList.toggle("brev-edition", this.edition);
+      this.element.classList.toggle("brev-lecture", !this.edition);
+      // Mode jeu : les champs de structure sont verrouillés (sauf ceux marqués .brev-jeu)
+      if (!this.edition) {
+        for (const champ of this.element.querySelectorAll(".window-content :is(input, select, textarea):not(.brev-jeu)")) {
+          champ.disabled = true;
+        }
+      }
       this.#afficherOnglet();
       if (this.#observateur) this.#adapterLargeur();
     }
@@ -189,7 +216,7 @@ export function FicheBreviaire(Base) {
 
     /** Toucher le portrait ouvre le sélecteur de fichiers (si on peut modifier le document). */
     static #changerImage() {
-      if (!this.isEditable) return;
+      if (!this.edition) return;
       const FilePicker = foundry.applications.apps.FilePicker.implementation;
       new FilePicker({
         type: "image",

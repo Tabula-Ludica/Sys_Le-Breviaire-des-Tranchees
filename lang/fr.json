@@ -309,7 +309,9 @@
       "missionsCourt": "Missions",
       "jetDeMort": "Jet de Mort",
       "autres": "Autres jets",
-      "riteBientot": "La célébration des rites arrive avec la réserve commune (étape 4)."
+      "riteBientot": "La célébration des rites arrive avec la réserve commune (étape 4).",
+      "edition": "Édition",
+      "editionAide": "Mode édition : modifier le nom, les caractéristiques, les Spécialités et le paquetage. Désactivé : mode jeu."
     },
     "Objet": {
       "categorie": "Catégorie",

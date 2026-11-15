@@ -1,7 +1,13 @@
 <header class="brev-bandeau">
   <div class="brev-bandeau-nom">
     <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
-    <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{localize 'BREVIAIRE.Fiche.surnom'}}">
+    <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{#if edition}}{{localize 'BREVIAIRE.Fiche.surnom'}}{{/if}}">
+    {{#if avecModeEdition}}
+    <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">
+      <span class="brev-interrupteur-piste"><span class="brev-interrupteur-bouton"></span></span>
+      <span>{{localize 'BREVIAIRE.Fiche.edition'}}</span>
+    </button>
+    {{/if}}
   </div>
   <div class="brev-ruban">
     <select name="system.rang" aria-label="{{localize 'BREVIAIRE.Fiche.rang'}}">{{selectOptions rangs selected=system.rang}}</select>

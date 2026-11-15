@@ -38,7 +38,7 @@
   <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.substitutions'}}</span></h3>
   <div class="brev-puces">
     {{#each substitutions}}
-    <button type="button" class="brev-puce {{#if possede}}active{{/if}}" data-action="substitution" data-substitution="{{cle}}" aria-pressed="{{possede}}">
+    <button type="button" class="brev-puce {{#if possede}}active{{else}}brev-seulement-edition{{/if}}" data-action="substitution" data-substitution="{{cle}}" aria-pressed="{{possede}}">
       <span>{{label}}</span><small>{{detail}}</small>
     </button>
     {{/each}}

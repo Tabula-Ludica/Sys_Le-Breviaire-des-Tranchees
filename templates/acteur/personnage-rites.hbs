@@ -1,7 +1,7 @@
 <section class="brev-page brev-rites {{onglet.cssClass}}" data-onglet="rites">
   <div class="brev-entete-liste">
     <h3 class="brev-titre-section"><span><i class="fa-solid fa-book-bible"></i> {{libelles.rites}}</span></h3>
-    <button type="button" class="brev-ajout" data-action="creerObjet" data-type="rite" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+    <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="rite" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
   </div>
   <ul class="brev-cartes">
     {{#each rites}}
@@ -13,7 +13,7 @@
       </button>
       <div class="brev-carte-actions">
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+        <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
       </div>
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}

@@ -36,7 +36,7 @@
       </div>
       <div class="brev-carte-actions">
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+        <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
       </div>
     </li>
     {{else}}
@@ -56,13 +56,13 @@
             title="{{#if active}}{{localize 'BREVIAIRE.Fiche.active'}}{{else}}{{localize 'BREVIAIRE.Fiche.soignee'}}{{/if}}">
             <i class="fa-solid {{#if active}}fa-droplet{{else}}fa-bandage{{/if}}"></i>
           </button>
-          <button type="button" data-action="supprimerBlessureGrave" data-index="{{index}}" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+          <button type="button" class="brev-seulement-edition" data-action="supprimerBlessureGrave" data-index="{{index}}" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
         </li>
         {{else}}
         <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
         {{/each}}
       </ul>
-      <button type="button" class="brev-bouton" data-action="ajouterBlessureGrave"><i class="fa-solid fa-plus"></i> {{localize 'BREVIAIRE.Fiche.ajouterBlessureGrave'}}</button>
+      <button type="button" class="brev-bouton brev-seulement-edition" data-action="ajouterBlessureGrave"><i class="fa-solid fa-plus"></i> {{localize 'BREVIAIRE.Fiche.ajouterBlessureGrave'}}</button>
     </div>
     <div>
       <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}</span></h3>
@@ -70,7 +70,7 @@
         {{#each mort}}
         <button type="button" class="brev-case {{#if coche}}pleine{{/if}}" data-action="mort" data-index="{{index}}" aria-pressed="{{coche}}"><i class="fa-solid fa-skull"></i></button>
         {{/each}}
-        <label class="brev-case-texte"><input type="checkbox" name="system.mort.stabilise" {{checked system.mort.stabilise}}> {{localize 'BREVIAIRE.Etat.stabilise'}}</label>
+        <label class="brev-case-texte"><input type="checkbox" class="brev-jeu" name="system.mort.stabilise" {{checked system.mort.stabilise}}> {{localize 'BREVIAIRE.Etat.stabilise'}}</label>
       </div>
       <button type="button" class="brev-bouton" data-action="jetDeMort"><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Fiche.jetDeMort'}}</button>
 

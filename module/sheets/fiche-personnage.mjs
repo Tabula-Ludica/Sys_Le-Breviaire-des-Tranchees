@@ -21,6 +21,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     { id: "histoire", icone: "fa-solid fa-scroll" }
   ];
 
+  static MODE_EDITION = true;
+
   static DEFAULT_OPTIONS = {
     classes: ["personnage"],
     position: { width: 900, height: 820 },
@@ -132,6 +134,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
     // Entête
     context.rangs = Object.fromEntries(RANGS.map(r => [r, t(`Rang.${r}`)]));
+    context.rangLabel = context.rangs[sys.rang];
     context.titre = loc(`BREVIAIRE.Titre.${sys.titre}`);
     context.libelles = {
       foi: t("Foi"), corruption: t("Corruption"), marques: t("Marques"), rites: t("Rites"),
@@ -199,6 +202,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
   /** Rang d'une Spécialité : non maîtrisée → Formé → Expert → non maîtrisée. */
   static #rangSpecialite(event, target) {
+    if (!this.edition) return;
     const cle = target.closest("[data-specialite]").dataset.specialite;
     const rang = (this.document.system.specialites[cle].rang + 1) % 3;
     return this.document.update({ [`system.specialites.${cle}.rang`]: rang });
@@ -210,6 +214,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   }
 
   static #substitution(event, target) {
+    if (!this.edition) return;
     const cle = target.dataset.substitution;
     const subs = new Set(this.document.system.substitutions);
     subs.has(cle) ? subs.delete(cle) : subs.add(cle);
@@ -244,6 +249,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   }
 
   static #ajouterBlessureGrave() {
+    if (!this.edition) return;
     const liste = this.document.system.toObject().blessuresGraves;
     liste.push({ type: "commotion", active: true, sequelle: "" });
     return this.document.update({ "system.blessuresGraves": liste });
@@ -257,6 +263,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   }
 
   static #supprimerBlessureGrave(event, target) {
+    if (!this.edition) return;
     const liste = this.document.system.toObject().blessuresGraves;
     liste.splice(Number(target.dataset.index), 1);
     return this.document.update({ "system.blessuresGraves": liste });
