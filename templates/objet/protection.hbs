@@ -4,5 +4,5 @@
   <label class="brev-case-texte"><input type="checkbox" name="system.lourde" {{checked system.lourde}}> {{localize 'BREVIAIRE.Objet.lourde'}}</label>
   <label class="brev-case-texte"><input type="checkbox" name="system.equipee" {{checked system.equipee}}> {{localize 'BREVIAIRE.Fiche.equipee'}}</label>
 </div>
-<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.description'}}</span></h3>
 {{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

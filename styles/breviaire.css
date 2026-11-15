@@ -1,11 +1,11 @@
 /* =====================================================================
-   Le Bréviaire des Tranchées — styles des fiches
-   Reprend la palette du site (assets/breviaire.css) : parchemin, or, rouge sombre.
-   Variante sombre pour les Damnés (.camp-damnes).
+   Le Bréviaire des Tranchées — habillage des fiches
+   Parchemin, or et sang chez les Fidèles ; cuir, braise et laiton chez les Damnés.
 
    Compatibilité Vade : aucune largeur minimale, mise en page fluide
    (container queries sur le contenu de la fenêtre), cibles d'au moins 44 px
    sur écran tactile (body.vade-touch), rien qui ne marche qu'au survol.
+   Tout est rangé sous .window-content : la barre de titre de Foundry n'est pas touchée.
    ===================================================================== */
 
 @font-face { font-family: "EB Garamond"; font-weight: 400; font-style: normal; font-display: swap; src: url("../fonts/eb-garamond-latin-400-normal.woff2") format("woff2"); }
@@ -16,18 +16,24 @@
 @font-face { font-family: "Cormorant SC"; font-weight: 600; font-display: swap; src: url("../fonts/cormorant-sc-latin-600-normal.woff2") format("woff2"); }
 @font-face { font-family: "UnifrakturMaguntia"; font-weight: 400; font-display: swap; src: url("../fonts/unifrakturmaguntia-latin-400-normal.woff2") format("woff2"); }
 
+/* ---------- Palettes ---------- */
 .breviaire.fiche {
-  /* Palette Fidèles (parchemin) */
-  --brev-fond: #e9dcbc;
-  --brev-fond-2: #ded0aa;
-  --brev-fond-champ: rgba(255, 250, 235, .55);
+  --brev-fond: #eadfc2;
+  --brev-fond-clair: #f3ead3;
+  --brev-fond-sombre: #d9c9a1;
+  --brev-champ: rgba(255, 251, 238, .6);
   --brev-encre: #2a1f16;
-  --brev-encre-douce: #5a4836;
-  --brev-or: #b8975a;
-  --brev-or-pale: #d8c08a;
-  --brev-sang: #8a1a12;
-  --brev-sang-vif: #b3261b;
-  --brev-trait: rgba(42, 31, 22, .25);
+  --brev-encre-douce: #6a5640;
+  --brev-or: #a8843f;
+  --brev-or-clair: #d6b773;
+  --brev-or-degrade: linear-gradient(180deg, #e2c482 0%, #b08a42 55%, #8c6a2c 100%);
+  --brev-sang: #7d1710;
+  --brev-sang-vif: #ad2418;
+  --brev-sang-degrade: linear-gradient(180deg, #9a2216 0%, #6e130c 100%);
+  --brev-sur-sang: #f6e7c8;
+  --brev-trait: rgba(60, 40, 20, .22);
+  --brev-ombre: 0 1px 2px rgba(40, 25, 10, .25), 0 3px 10px rgba(40, 25, 10, .12);
+  --brev-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .25 0 0 0 0 .12 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   --brev-cible: 36px;
 
   --brev-serif: "EB Garamond", Garamond, Georgia, serif;
@@ -35,18 +41,23 @@
   --brev-gothique: "UnifrakturMaguntia", "EB Garamond", serif;
 }
 
-/* Variante damnée : boue, braise et sang */
 .breviaire.fiche.camp-damnes {
-  --brev-fond: #221d18;
-  --brev-fond-2: #2e2720;
-  --brev-fond-champ: rgba(0, 0, 0, .35);
-  --brev-encre: #eadbc8;
-  --brev-encre-douce: #b9a58c;
-  --brev-or: #c9a35f;
-  --brev-or-pale: #e0c48a;
-  --brev-sang: #b3261b;
-  --brev-sang-vif: #e0574b;
-  --brev-trait: rgba(234, 219, 200, .2);
+  --brev-fond: #241c17;
+  --brev-fond-clair: #2f251e;
+  --brev-fond-sombre: #1a1410;
+  --brev-champ: rgba(0, 0, 0, .35);
+  --brev-encre: #eadbc5;
+  --brev-encre-douce: #b29b80;
+  --brev-or: #b48a4a;
+  --brev-or-clair: #d9b06a;
+  --brev-or-degrade: linear-gradient(180deg, #d8ad66 0%, #9c733a 55%, #6d4e24 100%);
+  --brev-sang: #c0301f;
+  --brev-sang-vif: #ef5b3c;
+  --brev-sang-degrade: linear-gradient(180deg, #7a1a10 0%, #3e0a06 100%);
+  --brev-sur-sang: #ffd9b8;
+  --brev-trait: rgba(234, 219, 197, .16);
+  --brev-ombre: 0 1px 2px rgba(0, 0, 0, .6), 0 4px 14px rgba(0, 0, 0, .35);
+  --brev-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .7 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
@@ -61,315 +72,622 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   font-size: 1rem;
   line-height: 1.4;
   background:
-    radial-gradient(ellipse at 15% 0%, rgba(138, 26, 18, .10), transparent 55%),
-    radial-gradient(ellipse at 90% 100%, rgba(184, 151, 90, .12), transparent 50%),
+    var(--brev-grain),
+    radial-gradient(ellipse at 50% -10%, rgba(255, 255, 255, .35), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(125, 23, 16, .10), transparent 50%),
     var(--brev-fond);
+  background-blend-mode: multiply, normal, normal, normal;
+  box-shadow: inset 0 0 70px rgba(60, 35, 10, .28);
 }
-.breviaire.fiche .window-content > * { padding-inline: .9rem; }
+.breviaire.fiche.camp-damnes .window-content {
+  background:
+    var(--brev-grain),
+    radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .16), transparent 55%),
+    radial-gradient(ellipse at 100% 0%, rgba(180, 138, 74, .08), transparent 50%),
+    var(--brev-fond);
+  background-blend-mode: soft-light, normal, normal, normal;
+  box-shadow: inset 0 0 90px rgba(0, 0, 0, .65);
+}
+.breviaire.fiche .window-content > * { padding-inline: 1rem; }
 
-.breviaire.fiche input,
-.breviaire.fiche select,
-.breviaire.fiche textarea {
+/* ---------- Champs et boutons (contenu seulement) ---------- */
+.breviaire.fiche .window-content input,
+.breviaire.fiche .window-content select,
+.breviaire.fiche .window-content textarea {
   font-family: var(--brev-serif);
   font-size: 1rem;
   color: var(--brev-encre);
-  background: var(--brev-fond-champ);
+  background: var(--brev-champ);
   border: 1px solid var(--brev-trait);
-  border-radius: 3px;
+  border-radius: 2px;
   min-height: var(--brev-cible);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .12);
 }
-.breviaire.fiche input[type="checkbox"] { min-height: auto; width: 1.2rem; height: 1.2rem; }
-.breviaire.fiche input[type="number"] { text-align: center; }
-.breviaire.fiche select option { color: #000; background: #fff; }
+.breviaire.fiche .window-content input:focus,
+.breviaire.fiche .window-content select:focus,
+.breviaire.fiche .window-content textarea:focus { border-color: var(--brev-or); box-shadow: 0 0 0 2px rgba(168, 132, 63, .25); outline: none; }
+.breviaire.fiche .window-content input[type="checkbox"] { min-height: auto; width: 1.15rem; height: 1.15rem; accent-color: var(--brev-sang); box-shadow: none; }
+.breviaire.fiche .window-content input[type="number"] { text-align: center; }
+.breviaire.fiche .window-content select option { color: #1a1410; background: #f6efdc; }
 
-.breviaire.fiche button {
+.breviaire.fiche .window-content button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
   font-family: var(--brev-serif);
+  font-size: 1rem;
   color: var(--brev-encre);
   background: transparent;
-  border: 1px solid var(--brev-trait);
-  border-radius: 3px;
+  border: 1px solid transparent;
+  border-radius: 2px;
   min-height: var(--brev-cible);
   min-width: var(--brev-cible);
+  padding: 0 .3rem;
   line-height: 1.1;
   cursor: pointer;
   box-shadow: none;
+  text-shadow: none;
 }
-.breviaire.fiche button:focus-visible { outline: 2px solid var(--brev-sang-vif); outline-offset: 1px; }
-.breviaire.fiche button:active { background: var(--brev-fond-2); }
+.breviaire.fiche .window-content button:focus-visible { outline: 2px solid var(--brev-sang-vif); outline-offset: 1px; }
+.breviaire.fiche .window-content button:active { transform: translateY(1px); }
+@media (hover: hover) {
+  .breviaire.fiche .window-content button:hover { background: rgba(168, 132, 63, .14); }
+}
+
+/* Bouton d'ajout : petit sceau doré */
+.breviaire.fiche .window-content .brev-ajout,
+.breviaire.fiche .window-content .brev-compteur button {
+  border-radius: 50%;
+  border: 1px solid var(--brev-or);
+  background: radial-gradient(circle at 35% 30%, var(--brev-fond-clair), var(--brev-fond-sombre));
+  color: var(--brev-sang);
+  box-shadow: var(--brev-ombre);
+  font-size: .85rem;
+}
+.breviaire.fiche .window-content .brev-bouton {
+  border: 1px solid var(--brev-or);
+  padding: 0 .8rem;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--brev-sang);
+  background: linear-gradient(180deg, var(--brev-fond-clair), var(--brev-fond-sombre));
+  margin-top: .5rem;
+}
+
+/* ---------- Titres de section : filets d'or et croix ---------- */
+.breviaire .brev-titre-section {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 1.1rem 0 .55rem;
+  padding: 0;
+  border: none;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: .07em;
+  color: var(--brev-sang);
+}
+.breviaire .brev-titre-section > span { white-space: nowrap; display: inline-flex; align-items: center; gap: .4rem; }
+.breviaire .brev-titre-section > span i { font-size: .85em; color: var(--brev-or); }
+.breviaire .brev-titre-section::before { content: "✠"; color: var(--brev-or); font-size: .9rem; }
+.breviaire .brev-titre-section::after {
+  content: "";
+  flex: 1;
+  height: 5px;
+  border-top: 1px solid var(--brev-or);
+  border-bottom: 1px solid var(--brev-or);
+  opacity: .55;
+}
+.breviaire .brev-titre-section small { order: 3; font-family: var(--brev-serif); font-size: .9rem; letter-spacing: 0; color: var(--brev-encre-douce); white-space: nowrap; }
+.breviaire .brev-entete-liste { display: flex; align-items: center; gap: .5rem; }
+.breviaire .brev-entete-liste .brev-titre-section { flex: 1; }
 
 /* ---------- Entête ---------- */
 .breviaire .brev-entete {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: .75rem;
-  padding-block: .8rem;
-  border-bottom: 2px solid var(--brev-or);
+  gap: .9rem 1.1rem;
+  padding-block: 1rem .9rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .18), transparent);
+  border-bottom: 1px solid var(--brev-or);
+  box-shadow: 0 3px 0 -2px var(--brev-or);
 }
-.breviaire .brev-portrait {
-  width: 84px;
-  height: 84px;
+.breviaire.camp-damnes .brev-entete { background: linear-gradient(180deg, rgba(0, 0, 0, .35), transparent); }
+
+.breviaire .brev-cadre-portrait {
+  position: relative;
   flex: none;
+  padding: 4px;
+  background: var(--brev-or-degrade);
+  box-shadow: var(--brev-ombre), inset 0 0 0 1px rgba(255, 255, 255, .35);
+}
+.breviaire .brev-cadre-portrait::before,
+.breviaire .brev-cadre-portrait::after {
+  content: "✠";
+  position: absolute;
+  font-size: .75rem;
+  line-height: 1;
+  color: var(--brev-sang);
+  background: var(--brev-fond-clair);
+  border: 1px solid var(--brev-or);
+  border-radius: 50%;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: grid;
+  place-items: center;
+}
+.breviaire .brev-cadre-portrait::before { top: -.5rem; left: -.5rem; }
+.breviaire .brev-cadre-portrait::after { bottom: -.5rem; right: -.5rem; }
+.breviaire .brev-portrait {
+  display: block;
+  width: 96px;
+  height: 96px;
   object-fit: cover;
-  border: 2px solid var(--brev-or);
-  box-shadow: 0 0 0 3px var(--brev-fond), 0 0 0 4px var(--brev-trait);
+  border: 2px solid var(--brev-fond-sombre);
+  background: var(--brev-fond-sombre);
   cursor: pointer;
 }
-.breviaire .brev-identite { flex: 1 1 14rem; min-width: 0; display: flex; flex-direction: column; gap: .3rem; }
-.breviaire.fiche .brev-nom {
+.breviaire .brev-cadre-petit .brev-portrait { width: 64px; height: 64px; }
+
+.breviaire .brev-identite { flex: 1 1 15rem; min-width: 0; display: flex; flex-direction: column; gap: .15rem; }
+.breviaire.fiche .window-content .brev-nom {
   font-family: var(--brev-gothique);
-  font-size: 1.9rem;
-  line-height: 1.1;
+  font-size: 2.1rem;
+  line-height: 1.15;
+  min-height: auto;
+  padding: 0;
   border: none;
   border-bottom: 1px dashed transparent;
   background: transparent;
+  box-shadow: none;
   color: var(--brev-sang);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+}
+.breviaire.fiche.camp-damnes .window-content .brev-nom { text-shadow: 0 0 18px rgba(239, 91, 60, .45); }
+.breviaire.fiche .window-content .brev-nom:focus { border-bottom-color: var(--brev-or); box-shadow: none; }
+.breviaire.fiche .window-content .brev-surnom {
+  font-style: italic;
+  color: var(--brev-encre-douce);
+  border: none;
+  background: transparent;
+  box-shadow: none;
   padding: 0;
-  height: auto;
+  min-height: 1.6rem;
 }
-.breviaire.fiche .brev-nom:focus { border-bottom-color: var(--brev-or); }
-.breviaire.fiche .brev-surnom { font-style: italic; border: none; background: transparent; padding: 0; min-height: 1.6rem; }
-.breviaire .brev-ligne { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
-.breviaire .brev-ligne select { width: auto; }
-.breviaire .brev-etiquette:empty { display: none; }
-.breviaire .brev-etiquette {
-  font-family: var(--brev-capitales);
-  letter-spacing: .06em;
-  padding: .15rem .5rem;
-  border: 1px solid var(--brev-trait);
-  border-radius: 2px;
-}
-.breviaire .brev-titre { color: var(--brev-sang); border-color: var(--brev-sang); }
 
-/* ---------- Jauges et compteurs ---------- */
-.breviaire .brev-jauge,
-.breviaire .brev-usure,
-.breviaire .brev-stat {
+.breviaire .brev-ruban { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .5rem; margin-top: .25rem; font-family: var(--brev-capitales); font-weight: 600; letter-spacing: .04em; }
+.breviaire .brev-ruban select { width: auto; font-family: var(--brev-capitales); font-weight: 600; }
+.breviaire .brev-sep { color: var(--brev-or); font-size: .8rem; }
+.breviaire .brev-sceau-titre {
+  margin-left: auto;
+  padding: .1rem .7rem;
+  color: var(--brev-sur-sang);
+  background: var(--brev-sang-degrade);
+  border: 1px solid var(--brev-or);
+  border-radius: 2px;
+  letter-spacing: .1em;
+  box-shadow: var(--brev-ombre);
+}
+
+/* Médaillons : Blessures, Protection, Déplacement, dé de Sang */
+.breviaire .brev-medaillons { display: flex; flex-wrap: wrap; gap: .45rem; }
+.breviaire .brev-medaillon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .2rem;
-  padding: .4rem .6rem;
+  justify-content: center;
+  min-width: 4.8rem;
+  padding: .35rem .5rem .4rem;
+  background: linear-gradient(180deg, var(--brev-fond-clair), var(--brev-fond-sombre));
   border: 1px solid var(--brev-or);
-  background: var(--brev-fond-2);
+  outline: 1px solid var(--brev-trait);
+  outline-offset: 2px;
+  box-shadow: var(--brev-ombre);
 }
-.breviaire .brev-jauge-label {
+.breviaire .brev-medaillon b { font-size: 1.6rem; line-height: 1.1; font-weight: 600; }
+.breviaire .brev-medaillon b small { font-size: .85rem; font-weight: 500; color: var(--brev-encre-douce); }
+.breviaire .brev-medaillon-label {
   font-family: var(--brev-capitales);
   font-weight: 600;
-  letter-spacing: .08em;
-  text-transform: lowercase;
-  font-variant: small-caps;
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
   color: var(--brev-sang);
 }
-.breviaire .brev-jauge-pied { font-size: .85rem; color: var(--brev-encre-douce); }
+.breviaire .brev-medaillon-sang { background: var(--brev-sang-degrade); }
+.breviaire .brev-medaillon-sang b, .breviaire .brev-medaillon-sang .brev-medaillon-label { color: var(--brev-sur-sang); }
+.breviaire .brev-medaillon-blessures .brev-compteur b { min-width: 3.4rem; text-align: center; }
+.breviaire .brev-alerte { border-color: var(--brev-sang-vif); box-shadow: 0 0 0 2px var(--brev-sang-vif), var(--brev-ombre); }
 .breviaire .brev-compteur { display: flex; align-items: center; gap: .3rem; }
-.breviaire .brev-compteur b { font-size: 1.6rem; min-width: 3.2rem; text-align: center; }
-.breviaire .brev-compteur b small { font-size: .9rem; color: var(--brev-encre-douce); }
-.breviaire .brev-compteur button { font-size: 1.3rem; font-weight: 600; }
-.breviaire .brev-alerte { border-color: var(--brev-sang-vif); box-shadow: inset 0 0 0 1px var(--brev-sang-vif); }
 
-/* ---------- Onglets ---------- */
+/* ---------- Onglets : signets ---------- */
 .breviaire .brev-onglets {
   display: flex;
-  border-bottom: 1px solid var(--brev-or);
+  gap: .25rem;
+  padding-top: .6rem;
+  border-bottom: 2px solid var(--brev-sang);
   overflow-x: auto;
   scrollbar-width: none;
 }
-.breviaire .brev-onglets .item {
+.breviaire.fiche .window-content .brev-onglet {
   flex: 1 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .4rem;
-  min-height: var(--brev-cible);
-  padding: .3rem .7rem;
+  gap: .45rem;
+  padding: .3rem .8rem;
+  border: 1px solid var(--brev-trait);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
   font-family: var(--brev-capitales);
   font-weight: 600;
-  letter-spacing: .06em;
+  font-size: 1.02rem;
+  letter-spacing: .07em;
   color: var(--brev-encre-douce);
-  border-bottom: 3px solid transparent;
-  text-shadow: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .25), rgba(0, 0, 0, .04));
 }
-.breviaire .brev-onglets .item.active { color: var(--brev-sang); border-bottom-color: var(--brev-sang); }
-
-.breviaire.fiche .tab { display: none; padding-block: .6rem 1.2rem; }
-.breviaire.fiche .tab.active { display: block; }
-
-/* ---------- Titres et listes ---------- */
-.breviaire .brev-titre-section {
-  margin: 1rem 0 .4rem;
-  padding: 0 0 .15rem;
-  font-family: var(--brev-capitales);
-  font-weight: 600;
-  font-size: 1.15rem;
-  letter-spacing: .06em;
-  color: var(--brev-sang);
-  border-bottom: 1px solid var(--brev-trait);
+.breviaire.fiche.camp-damnes .window-content .brev-onglet { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
+.breviaire.fiche .window-content .brev-onglet i { color: var(--brev-or); }
+.breviaire.fiche .window-content .brev-onglet.active {
+  color: var(--brev-sur-sang);
+  background: var(--brev-sang-degrade);
+  border-color: var(--brev-sang);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
 }
-.breviaire .brev-titre-section small { color: var(--brev-encre-douce); font-size: .9rem; }
-.breviaire .brev-legende { font-size: .85rem; color: var(--brev-encre-douce); margin: 0 0 .5rem; }
+.breviaire.fiche .window-content .brev-onglet.active i { color: var(--brev-or-clair); }
 
-.breviaire .brev-entete-liste { display: flex; align-items: flex-end; gap: .5rem; }
-.breviaire .brev-entete-liste .brev-titre-section { flex: 1; }
-.breviaire .brev-entete-liste button { margin-bottom: .4rem; }
+.breviaire .brev-page { display: none; padding-block: .8rem 1.4rem; }
+.breviaire .brev-page.active { display: block; }
 
-.breviaire .brev-liste { list-style: none; margin: 0; padding: 0; }
-.breviaire .brev-liste > li {
-  display: flex;
-  align-items: center;
-  gap: .4rem;
-  padding: .25rem 0;
-  border-bottom: 1px solid var(--brev-trait);
-}
-.breviaire .brev-liste > li > img { width: 36px; height: 36px; flex: none; border: 1px solid var(--brev-trait); object-fit: cover; }
-.breviaire .brev-liste .brev-vide { color: var(--brev-encre-douce); font-style: italic; border: none; }
-.breviaire .brev-liste button { border-color: transparent; }
+.breviaire .brev-legende { display: flex; flex-wrap: wrap; gap: .2rem .7rem; align-items: center; font-size: .85rem; color: var(--brev-encre-douce); margin: 0 0 .7rem; font-style: italic; }
+.breviaire .brev-coche-exemple { color: var(--brev-sang); font-style: normal; }
 
-.breviaire .brev-objet-nom {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-}
-.breviaire.fiche button.brev-objet-nom { border-color: transparent; padding: .2rem .3rem; }
-.breviaire .brev-objet-nom small { color: var(--brev-encre-douce); font-size: .85rem; }
-.breviaire .brev-range { opacity: .55; }
-
-/* ---------- Front : caractéristiques et Spécialités ---------- */
+/* ---------- Front ---------- */
 .breviaire .brev-grille-caracs {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-  gap: .7rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: .9rem;
 }
-.breviaire .brev-bloc-carac { border: 1px solid var(--brev-or); background: var(--brev-fond-2); }
+.breviaire .brev-bloc-carac {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .28), rgba(255, 255, 255, .08));
+  border: 1px solid var(--brev-or);
+  box-shadow: var(--brev-ombre);
+}
+.breviaire.camp-damnes .brev-bloc-carac { background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(0, 0, 0, .15)); }
 .breviaire .brev-carac {
   display: flex;
   align-items: center;
   gap: .4rem;
-  padding: .3rem .4rem;
-  background: var(--brev-sang);
+  padding: .35rem .5rem .35rem .3rem;
+  background: var(--brev-sang-degrade);
+  border-bottom: 2px solid var(--brev-or);
 }
-.breviaire.fiche .brev-carac-jet {
+.breviaire.fiche .window-content .brev-carac-jet {
   flex: 1;
-  color: #f6ead0;
-  border: none;
+  justify-content: flex-start;
+  color: var(--brev-sur-sang);
   font-family: var(--brev-capitales);
   font-weight: 600;
-  font-size: 1.15rem;
-  letter-spacing: .08em;
-  text-align: left;
+  font-size: 1.25rem;
+  letter-spacing: .12em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 }
-.breviaire.fiche .brev-carac input {
-  width: 3.4rem;
+.breviaire.fiche .window-content .brev-carac-valeur {
+  width: 2.9rem;
+  height: 2.9rem;
   flex: none;
+  padding: 0;
+  border-radius: 50%;
   font-size: 1.3rem;
   font-weight: 600;
-  color: #f6ead0;
-  background: rgba(0, 0, 0, .2);
-  border-color: rgba(255, 255, 255, .25);
+  color: var(--brev-sang);
+  background: radial-gradient(circle at 35% 30%, #fff8e6, #e2cf9f);
+  border: 2px solid var(--brev-or-clair);
+  box-shadow: 0 0 0 2px var(--brev-sang), 0 2px 6px rgba(0, 0, 0, .4);
+  -moz-appearance: textfield;
 }
+.breviaire.fiche.camp-damnes .window-content .brev-carac-valeur { background: radial-gradient(circle at 35% 30%, #4a3a2d, #1c1511); color: var(--brev-or-clair); }
+.breviaire .brev-carac-valeur::-webkit-inner-spin-button { -webkit-appearance: none; }
 
-.breviaire .brev-specialites { list-style: none; margin: 0; padding: .2rem .3rem; }
+.breviaire .brev-specialites { list-style: none; margin: 0; padding: .15rem .35rem .3rem; }
 .breviaire .brev-specialite {
   display: grid;
-  grid-template-columns: auto 1fr auto 2.2rem;
+  grid-template-columns: 2.1rem 1fr 2rem 2.3rem;
   align-items: center;
-  gap: .15rem;
+  border-bottom: 1px solid var(--brev-trait);
 }
-.breviaire .brev-specialite + .brev-specialite { border-top: 1px dotted var(--brev-trait); }
-.breviaire.fiche .brev-specialite button { border-color: transparent; }
-.breviaire .brev-pips { font-size: .9rem; letter-spacing: -.1em; color: var(--brev-sang); white-space: nowrap; }
-.breviaire.fiche .brev-nom-jet { text-align: left; padding: 0 .25rem; }
+.breviaire .brev-specialite:last-child { border-bottom: none; }
+.breviaire .brev-pips { font-size: .95rem; letter-spacing: -.12em; color: var(--brev-sang); white-space: nowrap; text-align: center; }
+.breviaire.fiche .window-content .brev-nom-jet { justify-content: flex-start; text-align: left; padding: 0 .2rem; }
 .breviaire .brev-specialite.rang-0 .brev-nom-jet { color: var(--brev-encre-douce); }
-.breviaire .brev-specialite.rang-2 .brev-nom-jet { font-weight: 600; }
-.breviaire .brev-score { text-align: right; font-weight: 600; font-size: 1.05rem; }
+.breviaire .brev-specialite.rang-1 .brev-nom-jet { font-weight: 500; }
+.breviaire .brev-specialite.rang-2 .brev-nom-jet { font-weight: 600; color: var(--brev-sang); }
+.breviaire .brev-specialite.rang-2 { background: linear-gradient(90deg, rgba(168, 132, 63, .18), transparent 70%); }
+.breviaire .brev-score {
+  justify-self: end;
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: .05rem .2rem;
+  border-bottom: 1px solid var(--brev-or);
+}
+.breviaire .brev-specialite.rang-0 .brev-score { color: var(--brev-encre-douce); font-weight: 500; border-color: transparent; }
 .breviaire .brev-substitution .brev-nom-jet { font-style: italic; }
-.breviaire .brev-substitution small { color: var(--brev-encre-douce); }
-.breviaire.fiche .brev-coche { color: transparent; }
-.breviaire.fiche .brev-coche::before { content: "☐"; color: var(--brev-encre-douce); font-size: 1rem; }
-.breviaire.fiche .brev-coche i { display: none; }
-.breviaire.fiche .brev-coche.coche::before { content: "☑"; color: var(--brev-sang-vif); }
+.breviaire .brev-substitution small { color: var(--brev-encre-douce); font-size: .8rem; }
+.breviaire.fiche .window-content .brev-coche::before { content: "☐"; font-size: 1.05rem; color: var(--brev-encre-douce); }
+.breviaire.fiche .window-content .brev-coche.coche::before { content: "☑"; color: var(--brev-sang-vif); }
 
-/* ---------- Puces (substitutions, traits) ---------- */
-.breviaire .brev-puces { display: flex; flex-wrap: wrap; gap: .35rem; }
-.breviaire.fiche .brev-puce {
-  display: inline-flex;
+/* ---------- Puces ---------- */
+.breviaire .brev-puces { display: flex; flex-wrap: wrap; gap: .4rem; }
+.breviaire.fiche .window-content .brev-puce {
   flex-direction: column;
   align-items: flex-start;
-  padding: .25rem .6rem;
+  gap: 0;
+  padding: .2rem .8rem;
+  border: 1px solid var(--brev-or);
   border-radius: 999px;
-  border-color: var(--brev-trait);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .25), transparent);
 }
 .breviaire .brev-puce small { font-size: .75rem; color: var(--brev-encre-douce); }
-.breviaire.fiche .brev-puce.active { background: var(--brev-sang); border-color: var(--brev-sang); color: #f6ead0; }
-.breviaire .brev-puce.active small { color: #ecd7b8; }
+.breviaire.fiche .window-content .brev-puce.active { background: var(--brev-sang-degrade); border-color: var(--brev-or-clair); color: var(--brev-sur-sang); box-shadow: var(--brev-ombre); }
+.breviaire .brev-puce.active small { color: var(--brev-or-clair); }
 
-/* ---------- Ressources ---------- */
-.breviaire .brev-grille-usure { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: .6rem; }
+/* ---------- Dés d'usure dessinés ---------- */
+.breviaire .brev-grille-usure { display: grid; grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr)); gap: .7rem; }
+.breviaire .brev-usure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
+  padding: .55rem .4rem .45rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .25), rgba(0, 0, 0, .03));
+  border: 1px solid var(--brev-or);
+  box-shadow: var(--brev-ombre);
+}
+.breviaire .brev-de {
+  width: 4.2rem;
+  height: 4.2rem;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #fffaf0, #dccaa0 70%, #c4ae80);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, .35));
+}
+.breviaire .brev-de span { font-weight: 600; font-size: 1.15rem; color: var(--brev-sang); margin-top: .35rem; }
+.breviaire.camp-damnes .brev-de { background: radial-gradient(circle at 35% 30%, #5b4636, #2a1f18 70%, #160f0b); }
+.breviaire.camp-damnes .brev-de span { color: var(--brev-or-clair); }
+.breviaire .brev-de.de-4  { clip-path: polygon(50% 4%, 97% 92%, 3% 92%); }
+.breviaire .brev-de.de-4 span { margin-top: 1.1rem; font-size: 1rem; }
+.breviaire .brev-de.de-6  { clip-path: inset(10% round 10%); }
+.breviaire .brev-de.de-6 span { margin-top: 0; }
+.breviaire .brev-de.de-8  { clip-path: polygon(50% 2%, 98% 50%, 50% 98%, 2% 50%); }
+.breviaire .brev-de.de-8 span { margin-top: 0; }
+.breviaire .brev-de.de-10 { clip-path: polygon(50% 0, 98% 42%, 50% 100%, 2% 42%); }
+.breviaire .brev-de.de-10 span { margin-top: -.3rem; }
+.breviaire .brev-de.de-12 { clip-path: polygon(50% 2%, 97% 37%, 79% 95%, 21% 95%, 3% 37%); }
+.breviaire .brev-de.de-12 span { margin-top: .4rem; }
+.breviaire .brev-de.de-0  { clip-path: polygon(50% 4%, 97% 92%, 3% 92%); background: repeating-linear-gradient(135deg, #8e7f68 0 3px, #6f6250 3px 6px); opacity: .7; }
+.breviaire .brev-de.de-0 span { font-size: .75rem; margin-top: 1.4rem; color: #f2e7d0; }
 .breviaire .brev-epuise { border-color: var(--brev-sang-vif); }
-.breviaire .brev-epuise b { color: var(--brev-sang-vif); font-size: 1.1rem; }
 .breviaire .brev-base { display: flex; align-items: center; gap: .3rem; font-size: .8rem; color: var(--brev-encre-douce); }
-.breviaire .brev-base select, .breviaire .brev-base input { min-height: 30px; width: auto; }
+.breviaire.fiche .window-content .brev-base select,
+.breviaire.fiche .window-content .brev-base input { min-height: 28px; width: auto; padding: 0 .2rem; }
 
-.breviaire .brev-graves > li { flex-wrap: wrap; }
-.breviaire .brev-graves select { flex: 0 1 12rem; }
-.breviaire .brev-graves input[type="text"] { flex: 1 1 10rem; }
+/* ---------- Chapelet de Corruption ---------- */
+.breviaire .brev-chapelet {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .45rem;
+  padding: .5rem .3rem;
+}
+.breviaire .brev-chapelet::before {
+  content: "";
+  position: absolute;
+  left: 1.2rem;
+  right: 1.2rem;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brev-or), var(--brev-or-clair), var(--brev-or));
+  opacity: .7;
+}
+.breviaire.fiche .window-content .brev-grain {
+  position: relative;
+  width: var(--brev-cible);
+  height: var(--brev-cible);
+  padding: 0;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--brev-encre-douce);
+  background: radial-gradient(circle at 35% 30%, #fffaf0, #d8c597);
+  border: 1px solid var(--brev-or);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+}
+.breviaire.fiche.camp-damnes .window-content .brev-grain { background: radial-gradient(circle at 35% 30%, #4d3c2f, #1e1612); }
+.breviaire.fiche .window-content .brev-grain.palier { width: calc(var(--brev-cible) + 8px); height: calc(var(--brev-cible) + 8px); border-width: 2px; color: var(--brev-or); font-size: 1.1rem; }
+.breviaire.fiche .window-content .brev-grain.pleine {
+  color: var(--brev-sur-sang);
+  background: radial-gradient(circle at 35% 30%, #d0402e, #6e130c 75%);
+  border-color: var(--brev-or-clair);
+  box-shadow: 0 0 8px rgba(173, 36, 24, .55), 0 2px 3px rgba(0, 0, 0, .35);
+}
+
+/* ---------- Cartes (Paquetage, Marques, Rites) ---------- */
+.breviaire .brev-cartes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: .55rem; }
+.breviaire .brev-cartes-compactes { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); }
+.breviaire .brev-carte {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .4rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .35), rgba(255, 255, 255, .1));
+  border: 1px solid var(--brev-trait);
+  border-left: 3px solid var(--brev-or);
+  box-shadow: var(--brev-ombre);
+}
+.breviaire.camp-damnes .brev-carte { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
+.breviaire .brev-carte > img { width: 44px; height: 44px; flex: none; object-fit: cover; border: 1px solid var(--brev-or); background: var(--brev-fond-sombre); }
+.breviaire .brev-carte-corps { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; }
+.breviaire.fiche .window-content button.brev-carte-corps { align-items: flex-start; justify-content: center; flex-direction: column; text-align: left; padding: .1rem .2rem; }
+.breviaire .brev-carte-corps > b { font-weight: 600; font-size: 1.05rem; line-height: 1.15; }
+.breviaire .brev-carte-texte { font-size: .9rem; color: var(--brev-encre-douce); }
+.breviaire .brev-carte-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.breviaire.fiche .window-content .brev-carte-actions button { color: var(--brev-encre-douce); }
+.breviaire.fiche .window-content .brev-carte-actions button[aria-pressed="true"] { color: var(--brev-sang); }
+.breviaire .brev-stats { display: flex; flex-wrap: wrap; align-items: center; gap: .15rem .6rem; font-size: .88rem; }
+.breviaire .brev-stats i { color: var(--brev-or); font-size: .8em; }
+.breviaire .brev-discret { color: var(--brev-encre-douce); font-style: italic; }
+.breviaire .brev-alerte-texte { color: var(--brev-sang-vif); font-weight: 600; }
+.breviaire .brev-de-badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.4rem;
+  padding: 0 .35rem;
+  font-weight: 600;
+  color: var(--brev-sur-sang);
+  background: var(--brev-sang-degrade);
+  border: 1px solid var(--brev-or-clair);
+  border-radius: 999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+}
+.breviaire .brev-mini-puces { display: flex; flex-wrap: wrap; gap: .2rem; }
+.breviaire .brev-mini-puces span { font-size: .72rem; letter-spacing: .04em; font-family: var(--brev-capitales); font-weight: 600; padding: 0 .4rem; border: 1px solid var(--brev-or); border-radius: 999px; color: var(--brev-encre-douce); }
+.breviaire .brev-sacree { border-left-color: var(--brev-or-clair); box-shadow: 0 0 0 1px rgba(214, 183, 115, .6), 0 0 14px rgba(214, 183, 115, .35); }
+.breviaire .brev-relique, .breviaire .brev-grand-rite { border-left-color: var(--brev-sang); }
+.breviaire .brev-range { opacity: .55; filter: saturate(.6); }
+.breviaire .brev-quantite { display: flex; align-items: center; }
+.breviaire .brev-quantite b { min-width: 2rem; text-align: center; }
+.breviaire .brev-chiffre { font-family: var(--brev-capitales); color: var(--brev-sang); margin-right: .2rem; }
+.breviaire .brev-vide { list-style: none; color: var(--brev-encre-douce); font-style: italic; padding: .3rem .2rem; grid-column: 1 / -1; }
+
+/* Résumé du paquetage */
+.breviaire .brev-resume { display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: .45rem; }
+.breviaire .brev-resume > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .3rem;
+  border: 1px solid var(--brev-or);
+  background: linear-gradient(180deg, var(--brev-fond-clair), var(--brev-fond-sombre));
+  box-shadow: var(--brev-ombre);
+}
+.breviaire .brev-resume span { font-family: var(--brev-capitales); font-weight: 600; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brev-sang); }
+.breviaire .brev-resume b { font-size: 1.35rem; }
+.breviaire .brev-resume b small { font-size: .85rem; color: var(--brev-encre-douce); }
+
+/* ---------- Listes simples (Blessures graves) ---------- */
+.breviaire .brev-liste { list-style: none; margin: 0; padding: 0; }
+.breviaire .brev-liste > li { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; padding: .3rem 0; border-bottom: 1px solid var(--brev-trait); }
+.breviaire .brev-graves select { flex: 0 1 11rem; }
+.breviaire .brev-graves input[type="text"] { flex: 1 1 9rem; }
 .breviaire .brev-soignee { opacity: .55; }
-.breviaire.fiche .brev-ajouter { margin-top: .4rem; padding-inline: .7rem; }
+.breviaire .brev-deux-colonnes { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 0 1.2rem; }
 
-.breviaire .brev-mort, .breviaire .brev-corruption { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; }
-.breviaire.fiche .brev-case { width: var(--brev-cible); padding: 0; font-weight: 600; }
-.breviaire.fiche .brev-case.palier { border-color: var(--brev-or); border-width: 2px; }
-.breviaire.fiche .brev-case.pleine { background: var(--brev-sang); border-color: var(--brev-sang); color: #f6ead0; }
-.breviaire .brev-case-texte { display: inline-flex; align-items: center; gap: .4rem; }
-
-.breviaire .brev-marques .brev-marque-texte { flex: 1; display: flex; flex-direction: column; }
-.breviaire .brev-marques .brev-marque-texte span { font-size: .9rem; }
+.breviaire .brev-mort { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+.breviaire.fiche .window-content .brev-case {
+  width: var(--brev-cible);
+  border: 1px solid var(--brev-or);
+  color: var(--brev-encre-douce);
+  background: radial-gradient(circle at 35% 30%, var(--brev-fond-clair), var(--brev-fond-sombre));
+}
+.breviaire.fiche .window-content .brev-case.pleine { background: var(--brev-sang-degrade); color: var(--brev-sur-sang); border-color: var(--brev-or-clair); }
+.breviaire .brev-case-texte { display: inline-flex; align-items: center; gap: .4rem; margin-top: .3rem; }
 
 /* ---------- Champs étiquetés ---------- */
-.breviaire .brev-champs {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-  gap: .45rem .9rem;
-}
+.breviaire .brev-champs { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .5rem .9rem; }
 .breviaire .brev-champs > label { display: flex; flex-direction: column; gap: .15rem; }
-.breviaire .brev-champs > label > span { font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-encre-douce); font-size: .95rem; }
+.breviaire .brev-champs > label > span { font-family: var(--brev-capitales); font-weight: 600; letter-spacing: .04em; color: var(--brev-sang); font-size: .95rem; }
 .breviaire .brev-champs > label.brev-case-texte { flex-direction: row; align-items: center; }
 .breviaire .brev-champs .brev-large { grid-column: 1 / -1; }
-.breviaire .brev-champs-court { grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr)); }
+.breviaire .brev-champs-court { grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); }
 .breviaire .brev-unite { display: flex; align-items: center; gap: .3rem; }
 .breviaire .brev-unite input { flex: 1; min-width: 0; }
-.breviaire.fiche .brev-plein { width: 100%; margin-top: .4rem; }
+.breviaire.fiche .window-content .brev-plein { width: 100%; margin-top: .5rem; }
+.breviaire .brev-multi { display: flex; flex-wrap: wrap; gap: .2rem 1rem; }
+.breviaire .brev-multi label { display: inline-flex; align-items: center; gap: .35rem; min-height: var(--brev-cible); }
 
-.breviaire .brev-multi { display: flex; flex-wrap: wrap; gap: .3rem .9rem; }
-.breviaire .brev-multi label { display: inline-flex; align-items: center; gap: .3rem; min-height: var(--brev-cible); }
-
-/* Éditeur de texte riche */
-.breviaire.fiche prose-mirror { min-height: 8rem; background: var(--brev-fond-champ); border: 1px solid var(--brev-trait); }
-.breviaire.fiche prose-mirror .editor-content { padding: .4rem .6rem; }
+.breviaire.fiche .window-content prose-mirror { min-height: 8rem; background: var(--brev-champ); border: 1px solid var(--brev-trait); }
+.breviaire.fiche .window-content prose-mirror .editor-content { padding: .5rem .7rem; }
 
 /* ---------- Ennemi ---------- */
-.breviaire .brev-grille-ennemi { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .5rem; margin-top: .7rem; }
-.breviaire .brev-stat input[type="number"] { width: 4.5rem; font-size: 1.4rem; font-weight: 600; }
-.breviaire .brev-menace { border-color: var(--brev-sang); }
-.breviaire.fiche .brev-menace .brev-jauge-label { border: none; min-height: auto; }
+.breviaire .brev-grille-ennemi { display: grid; grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); gap: .55rem; margin-top: .9rem; }
+.breviaire .brev-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .25rem;
+  padding: .45rem .4rem;
+  border: 1px solid var(--brev-or);
+  background: linear-gradient(180deg, var(--brev-fond-clair), var(--brev-fond-sombre));
+  box-shadow: var(--brev-ombre);
+}
+.breviaire .brev-stat .brev-jauge-label,
+.breviaire.fiche .window-content .brev-stat button.brev-jauge-label {
+  font-family: var(--brev-capitales); font-weight: 600; font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brev-sang); min-height: auto;
+}
+.breviaire.fiche .window-content .brev-stat input[type="number"] { width: 4.6rem; font-size: 1.45rem; font-weight: 600; }
+.breviaire .brev-stat .brev-compteur b { font-size: 1.45rem; min-width: 2.4rem; text-align: center; }
+.breviaire .brev-menace { background: var(--brev-sang-degrade); }
+.breviaire.fiche .window-content .brev-menace .brev-jauge-label { color: var(--brev-sur-sang); }
+.breviaire.fiche .window-content .brev-menace input[type="number"] { color: var(--brev-sang); background: radial-gradient(circle at 35% 30%, #fff8e6, #e2cf9f); border: 2px solid var(--brev-or-clair); border-radius: 50%; width: 3.6rem; height: 3.6rem; padding: 0; }
+.breviaire .brev-ruban select { min-height: 30px; }
+.breviaire .brev-ennemi .brev-ruban { margin-top: .4rem; }
 
 /* ---------- Arcane ---------- */
-.breviaire .brev-effets-arcane { display: grid; gap: .6rem; margin-top: .6rem; }
-.breviaire .brev-effets-arcane fieldset { display: flex; flex-direction: column; gap: .3rem; border: 1px solid var(--brev-trait); padding: .5rem; }
-.breviaire .brev-effets-arcane legend { font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-sang); padding: 0 .3rem; }
-.breviaire .brev-grace { border-color: var(--brev-or) !important; }
-.breviaire .brev-damnation { border-color: var(--brev-sang) !important; }
+.breviaire .brev-effets-arcane { display: grid; gap: .7rem; margin-top: .8rem; }
+.breviaire .brev-effets-arcane fieldset { display: flex; flex-direction: column; gap: .35rem; margin: 0; padding: .55rem .6rem .6rem; border: 1px solid var(--brev-trait); border-left: 3px solid var(--brev-or); box-shadow: var(--brev-ombre); }
+.breviaire .brev-effets-arcane legend { font-family: var(--brev-capitales); font-weight: 600; letter-spacing: .08em; padding: 0 .4rem; color: var(--brev-sang); }
+.breviaire .brev-effets-arcane .brev-grace { border-left-color: var(--brev-or-clair); }
+.breviaire .brev-effets-arcane .brev-damnation { border-left-color: var(--brev-sang-vif); }
 
-/* ---------- Écrans étroits (téléphone en plein écran via Vade, panneau étroit) ---------- */
-@container (max-width: 520px) {
-  .breviaire .brev-portrait { width: 64px; height: 64px; }
-  .breviaire.fiche .brev-nom { font-size: 1.5rem; }
-  .breviaire .brev-jauge-blessures { flex: 1 1 100%; flex-direction: row; justify-content: space-between; }
-  .breviaire .brev-onglets .item span { display: none; }
-  .breviaire .brev-onglets .item i { font-size: 1.15rem; }
-  .breviaire .brev-grille-caracs { grid-template-columns: 1fr; }
-  .breviaire .brev-champs { grid-template-columns: 1fr; }
+/* ---------- Écrans étroits : téléphone (Vade) ou panneau étroit ---------- */
+@container (max-width: 560px) {
+  .breviaire .brev-portrait { width: 70px; height: 70px; }
+  .breviaire.fiche .window-content .brev-nom { font-size: 1.6rem; }
+  .breviaire .brev-medaillons { flex: 1 1 100%; display: grid; grid-template-columns: repeat(4, 1fr); }
+  .breviaire .brev-medaillon { min-width: 0; padding-inline: .2rem; }
+  .breviaire .brev-medaillon-blessures { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; padding-inline: .7rem; }
+  .breviaire .brev-medaillon b { font-size: 1.3rem; }
+  .breviaire.fiche .window-content .brev-onglet span { display: none; }
+  .breviaire.fiche .window-content .brev-onglet i { font-size: 1.15rem; }
+  .breviaire .brev-grille-caracs, .breviaire .brev-champs, .breviaire .brev-cartes { grid-template-columns: 1fr; }
+  .breviaire .brev-sceau-titre { margin-left: 0; }
 }
+
+/* ---------- Ajustements ---------- */
+.breviaire .brev-carte { flex-wrap: wrap; }
+.breviaire .brev-carte > .brev-carte-corps { flex: 1 1 8rem; }
+.breviaire .brev-quantite-ligne {
+  flex-basis: 100%;
+  justify-content: flex-end;
+  gap: .2rem;
+  padding-top: .25rem;
+  border-top: 1px dotted var(--brev-trait);
+  font-size: .9rem;
+}
+.breviaire .brev-quantite-ligne span { margin-right: auto; font-family: var(--brev-capitales); font-weight: 600; color: var(--brev-encre-douce); letter-spacing: .04em; }
+.breviaire .brev-quantite-ligne b { font-size: 1.1rem; }
+.breviaire .brev-cartes-compactes { grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); }
+.breviaire .brev-medaillon-label { white-space: nowrap; }
+.breviaire.camp-damnes .brev-medaillon-label,
+.breviaire.camp-damnes .brev-resume span,
+.breviaire.camp-damnes .brev-stat .brev-jauge-label,
+.breviaire.camp-damnes .brev-champs > label > span { color: var(--brev-sang-vif); }
+
+@container (max-width: 560px) {
+  .breviaire .brev-medaillons { grid-template-columns: repeat(3, 1fr); }
+  .breviaire .brev-medaillon-label { font-size: .68rem; letter-spacing: .04em; }
+  .breviaire .brev-resume { grid-template-columns: repeat(2, 1fr); }
+  .breviaire .brev-grille-usure { grid-template-columns: repeat(2, 1fr); }
+  .breviaire .brev-chapelet { gap: .3rem; }
+}
+.breviaire .brev-grille-ennemi { grid-template-columns: repeat(4, 1fr); }
+.breviaire.fiche .window-content .brev-menace button.brev-jauge-label { color: var(--brev-sur-sang); }
+.breviaire .brev-ennemi .brev-cartes { grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); }
+@container (max-width: 560px) {
+  .breviaire .brev-grille-ennemi { grid-template-columns: repeat(2, 1fr); }
+}
+.breviaire .brev-corps-objet { padding-block: .8rem 1.4rem; }

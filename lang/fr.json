@@ -301,7 +301,12 @@
       "notes": "Notes du MJ",
       "description": "Description",
       "commun": "Commun aux deux camps",
-      "jetBientot": "Les jets arrivent à l’étape 3 : pour l’instant, la fiche sert à saisir et à vérifier les données."
+      "jetBientot": "Les jets arrivent à l’étape 3 : pour l’instant, la fiche sert à saisir et à vérifier les données.",
+      "armes": "Armes",
+      "protections": "Protections",
+      "reliques": "Reliques",
+      "equipement": "Équipement",
+      "deSangCourt": "Dé de Sang"
     },
     "Objet": {
       "categorie": "Catégorie",
@@ -336,7 +341,9 @@
       "specialitesFormees": "Spécialités (Formé)",
       "dotation": "Dotation",
       "note": "Particularité",
-      "ajustementsUsure": "Ajustements des dés d’usure (en crans)"
+      "ajustementsUsure": "Ajustements des dés d’usure (en crans)",
+      "lourdeCourt": "Lourde",
+      "utiliseeCourt": "utilisée"
     }
   }
 }

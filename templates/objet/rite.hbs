@@ -6,5 +6,5 @@
   <label><span>{{localize 'BREVIAIRE.Objet.opposition'}}</span><select name="system.opposition">{{selectOptions choix.oppositions selected=system.opposition}}</select></label>
   <label class="brev-case-texte"><input type="checkbox" name="system.horsCombat" {{checked system.horsCombat}}> {{localize 'BREVIAIRE.Objet.horsCombat'}}</label>
 </div>
-<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.effet'}}</h3>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Objet.effet'}}</span></h3>
 {{formInput systemFields.effet value=system.effet enriched=effetHTML toggled=true}}

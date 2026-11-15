@@ -12,7 +12,7 @@ import { FicheBreviaire, CHEMIN, loc, choixLocalises, enrichir } from "./commun.
 export class FicheObjet extends FicheBreviaire(foundry.applications.sheets.ItemSheetV2) {
   static DEFAULT_OPTIONS = {
     classes: ["objet"],
-    position: { width: 520, height: 600 }
+    position: { width: 620, height: 640 }
   };
 
   static PARTS = {

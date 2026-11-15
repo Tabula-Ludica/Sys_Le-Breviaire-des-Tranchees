@@ -1,66 +1,114 @@
-<section class="tab brev-paquetage {{onglet.cssClass}}" data-group="primary" data-tab="paquetage">
+<section class="brev-page brev-paquetage {{onglet.cssClass}}" data-onglet="paquetage">
 
-  <div class="brev-entete-liste">
-    <h3 class="brev-titre-section">{{localize 'TYPES.Item.arme'}}</h3>
-    <button type="button" data-action="creerObjet" data-type="arme" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+  <div class="brev-resume">
+    <div><span>{{localize 'BREVIAIRE.Fiche.protection'}}</span><b>{{resume.protection}}{{#if resume.bouclier}}<small> +{{resume.bouclier}}</small>{{/if}}</b></div>
+    <div><span>{{localize 'BREVIAIRE.Fiche.deplacement'}}</span><b>{{resume.deplacement}}<small> m</small></b></div>
+    <div><span>{{localize 'BREVIAIRE.Usure.munitions'}}</span><b>{{resume.munitions}}</b></div>
+    <div><span>{{localize 'BREVIAIRE.Usure.vivres'}}</span><b>{{resume.vivres}}</b></div>
   </div>
-  <ul class="brev-liste brev-objets">
+
+  {{!-- Armes --}}
+  <div class="brev-entete-liste">
+    <h3 class="brev-titre-section"><span><i class="fa-solid fa-gun"></i> {{localize 'BREVIAIRE.Fiche.armes'}}</span></h3>
+    <button type="button" class="brev-ajout" data-action="creerObjet" data-type="arme" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+  </div>
+  <ul class="brev-cartes">
     {{#each armes}}
-    <li data-item-id="{{id}}" class="{{#unless equipee}}brev-range{{/unless}}">
+    <li class="brev-carte {{#unless equipee}}brev-range{{/unless}} {{#if sacree}}brev-sacree{{/if}}" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <button type="button" class="brev-objet-nom" data-action="jet" data-arme="{{id}}">
+      <button type="button" class="brev-carte-corps" data-action="jet" data-arme="{{id}}">
         <b>{{name}}</b>
-        <small>{{degats}}{{#if portee}} · {{portee}}{{/if}}{{#if particularites}} · {{particularites}}{{/if}}{{#if (ne quantite null)}} · ×{{quantite}}{{/if}}</small>
+        <span class="brev-stats">
+          <span class="brev-de-badge">{{degats}}</span>
+          {{#if portee}}<span><i class="fa-solid fa-ruler-horizontal"></i> {{portee}}</span>{{/if}}
+          {{#if zone}}<span><i class="fa-solid fa-burst"></i> {{zone}}</span>{{/if}}
+          <span class="brev-discret">{{categorie}}</span>
+        </span>
+        {{#if particularites.length}}<span class="brev-mini-puces">{{#each particularites}}<span>{{this}}</span>{{/each}}</span>{{/if}}
       </button>
-      <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" aria-label="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-hand-fist{{else}}fa-box{{/if}}"></i></button>
-      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      <div class="brev-carte-actions">
+        <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" title="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-hand-fist{{else}}fa-box-archive{{/if}}"></i></button>
+        <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      </div>
+      {{#if compte}}
+      <div class="brev-quantite brev-quantite-ligne">
+        <span>{{localize 'BREVIAIRE.Objet.quantite'}}</span>
+        <button type="button" data-action="quantite" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus"></i></button>
+        <b>{{quantite}}</b>
+        <button type="button" data-action="quantite" data-delta="1" aria-label="+1"><i class="fa-solid fa-plus"></i></button>
+      </div>
+      {{/if}}
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
   </ul>
 
+  {{!-- Protections --}}
   <div class="brev-entete-liste">
-    <h3 class="brev-titre-section">{{localize 'TYPES.Item.protection'}}</h3>
-    <button type="button" data-action="creerObjet" data-type="protection" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+    <h3 class="brev-titre-section"><span><i class="fa-solid fa-shield-halved"></i> {{localize 'BREVIAIRE.Fiche.protections'}}</span></h3>
+    <button type="button" class="brev-ajout" data-action="creerObjet" data-type="protection" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
   </div>
-  <ul class="brev-liste brev-objets">
+  <ul class="brev-cartes">
     {{#each protections}}
-    <li data-item-id="{{id}}" class="{{#unless equipee}}brev-range{{/unless}}">
+    <li class="brev-carte {{#unless equipee}}brev-range{{/unless}}" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <div class="brev-objet-nom"><b>{{name}}</b><small>{{type}} · {{valeur}}</small></div>
-      <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" aria-label="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-shield-halved{{else}}fa-box{{/if}}"></i></button>
-      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      <div class="brev-carte-corps">
+        <b>{{name}}</b>
+        <span class="brev-stats">
+          <span class="brev-de-badge">{{#if bouclier}}+{{/if}}{{valeur}}</span>
+          <span class="brev-discret">{{type}}</span>
+          {{#if lourde}}<span class="brev-alerte-texte">{{localize 'BREVIAIRE.Objet.lourdeCourt'}}</span>{{/if}}
+        </span>
+      </div>
+      <div class="brev-carte-actions">
+        <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" title="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-shirt{{else}}fa-box-archive{{/if}}"></i></button>
+        <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      </div>
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
   </ul>
 
+  {{!-- Reliques --}}
   <div class="brev-entete-liste">
-    <h3 class="brev-titre-section">{{localize 'TYPES.Item.relique'}}</h3>
-    <button type="button" data-action="creerObjet" data-type="relique" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+    <h3 class="brev-titre-section"><span><i class="fa-solid fa-cross"></i> {{localize 'BREVIAIRE.Fiche.reliques'}}</span></h3>
+    <button type="button" class="brev-ajout" data-action="creerObjet" data-type="relique" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
   </div>
-  <ul class="brev-liste brev-objets">
+  <ul class="brev-cartes">
     {{#each reliques}}
-    <li data-item-id="{{id}}" class="{{#if utilisee}}brev-range{{/if}}">
+    <li class="brev-carte brev-relique {{#if utilisee}}brev-range{{/if}}" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <div class="brev-objet-nom"><b>{{name}}</b><small>+{{apport}}d6 · {{@root.libelles.chapelet}}</small></div>
-      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      <div class="brev-carte-corps">
+        <b>{{name}}</b>
+        <span class="brev-stats"><span class="brev-de-badge">+{{apport}}d6</span><span class="brev-discret">{{@root.libelles.chapelet}}</span>
+          {{#if utilisee}}<span class="brev-discret">· {{localize 'BREVIAIRE.Objet.utiliseeCourt'}}</span>{{/if}}</span>
+      </div>
+      <div class="brev-carte-actions">
+        <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      </div>
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>{{/each}}
   </ul>
 
+  {{!-- Équipement --}}
   <div class="brev-entete-liste">
-    <h3 class="brev-titre-section">{{localize 'TYPES.Item.equipement'}}</h3>
-    <button type="button" data-action="creerObjet" data-type="equipement" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
+    <h3 class="brev-titre-section"><span><i class="fa-solid fa-toolbox"></i> {{localize 'BREVIAIRE.Fiche.equipement'}}</span></h3>
+    <button type="button" class="brev-ajout" data-action="creerObjet" data-type="equipement" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
   </div>
-  <ul class="brev-liste brev-objets">
+  <ul class="brev-cartes brev-cartes-compactes">
     {{#each equipement}}
-    <li data-item-id="{{id}}">
+    <li class="brev-carte" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <div class="brev-objet-nom"><b>{{name}}</b>{{#if (gt quantite 1)}}<small>×{{quantite}}</small>{{/if}}</div>
-      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      <button type="button" class="brev-carte-corps" data-action="editerObjet"><b>{{name}}</b></button>
+      <div class="brev-carte-actions">
+        <div class="brev-quantite">
+          <button type="button" data-action="quantite" data-delta="-1" aria-label="−1"><i class="fa-solid fa-minus"></i></button>
+          <b>×{{quantite}}</b>
+          <button type="button" data-action="quantite" data-delta="1" aria-label="+1"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      </div>
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>{{/each}}
   </ul>

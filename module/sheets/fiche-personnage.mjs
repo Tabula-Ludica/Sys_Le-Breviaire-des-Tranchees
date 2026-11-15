@@ -15,7 +15,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   static ONGLETS = [
     { id: "front", icone: "fa-solid fa-person-rifle" },
     { id: "ressources", icone: "fa-solid fa-hourglass-half" },
-    { id: "paquetage", icone: "fa-solid fa-suitcase" },
+    { id: "paquetage", icone: "fa-solid fa-sack-xmark" },
     { id: "rites", icone: "fa-solid fa-book-bible" },
     { id: "histoire", icone: "fa-solid fa-scroll" }
   ];
@@ -97,6 +97,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       label: u === "foi" ? t("Foi") : loc(`BREVIAIRE.Usure.${u}`),
       cran: sys.usure[u].value,
       de: libelleCran(sys.usure[u].faces),
+      faces: sys.usure[u].faces,
       epuise: sys.usure[u].value === 0,
       base: sys.usure[u].base,
       nomBase: `system.usure.${u}.base`,
@@ -136,23 +137,40 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
     // Paquetage
     const parType = type => actor.items.filter(i => i.type === type).sort((a, b) => a.sort - b.sort);
+    const puces = set => [...set].map(p => loc(`BREVIAIRE.Particularite.${p}`));
     context.armes = parType("arme").map(i => ({
       id: i.id, name: i.name, img: i.img, equipee: i.system.equipee,
+      categorie: loc(`BREVIAIRE.CategorieArme.${i.system.categorie}`),
       degats: i.system.degats,
       portee: i.system.distance && i.system.porteeCourte != null
-        ? `${i.system.porteeCourte} / ${i.system.porteeLongue ?? "—"} m` : "",
+        ? `${i.system.porteeCourte} / ${i.system.porteeLongue ?? "—"} m`
+        : (i.system.categorie === "melee" ? `${i.system.allonge ?? 1.5} m` : ""),
+      zone: i.system.zone ? `${i.system.zone} m` : "",
+      compte: i.system.quantite != null,
       quantite: i.system.quantite,
-      particularites: [...i.system.particularites].map(p => loc(`BREVIAIRE.Particularite.${p}`)).join(", ")
+      sacree: i.system.particularites.has("sacree"),
+      particularites: puces(i.system.particularites)
     }));
     context.protections = parType("protection").map(i => ({
       id: i.id, name: i.name, img: i.img, equipee: i.system.equipee, valeur: i.system.valeur,
+      bouclier: i.system.type === "bouclier", lourde: i.system.lourde,
       type: loc(`BREVIAIRE.TypeProtection.${i.system.type}`)
     }));
-    context.equipement = parType("equipement").map(i => ({ id: i.id, name: i.name, img: i.img, quantite: i.system.quantite }));
     context.reliques = parType("relique").map(i => ({ id: i.id, name: i.name, img: i.img, apport: i.system.apport, utilisee: i.system.utilisee }));
+    context.equipement = parType("equipement").map(i => ({ id: i.id, name: i.name, img: i.img, quantite: i.system.quantite }));
     context.rites = parType("rite").map(i => ({
-      id: i.id, name: i.name, img: i.img, niveau: loc(`BREVIAIRE.NiveauRite.${i.system.niveau}`)
+      id: i.id, name: i.name, img: i.img, grand: i.system.niveau === "grand",
+      niveau: loc(`BREVIAIRE.NiveauRite.${i.system.niveau}`),
+      portee: i.system.portee != null ? `${i.system.portee} m` : "", duree: i.system.duree
     }));
+    context.resume = {
+      protection: sys.protection,
+      bouclier: sys.protectionBouclier,
+      deplacement: sys.deplacement,
+      munitions: libelleCran(sys.usure.munitions.faces),
+      vivres: libelleCran(sys.usure.vivres.faces),
+      objets: actor.items.filter(i => ["arme", "protection", "relique", "equipement"].includes(i.type)).length
+    };
 
     context.biographie = await enrichir(sys.histoire.biographie, actor);
     return context;

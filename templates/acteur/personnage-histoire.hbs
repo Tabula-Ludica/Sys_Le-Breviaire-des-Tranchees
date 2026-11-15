@@ -1,11 +1,11 @@
-<section class="tab brev-histoire {{onglet.cssClass}}" data-group="primary" data-tab="histoire">
+<section class="brev-page brev-histoire {{onglet.cssClass}}" data-onglet="histoire">
   <div class="brev-champs">
     <label><span>{{localize 'TYPES.Item.origine'}}</span><input type="text" name="system.origine.nom" value="{{system.origine.nom}}"></label>
     <label><span>{{localize 'TYPES.Item.affectation'}}</span><input type="text" name="system.affectation.nom" value="{{system.affectation.nom}}"></label>
     <label><span>{{localize 'BREVIAIRE.Fiche.detail'}}</span><input type="text" name="system.histoire.detail" value="{{system.histoire.detail}}"></label>
   </div>
 
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.arcanes'}}</h3>
+  <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.arcanes'}}</span></h3>
   <div class="brev-champs">
     <label><span>{{libelles.passe}}</span><input type="text" name="system.arcanesCreation.passe.reponse" value="{{system.arcanesCreation.passe.reponse}}"></label>
     <label><span>{{libelles.serment}}</span><input type="text" name="system.arcanesCreation.serment.reponse" value="{{system.arcanesCreation.serment.reponse}}"></label>
@@ -13,6 +13,6 @@
     <label><span>{{localize 'BREVIAIRE.Fiche.lien'}}</span><input type="text" name="system.histoire.lien" value="{{system.histoire.lien}}"></label>
   </div>
 
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.biographie'}}</h3>
+  <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.biographie'}}</span></h3>
   {{formInput systemFields.histoire.fields.biographie value=system.histoire.biographie enriched=biographie toggled=true}}
 </section>

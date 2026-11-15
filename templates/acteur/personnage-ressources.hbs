@@ -1,14 +1,14 @@
-<section class="tab brev-ressources {{onglet.cssClass}}" data-group="primary" data-tab="ressources">
+<section class="brev-page brev-ressources {{onglet.cssClass}}" data-onglet="ressources">
 
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.usure'}}</h3>
+  <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.usure'}}</span></h3>
   <div class="brev-grille-usure">
     {{#each usures}}
     <div class="brev-usure {{#if epuise}}brev-epuise{{/if}}">
-      <span class="brev-jauge-label">{{label}}</span>
+      <span class="brev-medaillon-label">{{label}}</span>
+      <div class="brev-de de-{{faces}}" aria-label="{{de}}"><span>{{de}}</span></div>
       <div class="brev-compteur">
-        <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="-1" aria-label="−1 cran">−</button>
-        <b>{{de}}</b>
-        <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="1" aria-label="+1 cran">+</button>
+        <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="-1" aria-label="−1 cran"><i class="fa-solid fa-minus"></i></button>
+        <button type="button" data-action="usure" data-usure="{{cle}}" data-delta="1" aria-label="+1 cran"><i class="fa-solid fa-plus"></i></button>
       </div>
       <label class="brev-base">
         <span>{{localize 'BREVIAIRE.Usure.base'}}</span>
@@ -18,62 +18,69 @@
     {{/each}}
   </div>
 
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.blessuresGraves'}}</h3>
-  <ul class="brev-liste brev-graves">
-    {{#each blessuresGraves}}
-    <li class="{{#unless active}}brev-soignee{{/unless}}">
-      <select name="graves.{{index}}.type">{{selectOptions @root.choixBlessuresGraves selected=type}}</select>
-      <input type="text" name="graves.{{index}}.sequelle" value="{{sequelle}}" placeholder="{{localize 'BREVIAIRE.Fiche.sequelle'}}">
-      <button type="button" data-action="basculerBlessureGrave" data-index="{{index}}" aria-pressed="{{active}}"
-        title="{{#if active}}{{localize 'BREVIAIRE.Fiche.active'}}{{else}}{{localize 'BREVIAIRE.Fiche.soignee'}}{{/if}}">
-        <i class="fa-solid {{#if active}}fa-droplet{{else}}fa-bandage{{/if}}"></i>
-      </button>
-      <button type="button" data-action="supprimerBlessureGrave" data-index="{{index}}" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
-    </li>
-    {{else}}
-    <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
-    {{/each}}
-  </ul>
-  <button type="button" class="brev-ajouter" data-action="ajouterBlessureGrave"><i class="fa-solid fa-plus"></i> {{localize 'BREVIAIRE.Fiche.ajouterBlessureGrave'}}</button>
-
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}</h3>
-  <div class="brev-mort">
-    {{#each mort}}
-    <button type="button" class="brev-case {{#if coche}}pleine{{/if}}" data-action="mort" data-index="{{index}}" aria-pressed="{{coche}}"><i class="fa-solid fa-skull"></i></button>
-    {{/each}}
-    <label class="brev-case-texte"><input type="checkbox" name="system.mort.stabilise" {{checked system.mort.stabilise}}> {{localize 'BREVIAIRE.Etat.stabilise'}}</label>
-  </div>
-
-  <h3 class="brev-titre-section">{{corruption.label}} — {{corruption.etat}} <small>({{localize 'BREVIAIRE.Fiche.deSang'}} {{corruption.deSang}})</small></h3>
-  <div class="brev-corruption">
+  <h3 class="brev-titre-section"><span>{{corruption.label}}</span><small>{{corruption.etat}} · {{localize 'BREVIAIRE.Fiche.deSang'}} {{corruption.deSang}}</small></h3>
+  <div class="brev-chapelet">
     {{#each corruption.cases}}
-    <button type="button" class="brev-case {{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}}" data-action="corruption" data-n="{{n}}" aria-label="{{n}}">{{n}}</button>
+    <button type="button" class="brev-grain {{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}}" data-action="corruption" data-n="{{n}}" aria-label="{{n}}" aria-pressed="{{pleine}}">{{#if palier}}✠{{else}}{{n}}{{/if}}</button>
     {{/each}}
   </div>
 
-  <h3 class="brev-titre-section">{{libelles.marques}}</h3>
-  <ul class="brev-liste brev-marques">
+  <h3 class="brev-titre-section"><span>{{libelles.marques}}</span></h3>
+  <ul class="brev-cartes brev-marques">
     {{#each marques}}
-    <li data-item-id="{{id}}">
+    <li class="brev-carte" data-item-id="{{id}}">
       <img src="{{img}}" alt="">
-      <div class="brev-marque-texte">
-        <b>{{chiffre}} · {{titre}}</b>
-        <span>{{texte}}</span>
+      <div class="brev-carte-corps">
+        <b><span class="brev-chiffre">{{chiffre}}</span> {{titre}}</b>
+        <span class="brev-carte-texte">{{texte}}</span>
       </div>
-      <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-      <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      <div class="brev-carte-actions">
+        <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+        <button type="button" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+      </div>
     </li>
     {{else}}
     <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
     {{/each}}
   </ul>
 
-  <h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.suivi'}}</h3>
-  <div class="brev-champs">
-    <label><span>{{localize 'BREVIAIRE.Fiche.missions'}}</span><input type="number" name="system.missions" value="{{system.missions}}" min="0"> <small>{{titre}}</small></label>
-    <label><span>{{localize 'BREVIAIRE.Fiche.protectionNaturelle'}}</span><input type="number" name="system.protectionNaturelle" value="{{system.protectionNaturelle}}" min="0"></label>
-    {{#if (eq camp "fideles")}}
-    <label class="brev-case-texte"><input type="checkbox" name="system.excommunie" {{checked system.excommunie}}> {{localize 'BREVIAIRE.Fiche.excommunie'}}</label>
-    {{/if}}
+  <div class="brev-deux-colonnes">
+    <div>
+      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.blessuresGraves'}}</span></h3>
+      <ul class="brev-liste brev-graves">
+        {{#each blessuresGraves}}
+        <li class="{{#unless active}}brev-soignee{{/unless}}">
+          <select name="graves.{{index}}.type">{{selectOptions @root.choixBlessuresGraves selected=type}}</select>
+          <input type="text" name="graves.{{index}}.sequelle" value="{{sequelle}}" placeholder="{{localize 'BREVIAIRE.Fiche.sequelle'}}">
+          <button type="button" data-action="basculerBlessureGrave" data-index="{{index}}" aria-pressed="{{active}}"
+            title="{{#if active}}{{localize 'BREVIAIRE.Fiche.active'}}{{else}}{{localize 'BREVIAIRE.Fiche.soignee'}}{{/if}}">
+            <i class="fa-solid {{#if active}}fa-droplet{{else}}fa-bandage{{/if}}"></i>
+          </button>
+          <button type="button" data-action="supprimerBlessureGrave" data-index="{{index}}" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+        </li>
+        {{else}}
+        <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
+        {{/each}}
+      </ul>
+      <button type="button" class="brev-bouton" data-action="ajouterBlessureGrave"><i class="fa-solid fa-plus"></i> {{localize 'BREVIAIRE.Fiche.ajouterBlessureGrave'}}</button>
+    </div>
+    <div>
+      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}</span></h3>
+      <div class="brev-mort">
+        {{#each mort}}
+        <button type="button" class="brev-case {{#if coche}}pleine{{/if}}" data-action="mort" data-index="{{index}}" aria-pressed="{{coche}}"><i class="fa-solid fa-skull"></i></button>
+        {{/each}}
+        <label class="brev-case-texte"><input type="checkbox" name="system.mort.stabilise" {{checked system.mort.stabilise}}> {{localize 'BREVIAIRE.Etat.stabilise'}}</label>
+      </div>
+
+      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.suivi'}}</span></h3>
+      <div class="brev-champs brev-champs-court">
+        <label><span>{{localize 'BREVIAIRE.Fiche.missions'}}</span><input type="number" name="system.missions" value="{{system.missions}}" min="0"></label>
+        <label><span>{{localize 'BREVIAIRE.Fiche.protectionNaturelle'}}</span><input type="number" name="system.protectionNaturelle" value="{{system.protectionNaturelle}}" min="0"></label>
+      </div>
+      {{#if (eq camp "fideles")}}
+      <label class="brev-case-texte"><input type="checkbox" name="system.excommunie" {{checked system.excommunie}}> {{localize 'BREVIAIRE.Fiche.excommunie'}}</label>
+      {{/if}}
+    </div>
   </div>
 </section>

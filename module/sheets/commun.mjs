@@ -47,7 +47,9 @@ export function FicheBreviaire(Base) {
         supprimerObjet: this.#supprimerObjet,
         creerObjet: this.#creerObjet,
         basculerEquipe: this.#basculerEquipe,
-        changerImage: this.#changerImage
+        changerImage: this.#changerImage,
+        onglet: this.#onglet,
+        quantite: this.#quantite
       }
     };
 
@@ -84,11 +86,36 @@ export function FicheBreviaire(Base) {
       return context;
     }
 
-    /** Le thème suit le camp (variante sombre pour les Damnés). */
+    /** Le thème suit le camp (variante sombre pour les Damnés) ; l'onglet actif est réappliqué. */
     _onRender(context, options) {
       super._onRender?.(context, options);
       this.element.classList.toggle("camp-damnes", this.camp === "damnes");
       this.element.classList.toggle("camp-fideles", this.camp !== "damnes");
+      this.#afficherOnglet();
+    }
+
+    /** Onglets maison : un clic change l'onglet sans redessiner la fiche. */
+    static #onglet(event, target) {
+      this.tabGroups.primary = target.dataset.onglet;
+      this.#afficherOnglet();
+    }
+
+    #afficherOnglet() {
+      const actif = this.tabGroups.primary;
+      if (!actif) return;
+      for (const el of this.element.querySelectorAll("[data-onglet]")) {
+        const oui = el.dataset.onglet === actif;
+        el.classList.toggle("active", oui);
+        if (el.matches("button")) el.setAttribute("aria-selected", String(oui));
+      }
+    }
+
+    /** Quantité d'un objet : +1 / −1 (jamais sous 0). */
+    static async #quantite(event, target) {
+      const objet = this._objetDe(target);
+      if (!objet) return;
+      const q = Math.max(0, (objet.system.quantite ?? 0) + Number(target.dataset.delta));
+      await objet.update({ "system.quantite": q });
     }
 
     /** Objet possédé désigné par l'élément cliqué (ou un de ses parents). */

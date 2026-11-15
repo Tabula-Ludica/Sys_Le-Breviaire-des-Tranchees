@@ -5,10 +5,10 @@
   <label class="brev-large"><span>{{localize 'BREVIAIRE.Objet.dotation'}}</span><input type="text" name="system.dotation" value="{{system.dotation}}"></label>
   <label class="brev-large"><span>{{localize 'BREVIAIRE.Objet.note'}}</span><input type="text" name="system.note" value="{{system.note}}"></label>
 </div>
-<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Objet.specialitesFormees'}}</h3>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Objet.specialitesFormees'}}</span></h3>
 <multi-checkbox class="brev-multi" name="system.formes">{{selectOptions choix.specialites selected=formesListe}}</multi-checkbox>
-<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.substitutions'}}</h3>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.substitutions'}}</span></h3>
 <multi-checkbox class="brev-multi" name="system.substitutions">{{selectOptions choix.substitutions selected=substitutionsListe}}</multi-checkbox>
 {{> "systems/breviaire/templates/objet/usure-ajustements.hbs"}}
-<h3 class="brev-titre-section">{{localize 'BREVIAIRE.Fiche.description'}}</h3>
+<h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.description'}}</span></h3>
 {{formInput systemFields.description value=system.description enriched=descriptionHTML toggled=true}}

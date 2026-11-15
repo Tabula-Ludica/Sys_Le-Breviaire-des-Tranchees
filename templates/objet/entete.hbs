@@ -1,7 +1,9 @@
 <header class="brev-entete">
-  <img class="brev-portrait" src="{{document.img}}" alt="{{document.name}}" data-action="changerImage">
+  <div class="brev-cadre-portrait brev-cadre-petit">
+    <img class="brev-portrait" src="{{document.img}}" alt="{{document.name}}" data-action="changerImage">
+  </div>
   <div class="brev-identite">
     <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
-    <div class="brev-ligne"><span class="brev-etiquette">{{libelleType}}</span></div>
+    <div class="brev-ruban"><span class="brev-sceau-titre">{{libelleType}}</span></div>
   </div>
 </header>
