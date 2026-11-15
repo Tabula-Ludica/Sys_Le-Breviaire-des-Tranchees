@@ -1,6 +1,7 @@
 <section class="brev-page brev-ressources {{onglet.cssClass}}" data-onglet="ressources">
 
-  <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.usure'}}</span></h3>
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-hourglass-half"></i> {{localize 'BREVIAIRE.Fiche.usure'}}</h3>
   <div class="brev-grille-usure">
     {{#each usures}}
     <div class="brev-usure {{#if epuise}}brev-epuise{{/if}}">
@@ -18,35 +19,21 @@
     {{/each}}
   </div>
 
-  <h3 class="brev-titre-section"><span>{{corruption.label}}</span><small>{{corruption.etat}} · {{localize 'BREVIAIRE.Fiche.deSang'}} {{corruption.deSang}}</small></h3>
+  </div>
+
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-droplet"></i> {{corruption.label}} <small>{{corruption.etat}} · {{localize 'BREVIAIRE.Fiche.deSang'}} {{corruption.deSang}}</small></h3>
   <div class="brev-chapelet">
     {{#each corruption.cases}}
     <button type="button" class="brev-grain {{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}}" data-action="corruption" data-n="{{n}}" aria-label="{{n}}" aria-pressed="{{pleine}}">{{#if palier}}✠{{else}}{{n}}{{/if}}</button>
     {{/each}}
   </div>
 
-  <h3 class="brev-titre-section"><span>{{libelles.marques}}</span></h3>
-  <ul class="brev-cartes brev-marques">
-    {{#each marques}}
-    <li class="brev-carte" data-item-id="{{id}}">
-      <img src="{{img}}" alt="">
-      <div class="brev-carte-corps">
-        <b><span class="brev-chiffre">{{chiffre}}</span> {{titre}}</b>
-        <span class="brev-carte-texte">{{texte}}</span>
-      </div>
-      <div class="brev-carte-actions">
-        <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
-        <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
-      </div>
-    </li>
-    {{else}}
-    <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
-    {{/each}}
-  </ul>
+  </div>
 
   <div class="brev-deux-colonnes">
-    <div>
-      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.blessuresGraves'}}</span></h3>
+    <div class="brev-panneau">
+      <h3 class="brev-panneau-titre"><i class="fa-solid fa-bandage"></i> {{localize 'BREVIAIRE.Fiche.blessuresGraves'}}</h3>
       <ul class="brev-liste brev-graves">
         {{#each blessuresGraves}}
         <li class="{{#unless active}}brev-soignee{{/unless}}">
@@ -64,8 +51,8 @@
       </ul>
       <button type="button" class="brev-bouton brev-seulement-edition" data-action="ajouterBlessureGrave"><i class="fa-solid fa-plus"></i> {{localize 'BREVIAIRE.Fiche.ajouterBlessureGrave'}}</button>
     </div>
-    <div>
-      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.jetsDeMort'}}</span></h3>
+    <div class="brev-panneau">
+      <h3 class="brev-panneau-titre"><i class="fa-solid fa-skull"></i> {{localize 'BREVIAIRE.Fiche.jetsDeMort'}}</h3>
       <div class="brev-mort">
         {{#each mort}}
         <button type="button" class="brev-case {{#if coche}}pleine{{/if}}" data-action="mort" data-index="{{index}}" aria-pressed="{{coche}}"><i class="fa-solid fa-skull"></i></button>
@@ -74,7 +61,7 @@
       </div>
       <button type="button" class="brev-bouton" data-action="jetDeMort"><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Fiche.jetDeMort'}}</button>
 
-      <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.suivi'}}</span></h3>
+      <h3 class="brev-panneau-titre brev-sous-titre"><i class="fa-solid fa-feather"></i> {{localize 'BREVIAIRE.Fiche.suivi'}}</h3>
       <div class="brev-champs brev-champs-court">
         <label><span>{{localize 'BREVIAIRE.Fiche.missions'}}</span><input type="number" name="system.missions" value="{{system.missions}}" min="0"></label>
         <label><span>{{localize 'BREVIAIRE.Fiche.protectionNaturelle'}}</span><input type="number" name="system.protectionNaturelle" value="{{system.protectionNaturelle}}" min="0"></label>

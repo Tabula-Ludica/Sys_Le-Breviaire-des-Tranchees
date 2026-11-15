@@ -1,18 +1,44 @@
 <header class="brev-bandeau">
-  <div class="brev-bandeau-nom">
-    <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
-    <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{#if edition}}{{localize 'BREVIAIRE.Fiche.surnom'}}{{/if}}">
-    {{#if avecModeEdition}}
-    <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">
-      <span class="brev-interrupteur-piste"><span class="brev-interrupteur-bouton"></span></span>
-      <span>{{localize 'BREVIAIRE.Fiche.edition'}}</span>
-    </button>
-    {{/if}}
+  <div class="brev-bandeau-haut">
+    <div class="brev-bandeau-identite">
+      <div class="brev-bandeau-nom">
+        <input class="brev-nom" type="text" name="name" value="{{document.name}}" placeholder="{{localize 'BREVIAIRE.Fiche.nom'}}">
+        <input class="brev-surnom" type="text" name="system.histoire.surnom" value="{{system.histoire.surnom}}" placeholder="{{#if edition}}{{localize 'BREVIAIRE.Fiche.surnom'}}{{/if}}">
+      </div>
+      <div class="brev-ruban">
+        <select name="system.rang" aria-label="{{localize 'BREVIAIRE.Fiche.rang'}}">{{selectOptions rangs selected=system.rang}}</select>
+        {{#if system.affectation.nom}}<span class="brev-sep">✠</span><span>{{system.affectation.nom}}</span>{{/if}}
+        {{#if system.origine.nom}}<span class="brev-sep">✠</span><span>{{system.origine.nom}}</span>{{/if}}
+      </div>
+    </div>
+
+    <div class="brev-bandeau-droite">
+      {{#if avecModeEdition}}
+      <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">
+        <span class="brev-interrupteur-piste"><span class="brev-interrupteur-bouton"></span></span>
+        <span>{{localize 'BREVIAIRE.Fiche.edition'}}</span>
+      </button>
+      {{/if}}
+      <div class="brev-titre-bloc">
+        <div class="brev-sceau-missions" data-tooltip="{{localize 'BREVIAIRE.Fiche.missions'}}">
+          {{#if edition}}<input type="number" name="system.missions" value="{{system.missions}}" min="0">{{else}}<b>{{system.missions}}</b>{{/if}}
+        </div>
+        <div class="brev-titre-texte">
+          <span class="brev-titre-nom">{{titre}}</span>
+          <div class="brev-progression"><span style="width: {{#if progression}}{{progression.part}}{{else}}100{{/if}}%"></span></div>
+          <small>{{#if progression}}{{progression.prochain}} · {{progression.seuil}}{{else}}{{localize 'BREVIAIRE.Fiche.titreMax'}}{{/if}}</small>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="brev-ruban">
-    <select name="system.rang" aria-label="{{localize 'BREVIAIRE.Fiche.rang'}}">{{selectOptions rangs selected=system.rang}}</select>
-    {{#if system.affectation.nom}}<span class="brev-sep">✠</span><span>{{system.affectation.nom}}</span>{{/if}}
-    {{#if system.origine.nom}}<span class="brev-sep">✠</span><span>{{system.origine.nom}}</span>{{/if}}
-    <span class="brev-sceau-titre">{{titre}}</span>
+
+  <div class="brev-caracs-bandeau">
+    {{#each caracs}}
+    <div class="brev-carac-boite">
+      <button type="button" class="brev-carac-boite-nom" data-action="jet" data-carac="{{cle}}">{{label}}</button>
+      <input class="brev-carac-boite-valeur" type="number" name="system.caracs.{{cle}}" value="{{valeur}}" min="1" max="20" aria-label="{{label}}">
+      <button type="button" class="brev-carac-boite-de" data-action="jet" data-carac="{{cle}}" aria-label="{{label}}"><i class="fa-solid fa-dice-d20"></i></button>
+    </div>
+    {{/each}}
   </div>
 </header>

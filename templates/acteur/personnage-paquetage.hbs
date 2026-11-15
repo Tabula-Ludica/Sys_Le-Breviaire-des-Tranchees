@@ -8,10 +8,8 @@
   </div>
 
   {{!-- Armes --}}
-  <div class="brev-entete-liste">
-    <h3 class="brev-titre-section"><span><i class="fa-solid fa-gun"></i> {{localize 'BREVIAIRE.Fiche.armes'}}</span></h3>
-    <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="arme" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
-  </div>
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-gun"></i> {{localize 'BREVIAIRE.Fiche.armes'}} <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="arme" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button></h3>
   <ul class="brev-cartes">
     {{#each armes}}
     <li class="brev-carte {{#unless equipee}}brev-range{{/unless}} {{#if sacree}}brev-sacree{{/if}}" data-item-id="{{id}}">
@@ -42,12 +40,11 @@
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
   </ul>
+  </div>
 
   {{!-- Protections --}}
-  <div class="brev-entete-liste">
-    <h3 class="brev-titre-section"><span><i class="fa-solid fa-shield-halved"></i> {{localize 'BREVIAIRE.Fiche.protections'}}</span></h3>
-    <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="protection" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
-  </div>
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-shield-halved"></i> {{localize 'BREVIAIRE.Fiche.protections'}} <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="protection" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button></h3>
   <ul class="brev-cartes">
     {{#each protections}}
     <li class="brev-carte {{#unless equipee}}brev-range{{/unless}}" data-item-id="{{id}}">
@@ -68,12 +65,11 @@
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.glisser'}}</li>{{/each}}
   </ul>
+  </div>
 
   {{!-- Reliques --}}
-  <div class="brev-entete-liste">
-    <h3 class="brev-titre-section"><span><i class="fa-solid fa-cross"></i> {{localize 'BREVIAIRE.Fiche.reliques'}}</span></h3>
-    <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="relique" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
-  </div>
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-cross"></i> {{localize 'BREVIAIRE.Fiche.reliques'}} <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="relique" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button></h3>
   <ul class="brev-cartes">
     {{#each reliques}}
     <li class="brev-carte brev-relique {{#if utilisee}}brev-range{{/if}}" data-item-id="{{id}}">
@@ -90,12 +86,11 @@
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>{{/each}}
   </ul>
+  </div>
 
   {{!-- Équipement --}}
-  <div class="brev-entete-liste">
-    <h3 class="brev-titre-section"><span><i class="fa-solid fa-toolbox"></i> {{localize 'BREVIAIRE.Fiche.equipement'}}</span></h3>
-    <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="equipement" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button>
-  </div>
+  <div class="brev-panneau">
+  <h3 class="brev-panneau-titre"><i class="fa-solid fa-toolbox"></i> {{localize 'BREVIAIRE.Fiche.equipement'}} <button type="button" class="brev-ajout brev-seulement-edition" data-action="creerObjet" data-type="equipement" aria-label="{{localize 'BREVIAIRE.Fiche.ajouter'}}"><i class="fa-solid fa-plus"></i></button></h3>
   <ul class="brev-cartes brev-cartes-compactes">
     {{#each equipement}}
     <li class="brev-carte" data-item-id="{{id}}">
@@ -112,4 +107,5 @@
     </li>
     {{else}}<li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>{{/each}}
   </ul>
+  </div>
 </section>

@@ -1,46 +1,81 @@
 <section class="brev-page brev-front {{onglet.cssClass}}" data-onglet="front">
-  <p class="brev-legende">
-    <span class="brev-pips">○○</span> {{localize 'BREVIAIRE.RangSpecialite.0'}}
-    <span class="brev-pips">●○</span> {{localize 'BREVIAIRE.RangSpecialite.1'}} +2
-    <span class="brev-pips">●●</span> {{localize 'BREVIAIRE.RangSpecialite.2'}} +4
-    <span class="brev-coche-exemple">☑</span> {{localize 'BREVIAIRE.Fiche.cocheAide'}}
-  </p>
+  <div class="brev-front-grille">
 
-  <div class="brev-grille-caracs">
-    {{#each caracs}}
-    <div class="brev-bloc-carac">
-      <div class="brev-carac">
-        <button type="button" class="brev-carac-jet" data-action="jet" data-carac="{{cle}}">{{label}}</button>
-        <input class="brev-carac-valeur" type="number" name="system.caracs.{{cle}}" value="{{valeur}}" min="1" max="20" aria-label="{{label}}">
-      </div>
-      <ul class="brev-specialites">
-        {{#each specialites}}
-        <li class="brev-specialite rang-{{rang}}" data-specialite="{{cle}}">
-          <button type="button" class="brev-pips" data-action="rangSpecialite" title="{{rangLabel}}" aria-label="{{label}} : {{rangLabel}}">{{pips}}</button>
+    <div class="brev-panneau brev-panneau-specialites">
+      <h3 class="brev-panneau-titre"><i class="fa-solid fa-list-check"></i> {{localize 'BREVIAIRE.Fiche.specialites'}} <small>{{nbMaitrisees}}</small></h3>
+      <ul class="brev-lignes">
+        {{#each specialitesListe}}
+        <li class="brev-ligne-spe rang-{{rang}}" data-specialite="{{cle}}">
+          <button type="button" class="brev-pips" data-action="rangSpecialite" data-tooltip="{{rangLabel}}" aria-label="{{label}} : {{rangLabel}}">{{pips}}</button>
+          <span class="brev-abrev">{{abrev}}</span>
           <button type="button" class="brev-nom-jet" data-action="jet" data-specialite="{{cle}}">{{label}}</button>
-          <button type="button" class="brev-coche {{#if coche}}coche{{/if}}" data-action="coche" aria-pressed="{{coche}}" aria-label="{{localize 'BREVIAIRE.Fiche.coche'}}"></button>
+          <button type="button" class="brev-coche {{#if coche}}coche{{/if}}" data-action="coche" aria-pressed="{{coche}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.coche'}}" aria-label="{{localize 'BREVIAIRE.Fiche.coche'}}"></button>
           <span class="brev-score">{{score}}</span>
         </li>
         {{#each substitutions}}
-        <li class="brev-specialite brev-substitution" data-specialite="{{../cle}}">
+        <li class="brev-ligne-spe brev-substitution" data-specialite="{{../cle}}">
           <span class="brev-pips">↳</span>
-          <button type="button" class="brev-nom-jet" data-action="jet" data-specialite="{{../cle}}" data-substitution="{{cle}}">{{label}} <small>{{carac}}</small></button>
+          <span class="brev-abrev">{{caracAbrev}}</span>
+          <button type="button" class="brev-nom-jet" data-action="jet" data-specialite="{{../cle}}" data-substitution="{{cle}}">{{label}}</button>
           <span></span>
           <span class="brev-score">{{score}}</span>
         </li>
         {{/each}}
         {{/each}}
       </ul>
+      <p class="brev-legende">
+        <span class="brev-pips">●○</span> {{localize 'BREVIAIRE.RangSpecialite.1'}} +2
+        <span class="brev-pips">●●</span> {{localize 'BREVIAIRE.RangSpecialite.2'}} +4
+        <span class="brev-coche-exemple">☑</span> {{localize 'BREVIAIRE.Fiche.cocheAide'}}
+      </p>
     </div>
-    {{/each}}
-  </div>
 
-  <h3 class="brev-titre-section"><span>{{localize 'BREVIAIRE.Fiche.substitutions'}}</span></h3>
-  <div class="brev-puces">
-    {{#each substitutions}}
-    <button type="button" class="brev-puce {{#if possede}}active{{else}}brev-seulement-edition{{/if}}" data-action="substitution" data-substitution="{{cle}}" aria-pressed="{{possede}}">
-      <span>{{label}}</span><small>{{detail}}</small>
-    </button>
-    {{/each}}
+    <div class="brev-front-droite">
+      <div class="brev-panneau">
+        <h3 class="brev-panneau-titre"><i class="fa-solid fa-shuffle"></i> {{localize 'BREVIAIRE.Fiche.substitutions'}}</h3>
+        <div class="brev-puces">
+          {{#each substitutions}}
+          <button type="button" class="brev-puce {{#if possede}}active{{else}}brev-seulement-edition{{/if}}" data-action="substitution" data-substitution="{{cle}}" aria-pressed="{{possede}}">
+            <span>{{label}}</span><small>{{detail}}</small>
+          </button>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="brev-panneau">
+        <h3 class="brev-panneau-titre"><i class="fa-solid fa-layer-group"></i> {{localize 'BREVIAIRE.Fiche.arcanes'}}</h3>
+        <ul class="brev-arcanes-creation">
+          {{#each arcanesCreation}}
+          <li>
+            <div class="brev-mini-carte {{#unless nom}}vide{{/unless}}">{{#if img}}<img src="{{img}}" alt="">{{/if}}<span>{{chiffre}}</span></div>
+            <div>
+              <small>{{position}}</small>
+              <b>{{#if nom}}{{nom}}{{else}}{{localize 'BREVIAIRE.Fiche.aucunArcane'}}{{/if}}</b>
+              {{#if reponse}}<em>{{reponse}}</em>{{/if}}
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="brev-panneau">
+        <h3 class="brev-panneau-titre"><i class="fa-solid fa-hand-sparkles"></i> {{libelles.marques}}</h3>
+        <ul class="brev-marques-liste">
+          {{#each marques}}
+          <li data-item-id="{{id}}">
+            <img src="{{img}}" alt="">
+            <div class="brev-carte-corps">
+              <b><span class="brev-chiffre">{{chiffre}}</span> {{titre}}</b>
+              <span class="brev-carte-texte">{{texte}}</span>
+            </div>
+            <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
+            <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
+          </li>
+          {{else}}
+          <li class="brev-vide">{{localize 'BREVIAIRE.Fiche.aucune'}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

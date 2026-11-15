@@ -5,7 +5,7 @@
  */
 
 import { CARACS, SPECIALITES, SUBSTITUTIONS, USURES, RANGS, BLESSURES_GRAVES } from "../config.mjs";
-import { FACES, CRAN_MAX, CORRUPTION_MAX, changerCran } from "../logique/regles.mjs";
+import { FACES, CRAN_MAX, CORRUPTION_MAX, TITRES, changerCran } from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
 import { FicheBreviaire, CHEMIN, loc, libelleCran, choixLocalises, enrichir } from "./commun.mjs";
 import { lancerJet } from "../jets/moteur.mjs";
@@ -81,11 +81,19 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
               cle: sub,
               label: loc(`BREVIAIRE.Substitution.${sub}`),
               carac: loc(`BREVIAIRE.Carac.${d.carac}`),
+              caracAbrev: loc(`BREVIAIRE.CaracAbrev.${d.carac}`),
               score: sys.scoresSubstitution[sub]
             }))
         };
       })
     }));
+
+    // Liste des Spécialités façon « compétences » de dnd5e : ordre alphabétique, abréviation de la caractéristique
+    const lang = game.i18n.lang;
+    context.specialitesListe = context.caracs
+      .flatMap(c => c.specialites.map(s => ({ ...s, carac: c.cle, abrev: loc(`BREVIAIRE.CaracAbrev.${c.cle}`) })))
+      .sort((a, b) => a.label.localeCompare(b.label, lang));
+    context.nbMaitrisees = context.specialitesListe.filter(s => s.rang > 0).length;
 
     context.substitutions = Object.entries(SUBSTITUTIONS).map(([cle, d]) => ({
       cle,
@@ -136,6 +144,22 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     context.rangs = Object.fromEntries(RANGS.map(r => [r, t(`Rang.${r}`)]));
     context.rangLabel = context.rangs[sys.rang];
     context.titre = loc(`BREVIAIRE.Titre.${sys.titre}`);
+    // Progression vers le titre suivant (comme la barre d'expérience de dnd5e)
+    const iTitre = TITRES.findIndex(x => x.cle === sys.titre);
+    const prochain = TITRES[iTitre + 1];
+    context.progression = prochain ? {
+      prochain: loc(`BREVIAIRE.Titre.${prochain.cle}`),
+      seuil: prochain.missions,
+      part: Math.round(100 * (sys.missions - TITRES[iTitre].missions) / (prochain.missions - TITRES[iTitre].missions))
+    } : null;
+
+    // Les trois arcanes de création
+    const POSITIONS = [["passe", "Passe"], ["serment", "Serment"], ["peche", "Peche"]];
+    context.arcanesCreation = POSITIONS.map(([cle, lex]) => {
+      const a = sys.arcanesCreation[cle];
+      const carte = a.uuid ? fromUuidSync(a.uuid) : null;
+      return { cle, position: t(lex), nom: carte?.name ?? null, chiffre: carte?.system?.chiffre ?? "?", reponse: a.reponse, img: carte?.img };
+    });
     context.libelles = {
       foi: t("Foi"), corruption: t("Corruption"), marques: t("Marques"), rites: t("Rites"),
       chapelet: t("Chapelet"), passe: t("Passe"), serment: t("Serment"), peche: t("Peche")

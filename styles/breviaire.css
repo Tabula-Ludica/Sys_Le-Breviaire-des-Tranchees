@@ -1332,3 +1332,211 @@ body.vade-touch .brev-carte-jet .brev-cj-boutons button { min-height: 44px; }
 .breviaire.fiche.brev-lecture .brev-portrait { cursor: default; }
 /* En mode édition, un liseré rappelle qu'on modifie la fiche */
 .breviaire.fiche.brev-edition .window-content .brev-carac-valeur { outline: 1px dashed var(--brev-or-clair); outline-offset: 3px; }
+
+/* =====================================================================
+   Présentation façon dnd5e : caractéristiques dans le bandeau,
+   panneaux à coins coupés, liste des Spécialités comme les compétences.
+   ===================================================================== */
+
+/* ---------- Panneaux à coins coupés ---------- */
+.breviaire .brev-panneau {
+  --coin: 12px;
+  --panneau-fond: linear-gradient(180deg, #e3d2a8 0%, #d3bd8b 100%);
+  position: relative;
+  isolation: isolate;
+  padding: .55rem .8rem .8rem;
+  margin-bottom: .9rem;
+  background: linear-gradient(180deg, #c9a75e, #7c5a1e);
+  clip-path: polygon(var(--coin) 0, calc(100% - var(--coin)) 0, 100% var(--coin), 100% calc(100% - var(--coin)), calc(100% - var(--coin)) 100%, var(--coin) 100%, 0 calc(100% - var(--coin)), 0 var(--coin));
+}
+.breviaire .brev-panneau::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--brev-grain), var(--panneau-fond);
+  background-blend-mode: multiply, normal;
+  clip-path: polygon(calc(var(--coin) - 1px) 0, calc(100% - var(--coin) + 1px) 0, 100% calc(var(--coin) - 1px), 100% calc(100% - var(--coin) + 1px), calc(100% - var(--coin) + 1px) 100%, calc(var(--coin) - 1px) 100%, 0 calc(100% - var(--coin) + 1px), 0 calc(var(--coin) - 1px));
+}
+.breviaire .brev-panneau::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid rgba(124, 90, 30, .28);
+  clip-path: inherit;
+}
+.breviaire.camp-damnes .brev-panneau {
+  --panneau-fond: linear-gradient(180deg, #2f251e 0%, #1c1612 100%);
+  background: linear-gradient(180deg, #b48a4a, #5c4220);
+}
+.breviaire .brev-panneau-titre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  margin: 0 0 .5rem;
+  padding: 0 0 .35rem;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--brev-sang);
+  border-bottom: 1px solid rgba(124, 90, 30, .4);
+}
+.breviaire .brev-panneau-titre i { color: var(--brev-or); font-size: .9em; }
+.breviaire .brev-panneau-titre small { font-family: var(--brev-serif); font-size: .85rem; letter-spacing: 0; text-transform: none; color: var(--brev-encre-douce); }
+.breviaire.fiche .window-content .brev-panneau-titre .brev-ajout { position: absolute; right: .6rem; top: .35rem; min-height: 28px; min-width: 28px; width: 28px; height: 28px; }
+body.vade-touch .breviaire.fiche .window-content .brev-panneau-titre .brev-ajout { width: 40px; height: 40px; top: .1rem; }
+.breviaire .brev-sous-titre { margin-top: .9rem; }
+.breviaire .brev-panneau .brev-cartes .brev-carte { box-shadow: none; }
+
+/* ---------- Bandeau ---------- */
+.breviaire .brev-bandeau { gap: .5rem; padding-block: .8rem .9rem; }
+.breviaire .brev-bandeau-haut { display: flex; flex-wrap: wrap; align-items: flex-start; gap: .6rem 1rem; }
+.breviaire .brev-bandeau-identite { flex: 1 1 18rem; min-width: 0; display: flex; flex-direction: column; gap: .2rem; }
+.breviaire .brev-bandeau-droite { display: flex; flex-direction: column; align-items: flex-end; gap: .45rem; }
+.breviaire .brev-bandeau .brev-ruban { margin-top: 0; }
+.breviaire.fiche .window-content .brev-bandeau .brev-interrupteur { margin-left: 0; }
+
+/* Médaillon des missions et barre de progression du titre (comme le niveau et l'XP) */
+.breviaire .brev-titre-bloc { display: flex; align-items: center; gap: .6rem; }
+.breviaire .brev-sceau-missions {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 40%, #3b2f25, #120d0a);
+  border: 2px solid var(--brev-or-clair);
+  box-shadow: 0 0 0 3px #1d1712, 0 0 0 4px var(--brev-or), 0 3px 8px rgba(0, 0, 0, .6);
+}
+.breviaire .brev-sceau-missions b { font-size: 1.6rem; color: #f3e3c0; }
+.breviaire.fiche .window-content .brev-sceau-missions input { width: 2.8rem; min-height: 2rem; padding: 0; font-size: 1.3rem; font-weight: 600; text-align: center; color: #f3e3c0; background: transparent; border: none; box-shadow: none; }
+.breviaire .brev-titre-texte { display: flex; flex-direction: column; gap: .2rem; min-width: 8rem; }
+.breviaire .brev-titre-nom { font-family: var(--brev-capitales); font-weight: 600; font-size: 1.1rem; letter-spacing: .12em; text-transform: uppercase; color: var(--brev-or-clair); }
+.breviaire .brev-progression { height: 6px; background: rgba(0, 0, 0, .55); border: 1px solid var(--brev-or); border-radius: 3px; overflow: hidden; }
+.breviaire .brev-progression span { display: block; height: 100%; background: linear-gradient(90deg, #8a6a2a, #e2c482); }
+.breviaire .brev-titre-texte small { color: #b9a685; font-size: .78rem; }
+
+/* Caractéristiques : boîtes de cuir à coins coupés */
+.breviaire .brev-caracs-bandeau { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; margin-top: .2rem; }
+.breviaire .brev-carac-boite {
+  --coin: 9px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .3rem .3rem .35rem;
+  background: linear-gradient(180deg, #d6b773, #6d4e24);
+  clip-path: polygon(var(--coin) 0, calc(100% - var(--coin)) 0, 100% var(--coin), 100% 100%, 0 100%, 0 var(--coin));
+}
+.breviaire .brev-carac-boite::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: linear-gradient(180deg, #3a2e24, #16110d);
+  clip-path: polygon(calc(var(--coin) - 1px) 0, calc(100% - var(--coin) + 1px) 0, 100% calc(var(--coin) - 1px), 100% 100%, 0 100%, 0 calc(var(--coin) - 1px));
+}
+.breviaire.fiche .window-content .brev-carac-boite-nom {
+  min-height: 1.5rem;
+  padding: 0;
+  font-family: var(--brev-capitales);
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--brev-or-clair);
+}
+.breviaire.fiche .window-content .brev-carac-boite-valeur {
+  width: 100%;
+  max-width: 4rem;
+  min-height: 2.3rem;
+  padding: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f6ead0;
+  -webkit-text-fill-color: #f6ead0;
+  text-align: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  -moz-appearance: textfield;
+}
+.breviaire .brev-carac-boite-valeur::-webkit-inner-spin-button { -webkit-appearance: none; }
+.breviaire.fiche.brev-edition .window-content .brev-carac-boite-valeur { outline: 1px dashed var(--brev-or-clair); outline-offset: -2px; }
+.breviaire.fiche .window-content .brev-carac-boite-de {
+  min-height: 1.5rem;
+  width: 100%;
+  font-size: .8rem;
+  color: #1d1712;
+  background: var(--brev-or-degrade);
+  border-radius: 2px;
+}
+.breviaire.camp-damnes .brev-carac-boite::before { background: linear-gradient(180deg, #2a0f0a, #0d0806); }
+
+/* ---------- Front ---------- */
+.breviaire .brev-front-grille { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 0 .9rem; align-items: start; }
+.breviaire .brev-lignes { list-style: none; margin: 0; padding: 0; }
+.breviaire .brev-ligne-spe {
+  display: grid;
+  grid-template-columns: 1.9rem 2.4rem minmax(0, 1fr) 1.9rem 2.2rem;
+  align-items: center;
+  min-height: var(--brev-cible);
+  border-bottom: 1px solid rgba(124, 90, 30, .2);
+}
+.breviaire .brev-ligne-spe:nth-child(even) { background: rgba(255, 255, 255, .12); }
+.breviaire.camp-damnes .brev-ligne-spe:nth-child(even) { background: rgba(255, 255, 255, .03); }
+.breviaire .brev-ligne-spe:last-child { border-bottom: none; }
+.breviaire .brev-abrev { font-family: var(--brev-capitales); font-weight: 600; font-size: .8rem; letter-spacing: .08em; color: var(--brev-or); }
+.breviaire .brev-ligne-spe.rang-0 .brev-nom-jet { color: var(--brev-encre-douce); }
+.breviaire .brev-ligne-spe.rang-1 .brev-nom-jet { font-weight: 500; }
+.breviaire .brev-ligne-spe.rang-2 .brev-nom-jet { font-weight: 600; color: var(--brev-sang); }
+.breviaire .brev-ligne-spe.rang-2 { background: linear-gradient(90deg, rgba(168, 132, 63, .25), transparent 75%) !important; }
+.breviaire .brev-ligne-spe .brev-score { justify-self: end; }
+.breviaire .brev-ligne-spe.rang-0 .brev-score { color: var(--brev-encre-douce); font-weight: 500; border-color: transparent; }
+.breviaire .brev-ligne-spe.brev-substitution .brev-nom-jet { font-style: italic; }
+.breviaire .brev-panneau .brev-legende { margin: .5rem 0 0; justify-content: center; }
+
+.breviaire .brev-arcanes-creation { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .45rem; }
+.breviaire .brev-arcanes-creation li { display: flex; align-items: center; gap: .6rem; }
+.breviaire .brev-arcanes-creation li > div:last-child { display: flex; flex-direction: column; min-width: 0; }
+.breviaire .brev-arcanes-creation small { font-family: var(--brev-capitales); font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brev-or); font-size: .75rem; }
+.breviaire .brev-arcanes-creation em { font-size: .88rem; color: var(--brev-encre-douce); }
+.breviaire .brev-mini-carte {
+  position: relative;
+  flex: none;
+  width: 2.3rem;
+  height: 3.9rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--brev-or);
+  border-radius: 3px;
+  background: linear-gradient(180deg, #3a2e24, #16110d);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .35);
+  overflow: hidden;
+}
+.breviaire .brev-mini-carte img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.breviaire .brev-mini-carte span { position: relative; font-family: var(--brev-capitales); font-weight: 600; font-size: .8rem; color: var(--brev-or-clair); text-shadow: 0 1px 2px #000; }
+.breviaire .brev-mini-carte.vide { opacity: .5; }
+
+.breviaire .brev-marques-liste { list-style: none; margin: 0; padding: 0; }
+.breviaire .brev-marques-liste li { display: flex; align-items: center; gap: .45rem; padding: .3rem 0; border-bottom: 1px solid rgba(124, 90, 30, .2); }
+.breviaire .brev-marques-liste li:last-child { border-bottom: none; }
+.breviaire .brev-marques-liste img { width: 38px; height: 38px; flex: none; border: 1px solid var(--brev-or); object-fit: cover; }
+
+.breviaire.fiche:not(.brev-etroit) > .brev-onglets { top: 11rem; }
+
+/* Étroit */
+.breviaire.brev-etroit .brev-caracs-bandeau { grid-template-columns: repeat(5, minmax(3.6rem, 1fr)); overflow-x: auto; }
+.breviaire.brev-etroit .brev-front-grille { grid-template-columns: 1fr; }
+.breviaire.brev-etroit .brev-bandeau-droite { flex-direction: row-reverse; align-items: center; width: 100%; justify-content: space-between; }
+@container (max-width: 640px) {
+  .breviaire .brev-front-grille { grid-template-columns: 1fr; }
+}
+.breviaire .brev-bandeau::after { content: none; }

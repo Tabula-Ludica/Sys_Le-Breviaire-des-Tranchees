@@ -311,7 +311,12 @@
       "autres": "Autres jets",
       "riteBientot": "La célébration des rites arrive avec la réserve commune (étape 4).",
       "edition": "Édition",
-      "editionAide": "Mode édition : modifier le nom, les caractéristiques, les Spécialités et le paquetage. Désactivé : mode jeu."
+      "editionAide": "Mode édition : modifier le nom, les caractéristiques, les Spécialités et le paquetage. Désactivé : mode jeu.",
+      "maitrisees": "{n} maîtrisées",
+      "versTitre": "{titre} à {seuil} missions",
+      "titreMax": "Titre le plus haut",
+      "aucunArcane": "Pas encore tiré",
+      "jetsEtSuivi": "Mort et suivi"
     },
     "Objet": {
       "categorie": "Catégorie",
@@ -396,6 +401,13 @@
       "degats": "Dégâts",
       "degatsDe": "Dégâts : {arme}",
       "avantProtection": "Avant Protection."
+    },
+    "CaracAbrev": {
+      "chair": "CHA",
+      "nerf": "NER",
+      "esprit": "ESP",
+      "verbe": "VER",
+      "ame": "ÂME"
     }
   }
 }
