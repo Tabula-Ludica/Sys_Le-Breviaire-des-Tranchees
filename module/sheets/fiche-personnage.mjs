@@ -41,7 +41,6 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
   static PARTS = {
     entete: { template: `${CHEMIN}/acteur/personnage-entete.hbs` },
-    onglets: { template: `${CHEMIN}/partiels/onglets.hbs` },
     front: { template: `${CHEMIN}/acteur/personnage-front.hbs`, scrollable: [""] },
     ressources: { template: `${CHEMIN}/acteur/personnage-ressources.hbs`, scrollable: [""] },
     paquetage: { template: `${CHEMIN}/acteur/personnage-paquetage.hbs`, scrollable: [""] },

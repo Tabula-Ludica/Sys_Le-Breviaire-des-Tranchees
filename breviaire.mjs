@@ -21,7 +21,6 @@ const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "r
 
 /** Gabarits partagés : préchargés et enregistrés comme partiels. */
 const PARTIELS = [
-  "partiels/onglets.hbs",
   "objet/usure-ajustements.hbs",
   ...TYPES_OBJET.map(t => `objet/${t}.hbs`)
 ].map(p => `systems/breviaire/templates/${p}`);

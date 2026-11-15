@@ -86,12 +86,53 @@ export function FicheBreviaire(Base) {
       return context;
     }
 
+    /** Largeur sous laquelle les onglets latéraux repassent en barre horizontale. */
+    static LARGEUR_ETROITE = 560;
+
+    #observateur = null;
+
+    /**
+     * Onglets latéraux (comme dnd5e) : la barre est créée une fois, hors du contenu de la fenêtre,
+     * pour pouvoir dépasser sur le bord droit. Fenêtre étroite ou panneau Vade : barre horizontale.
+     */
+    async _onFirstRender(context, options) {
+      await super._onFirstRender?.(context, options);
+      if (!this.constructor.ONGLETS.length) return;
+      const nav = document.createElement("nav");
+      nav.className = "brev-onglets";
+      nav.setAttribute("role", "tablist");
+      nav.innerHTML = this.constructor.ONGLETS.map(o => {
+        const label = loc(o.label ?? `BREVIAIRE.Onglet.${o.id}`);
+        return `<button type="button" class="brev-onglet" role="tab" data-action="onglet" data-onglet="${o.id}"
+          data-tooltip="${label}" data-tooltip-direction="RIGHT" aria-label="${label}">
+          <i class="${o.icone}" inert></i><span>${label}</span></button>`;
+      }).join("");
+      this.element.querySelector(".window-content")?.before(nav);
+      this.element.classList.add("brev-avec-onglets");
+
+      this.#observateur = new ResizeObserver(() => this.#adapterLargeur());
+      this.#observateur.observe(this.element);
+    }
+
+    #adapterLargeur() {
+      const etroit = this.element.offsetWidth < this.constructor.LARGEUR_ETROITE
+        || this.element.classList.contains("vade-panel");
+      this.element.classList.toggle("brev-etroit", etroit);
+    }
+
+    _onClose(options) {
+      this.#observateur?.disconnect();
+      this.#observateur = null;
+      super._onClose?.(options);
+    }
+
     /** Le thème suit le camp (variante sombre pour les Damnés) ; l'onglet actif est réappliqué. */
     _onRender(context, options) {
       super._onRender?.(context, options);
       this.element.classList.toggle("camp-damnes", this.camp === "damnes");
       this.element.classList.toggle("camp-fideles", this.camp !== "damnes");
       this.#afficherOnglet();
+      if (this.#observateur) this.#adapterLargeur();
     }
 
     /** Onglets maison : un clic change l'onglet sans redessiner la fiche. */

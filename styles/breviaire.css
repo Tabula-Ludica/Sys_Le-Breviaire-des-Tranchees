@@ -304,39 +304,6 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire .brev-alerte { border-color: var(--brev-sang-vif); box-shadow: 0 0 0 2px var(--brev-sang-vif), var(--brev-ombre); }
 .breviaire .brev-compteur { display: flex; align-items: center; gap: .3rem; }
 
-/* ---------- Onglets : signets ---------- */
-.breviaire .brev-onglets {
-  display: flex;
-  gap: .25rem;
-  padding-top: .6rem;
-  border-bottom: 2px solid var(--brev-sang);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.breviaire.fiche .window-content .brev-onglet {
-  flex: 1 0 auto;
-  gap: .45rem;
-  padding: .3rem .8rem;
-  border: 1px solid var(--brev-trait);
-  border-bottom: none;
-  border-radius: 4px 4px 0 0;
-  font-family: var(--brev-capitales);
-  font-weight: 600;
-  font-size: 1.02rem;
-  letter-spacing: .07em;
-  color: var(--brev-encre-douce);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .25), rgba(0, 0, 0, .04));
-}
-.breviaire.fiche.camp-damnes .window-content .brev-onglet { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
-.breviaire.fiche .window-content .brev-onglet i { color: var(--brev-or); }
-.breviaire.fiche .window-content .brev-onglet.active {
-  color: var(--brev-sur-sang);
-  background: var(--brev-sang-degrade);
-  border-color: var(--brev-sang);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
-}
-.breviaire.fiche .window-content .brev-onglet.active i { color: var(--brev-or-clair); }
-
 .breviaire .brev-page { display: none; padding-block: .8rem 1.4rem; }
 .breviaire .brev-page.active { display: block; }
 
@@ -651,8 +618,6 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
   .breviaire .brev-medaillon { min-width: 0; padding-inline: .2rem; }
   .breviaire .brev-medaillon-blessures { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; padding-inline: .7rem; }
   .breviaire .brev-medaillon b { font-size: 1.3rem; }
-  .breviaire.fiche .window-content .brev-onglet span { display: none; }
-  .breviaire.fiche .window-content .brev-onglet i { font-size: 1.15rem; }
   .breviaire .brev-grille-caracs, .breviaire .brev-champs, .breviaire .brev-cartes { grid-template-columns: 1fr; }
   .breviaire .brev-sceau-titre { margin-left: 0; }
 }
@@ -721,8 +686,7 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 }
 
 /* Bandeau de cuir : entête + onglets */
-.breviaire.fiche .window-content > .brev-entete,
-.breviaire.fiche .window-content > .brev-onglets {
+.breviaire.fiche .window-content > .brev-entete {
   background:
     var(--brev-grain),
     linear-gradient(180deg, var(--brev-cuir-2), var(--brev-cuir));
@@ -747,18 +711,6 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire.fiche .window-content > .brev-entete .brev-cadre-portrait::after { background: var(--brev-cuir); color: var(--brev-or-clair); }
 .breviaire.fiche .window-content > .brev-entete select option { color: #1a1410; }
 
-.breviaire.fiche .window-content > .brev-onglets {
-  padding-top: .1rem;
-  border-bottom: 3px solid var(--brev-sang);
-  box-shadow: 0 6px 12px -6px rgba(0, 0, 0, .6);
-}
-.breviaire.fiche .window-content .brev-onglets .brev-onglet {
-  color: #b9a685;
-  border-color: rgba(239, 226, 198, .15);
-  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(0, 0, 0, .25));
-}
-.breviaire.fiche .window-content .brev-onglets .brev-onglet.active { color: var(--brev-sur-sang); background: var(--brev-sang-degrade); border-color: var(--brev-sang); }
-
 /* Blocs du contenu plus profonds */
 .breviaire.camp-fideles .brev-bloc-carac,
 .breviaire.camp-fideles .brev-carte,
@@ -770,3 +722,75 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire.camp-fideles .brev-stat { background: linear-gradient(180deg, #dcc89c, #b9a06e); }
 .breviaire.fiche.camp-fideles { --brev-or: #85651f; }
 .breviaire.fiche.camp-fideles .window-content > .brev-entete { --brev-or: #b8975a; }
+
+/* =====================================================================
+   Onglets latéraux (comme dnd5e) : signets de cuir qui dépassent
+   sur le bord droit. Fenêtre étroite ou panneau Vade : barre horizontale.
+   ===================================================================== */
+.breviaire.fiche.brev-avec-onglets:not(.brev-etroit):not(.minimized) { overflow: visible; }
+.breviaire.fiche.minimized > .brev-onglets { display: none; }
+
+.breviaire.fiche > .brev-onglets {
+  position: absolute;
+  left: 100%;
+  top: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.breviaire.fiche > .brev-onglets .brev-onglet {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  margin: 0;
+  padding: 0 .2rem 0 0;
+  font-size: 1.15rem;
+  color: var(--brev-or-clair);
+  background:
+    var(--brev-grain),
+    linear-gradient(90deg, var(--brev-cuir), var(--brev-cuir-2));
+  background-blend-mode: soft-light, normal;
+  border: 1px solid var(--brev-or);
+  border-left: none;
+  border-radius: 0 7px 7px 0;
+  box-shadow: 3px 2px 6px rgba(0, 0, 0, .45);
+  cursor: pointer;
+  transition: transform .12s ease, width .12s ease;
+}
+.breviaire.fiche > .brev-onglets .brev-onglet span { display: none; }
+.breviaire.fiche > .brev-onglets .brev-onglet.active {
+  width: 3.3rem;
+  color: var(--brev-sur-sang);
+  background: var(--brev-sang-degrade);
+  border-color: var(--brev-or-clair);
+}
+.breviaire.fiche > .brev-onglets .brev-onglet:focus-visible { outline: 2px solid var(--brev-sang-vif); outline-offset: 1px; }
+@media (hover: hover) {
+  .breviaire.fiche > .brev-onglets .brev-onglet:not(.active):hover { width: 3.15rem; color: #fff1d6; }
+}
+
+/* Mode étroit : barre horizontale sous la barre de titre */
+.breviaire.fiche.brev-etroit > .brev-onglets {
+  position: static;
+  flex-direction: row;
+  gap: .25rem;
+  padding: .3rem .6rem 0;
+  background:
+    var(--brev-grain),
+    linear-gradient(180deg, var(--brev-cuir-2), var(--brev-cuir));
+  background-blend-mode: soft-light, normal;
+  border-bottom: 3px solid var(--brev-sang);
+}
+.breviaire.fiche.brev-etroit > .brev-onglets .brev-onglet,
+.breviaire.fiche.brev-etroit > .brev-onglets .brev-onglet.active {
+  flex: 1;
+  width: auto;
+  height: var(--brev-cible);
+  padding: 0;
+  border: 1px solid rgba(239, 226, 198, .15);
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  box-shadow: none;
+}
+.breviaire.fiche.brev-etroit > .brev-onglets .brev-onglet.active { background: var(--brev-sang-degrade); border-color: var(--brev-sang); }
