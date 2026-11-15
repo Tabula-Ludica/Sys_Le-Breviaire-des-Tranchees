@@ -1553,3 +1553,13 @@ body.vade-touch .breviaire.fiche .window-content .brev-panneau-titre .brev-ajout
 }
 .breviaire.dialogue-jet.brev-sombre .brev-forcer-option { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
 .breviaire.dialogue-jet.brev-sombre select option { color: #1a1410; }
+
+/* Spécialités plus compactes */
+.breviaire .brev-ligne-spe { min-height: 30px; font-size: .88rem; grid-template-columns: 1.7rem 2.1rem minmax(0, 1fr) 1.7rem 2rem; }
+.breviaire.fiche .window-content .brev-ligne-spe button { min-height: 28px; font-size: .88rem; }
+.breviaire .brev-ligne-spe .brev-pips { font-size: .8rem; }
+.breviaire .brev-ligne-spe .brev-abrev { font-size: .7rem; }
+.breviaire .brev-ligne-spe .brev-score { font-size: .95rem; }
+.breviaire.fiche .window-content .brev-ligne-spe .brev-coche::before { font-size: .95rem; }
+body.vade-touch .breviaire .brev-ligne-spe { min-height: 40px; }
+body.vade-touch .breviaire.fiche .window-content .brev-ligne-spe button { min-height: 38px; }
