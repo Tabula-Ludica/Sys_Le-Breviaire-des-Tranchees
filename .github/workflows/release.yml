@@ -1,0 +1,73 @@
+name: Release
+
+# Publie system.json et breviaire.zip quand une release GitHub est publiée.
+#
+# Le tag donne la version : on retire les lettres du début (v0.1.0 → 0.1.0).
+#
+# Lien de manifeste écrit dans system.json :
+#   - release normale : .../releases/latest/download/system.json (suit la dernière stable)
+#   - pré-version    : .../releases/download/<tag>/system.json (reste sur cette version)
+#
+# Le lien du manifeste est ajouté à la fin de la description de la release.
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Tests des règles
+        run: node --test
+
+      - name: Préparer la version et le manifeste
+        id: manifeste
+        env:
+          PRERELEASE: ${{ github.event.release.prerelease }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="$(echo "$TAG" | sed -E 's/^[A-Za-z]+//')"
+          BASE="https://github.com/${GITHUB_REPOSITORY}/releases"
+          if [ "$PRERELEASE" = "true" ]; then
+            MANIFEST="${BASE}/download/${TAG}/system.json"
+          else
+            MANIFEST="${BASE}/latest/download/system.json"
+          fi
+          echo "Version ${VERSION} — manifeste ${MANIFEST}"
+          echo "manifest=${MANIFEST}" >> "$GITHUB_OUTPUT"
+          jq --arg v "$VERSION" \
+             --arg d "${BASE}/download/${TAG}/breviaire.zip" \
+             --arg m "$MANIFEST" \
+             '.version = $v | .download = $d | .manifest = $m' system.json > system.tmp.json
+          mv system.tmp.json system.json
+
+      - name: Créer l'archive
+        run: zip -r breviaire.zip system.json breviaire.mjs module styles lang README.md
+
+      - name: Joindre à la release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            system.json
+            breviaire.zip
+
+      - name: Ajouter le lien du manifeste à la description
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MANIFEST: ${{ steps.manifeste.outputs.manifest }}
+        run: |
+          NOTES="$(gh release view "$GITHUB_REF_NAME" --json body -q .body)"
+          if ! printf '%s' "$NOTES" | grep -qF "$MANIFEST"; then
+            printf '%s\n\n---\n\n**Manifeste :**\n```\n%s\n```\n' "$NOTES" "$MANIFEST" > notes.md
+            gh release edit "$GITHUB_REF_NAME" --notes-file notes.md
+          fi
