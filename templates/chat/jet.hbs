@@ -33,11 +33,17 @@
   </ul>
   {{/if}}
 
-  {{#if (or boutons.prier boutons.pactiser boutons.degats boutons.soigner)}}
+  {{#if opposition}}<p class="brev-cj-arcane brev-cj-opposition"><i class="fa-solid fa-shield-halved"></i> {{opposition}}</p>{{/if}}
+
+  {{#if (or boutons.prier boutons.pactiser boutons.degats boutons.soigner boutons.defense)}}
   <div class="brev-cj-boutons">
     {{#if boutons.prier}}<button type="button" data-brev-action="prier"><i class="fa-solid fa-hands-praying"></i> {{libelles.prier}}</button>{{/if}}
     {{#if boutons.pactiser}}<button type="button" data-brev-action="pactiser"><i class="fa-solid fa-droplet"></i> {{libelles.pactiser}}</button>{{/if}}
     {{#if boutons.soigner}}<button type="button" data-brev-action="soigner"><i class="fa-solid fa-kit-medical"></i> {{localize 'BREVIAIRE.Utiliser.appliquerSoins'}}</button>{{/if}}
+    {{#if boutons.defense}}
+    <button type="button" data-brev-action="defense-melee"><i class="fa-solid fa-shield"></i> {{localize 'BREVIAIRE.Combat.opposition.parer'}}</button>
+    <button type="button" data-brev-action="defense-esquive"><i class="fa-solid fa-person-running"></i> {{localize 'BREVIAIRE.Combat.opposition.esquiver'}}</button>
+    {{/if}}
     {{#if boutons.degats}}<button type="button" data-brev-action="degats"><i class="fa-solid fa-burst"></i> {{localize 'BREVIAIRE.Jet.degats'}}</button>{{/if}}
   </div>
   {{/if}}

@@ -56,6 +56,7 @@ export function rendreWidget() {
       <button type="button" data-r="escouade" data-tooltip="${loc("BREVIAIRE.Reserve.escouade")}"><i class="fa-solid fa-users"></i></button>
       <button type="button" data-r="scene" data-tooltip="${loc("BREVIAIRE.Reserve.finScene")}"><i class="fa-solid fa-clapperboard"></i></button>
       <button type="button" data-r="session" data-tooltip="${fmt("BREVIAIRE.Reserve.session", { tentation: t("Tentation") })}"><i class="fa-solid fa-moon"></i></button>
+      <button type="button" data-r="embuscade" data-tooltip="${loc("BREVIAIRE.Reserve.embuscade")}"><i class="fa-solid fa-eye-slash"></i></button>
       <button type="button" data-r="arriere" data-tooltip="${loc("BREVIAIRE.Arriere.ouvrirEscouade")}"><i class="fa-solid fa-campground"></i></button>
     </div>` : ""}`;
 }
@@ -86,6 +87,20 @@ async function onClick(event) {
       const { nouvelleSession } = await import("../arriere/arriere.mjs");
       await nouvelleSession(game.actors.filter(a => a.type === "personnage"));
       return annoncer(fmt("BREVIAIRE.Reserve.annonceSession", { tentation: terme("Tentation", camp) }));
+    }
+    case "embuscade": {
+      if (!game.combat) return ui.notifications.warn(loc("BREVIAIRE.Combat.aucunCombat"));
+      const choix = await foundry.applications.api.DialogV2.wait({
+        window: { title: loc("BREVIAIRE.Combat.embuscadeTitre") },
+        content: `<p>${loc("BREVIAIRE.Combat.embuscadeAide")}</p>`,
+        buttons: [
+          { action: "pj", label: loc("BREVIAIRE.Combat.embuscadePj") },
+          { action: "ennemis", label: loc("BREVIAIRE.Combat.embuscadeEnnemis") },
+          { action: "aucune", label: loc("BREVIAIRE.Combat.embuscadeAucune") }
+        ]
+      });
+      if (choix) return game.combat.embuscade?.(choix === "aucune" ? null : choix);
+      return;
     }
     case "arriere": {
       const { RetourArriere } = await import("../arriere/retour.mjs");

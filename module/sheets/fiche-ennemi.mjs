@@ -15,7 +15,8 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
     actions: {
       jet: this.#jet,
       blessures: this.#blessures,
-      trait: this.#trait
+      trait: this.#trait,
+      nerfs: this.#nerfs
     }
   };
 
@@ -49,6 +50,11 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
   /** Jet sous la Menace, avec ou sans arme. */
   static #jet(event, target) {
     return lancerJet(this.document, { type: "action", armeId: target.dataset.arme });
+  }
+
+  static async #nerfs() {
+    const { testNerfsEnnemi } = await import("../combat/degats.mjs");
+    return testNerfsEnnemi(this.document);
   }
 
   static #blessures(event, target) {

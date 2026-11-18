@@ -1935,3 +1935,41 @@ body.vade-touch .brev-retour button { min-height: 44px; }
 body.vade-touch .breviaire.fiche .window-content .brev-retour-bouton { width: 44px; height: 44px; }
 .breviaire .brev-grain.scelle { box-shadow: inset 0 -3px 0 rgba(160, 25, 15, .85); }
 .brev-retour span.brev-ra-case { display: inline-flex; align-items: center; padding: 0 .6rem; min-height: 32px; margin: .15rem 0; font-size: .92rem; border: 1px dashed var(--brev-or); border-radius: 3px; }
+.breviaire.dialogue-jet .brev-visee { list-style: none; margin: .2rem 0 .5rem; padding: 0; font-size: .88rem; color: var(--brev-encre-douce); }
+.breviaire.dialogue-jet .brev-visee li { padding: .1rem 0; }
+.breviaire.dialogue-jet .brev-visee i { color: var(--brev-sang); margin-right: .25rem; }
+
+/* =====================================================================
+   Combat : bandeau de la fiche, carte de dégâts
+   ===================================================================== */
+.breviaire .brev-combat-bandeau {
+  display: flex; align-items: center; gap: .6rem; margin-bottom: .6rem; padding: .4rem .55rem;
+  border-color: var(--brev-sang) !important;
+}
+.breviaire .brev-combat-phase { display: flex; flex-direction: column; align-items: center; min-width: 5.5rem; padding: .2rem .4rem; border: 1px solid var(--brev-or); background: rgba(0, 0, 0, .25); }
+.breviaire .brev-combat-phase small { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--brev-encre-douce); }
+.breviaire .brev-combat-phase b { font-family: var(--brev-capitales); font-size: 1rem; color: var(--brev-or-clair, #e2c47a); }
+.breviaire .brev-combat-phase.phase-4 b, .breviaire .brev-combat-phase.phase-3 b { color: #f0d27a; }
+.breviaire .brev-combat-phase.phase-1 b { color: var(--brev-sang); }
+.breviaire .brev-combat-actions { display: flex; flex-wrap: wrap; gap: .3rem; flex: 1; }
+.breviaire.fiche .window-content .brev-combat-actions button { width: auto; min-height: 30px; padding: 0 .55rem; font-size: .85rem; }
+.breviaire.fiche .window-content .brev-combat-actions button.on { background: var(--brev-or-degrade, #b48a4a); color: #1d1712; }
+.breviaire.fiche .window-content .brev-combat-actions button.fort { border-color: var(--brev-sang); color: var(--brev-sang); }
+body.vade-touch .breviaire.fiche .window-content .brev-combat-actions button { min-height: 44px; }
+.breviaire .brev-nerfs-ennemi { margin-top: .3rem; width: 100%; font-size: .8rem; }
+
+.brev-carte-degats .brev-cd-cibles { list-style: none; margin: .4rem 0 0; padding: 0; }
+.brev-carte-degats .brev-cd-cibles li { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto 32px; gap: .4rem; align-items: center; padding: .3rem 0; border-top: 1px solid rgba(124, 90, 30, .3); }
+.brev-carte-degats .brev-cd-cibles img { width: 30px; height: 30px; object-fit: cover; border: 1px solid var(--cj-or); }
+.brev-carte-degats .brev-cd-nom { display: flex; flex-direction: column; min-width: 0; }
+.brev-carte-degats .brev-cd-nom small { color: var(--cj-doux); font-size: .8rem; }
+.brev-carte-degats .brev-cd-grave { color: var(--cj-sang); font-weight: 600; }
+.brev-carte-degats .brev-cd-valeur { font-size: 1.3rem; font-weight: 700; color: var(--cj-sang); }
+.brev-carte-degats li.grave .brev-cd-valeur { text-shadow: 0 0 6px rgba(224, 87, 75, .6); }
+.brev-carte-degats button { margin: 0; min-height: 30px; color: var(--cj-encre); background: rgba(0, 0, 0, .1); border: 1px solid var(--cj-or); }
+.brev-carte-degats .brev-cd-options { display: flex; gap: .25rem; margin-top: .15rem; }
+.brev-carte-degats .brev-cd-options button { min-height: 22px; padding: 0 .35rem; font-size: .75rem; line-height: 1; width: auto; }
+.brev-carte-degats .brev-cd-options button.on { background: var(--cj-or); color: #1d1712; }
+.brev-carte-degats .brev-cd-fait { color: var(--cj-or); text-align: center; }
+.brev-carte-jet .brev-cj-opposition { color: var(--cj-encre); }
+.brev-carte-degats .brev-cd-options button { font-family: "EB Garamond", serif; }

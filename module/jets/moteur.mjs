@@ -69,7 +69,7 @@ export function specialiteDeLArme(arme) {
 /** Le MJ peut proposer une Tentation (un Ordre) : Corruption 3+, une fois par session (ch. IX). */
 export function tentationPossible(actor) {
   return actor?.type === "personnage" && actor.system.corruption.value >= R.PALIERS[0]
-    && actor.system.corruption.value < R.CORRUPTION_MAX && !actor.system.usages.session?.tentation;
+    && actor.system.corruption.value < R.CORRUPTION_MAX && !actor.system.usages?.session?.tentation;
 }
 
 /** Peut-on prier ? (null si oui, sinon la clé de la raison) */
@@ -93,6 +93,10 @@ export function raisonSansPriere(actor) {
  * @param {object} demande  { type: "action"|"mort", carac?, specialite?, substitution?, armeId? }
  */
 export async function lancerJet(actor, demande = {}) {
+  const arme = demande.armeId ? actor.items.get(demande.armeId) : null;
+  if (arme && actor.type === "personnage" && arme.system.categorie === "distance" && actor.system.usure.munitions.value === 0) {
+    return ui.notifications.warn(loc("BREVIAIRE.Combat.sansMunitions"));
+  }
   const { DialogueJet } = await import("./dialogue-jet.mjs");
   const opts = await DialogueJet.demander(actor, demande);
   if (!opts) return null;
@@ -144,6 +148,10 @@ export async function executerJet(actor, opts) {
     priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, sys.corruption.value) } : null,
     pacte: pacte ? { faces: sys.deSang, resultat: deSang } : null,
     titre: opts.titre ?? null,
+    cibles: opts.cibles ?? [],
+    rafale: !!opts.rafale,
+    // Mêlée contre une cible : jet en opposition (ch. IV §5) ; la cible se défend depuis la carte
+    opposition: arme && arme.system.categorie === "melee" && opts.cibles?.length ? { etat: "attente" } : null,
     tentation: tentation || null,
     automatique: tentation === "acceptee" ? "tentation" : (actor.perdu ? "perdu" : null),
     applique: {}
@@ -168,6 +176,14 @@ export async function executerJet(actor, opts) {
     await tirerArcane({ actor, contexte: d.naturel === "miracle" ? "grace" : "damnation" });
   }
   await tirerMarquesDesPaliers(actor, d);
+  // Après un tir : test d'usure de Munitions, défavorisé en rafale (ch. IV §4) ; le Viseur est consommé
+  if (arme && arme.system.categorie === "distance") {
+    if (personnage) {
+      const { testUsure } = await import("./usure.mjs");
+      await testUsure(actor, "munitions", { defavorise: d.rafale });
+    }
+    if (actor.statuses?.has("viseur")) await actor.toggleStatusEffect("viseur", { active: false });
+  }
   // Tentation refusée (Fidèles) : test d'usure de Nerfs (ch. IX §1)
   if (d.tentation === "refusee" && d.camp === "fideles") {
     const { testUsure } = await import("./usure.mjs");
@@ -328,6 +344,8 @@ export async function rendreCarte(d) {
         : { icone: "fa-solid fa-skull", texte: loc("BREVIAIRE.Jet.mortCase") });
   }
 
+  if (d.rafale) effets.push({ icone: "fa-solid fa-burst", texte: loc("BREVIAIRE.Combat.rafaleTexte") });
+
   // Boutons « après coup » (variante du réglage modePriere) : seulement sur un échec qui n'est pas une Damnation
   const apres = game.settings.get(SYSTEME, "modePriere") === "apres";
   const rattrapable = apres && !d.reussite && d.naturel !== "damnation" && actor?.type === "personnage";
@@ -356,10 +374,12 @@ export async function rendreCarte(d) {
     boutons: {
       prier: rattrapable && !d.priere && !raisonSansPriere(actor),
       pactiser: rattrapable && !d.pacte,
-      degats: !!arme && d.reussite,
+      degats: !!arme && d.reussite && (!d.opposition || d.opposition.gagnant === "a"),
+      defense: d.opposition?.etat === "attente" && d.reussite,
       soigner: !!d.soin && d.reussite && !d.soin.applique
     },
-    libelles: { prier: t("Prier"), pactiser: loc("BREVIAIRE.Jet.pactiser") }
+    libelles: { prier: t("Prier"), pactiser: loc("BREVIAIRE.Jet.pactiser") },
+    opposition: texteOpposition(d)
   };
   return renderTemplate(CARTE, contexte);
 }
@@ -376,7 +396,9 @@ export function brancherCarte(message, html) {
   html.querySelector(".brev-carte-jet")?.classList.add(themeSombre(d.camp) ? "brev-sombre" : "brev-clair");
   const actor = fromUuidSync(d.acteur);
   for (const bouton of html.querySelectorAll("[data-brev-action]")) {
-    if (!actor?.isOwner) { bouton.remove(); continue; }
+    const defense = bouton.dataset.brevAction.startsWith("defense");
+    const cible = defense ? fromUuidSync(d.cibles?.[0]) : null;
+    if (defense ? !cible?.isOwner : !actor?.isOwner) { bouton.remove(); continue; }
     bouton.addEventListener("click", async event => {
       event.preventDefault();
       bouton.disabled = true;
@@ -391,7 +413,12 @@ async function actionCarte(message, action) {
   const actor = await fromUuid(d.acteur);
   if (!actor) return;
 
-  if (action === "degats") return lancerDegats(actor, d.armeId);
+  if (action === "degats") {
+    const { lancerDegats } = await import("../combat/degats.mjs");
+    const cibles = d.opposition ? d.cibles.slice(0, 1) : d.rafale ? d.cibles.slice(0, 3) : d.cibles.slice(0, 1);
+    return lancerDegats(actor, d.armeId, { cibles });
+  }
+  if (action.startsWith("defense")) return defendre(message, d, action === "defense-esquive" ? "esquive" : "melee");
 
   if (action === "soigner") {
     if (!d.soin || d.soin.applique) return;
@@ -421,16 +448,49 @@ async function actionCarte(message, action) {
   await message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
 }
 
-/** Dégâts bruts d'une arme (la Protection et les Blessures graves arrivent avec le combat, étape 7). */
-export async function lancerDegats(actor, armeId) {
-  const arme = actor.items.get(armeId);
-  if (!arme) return;
-  const roll = await new Roll(arme.system.degats).evaluate();
-  const sacree = arme.system.particularites.has("sacree");
-  return roll.toMessage({
-    speaker: ChatMessage.getSpeaker({ actor }),
-    flavor: `<span class="brev-flavor">${game.i18n.format("BREVIAIRE.Jet.degatsDe", { arme: arme.name })}`
-      + `${sacree ? ` · ${loc("BREVIAIRE.Particularite.sacree")}` : ""}<br><small>${loc("BREVIAIRE.Jet.avantProtection")}</small></span>`
+/** Dégâts d'une arme (voir combat/degats.mjs). */
+export async function lancerDegats(actor, armeId, options) {
+  const m = await import("../combat/degats.mjs");
+  return m.lancerDegats(actor, armeId, options);
+}
+
+/* -------------------------------------------- */
+/*  Opposition (mêlée)                          */
+/* -------------------------------------------- */
+
+function texteOpposition(d) {
+  const o = d.opposition;
+  if (!o) return null;
+  const cible = fromUuidSync(d.cibles?.[0]);
+  if (o.etat === "attente") {
+    return d.reussite ? game.i18n.format("BREVIAIRE.Combat.opposition.attente", { nom: cible?.name ?? "?" }) : null;
+  }
+  const def = o.defense;
+  const detail = game.i18n.format("BREVIAIRE.Combat.opposition.detail", {
+    nom: cible?.name ?? "?", jet: loc(`BREVIAIRE.Specialite.${def.specialite}`), total: def.total,
+    verdict: loc(def.reussite ? "BREVIAIRE.Jet.reussite" : "BREVIAIRE.Jet.echec")
   });
+  const cle = { a: "touche", b: def.specialite === "melee" ? "pare" : "esquive", blocage: "blocage", egalite: "egalite" }[o.gagnant];
+  return `${detail} ${loc(`BREVIAIRE.Combat.opposition.${cle}`)}`;
+}
+
+/** La cible d'une attaque de mêlée se défend : Mêlée (parer) ou Esquive (se dégager). */
+async function defendre(message, d, specialite) {
+  if (d.opposition?.etat !== "attente") return;
+  const cible = await fromUuid(d.cibles?.[0]);
+  if (!cible) return;
+  const titre = game.i18n.format("BREVIAIRE.Combat.opposition.defense", { jet: loc(`BREVIAIRE.Specialite.${specialite}`) });
+  const m = cible.type === "personnage"
+    ? await lancerJet(cible, { specialite, titre, type: "defense" })
+    : await executerJet(cible, { type: "defense", titre });
+  const j = m?.getFlag(SYSTEME, "jet");
+  if (!j) return;
+  d.opposition = {
+    etat: "resolue",
+    defense: { specialite, total: j.total, reussite: j.reussite },
+    gagnant: R.resoudreOpposition({ reussite: d.reussite, total: d.total }, { reussite: j.reussite, total: j.total })
+  };
+  if (message.isOwner) return message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
+  return game.users.activeGM?.query("breviaire.carte", { messageId: message.id, type: "jet", d }, { timeout: 10000 });
 }
 

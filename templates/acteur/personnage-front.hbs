@@ -1,4 +1,18 @@
 <section class="brev-page brev-front {{onglet.cssClass}}" data-onglet="front">
+  {{#if combat}}
+  <div class="brev-combat-bandeau brev-panneau">
+    <div class="brev-combat-phase phase-{{combat.valeur}}"><small>{{localize 'BREVIAIRE.Combat.tour'}} {{combat.round}}</small><b>{{combat.phase}}</b></div>
+    <div class="brev-combat-actions">
+      {{#if combat.eclair}}<button type="button" class="brev-jeu fort" data-action="combat" data-combat="eclair"><i class="fa-solid fa-bolt"></i> {{localize 'BREVIAIRE.Combat.assautEclair'}}</button>{{/if}}
+      {{#if combat.reprendre}}<button type="button" class="brev-jeu" data-action="combat" data-combat="reprendre"><i class="fa-solid fa-forward"></i> {{localize 'BREVIAIRE.Combat.reprendre'}}</button>{{/if}}
+      {{#if combat.panique}}<button type="button" class="brev-jeu fort" data-action="combat" data-combat="reprise"><i class="fa-solid fa-hand-fist"></i> {{localize 'BREVIAIRE.Combat.seReprendre'}}</button>{{/if}}
+      <button type="button" class="brev-jeu {{#if combat.viseur}}on{{/if}}" data-action="combat" data-combat="viser"><i class="fa-solid fa-crosshairs"></i> {{localize 'BREVIAIRE.Combat.viser'}}</button>
+      <button type="button" class="brev-jeu {{#if combat.couvert}}on{{/if}}" data-action="combat" data-combat="couvert"><i class="fa-solid fa-shield"></i> {{localize 'BREVIAIRE.Combat.aCouvert'}}</button>
+      {{#if combat.plonge}}<button type="button" class="brev-jeu on" data-action="combat" data-combat="finPlonge"><i class="fa-solid fa-person-falling"></i> {{localize 'BREVIAIRE.Etat.plonge'}}</button>
+      {{else}}<button type="button" class="brev-jeu" data-action="combat" data-combat="plonger"><i class="fa-solid fa-person-falling"></i> {{localize 'BREVIAIRE.Combat.plonger'}}</button>{{/if}}
+    </div>
+  </div>
+  {{/if}}
   <div class="brev-front-grille">
 
     <div class="brev-panneau brev-panneau-specialites">

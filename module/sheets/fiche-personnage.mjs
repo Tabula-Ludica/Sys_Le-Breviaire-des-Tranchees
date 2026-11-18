@@ -4,6 +4,7 @@
  * Paquetage, Rites, Histoire.
  */
 
+import { assautEclair, assautEclairPossible, reprendreInitiative } from "../combat/combat.mjs";
 import { CARACS, SPECIALITES, SUBSTITUTIONS, USURES, RANGS, BLESSURES_GRAVES } from "../config.mjs";
 import { FACES, CRAN_MAX, CORRUPTION_MAX, TITRES, changerCran } from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
@@ -44,7 +45,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       jetDeMort: this.#jetDeMort,
       testUsure: this.#testUsure,
       utiliserRelique: this.#utiliserRelique,
-      retour: this.#retour
+      retour: this.#retour,
+      combat: this.#combat
     }
   };
 
@@ -221,6 +223,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     };
 
     context.biographie = await enrichir(sys.histoire.biographie, actor);
+    context.combat = this.#contexteCombat();
     return context;
   }
 
@@ -247,6 +250,49 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   static #testUsure(event, target) {
     const { usure, defavorise } = target.dataset;
     return testUsure(this.document, usure, { defavorise: defavorise === "true" });
+  }
+
+  /** Bandeau de combat : phase, Assaut éclair, Reprendre l'initiative, Viser, À couvert, Plonger, Se reprendre. */
+  #contexteCombat() {
+    const actor = this.document;
+    const combat = game.combat;
+    const c = combat?.combattantDe?.(actor);
+    if (!c) return null;
+    const phase = c.initiative;
+    const phases = { 4: "eclair", 3: "rapide", 2: "ennemis", 1: "lente" };
+    return {
+      phase: phase == null ? game.i18n.localize("BREVIAIRE.Combat.sansPhase") : game.i18n.localize(`BREVIAIRE.Combat.phase.${phases[phase] ?? "lente"}`),
+      valeur: phase,
+      round: combat.round,
+      eclair: assautEclairPossible(actor),
+      reprendre: c.getFlag("breviaire", "phase") === 1,
+      viseur: actor.statuses.has("viseur"),
+      couvert: actor.statuses.has("aCouvert"),
+      plonge: actor.statuses.has("plonge"),
+      panique: actor.statuses.has("panique")
+    };
+  }
+
+  static async #combat(event, target) {
+    const actor = this.document;
+    const action = target.dataset.combat;
+    switch (action) {
+      case "eclair": return assautEclair(actor);
+      case "reprendre": return reprendreInitiative(actor);
+      case "viser": return actor.toggleStatusEffect("viseur");
+      case "couvert": return actor.toggleStatusEffect("aCouvert");
+      case "plonger": {
+        // Réaction : jet d'Esquive ; réussite → le tir est défavorisé ; dans tous les cas, un seul déplacement ou action au prochain tour
+        const message = await lancerJet(actor, { specialite: "esquive", titre: game.i18n.localize("BREVIAIRE.Combat.plonger"), type: "reaction" });
+        if (message?.getFlag("breviaire", "jet")?.reussite) await actor.toggleStatusEffect("plonge", { active: true });
+        return;
+      }
+      case "finPlonge": return actor.toggleStatusEffect("plonge", { active: false });
+      case "reprise": {
+        const { seReprendre } = await import("../combat/degats.mjs");
+        return seReprendre(actor);
+      }
+    }
   }
 
   static async #retour() {

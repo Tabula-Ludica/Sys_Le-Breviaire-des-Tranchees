@@ -35,6 +35,7 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
   #actor;
   #resolve;
   #etat;
+  #visee;
 
   constructor(actor, demande, resolve) {
     super({ window: { title: game.i18n.format("BREVIAIRE.Jet.titreDe", { nom: actor.name }) } });
@@ -44,6 +45,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
     const arme = demande.armeId ? actor.items.get(demande.armeId) : null;
     const specialite = demande.specialite ?? (arme ? specialiteDeLArme(arme) : null);
     const aDistance = arme?.system.distance || ["tir", "lancer"].includes(specialite);
+    const visee = analyserCibles(actor, arme, aDistance);
+    this.#visee = visee;
     this.#etat = {
       type: demande.type ?? "action",
       armeId: demande.armeId ?? null,
@@ -51,11 +54,13 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
       substitution: demande.substitution ?? "",
       carac: demande.type === "mort" ? "chair" : (demande.carac ?? ""),
       difficulte: "normale",
-      couvert: aDistance ? "aucun" : "",
-      portee: aDistance ? "courte" : "",
+      couvert: aDistance ? visee.couvert : "",
+      portee: aDistance ? visee.portee : "",
       malus: 0,
-      favorise: !!demande.favorise,
-      defavorise: !!demande.defavorise,
+      favorise: !!demande.favorise || visee.favorise,
+      defavorise: !!demande.defavorise || visee.defavorise,
+      rafale: false,
+      cibles: visee.cibles,
       enjeu: actor.type === "personnage" && (demande.type ?? "action") === "action",
       priere: false,
       pacte: false,
@@ -92,6 +97,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
         portees: Object.fromEntries(Object.entries(PORTEES).map(([k, v]) => [k, `${loc(`BREVIAIRE.Portee.${k}`)} (${v})`]))
       },
       aSubstitutions: substitutions.length > 0,
+      visee: this.#visee.notes.length ? this.#visee.notes : null,
+      rafale: !!arme?.system.particularites?.has("rafale"),
       combat: !!e.couvert,
       priere: {
         libelle: t("Prier"),
@@ -143,7 +150,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
       enjeu: !!fd.enjeu,
       priere: !!fd.priere,
       pacte: !!fd.pacte,
-      tentation: fd.tentation ?? ""
+      tentation: fd.tentation ?? "",
+      rafale: !!fd.rafale
     });
     if (this.#etat.specialite !== avant) this.#etat.substitution = "";
     return this.#etat.specialite !== avant;
@@ -177,4 +185,35 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
     this.#resolve?.(null);
     this.#resolve = null;
   }
+}
+
+/**
+ * Ce que l'on sait des cibles visées (jetons ciblés par l'utilisateur) :
+ * distance et portée, couvert « à couvert », Viseur (favorisé), cible qui a plongé (défavorisé), arme Lourde.
+ */
+function analyserCibles(actor, arme, aDistance) {
+  const r = { cibles: [], portee: "courte", couvert: "aucun", favorise: false, defavorise: false, notes: [] };
+  const cibles = [...(game.user.targets ?? [])].filter(t => t.actor && t.actor !== actor);
+  r.cibles = cibles.map(t => t.actor.uuid);
+  const source = canvas?.tokens?.controlled.find(t => t.actor === actor) ?? actor.getActiveTokens?.()[0];
+  const viseur = actor.statuses?.has("viseur");
+  if (viseur && aDistance) { r.favorise = true; r.notes.push(loc("BREVIAIRE.Combat.noteViseur")); }
+  if (arme?.system.particularites?.has("lourde")) { r.defavorise = true; r.notes.push(loc("BREVIAIRE.Combat.noteLourde")); }
+  const cible = cibles[0];
+  if (!cible) return r;
+  r.notes.unshift(game.i18n.format("BREVIAIRE.Combat.noteCible", { nom: cibles.map(t => t.name).join(", ") }));
+  if (cible.actor.statuses?.has("plonge") && aDistance) { r.defavorise = true; r.notes.push(loc("BREVIAIRE.Combat.notePlonge")); }
+  if (cible.actor.statuses?.has("aCouvert") && aDistance) { r.couvert = "leger"; r.notes.push(loc("BREVIAIRE.Combat.noteCouvert")); }
+  if (source && aDistance && canvas?.grid) {
+    const distance = Math.round(canvas.grid.measurePath([source.center, cible.center]).distance * 10) / 10;
+    const courte = arme?.system.porteeCourte, longue = arme?.system.porteeLongue;
+    let note = game.i18n.format("BREVIAIRE.Combat.noteDistance", { d: distance });
+    if (courte != null && distance > courte) {
+      if (longue != null && distance > longue) note += ` — ${loc("BREVIAIRE.Combat.horsPortee")}`;
+      else if (viseur && arme.system.particularites?.has("lunette")) note += ` — ${loc("BREVIAIRE.Combat.lunette")}`;
+      else r.portee = "longue";
+    }
+    r.notes.push(note);
+  }
+  return r;
 }

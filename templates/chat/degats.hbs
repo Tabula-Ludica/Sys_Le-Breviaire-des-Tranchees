@@ -1,0 +1,33 @@
+<div class="brev-carte-jet brev-carte-degats">
+  <header class="brev-cj-entete">
+    {{#if acteur.img}}<img src="{{acteur.img}}" alt="">{{/if}}
+    <div>
+      <h3>{{titre}}</h3>
+      <small>{{d.formule}}{{#each tags}} · {{this}}{{/each}}</small>
+    </div>
+    <div class="brev-cj-score"><span><i class="fa-solid fa-burst"></i></span><b>{{d.de}}</b></div>
+  </header>
+  {{#if lignes.length}}
+  <ul class="brev-cd-cibles">
+    {{#each lignes}}
+    <li data-cible="{{i}}" class="{{#if grave}}grave{{/if}}">
+      <img src="{{img}}" alt="">
+      <div class="brev-cd-nom">
+        <b>{{nom}}</b>
+        <small>{{localize 'BREVIAIRE.Combat.protection'}} {{protection}}{{#if impie}} · {{localize 'BREVIAIRE.Trait.impie'}}{{/if}}{{#if grave}} · <span class="brev-cd-grave">{{localize 'BREVIAIRE.Combat.blessureGrave'}}</span>{{/if}}</small>
+        {{#unless fait}}{{#if (or bouclier ../zone)}}
+        <span class="brev-cd-options">
+          {{#if bouclier}}<button type="button" data-brev-degats="face" class="{{#if deFace}}on{{/if}}">{{localize 'BREVIAIRE.Combat.deFace'}}</button>{{/if}}
+          {{#if ../zone}}<button type="button" data-brev-degats="moitie" class="{{#if moitie}}on{{/if}}">{{localize 'BREVIAIRE.Combat.esquiveZone'}}</button>{{/if}}
+        </span>
+        {{/if}}{{/unless}}
+      </div>
+      <span class="brev-cd-valeur">−{{degats}}</span>
+      {{#if fait}}<i class="fa-solid fa-check brev-cd-fait"></i>{{else}}<button type="button" data-brev-degats="appliquer" data-tooltip="{{localize 'BREVIAIRE.Combat.appliquer'}}"><i class="fa-solid fa-heart-crack"></i></button>{{/if}}
+    </li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p class="brev-cj-texte"><small>{{localize 'BREVIAIRE.Jet.avantProtection'}}</small></p>
+  {{/if}}
+</div>

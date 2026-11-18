@@ -21,6 +21,12 @@ export async function testUsure(actor, cle, { defavorise = false } = {}) {
   const des = roll.dice[0].results.map(r => r.result);
   const res = R.resoudreUsure(u.value, des);
   if (res.descend) await actor.update({ [`system.usure.${cle}.value`]: res.cran });
+  // Nerfs épuisés : paniqué, et phase lente (ch. IV §8)
+  if (cle === "nerfs" && res.cran === 0) {
+    await actor.toggleStatusEffect("panique", { active: true });
+    const { perdreInitiative } = await import("../combat/combat.mjs");
+    await perdreInitiative(actor);
+  }
 
   const apres = res.cran === 0 ? loc("BREVIAIRE.Usure.epuise") : `d${R.faces(res.cran)}`;
   let verdict = res.descend ? fmt("BREVIAIRE.Usure.descend", { usure: libelle, de: apres }) : fmt("BREVIAIRE.Usure.tient", { usure: libelle });

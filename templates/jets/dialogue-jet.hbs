@@ -9,6 +9,7 @@
   {{#if arme}}
   <p class="brev-dialogue-arme"><i class="fa-solid fa-gun"></i> <b>{{arme.nom}}</b> · {{arme.degats}}{{#if arme.portee}} · {{arme.portee}}{{/if}}</p>
   {{/if}}
+  {{#if visee}}<ul class="brev-visee">{{#each visee}}<li><i class="fa-solid fa-crosshairs"></i> {{this}}</li>{{/each}}</ul>{{/if}}
 
   <div class="brev-champs">
     {{#if personnage}}{{#unless mort}}
@@ -45,6 +46,7 @@
   <div class="brev-cases">
     <label class="brev-case-texte"><input type="checkbox" name="favorise" {{checked e.favorise}}> {{localize 'BREVIAIRE.Jet.favorise'}}</label>
     <label class="brev-case-texte"><input type="checkbox" name="defavorise" {{checked e.defavorise}}> {{localize 'BREVIAIRE.Jet.defavorise'}}</label>
+    {{#if rafale}}<label class="brev-case-texte"><input type="checkbox" name="rafale" {{checked e.rafale}}> {{localize 'BREVIAIRE.Particularite.rafale'}}</label>{{/if}}
     {{#if personnage}}{{#unless mort}}
     <label class="brev-case-texte"><input type="checkbox" name="enjeu" {{checked e.enjeu}}> {{localize 'BREVIAIRE.Jet.enjeu'}}</label>
     {{/unless}}{{/if}}

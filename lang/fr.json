@@ -248,7 +248,11 @@
       "hemorragie": "Hémorragie",
       "immobilise": "Immobilisé",
       "viseur": "Viseur",
-      "stabilise": "Stabilisé"
+      "stabilise": "Stabilisé",
+      "aCouvert": "À couvert",
+      "plonge": "A plongé",
+      "enflamme": "Enflammé",
+      "dead": "Mort"
     },
     "RoleEnnemi": {
       "chair": "Chair à canon",
@@ -472,7 +476,8 @@
       "annonceMesse": "{messe} : {reserve} revient à {n}d6, les dés perdus sont rendus.",
       "annonceScene": "Fin de scène : morphine et effets de scène effacés.",
       "session": "Nouvelle session : la {tentation} redevient possible",
-      "annonceSession": "Nouvelle session : chaque personnage peut de nouveau recevoir une {tentation}."
+      "annonceSession": "Nouvelle session : chaque personnage peut de nouveau recevoir une {tentation}.",
+      "embuscade": "Embuscade (combat en cours)"
     },
     "Rite": {
       "paye": "Un dé de {reserve} est dépensé.",
@@ -672,6 +677,95 @@
       "departAide": "Efface les usages « une fois par mission » et rend les reliques. Pensez au bouton Début de mission du widget (MJ) pour remplir la réserve.",
       "boutonDepart": "Départ en mission",
       "departTexte": "{nom} repart au front."
+    },
+    "Combat": {
+      "initiative": "Initiative (Nerf)",
+      "reprendre": "Reprendre l’initiative",
+      "pasLente": "Seul un personnage en phase lente peut reprendre l’initiative.",
+      "assautEclair": "Assaut éclair",
+      "assautEclairTexte": "{nom} lance un Assaut éclair : il agit avant tout le monde à ce premier tour (une fois par mission).",
+      "embuscade": {
+        "pj": "Embuscade : l’escouade est surprise et passe tout entière en phase lente au premier tour.",
+        "ennemis": "Embuscade : les ennemis sont surpris et jouent en dernier au premier tour.",
+        "aucune": "Pas d’embuscade."
+      },
+      "embuscadeTitre": "Embuscade : qui est surpris ?",
+      "embuscadePj": "L’escouade",
+      "embuscadeEnnemis": "Les ennemis",
+      "embuscadeAucune": "Personne",
+      "tour": "Tour",
+      "sansPhase": "Pas d’initiative",
+      "phase": {
+        "eclair": "Éclair",
+        "rapide": "Rapide",
+        "ennemis": "Ennemis",
+        "lente": "Lente"
+      },
+      "viser": "Viser",
+      "aCouvert": "À couvert",
+      "plonger": "Plonger",
+      "seReprendre": "Se reprendre",
+      "noteCible": "Cible : {nom}",
+      "noteDistance": "Distance : {d} m",
+      "horsPortee": "hors de portée : tir impossible",
+      "lunette": "Lunette et Viseur : pas de malus de portée longue",
+      "noteViseur": "Viseur : tir favorisé",
+      "noteLourde": "Arme lourde : défavorisée sans trépied",
+      "notePlonge": "La cible a plongé : tir défavorisé",
+      "noteCouvert": "La cible s’est mise à couvert (au moins léger)",
+      "sansMunitions": "Munitions épuisées : impossible de tirer avant d’être ravitaillé.",
+      "rafaleTexte": "Rafale : jusqu’à 3 cibles à 3 m les unes des autres ; test de Munitions défavorisé.",
+      "protection": "Protection",
+      "blessureGrave": "Blessure grave",
+      "deFace": "Bouclier (de face)",
+      "esquiveZone": "Esquive réussie (½)",
+      "appliquer": "Appliquer les dégâts",
+      "blessuresRetirees": "{nom} perd {n} Blessure(s) : il en reste {reste}.",
+      "effetGrave": {
+        "commotion": "jets d’Esprit défavorisés jusqu’aux soins à l’arrière.",
+        "bras": "pas d’arme à deux mains ; jets de Chair défavorisés.",
+        "jambe": "déplacement réduit de moitié.",
+        "oeil": "Tir et Vigilance défavorisés.",
+        "hemorragie": "perd 1 Blessure au début de chacun de ses tours, jusqu’à un jet de Médecine réussi.",
+        "mutilation": "séquelle permanente au choix du MJ ; Nerfs −1 cran."
+      },
+      "suitesGrave": "Test d’usure de Nerfs, et phase lente.",
+      "horsDeCombat": "Hors de combat.",
+      "horsDeCombatAide": "Il ne peut plus agir ; jet de Mort au début de chacun de ses tours. Les alliés qui l’ont vu tomber font un test de Nerfs.",
+      "vaincu": "Hors de combat.",
+      "hemorragieTour": "Hémorragie : {nom} perd 1 Blessure.",
+      "jetDeMortTour": "{nom} est hors de combat : jet de Mort.",
+      "panique": {
+        "fuite": {
+          "titre": "Fuite",
+          "texte": "il utilise tout son tour pour s’éloigner du danger."
+        },
+        "terre": {
+          "titre": "Terré",
+          "texte": "il ne peut que se mettre à couvert."
+        },
+        "furie": {
+          "titre": "Furie",
+          "texte": "il charge l’ennemi le plus proche, sans réfléchir."
+        }
+      },
+      "testNerfs": "Test de Nerfs",
+      "testNerfsAide": "Jet de Menace : échec → paniqué. Fanatique et Démon l’ignorent.",
+      "immunisePeur": "{nom} ignore la peur.",
+      "opposition": {
+        "attente": "{nom} doit se défendre : Mêlée pour parer, ou Esquive pour se dégager.",
+        "parer": "Parer (Mêlée)",
+        "esquiver": "Esquiver",
+        "defense": "Défense : {jet}",
+        "detail": "{nom} se défend ({jet}) : {total}, {verdict}.",
+        "touche": "L’attaque l’emporte : lancez les dégâts.",
+        "pare": "Parade : l’attaquant est défavorisé à sa prochaine attaque contre lui.",
+        "esquive": "Il se dégage : l’attaque ne porte pas.",
+        "blocage": "Personne ne réussit : rien ne se passe.",
+        "egalite": "Égalité : rien ne se passe."
+      },
+      "embuscadeAide": "Le camp surpris passe tout entier en phase lente au premier tour.",
+      "aucunCombat": "Aucun combat en cours."
     }
   }
 }

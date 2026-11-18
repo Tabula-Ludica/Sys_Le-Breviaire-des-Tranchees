@@ -23,6 +23,9 @@ import { rendreWidget, finDeScene } from "./module/reserve/widget.mjs";
 import * as arcanes from "./module/arcanes/arcanes.mjs";
 import * as arriere from "./module/arriere/arriere.mjs";
 import { RetourArriere } from "./module/arriere/retour.mjs";
+import { BreviaireCombat, assautEclair, reprendreInitiative } from "./module/combat/combat.mjs";
+import { enregistrerEtats } from "./module/combat/etats.mjs";
+import * as degats from "./module/combat/degats.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
 
@@ -31,6 +34,7 @@ const PARTIELS = [
   "jets/dialogue-jet.hbs",
   "chat/jet.hbs",
   "chat/arcane.hbs",
+  "chat/degats.hbs",
   "objet/usure-ajustements.hbs",
   ...TYPES_OBJET.map(t => `objet/${t}.hbs`)
 ].map(p => `systems/breviaire/templates/${p}`);
@@ -55,6 +59,10 @@ Hooks.once("init", () => {
 
   CONFIG.Actor.documentClass = BreviaireActor;
   CONFIG.Item.documentClass = BreviaireItem;
+  CONFIG.Combat.documentClass = BreviaireCombat;
+  // Initiative par phases : la valeur est posée par BreviaireCombat (3 rapide, 2 ennemis, 1 lente)
+  CONFIG.Combat.initiative = { formula: "1", decimals: 1 };
+  enregistrerEtats();
 
   Object.assign(CONFIG.Actor.dataModels, {
     personnage: PersonnageData,
@@ -78,6 +86,8 @@ Hooks.once("init", () => {
 
   enregistrerReglages();
   reserve.enregistrerRequetes();
+  // Un joueur fait réécrire par le MJ une carte qui ne lui appartient pas (défense en mêlée, dégâts appliqués)
+  CONFIG.queries["breviaire.carte"] = degats.majCarte;
   // La réserve et l'escouade sont diffusées à tous les clients : chacun redessine son widget
   for (const cle of ["reserve", "escouade"]) {
     const reglage = game.settings.settings.get(`breviaire.${cle}`);
@@ -94,7 +104,8 @@ Hooks.once("init", () => {
     lancerJet: moteur.lancerJet, executerJet: moteur.executerJet, testUsure,
     reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene,
     tirerArcane: arcanes.tirerArcane,
-    arriere: { ...arriere, ouvrir: actor => RetourArriere.ouvrir(actor) }
+    arriere: { ...arriere, ouvrir: actor => RetourArriere.ouvrir(actor) },
+    combat: { assautEclair, reprendreInitiative, appliquerDegats: degats.appliquerDegats, testNerfsEnnemi: degats.testNerfsEnnemi, seReprendre: degats.seReprendre }
   };
 });
 
@@ -102,7 +113,20 @@ Hooks.once("init", () => {
 Hooks.on("renderChatMessageHTML", (message, html) => {
   moteur.brancherCarte(message, html);
   arcanes.brancherCarteArcane(message, html);
+  degats.brancherCarteDegats(message, html);
+  degats.brancherCarteTour(message, html);
 });
+
+// Le bandeau de combat des fiches suit le suivi de combat
+function rafraichirFichesDuCombat(combat) {
+  for (const c of combat?.combatants ?? []) if (c.actor?.sheet?.rendered) c.actor.sheet.render();
+}
+for (const h of ["updateCombat", "deleteCombat", "createCombatant", "updateCombatant", "deleteCombatant"]) {
+  Hooks.on(h, doc => rafraichirFichesDuCombat(doc instanceof Combat ? doc : doc.parent));
+}
+
+// Début du tour d'un combattant : Hémorragie, jet de Mort, panique (traité par le MJ actif)
+Hooks.on("combatTurnChange", combat => degats.debutDeTour(combat));
 
 Hooks.once("ready", () => {
   document.body.dataset.breviaireCamp = campDuMonde();
