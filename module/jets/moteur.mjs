@@ -150,7 +150,25 @@ export async function executerJet(actor, opts) {
     flags: { [SYSTEME]: { jet: d } }
   };
   try { ChatMessage.applyRollMode(data, game.settings.get("core", "rollMode")); } catch (e) { /* mode de jet par défaut */ }
-  return ChatMessage.create(data);
+  const message = await ChatMessage.create(data);
+
+  // Miracle ou Damnation : un arcane est tiré aussitôt (ch. I §5) — pour les personnages seulement
+  if (d.naturel && personnage) {
+    const { tirerArcane } = await import("../arcanes/arcanes.mjs");
+    await tirerArcane({ actor, contexte: d.naturel === "miracle" ? "grace" : "damnation" });
+  }
+  // Palier de Corruption ou de Faveur franchi par un pacte : tirage d'une Marque ou d'un Don (ch. IX)
+  await tirerMarquesDesPaliers(actor, d);
+  return message;
+}
+
+/** Un pacte a fait franchir un palier (3, 6, 9) : on tire une Marque par palier. */
+export async function tirerMarquesDesPaliers(actor, d) {
+  const paliers = d.applique?.paliers ?? [];
+  if (!paliers.length || actor?.type !== "personnage" || d.applique.marquesTirees) return;
+  d.applique.marquesTirees = true;
+  const { tirerArcane } = await import("../arcanes/arcanes.mjs");
+  for (const p of paliers) await tirerArcane({ actor, contexte: "marque" });
 }
 
 /** Résultat à partir du d20 gardé et des dés soustraits. */
@@ -354,6 +372,7 @@ async function actionCarte(message, action) {
   resoudre(d);
   await appliquerSuites(actor, d);
   await message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
+  await tirerMarquesDesPaliers(actor, d);
 }
 
 /** Dégâts bruts d'une arme (la Protection et les Blessures graves arrivent avec le combat, étape 7). */

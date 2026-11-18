@@ -1,0 +1,35 @@
+<div class="brev-carte-arcane camp-{{camp}} contexte-{{d.contexte}}">
+  <div class="brev-ca-entete">
+    <span class="brev-ca-contexte">{{intitule}}</span>
+    {{#if acteur}}<span class="brev-ca-acteur">{{acteur}}</span>{{/if}}
+  </div>
+  <div class="brev-ca-corps">
+    <img class="brev-ca-image" src="{{img}}" alt="{{nom}}">
+    <div class="brev-ca-texte">
+      <small class="brev-ca-paquet">{{paquet}}</small>
+      <h3><span>{{chiffre}}</span> {{nom}}</h3>
+      <em class="brev-ca-sens">{{sens}}</em>
+      {{#if effet}}
+      <div class="brev-ca-effet">
+        <b>{{effet.titre}}</b>
+        <p>{{{effet.texte}}}</p>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+  {{#if toutes}}
+  <ul class="brev-ca-toutes">
+    {{#each toutes}}<li><b>{{label}} : {{titre}}</b> {{{texte}}}</li>{{/each}}
+  </ul>
+  {{/if}}
+  {{#if marqueAjoutee}}<p class="brev-ca-note"><i class="fa-solid fa-hand-sparkles"></i> {{marqueAjoutee}}</p>{{/if}}
+  {{#if effets.length}}
+  <div class="brev-ca-boutons">
+    {{#each effets}}
+    <button type="button" data-brev-arcane="{{index}}" {{#if fait}}disabled{{/if}}>
+      <i class="fa-solid {{#if fait}}fa-check{{else}}fa-wand-sparkles{{/if}}"></i> {{libelle}}
+    </button>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>

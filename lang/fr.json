@@ -406,7 +406,7 @@
       "miracle": "Miracle",
       "damnation": "Damnation",
       "situation": "situation",
-      "tirage": "Tirer un arcane du {paquet} et appliquer sa {effet} (tirage automatique à l’étape 5).",
+      "tirage": "{effet} : un arcane du {paquet} est tiré (carte ci-dessous).",
       "deRetire": "Le dé de prière est perdu : il quitte {reserve} jusqu’à la prochaine messe.",
       "foiBaisse": "La prière n’a pas suffi : {foi} −1 cran.",
       "corruptionPlus": "Pacte : +1 {corruption}.",
@@ -481,6 +481,13 @@
         "grandRite": "Grand rite : Ferveur Expert, célébrant attitré ou Prélat",
         "guide": "Sans Ferveur : rite guidé, défavorisé"
       }
+    },
+    "Arcane": {
+      "creation": "Création",
+      "marqueAjoutee": "{marque} ajouté(e) à la fiche de {nom}.",
+      "effetReserve": "Appliquer : +{n}d6 à {reserve}",
+      "effetUsure": "Appliquer : {usure} {signe} cran",
+      "effetUsureEscouade": "Appliquer : {usure} de l’escouade {signe} cran"
     }
   }
 }

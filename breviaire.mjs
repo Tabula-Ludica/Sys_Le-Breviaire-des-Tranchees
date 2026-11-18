@@ -20,6 +20,7 @@ import * as moteur from "./module/jets/moteur.mjs";
 import { testUsure } from "./module/jets/usure.mjs";
 import * as reserve from "./module/reserve/reserve.mjs";
 import { rendreWidget, finDeScene } from "./module/reserve/widget.mjs";
+import * as arcanes from "./module/arcanes/arcanes.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
 
@@ -27,6 +28,7 @@ const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "r
 const PARTIELS = [
   "jets/dialogue-jet.hbs",
   "chat/jet.hbs",
+  "chat/arcane.hbs",
   "objet/usure-ajustements.hbs",
   ...TYPES_OBJET.map(t => `objet/${t}.hbs`)
 ].map(p => `systems/breviaire/templates/${p}`);
@@ -88,16 +90,21 @@ Hooks.once("init", () => {
   game.system.api = {
     regles, terme, campDuMonde, config: CONFIG_BREVIAIRE,
     lancerJet: moteur.lancerJet, executerJet: moteur.executerJet, testUsure,
-    reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene
+    reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene,
+    tirerArcane: arcanes.tirerArcane
   };
 });
 
 // Boutons des cartes de jet : branchés message par message (fonctionne aussi dans le chat de Vade)
-Hooks.on("renderChatMessageHTML", (message, html) => moteur.brancherCarte(message, html));
+Hooks.on("renderChatMessageHTML", (message, html) => {
+  moteur.brancherCarte(message, html);
+  arcanes.brancherCarteArcane(message, html);
+});
 
 Hooks.once("ready", () => {
   document.body.dataset.breviaireCamp = campDuMonde();
   rendreWidget();
+  arcanes.preparerPaquets();
 });
 
 // Le widget signale l'absence de MJ (la prière passe par lui)
