@@ -8,28 +8,79 @@
     "verified": "14"
   },
   "authors": [
-    { "name": "Argan", "url": "https://github.com/Tabula-Ludica" }
+    {
+      "name": "Argan",
+      "url": "https://github.com/Tabula-Ludica"
+    }
   ],
-  "esmodules": ["breviaire.mjs"],
-  "styles": ["styles/breviaire.css"],
+  "esmodules": [
+    "breviaire.mjs"
+  ],
+  "styles": [
+    "styles/breviaire.css"
+  ],
   "languages": [
-    { "lang": "fr", "name": "Français", "path": "lang/fr.json" },
-    { "lang": "en", "name": "English (textes en français)", "path": "lang/fr.json" }
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "lang/fr.json"
+    },
+    {
+      "lang": "en",
+      "name": "English (textes en français)",
+      "path": "lang/fr.json"
+    }
   ],
   "documentTypes": {
     "Actor": {
-      "personnage": { "htmlFields": ["histoire.biographie"] },
-      "ennemi": { "htmlFields": ["notes"] }
+      "personnage": {
+        "htmlFields": [
+          "histoire.biographie"
+        ]
+      },
+      "ennemi": {
+        "htmlFields": [
+          "notes"
+        ]
+      }
     },
     "Item": {
-      "arme": { "htmlFields": ["description"] },
-      "protection": { "htmlFields": ["description"] },
-      "equipement": { "htmlFields": ["description"] },
-      "relique": { "htmlFields": ["description"] },
+      "arme": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "protection": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "equipement": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "relique": {
+        "htmlFields": [
+          "description"
+        ]
+      },
       "arcane": {},
-      "rite": { "htmlFields": ["effet"] },
-      "origine": { "htmlFields": ["description"] },
-      "affectation": { "htmlFields": ["description"] }
+      "rite": {
+        "htmlFields": [
+          "effet"
+        ]
+      },
+      "origine": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "affectation": {
+        "htmlFields": [
+          "description"
+        ]
+      }
     }
   },
   "grid": {
@@ -43,5 +94,175 @@
   "manifest": "https://github.com/Tabula-Ludica/Sys_Le-Breviaire-des-Tranchees/releases/latest/download/system.json",
   "download": "https://github.com/Tabula-Ludica/Sys_Le-Breviaire-des-Tranchees/releases/latest/download/breviaire.zip",
   "readme": "https://github.com/Tabula-Ludica/Sys_Le-Breviaire-des-Tranchees#readme",
-  "bugs": "https://github.com/Tabula-Ludica/Sys_Le-Breviaire-des-Tranchees/issues"
+  "bugs": "https://github.com/Tabula-Ludica/Sys_Le-Breviaire-des-Tranchees/issues",
+  "packs": [
+    {
+      "name": "regles",
+      "label": "Règles du Bréviaire",
+      "path": "packs/regles",
+      "type": "JournalEntry",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "origines-affectations",
+      "label": "Origines et Affectations",
+      "path": "packs/origines-affectations",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "armes",
+      "label": "Armes",
+      "path": "packs/armes",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "protections",
+      "label": "Protections",
+      "path": "packs/protections",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "equipement",
+      "label": "Équipement et reliques",
+      "path": "packs/equipement",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "rites",
+      "label": "Rites",
+      "path": "packs/rites",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "arcanes-fideles",
+      "label": "Arcanes — Tarot saint",
+      "path": "packs/arcanes-fideles",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "arcanes-damnes",
+      "label": "Arcanes — Tarot noir",
+      "path": "packs/arcanes-damnes",
+      "type": "Item",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "paquets",
+      "label": "Paquets du Destin",
+      "path": "packs/paquets",
+      "type": "Cards",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "bestiaire-damnes",
+      "label": "Bestiaire — les Damnés",
+      "path": "packs/bestiaire-damnes",
+      "type": "Actor",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
+      "name": "bestiaire-fideles",
+      "label": "Bestiaire — les Fidèles",
+      "path": "packs/bestiaire-fideles",
+      "type": "Actor",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "NONE",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    }
+  ],
+  "packFolders": [
+    {
+      "name": "Le Bréviaire des Tranchées",
+      "sorting": "m",
+      "color": "#7d1710",
+      "packs": [
+        "regles",
+        "origines-affectations",
+        "armes",
+        "protections",
+        "equipement",
+        "rites"
+      ],
+      "folders": [
+        {
+          "name": "Paquet du Destin",
+          "sorting": "m",
+          "color": "#b48a4a",
+          "packs": [
+            "arcanes-fideles",
+            "arcanes-damnes",
+            "paquets"
+          ]
+        },
+        {
+          "name": "Bestiaires",
+          "sorting": "m",
+          "color": "#3a2e24",
+          "packs": [
+            "bestiaire-damnes",
+            "bestiaire-fideles"
+          ]
+        }
+      ]
+    }
+  ]
 }

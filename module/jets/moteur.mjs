@@ -49,7 +49,16 @@ export function calculer(actor, opts) {
     }
   }
   const base = sys.caracs[carac];
-  return { carac, base, rang, ...R.calculerScore({ carac: base, rang, situation }) };
+  const marque = opts.specialite ? (sys.bonusSpecialites?.[opts.specialite] ?? 0) : 0;
+  const c = R.calculerScore({ carac: base, rang, situation: [...situation, marque] });
+  // Le bonus d'une Marque n'est pas un modificateur de situation : il échappe au plancher de −6
+  if (marque) {
+    const sansMarque = R.calculerScore({ carac: base, rang, situation });
+    c.score = Math.min(R.SCORE_MAX, sansMarque.score + marque);
+    c.modificateur = sansMarque.modificateur;
+    c.plafonne = sansMarque.plafonne;
+  }
+  return { carac, base, rang, marque, ...c };
 }
 
 /** Spécialité utilisée par une arme (ch. IV §3). */

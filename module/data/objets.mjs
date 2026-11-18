@@ -96,7 +96,12 @@ export class ArcaneData extends foundry.abstract.TypeDataModel {
       sens: texte(),
       grace: effet(),
       damnation: effet(),
-      marque: effet()
+      marque: effet(),
+      // Bonus permanents de la Marque ou du Don (« +2 en Commandement et en Intimidation »), ajoutés aux scores
+      bonus: new f.ArrayField(new f.SchemaField({
+        specialite: new f.StringField({ required: true, choices: Object.keys(SPECIALITES) }),
+        valeur: entier(2, -6, 6)
+      }))
     };
   }
 
@@ -114,6 +119,8 @@ export class RiteData extends foundry.abstract.TypeDataModel {
       portee: metres(),
       duree: texte(),
       opposition: choix(OPPOSITIONS_RITE, "aucune"),
+      // Spécialité du jet : Ferveur en général, Exorcisme pour l'Exorcisme (ch. X)
+      specialite: choix(Object.keys(SPECIALITES), "ferveur"),
       horsCombat: new f.BooleanField(),
       effet: html()
     };

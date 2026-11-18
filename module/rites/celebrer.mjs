@@ -35,7 +35,7 @@ export async function celebrer(actor, rite) {
   if (!paye.ok) return;
   const message = await lancerJet(actor, {
     type: "action",
-    specialite: "ferveur",
+    specialite: rite.system.specialite || "ferveur",
     defavorise: !!a.defavorise,
     rite: { id: rite.id, nom: rite.name, niveau: rite.system.niveau, guide: !!a.defavorise }
   });

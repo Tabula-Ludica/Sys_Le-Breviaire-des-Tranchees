@@ -75,15 +75,21 @@ export class PersonnageData extends foundry.abstract.TypeDataModel {
     this.blessures.max = this.caracs.chair;
     this.blessures.value = Math.min(this.blessures.value, this.blessures.max);
 
-    // Scores calculés de chaque Spécialité et de chaque substitution possédée (sans situation)
-    this.scores = {};
-    for (const [spe, carac] of Object.entries(SPECIALITES)) {
-      this.scores[spe] = R.calculerScore({ carac: this.caracs[carac], rang: this.specialites[spe].rang }).score;
+    // Bonus permanents des Marques et des Dons (« +2 en Tromperie »)
+    this.bonusSpecialites = {};
+    for (const m of items.filter(i => i.type === "arcane")) {
+      for (const b of m.system.bonus ?? []) this.bonusSpecialites[b.specialite] = (this.bonusSpecialites[b.specialite] ?? 0) + b.valeur;
     }
+
+    // Scores calculés de chaque Spécialité et de chaque substitution possédée (sans situation)
+    const score = (carac, spe) => Math.min(R.SCORE_MAX,
+      R.calculerScore({ carac: this.caracs[carac], rang: this.specialites[spe].rang }).score + (this.bonusSpecialites[spe] ?? 0));
+    this.scores = {};
+    for (const [spe, carac] of Object.entries(SPECIALITES)) this.scores[spe] = score(carac, spe);
     this.scoresSubstitution = {};
     for (const sub of this.substitutions) {
       const { specialite, carac } = SUBSTITUTIONS[sub];
-      this.scoresSubstitution[sub] = R.calculerScore({ carac: this.caracs[carac], rang: this.specialites[specialite].rang }).score;
+      this.scoresSubstitution[sub] = score(carac, specialite);
     }
 
     for (const u of USURES) this.usure[u].faces = R.faces(this.usure[u].value);

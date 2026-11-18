@@ -4,6 +4,10 @@
   "type": "module",
   "description": "Système Foundry VTT v14 « Le Bréviaire des Tranchées »",
   "scripts": {
-    "test": "node --test"
+    "test": "node --test", "sources": "node tools/generer-sources.mjs ../Le-Breviaire-des-Tranchees", "packs": "node tools/packs.mjs"
+  },
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^3.0.5",
+    "marked": "^18.2.1"
   }
 }

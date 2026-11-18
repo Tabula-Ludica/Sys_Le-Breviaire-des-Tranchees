@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 700">
+  <rect width="400" height="700" rx="18" fill="#1a0d0a"/>
+  <rect x="16" y="16" width="368" height="668" rx="12" fill="none" stroke="#b48a4a" stroke-width="4"/>
+  <rect x="28" y="28" width="344" height="644" rx="8" fill="none" stroke="#b48a4a" stroke-width="1.5"/>
+  <text x="200" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="64" fill="#e0574b">X</text>
+  <text x="200" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="150" fill="#b48a4a" opacity=".35">⛧</text>
+  <text x="200" y="620" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#e0574b">L'Exilé</text>
+</svg>
