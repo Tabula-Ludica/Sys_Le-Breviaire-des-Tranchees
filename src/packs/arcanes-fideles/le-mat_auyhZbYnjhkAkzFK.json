@@ -1,0 +1,32 @@
+{
+  "_id": "auyhZbYnjhkAkzFK",
+  "_key": "!items!auyhZbYnjhkAkzFK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Mat",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/01.webp",
+  "system": {
+    "numero": 1,
+    "camp": "fideles",
+    "sens": "Folie, errance, liberté",
+    "grace": {
+      "titre": "Folie salvatrice",
+      "texte": "L&#39;action réussit de la manière la plus absurde possible, et le personnage ignore son prochain test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "damnation": {
+      "titre": "Coup de folie",
+      "texte": "Le personnage perd le contrôle pendant un instant : le MJ décrit ce qu&#39;il fait (fuite, fou rire, charge insensée). Ses <strong>Nerfs</strong> descendent d&#39;un cran."
+    },
+    "marque": {
+      "titre": "Le Rire",
+      "texte": "Il n&#39;a plus jamais peur : il ignore tous les tests de <strong>Nerfs</strong> liés à l&#39;horreur. En revanche, il rit aux pires moments et il est <strong>défavorisé</strong> à tous les jets de <strong>Verbe</strong>, sauf l&#39;Intimidation."
+    },
+    "bonus": []
+  }
+}

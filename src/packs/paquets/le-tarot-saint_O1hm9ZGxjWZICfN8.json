@@ -1,0 +1,795 @@
+{
+  "_id": "O1hm9ZGxjWZICfN8",
+  "_key": "!cards!O1hm9ZGxjWZICfN8",
+  "folder": null,
+  "sort": 0,
+  "flags": {
+    "breviaire": {
+      "camp": "fideles"
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "name": "Le Tarot saint",
+  "type": "deck",
+  "img": "systems/breviaire/assets/arcanes/fideles/dos.svg",
+  "description": "Le Paquet du Destin des Fidèles : 22 arcanes, de I à XXII.",
+  "system": {},
+  "width": 2,
+  "height": 3,
+  "rotation": 0,
+  "displayCount": true,
+  "cards": [
+    {
+      "_id": "21rp2CnWUExvQbBg",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.21rp2CnWUExvQbBg",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.auyhZbYnjhkAkzFK",
+          "numero": 1
+        }
+      },
+      "sort": 100000,
+      "name": "I · Le Mat",
+      "description": "<p><em>Folie, errance, liberté</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 1,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Mat",
+          "text": "<p><em>Folie, errance, liberté</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/01.webp"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "s5q1rJTc9qH1orze",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.s5q1rJTc9qH1orze",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.J1Lr4rKkTgdsEBNp",
+          "numero": 2
+        }
+      },
+      "sort": 200000,
+      "name": "II · Le Bateleur",
+      "description": "<p><em>Habileté, ruse, débuts</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 2,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Bateleur",
+          "text": "<p><em>Habileté, ruse, débuts</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/02.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "iblnJm6tbcFTY4td",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.iblnJm6tbcFTY4td",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.uGulbyug7e3DRxoj",
+          "numero": 3
+        }
+      },
+      "sort": 300000,
+      "name": "III · La Papesse",
+      "description": "<p><em>Secret, savoir caché, silence</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 3,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Papesse",
+          "text": "<p><em>Secret, savoir caché, silence</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/03.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "6ldCKSixcikRBnLb",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.6ldCKSixcikRBnLb",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.n03le5gh9wdBlgu5",
+          "numero": 4
+        }
+      },
+      "sort": 400000,
+      "name": "IV · L'Impératrice",
+      "description": "<p><em>Foyer, abondance, protection</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 4,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Impératrice",
+          "text": "<p><em>Foyer, abondance, protection</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/04.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "2OhN2FvXwzOr98mA",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.2OhN2FvXwzOr98mA",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.dX23Rk5Stze5ZmGg",
+          "numero": 5
+        }
+      },
+      "sort": 500000,
+      "name": "V · L'Empereur",
+      "description": "<p><em>Autorité, ordre, devoir</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 5,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Empereur",
+          "text": "<p><em>Autorité, ordre, devoir</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/05.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "zCBElMCe7EnOo6Tj",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.zCBElMCe7EnOo6Tj",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.lJhQntPnPeKuLoeg",
+          "numero": 6
+        }
+      },
+      "sort": 600000,
+      "name": "VI · Le Pape",
+      "description": "<p><em>Foi, tradition, enseignement</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 6,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Pape",
+          "text": "<p><em>Foi, tradition, enseignement</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/06.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "OhmvOjI8gIohX1Ra",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.OhmvOjI8gIohX1Ra",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.PJ2IwLCzXm225x3D",
+          "numero": 7
+        }
+      },
+      "sort": 700000,
+      "name": "VII · L'Amoureux",
+      "description": "<p><em>Choix, attachement, tentation du cœur</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 7,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Amoureux",
+          "text": "<p><em>Choix, attachement, tentation du cœur</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/07.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "WWusvQZVgX4YyQ3E",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.WWusvQZVgX4YyQ3E",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.mIeF0SBY7vCkY8Bj",
+          "numero": 8
+        }
+      },
+      "sort": 800000,
+      "name": "VIII · Le Chariot",
+      "description": "<p><em>Conquête, victoire, élan</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 8,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Chariot",
+          "text": "<p><em>Conquête, victoire, élan</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/08.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "HzrvELu19iupJANr",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.HzrvELu19iupJANr",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.3gc8BxEbyT7XmEGs",
+          "numero": 9
+        }
+      },
+      "sort": 900000,
+      "name": "IX · La Justice",
+      "description": "<p><em>Équité, vengeance, jugement</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 9,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Justice",
+          "text": "<p><em>Équité, vengeance, jugement</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/09.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "3yUqrenJyDb2rtVX",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.3yUqrenJyDb2rtVX",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.iOzUp5paHDFDg0Mj",
+          "numero": 10
+        }
+      },
+      "sort": 1000000,
+      "name": "X · L'Ermite",
+      "description": "<p><em>Solitude, quête, prudence</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 10,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Ermite",
+          "text": "<p><em>Solitude, quête, prudence</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/10.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "qNjbMxSHvKgq7fw6",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.qNjbMxSHvKgq7fw6",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.NfbezfWqQ9VnAYDU",
+          "numero": 11
+        }
+      },
+      "sort": 1100000,
+      "name": "XI · La Roue de Fortune",
+      "description": "<p><em>Hasard, destin, retournement</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 11,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Roue de Fortune",
+          "text": "<p><em>Hasard, destin, retournement</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/11.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "IyDpIdYuEOsZPC2M",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.IyDpIdYuEOsZPC2M",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.N7oSc7VkujlVdZ9B",
+          "numero": 12
+        }
+      },
+      "sort": 1200000,
+      "name": "XII · La Force",
+      "description": "<p><em>Courage, maîtrise de soi</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 12,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Force",
+          "text": "<p><em>Courage, maîtrise de soi</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/12.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "0J8rLEep7DEAzyyQ",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.0J8rLEep7DEAzyyQ",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.m3YFC8oyMA9bPVCC",
+          "numero": 13
+        }
+      },
+      "sort": 1300000,
+      "name": "XIII · Le Pendu",
+      "description": "<p><em>Sacrifice, attente, renoncement</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 13,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Pendu",
+          "text": "<p><em>Sacrifice, attente, renoncement</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/13.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "PjtWhBfzGsQdpMb7",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.PjtWhBfzGsQdpMb7",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.mT45lCjbGGHgWrct",
+          "numero": 14
+        }
+      },
+      "sort": 1400000,
+      "name": "XIV · La Mort",
+      "description": "<p><em>Fin, deuil, transformation</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 14,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Mort",
+          "text": "<p><em>Fin, deuil, transformation</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/14.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "9nyZFlPBeNbxzUY4",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.9nyZFlPBeNbxzUY4",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.I0ruLvwxJf0YIGSW",
+          "numero": 15
+        }
+      },
+      "sort": 1500000,
+      "name": "XV · Tempérance",
+      "description": "<p><em>Guérison, patience, équilibre</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 15,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Tempérance",
+          "text": "<p><em>Guérison, patience, équilibre</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/15.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "nv5fSTxpBckflf17",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.nv5fSTxpBckflf17",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.l9EaezeC7wshzAET",
+          "numero": 16
+        }
+      },
+      "sort": 1600000,
+      "name": "XVI · Le Diable",
+      "description": "<p><em>Tentation, chaînes, vice</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 16,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Diable",
+          "text": "<p><em>Tentation, chaînes, vice</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/16.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "qygbhaQ6KB4d0khk",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.qygbhaQ6KB4d0khk",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.hDIafj2r92cfgw0x",
+          "numero": 17
+        }
+      },
+      "sort": 1700000,
+      "name": "XVII · La Tour",
+      "description": "<p><em>Ruine, catastrophe, orgueil puni</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 17,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Tour",
+          "text": "<p><em>Ruine, catastrophe, orgueil puni</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/17.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "ihI3CcBrDQvLmrBw",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.ihI3CcBrDQvLmrBw",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.FC7lG60NCyGSFAu0",
+          "numero": 18
+        }
+      },
+      "sort": 1800000,
+      "name": "XVIII · L'Étoile",
+      "description": "<p><em>Espoir, guidance, pureté</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 18,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Étoile",
+          "text": "<p><em>Espoir, guidance, pureté</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/18.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "7YZUisCY3rq8dvGV",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.7YZUisCY3rq8dvGV",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.g3GxRHxdl2bNocP4",
+          "numero": 19
+        }
+      },
+      "sort": 1900000,
+      "name": "XIX · La Lune",
+      "description": "<p><em>Mensonge, peur, illusion</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 19,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Lune",
+          "text": "<p><em>Mensonge, peur, illusion</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/19.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "twD6IjGz1bbmrlmD",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.twD6IjGz1bbmrlmD",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.tcUWRGBWWLDB5vir",
+          "numero": 20
+        }
+      },
+      "sort": 2000000,
+      "name": "XX · Le Soleil",
+      "description": "<p><em>Gloire, joie, vérité</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 20,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Soleil",
+          "text": "<p><em>Gloire, joie, vérité</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/20.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "rCR8hEpd26uiBmSg",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.rCR8hEpd26uiBmSg",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.vNZtVCcbe9mQuR1d",
+          "numero": 21
+        }
+      },
+      "sort": 2100000,
+      "name": "XXI · Le Jugement",
+      "description": "<p><em>Rédemption, appel, résurrection</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 21,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Jugement",
+          "text": "<p><em>Rédemption, appel, résurrection</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/21.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "dGqJDZor07aqTd56",
+      "_key": "!cards.cards!O1hm9ZGxjWZICfN8.dGqJDZor07aqTd56",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-fideles.Item.OnqdBJS3sQCzeJ3n",
+          "numero": 22
+        }
+      },
+      "sort": 2200000,
+      "name": "XXII · Le Monde",
+      "description": "<p><em>Accomplissement, voyage, totalité</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "fideles",
+      "value": 22,
+      "back": {
+        "name": "Le Tarot saint",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/fideles/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Monde",
+          "text": "<p><em>Accomplissement, voyage, totalité</em></p>",
+          "img": "systems/breviaire/assets/arcanes/fideles/22.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "O1hm9ZGxjWZICfN8",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    }
+  ]
+}

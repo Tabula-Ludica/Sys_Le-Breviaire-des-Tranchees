@@ -1,0 +1,25 @@
+{
+  "_id": "AJRCt7NAC2FbwQgb",
+  "_key": "!items!AJRCt7NAC2FbwQgb",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Pelle de tranchée",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": "<p>Sert aussi d'arme (d4).</p>"
+  }
+}

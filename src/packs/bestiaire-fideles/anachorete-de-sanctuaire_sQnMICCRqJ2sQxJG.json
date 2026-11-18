@@ -1,0 +1,68 @@
+{
+  "_id": "sQnMICCRqJ2sQxJG",
+  "_key": "!actors!sQnMICCRqJ2sQxJG",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Anachorète de sanctuaire",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "monstre",
+    "menace": 13,
+    "blessures": {
+      "value": 25,
+      "max": 25
+    },
+    "protection": 4,
+    "deplacement": 6,
+    "traits": [
+      "sacre",
+      "insensible",
+      "lourd",
+      "effroi"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Anachorète de sanctuaire",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "GjwsaNazsyiQmqRW",
+      "_key": "!actors.items!sQnMICCRqJ2sQxJG.GjwsaNazsyiQmqRW",
+      "flags": {},
+      "sort": 0,
+      "name": "Fléau mécanique",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d12",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

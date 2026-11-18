@@ -1,0 +1,32 @@
+{
+  "_id": "h3PxRaHcOqPR6lqq",
+  "_key": "!items!h3PxRaHcOqPR6lqq",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Ivresse",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/15.svg",
+  "system": {
+    "numero": 15,
+    "camp": "damnes",
+    "sens": "Excès, débauche, oubli",
+    "grace": {
+      "titre": "L'Ivresse du sang",
+      "texte": "<strong>Tous</strong> ses dés d&#39;usure remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Le Lendemain",
+      "texte": "Un dé d&#39;usure, au choix du MJ, descend de <strong>deux crans</strong>."
+    },
+    "marque": {
+      "titre": "Le Sang épais",
+      "texte": "Il n&#39;a plus besoin de manger ni de boire : il ignore les tests de <strong>Vivres</strong>. Mais il ne guérit plus naturellement : seuls les soins le remettent sur pied."
+    },
+    "bonus": []
+  }
+}

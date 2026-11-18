@@ -1,0 +1,41 @@
+{
+  "_id": "D0GSeBxvWgBpa4qQ",
+  "_key": "!items!D0GSeBxvWgBpa4qQ",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Prédicateur noir",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "predicateur",
+    "expert": "ferveur",
+    "formes": [
+      "commandement",
+      "intimidation"
+    ],
+    "substitutions": [
+      "precheAuxArmes"
+    ],
+    "dotation": "Livre profane, encensoir de soufre, dague rituelle, pistolet",
+    "dotationUuids": [
+      "Compendium.breviaire.equipement.Item.0H2aRRvwuwAW2wLc",
+      "Compendium.breviaire.equipement.Item.szegziEPgI4NYhh1",
+      "Compendium.breviaire.armes.Item.Lfk2E7sN6KIlidQd",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "_id": "53dfb3CdLgKVUFxK",
+  "_key": "!items!53dfb3CdLgKVUFxK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Sermon noir",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "damnes",
+    "niveau": "mineur",
+    "portee": 9,
+    "duree": "",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": false,
+    "effet": "<p>Tous les alliés qui l&#39;entendent (9 m) <strong>ignorent leur prochain test d&#39;usure de Nerfs</strong>. Les <strong>ennemis</strong> qui l&#39;entendent font un test d&#39;usure de Nerfs.</p>\n"
+  }
+}

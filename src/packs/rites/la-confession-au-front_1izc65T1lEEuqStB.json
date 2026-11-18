@@ -1,0 +1,24 @@
+{
+  "_id": "1izc65T1lEEuqStB",
+  "_key": "!items!1izc65T1lEEuqStB",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Confession au front",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "fideles",
+    "niveau": "grand",
+    "portee": null,
+    "duree": "",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": true,
+    "effet": "<p>Hors combat, une fois par mission. Un personnage qui se confesse au célébrant fait un <strong>test d&#39;usure de Nerfs favorisé</strong> à la place de son prochain test de Nerfs. Ce n&#39;est pas la confession de l&#39;arrière : elle ne retire <strong>pas</strong> de Corruption (chapitre IX).</p>\n"
+  }
+}

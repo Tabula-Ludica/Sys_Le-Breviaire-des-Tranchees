@@ -1,0 +1,66 @@
+{
+  "_id": "aCeQ3Naod62XDOjs",
+  "_key": "!actors!aCeQ3Naod62XDOjs",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Mort de tranchée",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "damnes",
+    "role": "chair",
+    "menace": 9,
+    "blessures": {
+      "value": 10,
+      "max": 10
+    },
+    "protection": 0,
+    "deplacement": 6,
+    "traits": [
+      "insensible",
+      "effroi"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Mort de tranchée",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "mcKBfZX4T5KJK1ax",
+      "_key": "!actors.items!aCeQ3Naod62XDOjs.mcKBfZX4T5KJK1ax",
+      "flags": {},
+      "sort": 0,
+      "name": "Griffes",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d6",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

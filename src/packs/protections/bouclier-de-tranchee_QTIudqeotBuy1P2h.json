@@ -1,0 +1,21 @@
+{
+  "_id": "QTIudqeotBuy1P2h",
+  "_key": "!items!QTIudqeotBuy1P2h",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Bouclier de tranchée",
+  "type": "protection",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "type": "bouclier",
+    "valeur": 2,
+    "lourde": false,
+    "equipee": true,
+    "description": "<p>Seulement contre les attaques venant de face ; occupe une main</p>"
+  }
+}

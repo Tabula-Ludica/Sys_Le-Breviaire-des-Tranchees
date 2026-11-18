@@ -1,4 +1,4 @@
 node_modules/
-packs/
+/packs/
 *.zip
 .DS_Store

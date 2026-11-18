@@ -1,0 +1,38 @@
+{
+  "_id": "gKF7pPxKUmhjrz8T",
+  "_key": "!items!gKF7pPxKUmhjrz8T",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "État libre de Prusse",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "prusse",
+    "specialites": [
+      "lancer",
+      "coupDeMain"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Assaut éclair",
+      "texte": "une fois par mission, agir avant tout le monde au premier tour d'un affrontement."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": 1,
+      "foi": 0,
+      "vivres": -1,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Assaut éclair : une fois par mission, agir avant tout le monde au premier tour d'un affrontement.</p>"
+  }
+}

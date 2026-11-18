@@ -1,0 +1,89 @@
+{
+  "_id": "YxTHu94FyqW44Yle",
+  "_key": "!actors!YxTHu94FyqW44Yle",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Inquisiteur",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "elite",
+    "menace": 14,
+    "blessures": {
+      "value": 13,
+      "max": 13
+    },
+    "protection": 2,
+    "deplacement": 9,
+    "traits": [
+      "chef",
+      "sacre",
+      "fanatique"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Inquisiteur",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "IJMiEos6dEDOePZs",
+      "_key": "!actors.items!YxTHu94FyqW44Yle.IJMiEos6dEDOePZs",
+      "flags": {},
+      "sort": 0,
+      "name": "Pistolet",
+      "type": "arme",
+      "img": "icons/svg/target.svg",
+      "effects": [],
+      "system": {
+        "categorie": "distance",
+        "degats": "1d6",
+        "porteeCourte": 10,
+        "porteeLongue": 30,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    },
+    {
+      "_id": "eBaKlCV5Qk57D2iz",
+      "_key": "!actors.items!YxTHu94FyqW44Yle.eBaKlCV5Qk57D2iz",
+      "flags": {},
+      "sort": 0,
+      "name": "Épée bénie",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d8",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

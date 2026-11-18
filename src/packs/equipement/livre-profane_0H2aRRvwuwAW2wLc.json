@@ -1,0 +1,25 @@
+{
+  "_id": "0H2aRRvwuwAW2wLc",
+  "_key": "!items!0H2aRRvwuwAW2wLc",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Livre profane",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "damnes",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": ""
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_id": "UC50TiuT8cHenl2J",
+  "_key": "!items!UC50TiuT8cHenl2J",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Supplicié",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/13.svg",
+  "system": {
+    "numero": 13,
+    "camp": "damnes",
+    "sens": "Souffrance offerte, sacrifice",
+    "grace": {
+      "titre": "La Douleur offerte",
+      "texte": "Cette action ne consomme <strong>aucune ressource</strong>, et le Calice gagne <strong>+1d6</strong>."
+    },
+    "damnation": {
+      "titre": "Entravé",
+      "texte": "Il est immobilisé : coincé dans les barbelés, enseveli ou capturé."
+    },
+    "marque": {
+      "titre": "La Peau de souffrance",
+      "texte": "Chaque Blessure grave qu&#39;il subit donne <strong>+1d6 au Calice</strong>. Mais la douleur est devenue sa prière : morphine et sérum n&#39;ont plus d&#39;effet sur lui."
+    },
+    "bonus": []
+  }
+}

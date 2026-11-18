@@ -1,0 +1,32 @@
+{
+  "_id": "vNZtVCcbe9mQuR1d",
+  "_key": "!items!vNZtVCcbe9mQuR1d",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Jugement",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/21.svg",
+  "system": {
+    "numero": 21,
+    "camp": "fideles",
+    "sens": "Rédemption, appel, résurrection",
+    "grace": {
+      "titre": "La Rédemption",
+      "texte": "Il perd <strong>1 point de Corruption</strong>."
+    },
+    "damnation": {
+      "titre": "L'Appel",
+      "texte": "Un mort se relève : un ennemi abattu, ou un allié tombé, désormais hostile."
+    },
+    "marque": {
+      "titre": "La Trompette",
+      "texte": "Une fois par mission, il peut relever un mort pour qu&#39;il le serve le temps d&#39;une scène. Chaque fois qu&#39;il le fait, il gagne <strong>1 point de Corruption</strong>."
+    },
+    "bonus": []
+  }
+}

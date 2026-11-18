@@ -1,0 +1,25 @@
+{
+  "_id": "y4KbMJtHdPjN1uwO",
+  "_key": "!items!y4KbMJtHdPjN1uwO",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Livre de prières",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "fideles",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": ""
+  }
+}

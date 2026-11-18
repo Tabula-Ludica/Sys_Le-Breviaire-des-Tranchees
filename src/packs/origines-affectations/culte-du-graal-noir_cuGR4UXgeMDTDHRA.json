@@ -1,0 +1,38 @@
+{
+  "_id": "cuGR4UXgeMDTDHRA",
+  "_key": "!items!cuGR4UXgeMDTDHRA",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Culte du Graal Noir",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "graal",
+    "specialites": [
+      "endurance",
+      "endurcissement"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Chair pourrissante",
+      "texte": "+1 Protection naturelle, insensible au gaz ; défavorisé en Persuasion hors du Culte."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": -1,
+      "foi": 0,
+      "vivres": 2,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 1,
+    "corruptionDepart": 0,
+    "description": "<p>Chair pourrissante : +1 Protection naturelle, insensible au gaz ; défavorisé en Persuasion hors du Culte.</p>"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "_id": "D47bjA9uap4MbX7w",
+  "_key": "!items!D47bjA9uap4MbX7w",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Aumônier",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "aumonier",
+    "expert": "ferveur",
+    "formes": [
+      "commandement",
+      "exorcisme"
+    ],
+    "substitutions": [
+      "precheAuxArmes"
+    ],
+    "dotation": "Symbole sacré, eau bénite, livre de prières, encensoir, pistolet",
+    "dotationUuids": [
+      "Compendium.breviaire.equipement.Item.3QSsssZxDr7tYeKk",
+      "Compendium.breviaire.armes.Item.MYq5gFZJYZaxwfZT",
+      "Compendium.breviaire.equipement.Item.y4KbMJtHdPjN1uwO",
+      "Compendium.breviaire.equipement.Item.Rw4v8uMJ8vA57XxY",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

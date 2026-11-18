@@ -1,0 +1,26 @@
+{
+  "_id": "w7HpJNeMFbKfs4RE",
+  "_key": "!items!w7HpJNeMFbKfs4RE",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Fiole de sang maudit",
+  "type": "arme",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "categorie": "lancer",
+    "degats": "1d6",
+    "porteeCourte": 10,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [],
+    "quantite": 2,
+    "equipee": true,
+    "description": "<p>Lancée à 10 m : d6 dégâts, et la cible fait un test d'usure de Nerfs.</p>"
+  }
+}

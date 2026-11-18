@@ -1,0 +1,24 @@
+{
+  "_id": "xwSrPf60ZimHhILc",
+  "_key": "!items!xwSrPf60ZimHhILc",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Bénir les vivres",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "fideles",
+    "niveau": "mineur",
+    "portee": null,
+    "duree": "",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": true,
+    "effet": "<p>Hors combat, une fois par jour : les <strong>Vivres</strong> de toute l&#39;escouade ignorent leur prochain test d&#39;usure.</p>\n"
+  }
+}

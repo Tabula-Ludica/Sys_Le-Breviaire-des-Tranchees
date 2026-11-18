@@ -1,0 +1,21 @@
+{
+  "_id": "hAOSyPX21k9DS4sE",
+  "_key": "!items!hAOSyPX21k9DS4sE",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Cuirasse de tranchée",
+  "type": "protection",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "type": "armure",
+    "valeur": 2,
+    "lourde": false,
+    "equipee": true,
+    "description": "<p>Remplace le casque seul</p>"
+  }
+}

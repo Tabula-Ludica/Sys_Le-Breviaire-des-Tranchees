@@ -1,0 +1,25 @@
+{
+  "_id": "SXEgNb9yCLFeG6GD",
+  "_key": "!items!SXEgNb9yCLFeG6GD",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Chaînes",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": ""
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "_id": "7qqhSWKvic2nmRrb",
+  "_key": "!items!7qqhSWKvic2nmRrb",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Sapeur",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "sapeur",
+    "expert": "explosifs",
+    "formes": [
+      "terrassement",
+      "discretion"
+    ],
+    "substitutions": [],
+    "dotation": "Pistolet, pelle et pioche, 3 charges explosives, détonateur, lampe",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i",
+      "Compendium.breviaire.equipement.Item.AJRCt7NAC2FbwQgb",
+      "Compendium.breviaire.armes.Item.BXSM1dc6kSEvcu2o",
+      "Compendium.breviaire.armes.Item.BXSM1dc6kSEvcu2o",
+      "Compendium.breviaire.armes.Item.BXSM1dc6kSEvcu2o",
+      "Compendium.breviaire.equipement.Item.V5oVunclIit1wPph",
+      "Compendium.breviaire.equipement.Item.8Y5uld81xjJuyYKE"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

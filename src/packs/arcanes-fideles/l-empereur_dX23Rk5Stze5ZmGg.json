@@ -1,0 +1,41 @@
+{
+  "_id": "dX23Rk5Stze5ZmGg",
+  "_key": "!items!dX23Rk5Stze5ZmGg",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Empereur",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/05.svg",
+  "system": {
+    "numero": 5,
+    "camp": "fideles",
+    "sens": "Autorité, ordre, devoir",
+    "grace": {
+      "titre": "Ordre absolu",
+      "texte": "Chaque allié présent est <strong>favorisé</strong> à son prochain jet."
+    },
+    "damnation": {
+      "titre": "Ordre d'en haut",
+      "texte": "L&#39;état-major envoie un ordre absurde ou cruel. Obéir coûte cher, et désobéir aussi."
+    },
+    "marque": {
+      "titre": "La Couronne de fer",
+      "texte": "+2 en <strong>Commandement</strong> et en <strong>Intimidation</strong>. Mais il ne peut plus obéir à personne sans réussir un jet d&#39;<strong>Âme</strong>."
+    },
+    "bonus": [
+      {
+        "specialite": "commandement",
+        "valeur": 2
+      },
+      {
+        "specialite": "intimidation",
+        "valeur": 2
+      }
+    ]
+  }
+}

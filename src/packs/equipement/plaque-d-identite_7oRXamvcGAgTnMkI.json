@@ -1,0 +1,25 @@
+{
+  "_id": "7oRXamvcGAgTnMkI",
+  "_key": "!items!7oRXamvcGAgTnMkI",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Plaque d'identité",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": "<p>Dotation de tous.</p>"
+  }
+}

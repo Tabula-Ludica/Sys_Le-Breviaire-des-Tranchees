@@ -1,0 +1,32 @@
+{
+  "_id": "FC7lG60NCyGSFAu0",
+  "_key": "!items!FC7lG60NCyGSFAu0",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Étoile",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/18.svg",
+  "system": {
+    "numero": 18,
+    "camp": "fideles",
+    "sens": "Espoir, guidance, pureté",
+    "grace": {
+      "titre": "L'Espoir",
+      "texte": "+1d6 au Chapelet, et les <strong>Nerfs</strong> de toute l&#39;escouade remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "La Fausse lueur",
+      "texte": "Une fusée éclairante, un reflet, un éclat : l&#39;escouade est <strong>repérée</strong>."
+    },
+    "marque": {
+      "titre": "Le Regard étoilé",
+      "texte": "Ses yeux deviennent pâles et lumineux. Il voit les choses invisibles (esprits, illusions, démons dissimulés), mais il est <strong>défavorisé</strong> en <strong>Discrétion</strong>."
+    },
+    "bonus": []
+  }
+}

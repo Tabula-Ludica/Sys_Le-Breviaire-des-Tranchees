@@ -1,0 +1,38 @@
+{
+  "_id": "6sggUGuqziM7XiK6",
+  "_key": "!items!6sggUGuqziM7XiK6",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "États pontificaux",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "pontifical",
+    "specialites": [
+      "ferveur",
+      "melee"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Bénédiction papale",
+      "texte": "au début de chaque mission, +1d6 au Chapelet."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Bénédiction papale : au début de chaque mission, +1d6 au Chapelet.</p>"
+  }
+}

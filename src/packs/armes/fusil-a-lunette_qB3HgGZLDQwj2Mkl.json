@@ -1,0 +1,28 @@
+{
+  "_id": "qB3HgGZLDQwj2Mkl",
+  "_key": "!items!qB3HgGZLDQwj2Mkl",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Fusil à lunette",
+  "type": "arme",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "categorie": "distance",
+    "degats": "1d10",
+    "porteeCourte": 100,
+    "porteeLongue": 400,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [
+      "lunette"
+    ],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p><em>Lunette</em> : en visant, ignore le malus de portée longue</p>"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "_id": "Rb0yRy8ty9bBt7DI",
+  "_key": "!items!Rb0yRy8ty9bBt7DI",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Brancard pliant",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": ""
+  }
+}

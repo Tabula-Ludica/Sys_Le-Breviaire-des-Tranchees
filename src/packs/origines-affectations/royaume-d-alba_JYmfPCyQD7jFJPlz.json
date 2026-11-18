@@ -1,0 +1,40 @@
+{
+  "_id": "JYmfPCyQD7jFJPlz",
+  "_key": "!items!JYmfPCyQD7jFJPlz",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Royaume d'Alba",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "alba",
+    "specialites": [
+      "melee",
+      "intimidation"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "",
+      "texte": "Accès à la substitution Brute."
+    },
+    "substitutions": [
+      "brute"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": -1,
+      "nerfs": 1
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Accès à la substitution Brute.</p>"
+  }
+}

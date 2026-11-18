@@ -1,0 +1,25 @@
+{
+  "_id": "gXSSlyjPZTNbneYS",
+  "_key": "!items!gXSSlyjPZTNbneYS",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Sérum infernal",
+  "type": "equipement",
+  "img": "icons/svg/heal.svg",
+  "system": {
+    "quantite": 2,
+    "camp": "damnes",
+    "utilisation": {
+      "type": "morphine",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": true
+    },
+    "description": "<p>Comme la morphine.</p>"
+  }
+}

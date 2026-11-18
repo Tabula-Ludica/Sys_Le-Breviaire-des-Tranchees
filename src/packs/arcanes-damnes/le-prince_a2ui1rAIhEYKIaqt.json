@@ -1,0 +1,41 @@
+{
+  "_id": "a2ui1rAIhEYKIaqt",
+  "_key": "!items!a2ui1rAIhEYKIaqt",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Prince",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/16.svg",
+  "system": {
+    "numero": 16,
+    "camp": "damnes",
+    "sens": "Pouvoir infernal, pacte",
+    "grace": {
+      "titre": "Le Prince paie",
+      "texte": "Réussite, et son <strong>prochain pacte</strong> ne lui donne pas de Faveur."
+    },
+    "damnation": {
+      "titre": "Le Prince réclame son dû",
+      "texte": "Il gagne <strong>1 point de Faveur</strong>, et doit offrir une âme à la prochaine Messe noire. Sinon, +5 au jet de Disgrâce."
+    },
+    "marque": {
+      "titre": "Les Cornes",
+      "texte": "+2 en <strong>Intimidation</strong> et en <strong>Volonté</strong>. Mais il ne peut plus jamais passer pour un Fidèle, et ceux-ci le prennent pour cible en priorité."
+    },
+    "bonus": [
+      {
+        "specialite": "intimidation",
+        "valeur": 2
+      },
+      {
+        "specialite": "volonte",
+        "valeur": 2
+      }
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "iOzUp5paHDFDg0Mj",
+  "_key": "!items!iOzUp5paHDFDg0Mj",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Ermite",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/10.svg",
+  "system": {
+    "numero": 10,
+    "camp": "fideles",
+    "sens": "Solitude, quête, prudence",
+    "grace": {
+      "titre": "La Lanterne",
+      "texte": "Le personnage trouve un chemin, un abri ou un passage sûr pour lui et l&#39;escouade."
+    },
+    "damnation": {
+      "titre": "L'Isolement",
+      "texte": "Il est séparé du reste de l&#39;escouade."
+    },
+    "marque": {
+      "titre": "L'Ombre solitaire",
+      "texte": "+2 en <strong>Discrétion</strong> et en <strong>Pressentiment</strong>. Mais les prières des autres ne le touchent plus : un allié ne peut plus prier pour l&#39;aider."
+    },
+    "bonus": [
+      {
+        "specialite": "discretion",
+        "valeur": 2
+      },
+      {
+        "specialite": "pressentiment",
+        "valeur": 2
+      }
+    ]
+  }
+}

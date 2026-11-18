@@ -1,0 +1,66 @@
+{
+  "_id": "LF0iP4HI3DjrRcZV",
+  "_key": "!actors!LF0iP4HI3DjrRcZV",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Prêtre tireur",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "elite",
+    "menace": 13,
+    "blessures": {
+      "value": 9,
+      "max": 9
+    },
+    "protection": 1,
+    "deplacement": 9,
+    "traits": [
+      "lunette",
+      "sacre"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Prêtre tireur",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "x9MrLXyV40AffTDZ",
+      "_key": "!actors.items!LF0iP4HI3DjrRcZV.x9MrLXyV40AffTDZ",
+      "flags": {},
+      "sort": 0,
+      "name": "Fusil à lunette",
+      "type": "arme",
+      "img": "icons/svg/target.svg",
+      "effects": [],
+      "system": {
+        "categorie": "distance",
+        "degats": "1d10",
+        "porteeCourte": 100,
+        "porteeLongue": 400,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

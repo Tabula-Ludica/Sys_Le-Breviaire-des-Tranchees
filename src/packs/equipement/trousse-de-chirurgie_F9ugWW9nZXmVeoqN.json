@@ -1,0 +1,25 @@
+{
+  "_id": "F9ugWW9nZXmVeoqN",
+  "_key": "!items!F9ugWW9nZXmVeoqN",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Trousse de chirurgie",
+  "type": "equipement",
+  "img": "icons/svg/heal.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "soin",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": "<p>Action Soigner : jet de Médecine, +1d6 Blessures au patient (ch. IV §7).</p>"
+  }
+}

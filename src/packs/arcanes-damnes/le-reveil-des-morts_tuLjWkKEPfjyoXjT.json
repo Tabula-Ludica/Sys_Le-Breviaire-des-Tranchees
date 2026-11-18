@@ -1,0 +1,32 @@
+{
+  "_id": "tuLjWkKEPfjyoXjT",
+  "_key": "!items!tuLjWkKEPfjyoXjT",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Réveil des morts",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/21.svg",
+  "system": {
+    "numero": 21,
+    "camp": "damnes",
+    "sens": "Retour, appel, résurrection impie",
+    "grace": {
+      "titre": "Les morts se lèvent pour lui",
+      "texte": "Un ennemi abattu se relève et combat pour l&#39;escouade jusqu&#39;à la fin de la scène (comme un <em>Mort de tranchée</em>, chapitre VII)."
+    },
+    "damnation": {
+      "titre": "Les morts réclament",
+      "texte": "Un allié tombé se relève, hostile."
+    },
+    "marque": {
+      "titre": "La Trompette noire",
+      "texte": "Une fois par mission, il peut relever un mort pour qu&#39;il le serve le temps d&#39;une scène. Chaque fois qu&#39;il le fait, il gagne <strong>1 point de Faveur</strong>."
+    },
+    "bonus": []
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "_id": "er6e8O4ErYrPzhDE",
+  "_key": "!items!er6e8O4ErYrPzhDE",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Pèlerins des Tranchées",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "pelerins",
+    "specialites": [
+      "ferveur",
+      "endurcissement"
+    ],
+    "titreOption": "Procession (pour la couleur)",
+    "options": [
+      {
+        "cle": "affliction",
+        "nom": "Procession de l'Affliction Sacrée",
+        "specialites": []
+      },
+      {
+        "cle": "methode",
+        "nom": "Pèlerinage de Saint Méthode",
+        "specialites": []
+      },
+      {
+        "cle": "plaie",
+        "nom": "Cavalcade de la Dixième Plaie",
+        "specialites": []
+      }
+    ],
+    "particularite": {
+      "nom": "Martyr",
+      "texte": "quand il prie pour protéger ou sauver un autre, son dé de prière n'est jamais retiré."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": -2,
+      "foi": 2,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Martyr : quand il prie pour protéger ou sauver un autre, son dé de prière n'est jamais retiré.</p>"
+  }
+}

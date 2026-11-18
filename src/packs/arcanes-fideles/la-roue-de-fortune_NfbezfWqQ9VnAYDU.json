@@ -1,0 +1,32 @@
+{
+  "_id": "NfbezfWqQ9VnAYDU",
+  "_key": "!items!NfbezfWqQ9VnAYDU",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Roue de Fortune",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/11.svg",
+  "system": {
+    "numero": 11,
+    "camp": "fideles",
+    "sens": "Hasard, destin, retournement",
+    "grace": {
+      "titre": "Retournement",
+      "texte": "La situation tourne en faveur de l&#39;escouade : l&#39;ennemi recule, un renfort arrive, une issue apparaît."
+    },
+    "damnation": {
+      "titre": "Revers",
+      "texte": "La situation tourne contre l&#39;escouade."
+    },
+    "marque": {
+      "titre": "La Chance du diable",
+      "texte": "Une fois par session, il peut faire <strong>relancer n&#39;importe quel dé</strong>. Mais une fois par session, le MJ peut lui faire relancer <strong>un jet qu&#39;il avait réussi</strong>."
+    },
+    "bonus": []
+  }
+}

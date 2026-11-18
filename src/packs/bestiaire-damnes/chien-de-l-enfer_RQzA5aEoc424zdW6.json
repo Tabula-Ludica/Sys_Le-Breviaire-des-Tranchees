@@ -1,0 +1,67 @@
+{
+  "_id": "RQzA5aEoc424zdW6",
+  "_key": "!actors!RQzA5aEoc424zdW6",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Chien de l'Enfer",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "damnes",
+    "role": "aguerri",
+    "menace": 11,
+    "blessures": {
+      "value": 6,
+      "max": 6
+    },
+    "protection": 0,
+    "deplacement": 15,
+    "traits": [
+      "rapide",
+      "meute",
+      "demon"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Chien de l'Enfer",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "ERsNNevmaNBNf5yv",
+      "_key": "!actors.items!RQzA5aEoc424zdW6.ERsNNevmaNBNf5yv",
+      "flags": {},
+      "sort": 0,
+      "name": "Morsure",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d6",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

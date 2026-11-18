@@ -1,0 +1,21 @@
+{
+  "_id": "7kE87TrzVTd1sjse",
+  "_key": "!items!7kE87TrzVTd1sjse",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Armure de plaques",
+  "type": "protection",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "type": "armure",
+    "valeur": 3,
+    "lourde": true,
+    "equipee": true,
+    "description": "<p><em>Lourde</em> : déplacement 6 m, Discrétion et Athlétisme défavorisés</p>"
+  }
+}

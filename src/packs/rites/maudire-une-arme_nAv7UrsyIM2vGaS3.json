@@ -1,0 +1,24 @@
+{
+  "_id": "nAv7UrsyIM2vGaS3",
+  "_key": "!items!nAv7UrsyIM2vGaS3",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Maudire une arme",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "damnes",
+    "niveau": "mineur",
+    "portee": 1.5,
+    "duree": "scène",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": false,
+    "effet": "<p>Une arme au contact devient <strong>Impie</strong> jusqu&#39;à la fin de la scène : chaque fois qu&#39;elle blesse une cible vivante, celle-ci fait un <strong>test d&#39;usure de Nerfs</strong>.</p>\n"
+  }
+}

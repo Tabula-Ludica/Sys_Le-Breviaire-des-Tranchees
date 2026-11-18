@@ -1,0 +1,67 @@
+{
+  "_id": "nRcSVXux4iqW18UK",
+  "_key": "!actors!nRcSVXux4iqW18UK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Bête de l'abîme",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "damnes",
+    "role": "monstre",
+    "menace": 14,
+    "blessures": {
+      "value": 30,
+      "max": 30
+    },
+    "protection": 4,
+    "deplacement": 9,
+    "traits": [
+      "demon",
+      "effroi",
+      "grand"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Bête de l'abîme",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 3,
+    "height": 3
+  },
+  "items": [
+    {
+      "_id": "lU1Dp2Efi68vmJgr",
+      "_key": "!actors.items!nRcSVXux4iqW18UK.lU1Dp2Efi68vmJgr",
+      "flags": {},
+      "sort": 0,
+      "name": "Écrasement",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d12",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

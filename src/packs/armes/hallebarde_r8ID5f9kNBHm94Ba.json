@@ -1,0 +1,29 @@
+{
+  "_id": "r8ID5f9kNBHm94Ba",
+  "_key": "!items!r8ID5f9kNBHm94Ba",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Hallebarde",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": "1d10",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 3,
+    "zone": null,
+    "particularites": [
+      "allonge",
+      "deuxMains"
+    ],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p><em>Allonge</em> : frappe jusqu&#39;à 3 m ; <em>Deux mains</em></p>"
+  }
+}

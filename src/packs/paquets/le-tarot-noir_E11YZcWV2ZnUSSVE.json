@@ -1,0 +1,795 @@
+{
+  "_id": "E11YZcWV2ZnUSSVE",
+  "_key": "!cards!E11YZcWV2ZnUSSVE",
+  "folder": null,
+  "sort": 0,
+  "flags": {
+    "breviaire": {
+      "camp": "damnes"
+    }
+  },
+  "ownership": {
+    "default": 0
+  },
+  "name": "Le Tarot noir",
+  "type": "deck",
+  "img": "systems/breviaire/assets/arcanes/damnes/dos.svg",
+  "description": "Le Paquet du Destin des Damnés : 22 arcanes, de I à XXII.",
+  "system": {},
+  "width": 2,
+  "height": 3,
+  "rotation": 0,
+  "displayCount": true,
+  "cards": [
+    {
+      "_id": "lHKtZTKxFFzDpIGA",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.lHKtZTKxFFzDpIGA",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.4DOTB0dWa0HXzbKi",
+          "numero": 1
+        }
+      },
+      "sort": 100000,
+      "name": "I · L'Égaré",
+      "description": "<p><em>Errance, oubli, perte de soi</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 1,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Égaré",
+          "text": "<p><em>Errance, oubli, perte de soi</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/01.webp"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "GWbFgPA8AnCnPh1b",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.GWbFgPA8AnCnPh1b",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.CzLyvaugzkCmxU5Z",
+          "numero": 2
+        }
+      },
+      "sort": 200000,
+      "name": "II · Le Charlatan",
+      "description": "<p><em>Mensonge, illusion, marchandage</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 2,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Charlatan",
+          "text": "<p><em>Mensonge, illusion, marchandage</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/02.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "dMWgMALTpOHRALzc",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.dMWgMALTpOHRALzc",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.tbeL7qa8bj8TwyWq",
+          "numero": 3
+        }
+      },
+      "sort": 300000,
+      "name": "III · La Sorcière",
+      "description": "<p><em>Savoir interdit, secret, poison</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 3,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Sorcière",
+          "text": "<p><em>Savoir interdit, secret, poison</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/03.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "V8VhvXFxhOarYHe9",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.V8VhvXFxhOarYHe9",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.5JsyQmYiUksfH5qg",
+          "numero": 4
+        }
+      },
+      "sort": 400000,
+      "name": "IV · La Mère des Vers",
+      "description": "<p><em>Pourriture, fécondité corrompue</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 4,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Mère des Vers",
+          "text": "<p><em>Pourriture, fécondité corrompue</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/04.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "QFZcTssKhh5kSHWN",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.QFZcTssKhh5kSHWN",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.IKxDI6XNokxYwQus",
+          "numero": 5
+        }
+      },
+      "sort": 500000,
+      "name": "V · Le Tyran",
+      "description": "<p><em>Domination, peur, ordre infernal</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 5,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Tyran",
+          "text": "<p><em>Domination, peur, ordre infernal</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/05.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "XfAgIRFxuGecgnp1",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.XfAgIRFxuGecgnp1",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.crRCRqPLwhcVC3mR",
+          "numero": 6
+        }
+      },
+      "sort": 600000,
+      "name": "VI · L'Antipape",
+      "description": "<p><em>Fausse foi, sacrilège</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 6,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Antipape",
+          "text": "<p><em>Fausse foi, sacrilège</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/06.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "8844dtRUvYVbCPaP",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.8844dtRUvYVbCPaP",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.TtwIWJjpaeSdZnBH",
+          "numero": 7
+        }
+      },
+      "sort": 700000,
+      "name": "VII · Le Traître",
+      "description": "<p><em>Trahison, lien brisé</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 7,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Traître",
+          "text": "<p><em>Trahison, lien brisé</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/07.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "xhJPtW7Bs0ABzY2s",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.xhJPtW7Bs0ABzY2s",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.f2Hwnvf3mUzc0Qxq",
+          "numero": 8
+        }
+      },
+      "sort": 800000,
+      "name": "VIII · La Horde",
+      "description": "<p><em>Nombre, élan, conquête</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 8,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Horde",
+          "text": "<p><em>Nombre, élan, conquête</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/08.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "0SW1mQhkKs2KnZaG",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.0SW1mQhkKs2KnZaG",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.Cu1sA7qKzKydyy75",
+          "numero": 9
+        }
+      },
+      "sort": 900000,
+      "name": "IX · La Vengeance",
+      "description": "<p><em>Rancune, châtiment, dette</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 9,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Vengeance",
+          "text": "<p><em>Rancune, châtiment, dette</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/09.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "sj2gcJLotB5RkGlQ",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.sj2gcJLotB5RkGlQ",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.Un55rcdL0x0Mxc9H",
+          "numero": 10
+        }
+      },
+      "sort": 1000000,
+      "name": "X · L'Exilé",
+      "description": "<p><em>Solitude, chemins cachés</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 10,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Exilé",
+          "text": "<p><em>Solitude, chemins cachés</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/10.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "LAFKpAEwjUpB7tg5",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.LAFKpAEwjUpB7tg5",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.kYfdwllVpZYvFM3o",
+          "numero": 11
+        }
+      },
+      "sort": 1100000,
+      "name": "XI · La Roue des Supplices",
+      "description": "<p><em>Hasard cruel, retournement</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 11,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Roue des Supplices",
+          "text": "<p><em>Hasard cruel, retournement</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/11.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "pWXMt0fihXgvfRPL",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.pWXMt0fihXgvfRPL",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.paoRJ0psH2TnBtvB",
+          "numero": 12
+        }
+      },
+      "sort": 1200000,
+      "name": "XII · La Bête",
+      "description": "<p><em>Rage, instinct, violence</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 12,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Bête",
+          "text": "<p><em>Rage, instinct, violence</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/12.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "65OjUzc0dYgBXVtL",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.65OjUzc0dYgBXVtL",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.UC50TiuT8cHenl2J",
+          "numero": 13
+        }
+      },
+      "sort": 1300000,
+      "name": "XIII · Le Supplicié",
+      "description": "<p><em>Souffrance offerte, sacrifice</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 13,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Supplicié",
+          "text": "<p><em>Souffrance offerte, sacrifice</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/13.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "Xvgf3xeemWwhZP2h",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.Xvgf3xeemWwhZP2h",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.DnHsRhOk3GUgmKK1",
+          "numero": 14
+        }
+      },
+      "sort": 1400000,
+      "name": "XIV · La Moisson",
+      "description": "<p><em>Mort, récolte des âmes</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 14,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Moisson",
+          "text": "<p><em>Mort, récolte des âmes</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/14.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "XgsFRLbJbNK8yzL7",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.XgsFRLbJbNK8yzL7",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.h3PxRaHcOqPR6lqq",
+          "numero": 15
+        }
+      },
+      "sort": 1500000,
+      "name": "XV · L'Ivresse",
+      "description": "<p><em>Excès, débauche, oubli</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 15,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Ivresse",
+          "text": "<p><em>Excès, débauche, oubli</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/15.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "GWipd0otPoqTK15h",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.GWipd0otPoqTK15h",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.a2ui1rAIhEYKIaqt",
+          "numero": 16
+        }
+      },
+      "sort": 1600000,
+      "name": "XVI · Le Prince",
+      "description": "<p><em>Pouvoir infernal, pacte</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 16,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Prince",
+          "text": "<p><em>Pouvoir infernal, pacte</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/16.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "zcyW1yDOv11FKXaT",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.zcyW1yDOv11FKXaT",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.dEhgzPO62ekt1Dyo",
+          "numero": 17
+        }
+      },
+      "sort": 1700000,
+      "name": "XVII · La Brèche",
+      "description": "<p><em>Ouverture de l'Enfer, catastrophe</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 17,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "La Brèche",
+          "text": "<p><em>Ouverture de l'Enfer, catastrophe</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/17.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "ta9OeKppBKcpW5Bz",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.ta9OeKppBKcpW5Bz",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.gIbjBVb9ovN0X2h7",
+          "numero": 18
+        }
+      },
+      "sort": 1800000,
+      "name": "XVIII · L'Étoile noire",
+      "description": "<p><em>Faux espoir, guide maudit</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 18,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Étoile noire",
+          "text": "<p><em>Faux espoir, guide maudit</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/18.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "Ini4naHPHDB2V2cU",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.Ini4naHPHDB2V2cU",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.VMey8HuiU0iELMoQ",
+          "numero": 19
+        }
+      },
+      "sort": 1900000,
+      "name": "XIX · L'Éclipse",
+      "description": "<p><em>Ténèbres, illusion, peur</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 19,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Éclipse",
+          "text": "<p><em>Ténèbres, illusion, peur</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/19.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "yB8IvTxdHej6MrSo",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.yB8IvTxdHej6MrSo",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.CJc0MTgsCQPp4snn",
+          "numero": 20
+        }
+      },
+      "sort": 2000000,
+      "name": "XX · Le Brasier",
+      "description": "<p><em>Flamme, gloire infernale</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 20,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Brasier",
+          "text": "<p><em>Flamme, gloire infernale</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/20.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "h0xTf6Pru2wr1vbY",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.h0xTf6Pru2wr1vbY",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.tuLjWkKEPfjyoXjT",
+          "numero": 21
+        }
+      },
+      "sort": 2100000,
+      "name": "XXI · Le Réveil des morts",
+      "description": "<p><em>Retour, appel, résurrection impie</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 21,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "Le Réveil des morts",
+          "text": "<p><em>Retour, appel, résurrection impie</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/21.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    },
+    {
+      "_id": "8LDEmnczLCKvCLcx",
+      "_key": "!cards.cards!E11YZcWV2ZnUSSVE.8LDEmnczLCKvCLcx",
+      "flags": {
+        "breviaire": {
+          "arcane": "Compendium.breviaire.arcanes-damnes.Item.cJoSS3SUKviGfAl4",
+          "numero": 22
+        }
+      },
+      "sort": 2200000,
+      "name": "XXII · L'Abîme",
+      "description": "<p><em>Fin, vide, accomplissement infernal</em></p>",
+      "type": "base",
+      "system": {},
+      "suit": "damnes",
+      "value": 22,
+      "back": {
+        "name": "Le Tarot noir",
+        "text": "",
+        "img": "systems/breviaire/assets/arcanes/damnes/dos.svg"
+      },
+      "faces": [
+        {
+          "name": "L'Abîme",
+          "text": "<p><em>Fin, vide, accomplissement infernal</em></p>",
+          "img": "systems/breviaire/assets/arcanes/damnes/22.svg"
+        }
+      ],
+      "face": 0,
+      "drawn": false,
+      "origin": "E11YZcWV2ZnUSSVE",
+      "width": 2,
+      "height": 3,
+      "rotation": 0
+    }
+  ]
+}

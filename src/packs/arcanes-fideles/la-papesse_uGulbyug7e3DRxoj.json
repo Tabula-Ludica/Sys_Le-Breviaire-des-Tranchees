@@ -1,0 +1,32 @@
+{
+  "_id": "uGulbyug7e3DRxoj",
+  "_key": "!items!uGulbyug7e3DRxoj",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Papesse",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/03.svg",
+  "system": {
+    "numero": 3,
+    "camp": "fideles",
+    "sens": "Secret, savoir caché, silence",
+    "grace": {
+      "titre": "Révélation",
+      "texte": "Le MJ révèle une information <strong>vraie et cachée</strong> sur la situation : un piège, un traître, une faiblesse."
+    },
+    "damnation": {
+      "titre": "Secret éventé",
+      "texte": "Un secret du personnage ou de l&#39;escouade tombe entre de mauvaises mains."
+    },
+    "marque": {
+      "titre": "La Langue des morts",
+      "texte": "Il comprend les langues infernales et les murmures des défunts. Mais les voix ne se taisent jamais : ses <strong>Nerfs</strong> ne remontent plus avec le simple repos."
+    },
+    "bonus": []
+  }
+}

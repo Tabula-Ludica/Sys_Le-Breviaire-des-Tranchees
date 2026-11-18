@@ -1,0 +1,25 @@
+{
+  "_id": "xA9VjdUdlu3c1AGY",
+  "_key": "!items!xA9VjdUdlu3c1AGY",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Robe de bure",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "fideles",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": ""
+  }
+}

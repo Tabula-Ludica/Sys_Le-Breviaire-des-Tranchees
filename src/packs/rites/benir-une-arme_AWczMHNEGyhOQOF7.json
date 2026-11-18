@@ -1,0 +1,24 @@
+{
+  "_id": "AWczMHNEGyhOQOF7",
+  "_key": "!items!AWczMHNEGyhOQOF7",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Bénir une arme",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "fideles",
+    "niveau": "mineur",
+    "portee": 1.5,
+    "duree": "scène",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": false,
+    "effet": "<p>Une arme au contact devient <strong>Sacrée</strong> jusqu&#39;à la fin de la scène (dégâts doublés contre les cibles impies, chapitre IV).</p>\n"
+  }
+}

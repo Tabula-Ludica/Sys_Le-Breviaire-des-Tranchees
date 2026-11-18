@@ -1,0 +1,32 @@
+{
+  "_id": "g3GxRHxdl2bNocP4",
+  "_key": "!items!g3GxRHxdl2bNocP4",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Lune",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/19.svg",
+  "system": {
+    "numero": 19,
+    "camp": "fideles",
+    "sens": "Mensonge, peur, illusion",
+    "grace": {
+      "titre": "L'Illusion",
+      "texte": "L&#39;ennemi se trompe : de cible, de direction ou de nombre. L&#39;escouade passe inaperçue pour la scène."
+    },
+    "damnation": {
+      "titre": "La Terreur nocturne",
+      "texte": "Une vision terrible frappe l&#39;escouade : chaque personnage fait un test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "marque": {
+      "titre": "L'Enfant de la Lune",
+      "texte": "Il voit dans la pénombre comme en plein jour. Mais à chaque pleine lune, il doit réussir un jet d&#39;<strong>Âme</strong>, ou il commet un acte horrible que le MJ décrit."
+    },
+    "bonus": []
+  }
+}

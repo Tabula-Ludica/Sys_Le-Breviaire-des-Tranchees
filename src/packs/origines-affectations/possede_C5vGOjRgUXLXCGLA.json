@@ -1,0 +1,37 @@
+{
+  "_id": "C5vGOjRgUXLXCGLA",
+  "_key": "!items!C5vGOjRgUXLXCGLA",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Possédé",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "possede",
+    "expert": "volonte",
+    "formes": [
+      "melee",
+      "athletisme"
+    ],
+    "substitutions": [],
+    "dotation": "Chaînes, une lame greffée au bras (comme une masse cloutée), haillons",
+    "dotationUuids": [
+      "Compendium.breviaire.equipement.Item.SXEgNb9yCLFeG6GD",
+      "Compendium.breviaire.armes.Item.jr0AvM0kfveHOgsH"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": -1,
+      "nerfs": 0
+    },
+    "note": "Le démon intérieur : une fois par scène, sa prochaine attaque de Mêlée réussit automatiquement, et il gagne +1 Faveur.",
+    "description": "<p>Le démon intérieur : une fois par scène, sa prochaine attaque de Mêlée réussit automatiquement, et il gagne +1 Faveur.</p>"
+  }
+}

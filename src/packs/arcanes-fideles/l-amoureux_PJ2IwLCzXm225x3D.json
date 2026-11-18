@@ -1,0 +1,32 @@
+{
+  "_id": "PJ2IwLCzXm225x3D",
+  "_key": "!items!PJ2IwLCzXm225x3D",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Amoureux",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/07.svg",
+  "system": {
+    "numero": 7,
+    "camp": "fideles",
+    "sens": "Choix, attachement, tentation du cœur",
+    "grace": {
+      "titre": "Le Lien",
+      "texte": "Un allié de son choix, présent dans la scène, réussit automatiquement sa prochaine action du même type."
+    },
+    "damnation": {
+      "titre": "Le Choix cruel",
+      "texte": "Le MJ propose <strong>deux pertes</strong> (un allié en danger, un objectif perdu, une ressource…) et le joueur choisit laquelle subir."
+    },
+    "marque": {
+      "titre": "Le Cœur lié",
+      "texte": "Il est lié à un allié de son choix : il sait toujours où il se trouve et s&#39;il est en danger. Mais chaque fois que cet allié est gravement blessé, il fait un test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "bonus": []
+  }
+}

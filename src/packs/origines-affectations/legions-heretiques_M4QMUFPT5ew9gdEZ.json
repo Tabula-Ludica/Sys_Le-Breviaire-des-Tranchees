@@ -1,0 +1,38 @@
+{
+  "_id": "M4QMUFPT5ew9gdEZ",
+  "_key": "!items!M4QMUFPT5ew9gdEZ",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Légions hérétiques",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "legions",
+    "specialites": [
+      "tir",
+      "intimidation"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Cohorte",
+      "texte": "favorisé pour attaquer une cible qu'un allié a déjà attaquée ce tour-ci."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": 1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Cohorte : favorisé pour attaquer une cible qu'un allié a déjà attaquée ce tour-ci.</p>"
+  }
+}

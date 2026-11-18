@@ -1,0 +1,25 @@
+{
+  "_id": "t2gZKWh4U4T5u3ts",
+  "_key": "!items!t2gZKWh4U4T5u3ts",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Trépied",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "aucune",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": "<p>Une action pour poser une arme Lourde.</p>"
+  }
+}

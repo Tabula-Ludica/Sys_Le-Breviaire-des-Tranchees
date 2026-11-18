@@ -1,0 +1,25 @@
+{
+  "_id": "DZWyAxUmRFY4qqIe",
+  "_key": "!items!DZWyAxUmRFY4qqIe",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Morphine",
+  "type": "equipement",
+  "img": "icons/svg/heal.svg",
+  "system": {
+    "quantite": 2,
+    "camp": "",
+    "utilisation": {
+      "type": "morphine",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": true
+    },
+    "description": "<p>Ignore les effets d'une Blessure grave jusqu'à la fin de la scène.</p>"
+  }
+}

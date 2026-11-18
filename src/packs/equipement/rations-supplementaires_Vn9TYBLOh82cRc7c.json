@@ -1,0 +1,25 @@
+{
+  "_id": "Vn9TYBLOh82cRc7c",
+  "_key": "!items!Vn9TYBLOh82cRc7c",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Rations supplémentaires",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "usure",
+      "usure": "vivres",
+      "crans": 1,
+      "consomme": true
+    },
+    "description": "<p>Vivres +1 cran au-delà du dé de base, pour une mission.</p>"
+  }
+}

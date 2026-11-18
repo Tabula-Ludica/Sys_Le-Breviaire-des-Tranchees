@@ -487,6 +487,33 @@ const CLES_USURE = { mun: "munitions", foi: "foi", vivres: "vivres", nerfs: "ner
 const usure = u => Object.fromEntries(["munitions", "foi", "vivres", "nerfs"].map(k => [k,
   Object.entries(u ?? {}).filter(([c]) => CLES_USURE[c] === k).reduce((s, [, v]) => s + v, 0)]));
 
+/** Dotation de chaque Affectation (ch. VIII) : objets des compendiums, répétés pour les quantités. */
+const DOTATIONS = {
+  fantassin: ["Fusil", "Baïonnette (sur fusil)", "Pelle de tranchée", "Grenade"],
+  mitrailleur: ["Mitrailleuse légère", "Trépied", "Caisse de munitions", "Pistolet"],
+  nettoyeur: ["Masse cloutée", "Couteau de tranchée", "Pistolet", "Grenade", "Bouclier de tranchée"],
+  sapeur: ["Pistolet", "Pelle de tranchée", "Charge explosive", "Charge explosive", "Charge explosive", "Détonateur", "Lampe"],
+  tireur: ["Fusil à lunette", "Cape de camouflage", "Couteau de tranchée"],
+  eclaireur: ["Carabine", "Couteau de tranchée", "Jumelles", "Carte d'état-major", "Cisailles à barbelés"],
+  brancardier: ["Trousse de chirurgie", "Brancard pliant", "Morphine", "Brassard à croix", "Pistolet"],
+  aumonier: ["Symbole sacré", "Eau bénite (fiole)", "Livre de prières", "Encensoir", "Pistolet"],
+  penitent: ["Fléau", "Chaînes", "Robe de bure", "Relique mineure"],
+  predicateur: ["Livre profane", "Encensoir de soufre", "Couteau de tranchée", "Pistolet"],
+  chirurgien: ["Scies et crochets", "Fil noir", "Sérum infernal", "Pistolet"],
+  possede: ["Chaînes", "Masse cloutée"]
+};
+/** Ce que tout le monde reçoit (« Toujours ») : uniforme, casque, masque à gaz, gamelle, couverture, plaque. */
+export const DOTATION_COMMUNE = ["Casque", "Masque à gaz", "Gamelle et couverture", "Plaque d'identité"];
+
+function uuidDe(nom) {
+  for (const [pack, docs] of Object.entries(packs)) {
+    if (!["armes", "equipement", "protections"].includes(pack)) continue;
+    const d = docs.find(x => x.name === nom);
+    if (d) return `Compendium.breviaire.${pack}.Item.${d._id}`;
+  }
+  throw new Error(`Dotation introuvable : ${nom}`);
+}
+
 function originesAffectations() {
   for (const [cle, o] of Object.entries(DONNEES_CREATEUR.ORIGINES)) {
     const [nomPart, ...reste] = o.part.split(":");
@@ -512,7 +539,7 @@ function originesAffectations() {
       system: {
         camp: a.camp ?? "", cle, expert: cleSpe(a.expert) ?? "",
         formes: a.forme.map(cleSpe).filter(Boolean), substitutions: (a.subs ?? []).map(cleSub).filter(Boolean),
-        dotation: a.dot, dotationUuids: [], usure: usure(a.usure), note: a.note ?? "",
+        dotation: a.dot, dotationUuids: (DOTATIONS[cle] ?? []).map(uuidDe), usure: usure(a.usure), note: a.note ?? "",
         description: a.note ? `<p>${a.note}</p>` : ""
       }
     }));

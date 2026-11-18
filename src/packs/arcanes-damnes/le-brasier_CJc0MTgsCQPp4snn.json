@@ -1,0 +1,32 @@
+{
+  "_id": "CJc0MTgsCQPp4snn",
+  "_key": "!items!CJc0MTgsCQPp4snn",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Brasier",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/20.svg",
+  "system": {
+    "numero": 20,
+    "camp": "damnes",
+    "sens": "Flamme, gloire infernale",
+    "grace": {
+      "titre": "La Gloire du feu",
+      "texte": "Une réussite éclatante : chaque allié qui en est témoin voit sa <strong>Haine</strong> remonter d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Exposé",
+      "texte": "Il est en pleine lumière, cible de tous les tirs."
+    },
+    "marque": {
+      "titre": "La Peau de braise",
+      "texte": "Le feu ne lui fait plus rien : il ignore les dégâts <em>Enflammé</em> et ceux du feu. Mais l&#39;eau lui est hostile : il est <strong>défavorisé</strong> à tous ses jets sous la pluie ou dans l&#39;eau."
+    },
+    "bonus": []
+  }
+}

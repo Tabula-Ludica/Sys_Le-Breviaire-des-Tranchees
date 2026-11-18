@@ -1,0 +1,39 @@
+{
+  "_id": "mTsZfbnw6phzPeOH",
+  "_key": "!items!mTsZfbnw6phzPeOH",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Fantassin",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "fantassin",
+    "expert": "endurance",
+    "formes": [
+      "tir",
+      "terrassement"
+    ],
+    "substitutions": [],
+    "dotation": "Fusil à baïonnette, pelle de tranchée, 2 grenades",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.ZGAocU0Xy9MTchAf",
+      "Compendium.breviaire.armes.Item.krbES4E36yPAmcM9",
+      "Compendium.breviaire.equipement.Item.AJRCt7NAC2FbwQgb",
+      "Compendium.breviaire.armes.Item.D4mHfBFA9pfo7KHA"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 1,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_id": "3gc8BxEbyT7XmEGs",
+  "_key": "!items!3gc8BxEbyT7XmEGs",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Justice",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/09.svg",
+  "system": {
+    "numero": 9,
+    "camp": "fideles",
+    "sens": "Équité, vengeance, jugement",
+    "grace": {
+      "titre": "Juste retour",
+      "texte": "L&#39;ennemi visé subit ce qu&#39;il comptait infliger."
+    },
+    "damnation": {
+      "titre": "Le Châtiment",
+      "texte": "Une faute passée le rattrape : le MJ met en scène son Péché, et ses <strong>Nerfs</strong> descendent d&#39;un cran."
+    },
+    "marque": {
+      "titre": "La Balance",
+      "texte": "Il sait toujours quand on lui ment. Mais il ne peut plus mentir lui-même : la <strong>Tromperie</strong> lui est impossible."
+    },
+    "bonus": []
+  }
+}

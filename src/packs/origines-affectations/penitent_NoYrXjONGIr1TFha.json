@@ -1,0 +1,39 @@
+{
+  "_id": "NoYrXjONGIr1TFha",
+  "_key": "!items!NoYrXjONGIr1TFha",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Pénitent",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "penitent",
+    "expert": "endurcissement",
+    "formes": [
+      "melee",
+      "volonte"
+    ],
+    "substitutions": [],
+    "dotation": "Fléau ou masse, chaînes, robe de bure, une relique mineure",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.mL7Ytj3y5HU6P9Oh",
+      "Compendium.breviaire.equipement.Item.SXEgNb9yCLFeG6GD",
+      "Compendium.breviaire.equipement.Item.xA9VjdUdlu3c1AGY",
+      "Compendium.breviaire.equipement.Item.XyySB4KAyrbPxbyF"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": -1,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

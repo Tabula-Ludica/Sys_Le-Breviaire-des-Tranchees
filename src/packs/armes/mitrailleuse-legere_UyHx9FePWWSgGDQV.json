@@ -1,0 +1,29 @@
+{
+  "_id": "UyHx9FePWWSgGDQV",
+  "_key": "!items!UyHx9FePWWSgGDQV",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Mitrailleuse légère",
+  "type": "arme",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "categorie": "distance",
+    "degats": "1d10",
+    "porteeCourte": 50,
+    "porteeLongue": 200,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [
+      "rafale",
+      "lourde"
+    ],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p><em>Rafale</em> ; <em>Lourde</em></p>"
+  }
+}

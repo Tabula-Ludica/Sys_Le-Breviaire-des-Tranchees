@@ -1,0 +1,26 @@
+{
+  "_id": "WaHjVEfx4CDfLCVX",
+  "_key": "!items!WaHjVEfx4CDfLCVX",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Poings, crosse, pelle",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": "1d4",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [],
+    "quantite": null,
+    "equipee": true,
+    "description": ""
+  }
+}

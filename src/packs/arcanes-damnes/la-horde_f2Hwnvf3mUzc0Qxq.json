@@ -1,0 +1,32 @@
+{
+  "_id": "f2Hwnvf3mUzc0Qxq",
+  "_key": "!items!f2Hwnvf3mUzc0Qxq",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Horde",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/08.svg",
+  "system": {
+    "numero": 8,
+    "camp": "damnes",
+    "sens": "Nombre, élan, conquête",
+    "grace": {
+      "titre": "La Vague",
+      "texte": "Il peut enchaîner <strong>immédiatement</strong> une seconde action, sur un jet <strong>favorisé</strong>."
+    },
+    "damnation": {
+      "titre": "Emporté",
+      "texte": "La horde l&#39;entraîne trop loin : il se retrouve isolé, à découvert ou en terrain ennemi."
+    },
+    "marque": {
+      "titre": "Le Cri de la horde",
+      "texte": "Une fois par combat, tous les alliés à 9 m peuvent immédiatement se déplacer de 9 m. Mais il ne sait plus se taire : il est <strong>défavorisé</strong> en <strong>Discrétion</strong>."
+    },
+    "bonus": []
+  }
+}

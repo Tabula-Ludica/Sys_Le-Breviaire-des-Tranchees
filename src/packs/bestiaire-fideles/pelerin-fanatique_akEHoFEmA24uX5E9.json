@@ -1,0 +1,90 @@
+{
+  "_id": "akEHoFEmA24uX5E9",
+  "_key": "!actors!akEHoFEmA24uX5E9",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Pèlerin fanatique",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "chair",
+    "menace": 9,
+    "blessures": {
+      "value": 8,
+      "max": 8
+    },
+    "protection": 0,
+    "deplacement": 9,
+    "traits": [
+      "fanatique",
+      "meute"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Pèlerin fanatique",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "4F5WPhI7peJHCDe2",
+      "_key": "!actors.items!akEHoFEmA24uX5E9.4F5WPhI7peJHCDe2",
+      "flags": {},
+      "sort": 0,
+      "name": "Masse",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d8",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    },
+    {
+      "_id": "E8OWJaPkqcRvoPkn",
+      "_key": "!actors.items!akEHoFEmA24uX5E9.E8OWJaPkqcRvoPkn",
+      "flags": {},
+      "sort": 0,
+      "name": "Torche",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d4",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [
+          "enflamme"
+        ],
+        "quantite": null,
+        "equipee": true,
+        "description": "<p>Enflammé</p>"
+      }
+    }
+  ]
+}

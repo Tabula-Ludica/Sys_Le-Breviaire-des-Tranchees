@@ -1,0 +1,32 @@
+{
+  "_id": "VMey8HuiU0iELMoQ",
+  "_key": "!items!VMey8HuiU0iELMoQ",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Éclipse",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/19.svg",
+  "system": {
+    "numero": 19,
+    "camp": "damnes",
+    "sens": "Ténèbres, illusion, peur",
+    "grace": {
+      "titre": "L'Ombre portée",
+      "texte": "L&#39;ennemi se trompe : de cible, de direction ou de nombre. L&#39;escouade passe inaperçue pour la scène."
+    },
+    "damnation": {
+      "titre": "La Terreur",
+      "texte": "Une vision terrible frappe l&#39;escouade : chaque personnage fait un test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "marque": {
+      "titre": "L'Enfant de l'Éclipse",
+      "texte": "Il voit dans la pénombre comme en plein jour. Mais à chaque éclipse ou nuit sans lune, il doit réussir un jet d&#39;<strong>Âme</strong>, ou le démon prend le contrôle pour une scène (c&#39;est le MJ qui le joue)."
+    },
+    "bonus": []
+  }
+}

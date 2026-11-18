@@ -1,0 +1,38 @@
+{
+  "_id": "9q8IleC7p1R9ni0p",
+  "_key": "!items!9q8IleC7p1R9ni0p",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Principauté de Nouvelle-Antioche",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "antioche",
+    "specialites": [
+      "tactique",
+      "tir"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Discipline",
+      "texte": "une fois par mission, ignorer un test d'usure de Nerfs raté."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": 1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Discipline : une fois par mission, ignorer un test d'usure de Nerfs raté.</p>"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_id": "n03le5gh9wdBlgu5",
+  "_key": "!items!n03le5gh9wdBlgu5",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Impératrice",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/04.svg",
+  "system": {
+    "numero": 4,
+    "camp": "fideles",
+    "sens": "Foyer, abondance, protection",
+    "grace": {
+      "titre": "Abondance",
+      "texte": "On trouve des provisions : les <strong>Vivres</strong> de toute l&#39;escouade remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Disette",
+      "texte": "Les rations sont gâtées ou perdues : les <strong>Vivres</strong> de toute l&#39;escouade descendent d&#39;un cran."
+    },
+    "marque": {
+      "titre": "La Chair féconde",
+      "texte": "Ses blessures se referment d&#39;elles-mêmes, beaucoup plus vite que la normale. Mais sa chair repousse mal : des excroissances apparaissent là où il a été blessé."
+    },
+    "bonus": []
+  }
+}

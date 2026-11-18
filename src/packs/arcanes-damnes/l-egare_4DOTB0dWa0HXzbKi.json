@@ -1,0 +1,32 @@
+{
+  "_id": "4DOTB0dWa0HXzbKi",
+  "_key": "!items!4DOTB0dWa0HXzbKi",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Égaré",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/01.webp",
+  "system": {
+    "numero": 1,
+    "camp": "damnes",
+    "sens": "Errance, oubli, perte de soi",
+    "grace": {
+      "titre": "L'Oubli",
+      "texte": "L&#39;action réussit, et un ennemi présent le prend pour l&#39;un des siens jusqu&#39;à ce qu&#39;il attaque."
+    },
+    "damnation": {
+      "titre": "Perdu en lui-même",
+      "texte": "Il ne sait plus pourquoi il se bat : sa <strong>Haine</strong> descend d&#39;un cran."
+    },
+    "marque": {
+      "titre": "Le Visage vide",
+      "texte": "Personne ne se souvient de son visage : il est <strong>favorisé</strong> en <strong>Discrétion</strong> pour se fondre parmi les Fidèles. Mais ses camarades ne s&#39;en souviennent pas non plus : il ne bénéficie plus du trait <em>Chef</em> et ne peut pas être rallié."
+    },
+    "bonus": []
+  }
+}

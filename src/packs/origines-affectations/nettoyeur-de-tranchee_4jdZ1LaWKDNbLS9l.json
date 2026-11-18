@@ -1,0 +1,42 @@
+{
+  "_id": "4jdZ1LaWKDNbLS9l",
+  "_key": "!items!4jdZ1LaWKDNbLS9l",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Nettoyeur de tranchée",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "nettoyeur",
+    "expert": "melee",
+    "formes": [
+      "lancer",
+      "intimidation"
+    ],
+    "substitutions": [
+      "brute"
+    ],
+    "dotation": "Masse cloutée, couteau de tranchée, pistolet, sac de grenades, bouclier de tranchée",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.jr0AvM0kfveHOgsH",
+      "Compendium.breviaire.armes.Item.Lfk2E7sN6KIlidQd",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i",
+      "Compendium.breviaire.armes.Item.D4mHfBFA9pfo7KHA",
+      "Compendium.breviaire.protections.Item.QTIudqeotBuy1P2h"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

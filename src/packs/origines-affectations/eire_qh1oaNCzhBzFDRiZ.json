@@ -1,0 +1,38 @@
+{
+  "_id": "qh1oaNCzhBzFDRiZ",
+  "_key": "!items!qh1oaNCzhBzFDRiZ",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Éire",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "eire",
+    "specialites": [
+      "discretion",
+      "debrouille"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Tête de tourbe",
+      "texte": "une fois par mission, relancer un jet d'Âme contre l'horreur ou l'intimidation."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": -1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 1
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Tête de tourbe : une fois par mission, relancer un jet d'Âme contre l'horreur ou l'intimidation.</p>"
+  }
+}

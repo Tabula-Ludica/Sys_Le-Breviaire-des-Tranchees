@@ -1,0 +1,42 @@
+{
+  "_id": "i7HeSRNBBrLm1J87",
+  "_key": "!items!i7HeSRNBBrLm1J87",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Brancardier",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "brancardier",
+    "expert": "medecine",
+    "formes": [
+      "portage",
+      "esquive"
+    ],
+    "substitutions": [
+      "chirurgienDeTranchee"
+    ],
+    "dotation": "Trousse de chirurgie, brancard pliant, morphine, brassard à croix, pistolet",
+    "dotationUuids": [
+      "Compendium.breviaire.equipement.Item.F9ugWW9nZXmVeoqN",
+      "Compendium.breviaire.equipement.Item.Rb0yRy8ty9bBt7DI",
+      "Compendium.breviaire.equipement.Item.DZWyAxUmRFY4qqIe",
+      "Compendium.breviaire.equipement.Item.vMoEPdsIwbekTYoU",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

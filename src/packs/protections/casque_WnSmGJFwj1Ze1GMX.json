@@ -1,0 +1,21 @@
+{
+  "_id": "WnSmGJFwj1Ze1GMX",
+  "_key": "!items!WnSmGJFwj1Ze1GMX",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Casque",
+  "type": "protection",
+  "img": "icons/svg/shield.svg",
+  "system": {
+    "type": "casque",
+    "valeur": 1,
+    "lourde": false,
+    "equipee": true,
+    "description": ""
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "_id": "Zp3lZiwRzAR0AAHK",
+  "_key": "!items!Zp3lZiwRzAR0AAHK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Chirurgien de chair",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "chirurgien",
+    "expert": "medecine",
+    "formes": [
+      "mecanique",
+      "coupDeMain"
+    ],
+    "substitutions": [
+      "chirurgienDeTranchee"
+    ],
+    "dotation": "Scies et crochets, fil noir, sérum infernal (comme la morphine), pistolet",
+    "dotationUuids": [
+      "Compendium.breviaire.equipement.Item.jLnTnsXYyxKlf9rj",
+      "Compendium.breviaire.equipement.Item.AoxXel5Z0wqiE8LM",
+      "Compendium.breviaire.equipement.Item.gXSSlyjPZTNbneYS",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

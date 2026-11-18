@@ -1,0 +1,28 @@
+{
+  "_id": "mL7Ytj3y5HU6P9Oh",
+  "_key": "!items!mL7Ytj3y5HU6P9Oh",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Fléau",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": "1d8",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [
+      "sacree"
+    ],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p><em>Sacré</em> (voir plus bas)</p>"
+  }
+}

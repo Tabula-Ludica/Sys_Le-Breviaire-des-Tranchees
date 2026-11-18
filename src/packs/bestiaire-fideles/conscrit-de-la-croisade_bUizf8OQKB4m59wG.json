@@ -1,0 +1,85 @@
+{
+  "_id": "bUizf8OQKB4m59wG",
+  "_key": "!actors!bUizf8OQKB4m59wG",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Conscrit de la Croisade",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "chair",
+    "menace": 10,
+    "blessures": {
+      "value": 8,
+      "max": 8
+    },
+    "protection": 1,
+    "deplacement": 9,
+    "traits": [],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Conscrit de la Croisade",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "6gQg1ftcAvfcctLS",
+      "_key": "!actors.items!bUizf8OQKB4m59wG.6gQg1ftcAvfcctLS",
+      "flags": {},
+      "sort": 0,
+      "name": "Fusil",
+      "type": "arme",
+      "img": "icons/svg/target.svg",
+      "effects": [],
+      "system": {
+        "categorie": "distance",
+        "degats": "1d8",
+        "porteeCourte": 50,
+        "porteeLongue": 200,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    },
+    {
+      "_id": "nEy71bJ15IngBkmU",
+      "_key": "!actors.items!bUizf8OQKB4m59wG.nEy71bJ15IngBkmU",
+      "flags": {},
+      "sort": 0,
+      "name": "Baïonnette",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d6",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

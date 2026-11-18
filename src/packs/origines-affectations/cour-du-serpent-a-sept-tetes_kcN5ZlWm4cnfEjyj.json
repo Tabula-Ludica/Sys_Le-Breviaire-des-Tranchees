@@ -1,0 +1,38 @@
+{
+  "_id": "kcN5ZlWm4cnfEjyj",
+  "_key": "!items!kcN5ZlWm4cnfEjyj",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Cour du Serpent à Sept Têtes",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "serpent",
+    "specialites": [
+      "tromperie",
+      "pressentiment"
+    ],
+    "titreOption": "",
+    "options": [],
+    "particularite": {
+      "nom": "Sang mêlé",
+      "texte": "commence à Faveur 2 et voit dans le noir."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": -1,
+      "foi": 1,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 2,
+    "description": "<p>Sang mêlé : commence à Faveur 2 et voit dans le noir.</p>"
+  }
+}

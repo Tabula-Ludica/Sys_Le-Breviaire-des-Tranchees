@@ -1,0 +1,67 @@
+{
+  "_id": "bZ8JZPf6342oXAHS",
+  "_key": "!actors!bZ8JZPf6342oXAHS",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Garde suisse",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "fideles",
+    "role": "aguerri",
+    "menace": 12,
+    "blessures": {
+      "value": 12,
+      "max": 12
+    },
+    "protection": 3,
+    "deplacement": 6,
+    "traits": [
+      "lourd"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Garde suisse",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "4MzLg8wqpQDgQOZJ",
+      "_key": "!actors.items!bZ8JZPf6342oXAHS.4MzLg8wqpQDgQOZJ",
+      "flags": {},
+      "sort": 0,
+      "name": "Hallebarde",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d10",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 3,
+        "zone": null,
+        "particularites": [
+          "allonge"
+        ],
+        "quantite": null,
+        "equipee": true,
+        "description": "<p>allonge 3 m</p>"
+      }
+    }
+  ]
+}

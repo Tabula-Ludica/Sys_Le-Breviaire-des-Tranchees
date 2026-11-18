@@ -1,0 +1,32 @@
+{
+  "_id": "tbeL7qa8bj8TwyWq",
+  "_key": "!items!tbeL7qa8bj8TwyWq",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Sorcière",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/03.svg",
+  "system": {
+    "numero": 3,
+    "camp": "damnes",
+    "sens": "Savoir interdit, secret, poison",
+    "grace": {
+      "titre": "Le Murmure",
+      "texte": "Le MJ révèle une faiblesse cachée d&#39;un ennemi présent."
+    },
+    "damnation": {
+      "titre": "Le Secret vendu",
+      "texte": "Un secret de l&#39;escouade parvient aux Fidèles."
+    },
+    "marque": {
+      "titre": "Les Yeux de la sorcière",
+      "texte": "Il comprend la langue des démons et les murmures des morts. Mais les voix ne se taisent jamais : ses <strong>Nerfs</strong> ne remontent plus avec le simple repos."
+    },
+    "bonus": []
+  }
+}

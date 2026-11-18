@@ -1,0 +1,24 @@
+{
+  "_id": "xNQzrd5pbWkrTKR3",
+  "_key": "!items!xNQzrd5pbWkrTKR3",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Festin des âmes",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "damnes",
+    "niveau": "grand",
+    "portee": 1.5,
+    "duree": "",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": false,
+    "effet": "<p>Sur un ennemi <strong>hors de combat</strong> ou <strong>agonisant</strong>, au contact. Sa mort nourrit l&#39;Enfer :</p>\n<ul>\n<li><strong>Réussite :</strong> <strong>+2d6 au Calice</strong>, et le célébrant regagne <strong>un cran de Nerfs</strong>.</li>\n<li>C&#39;est un <strong>acte de dévotion infernale</strong> : le MJ peut accorder <strong>+1 Faveur</strong> (chapitre IX).</li>\n</ul>\n"
+  }
+}

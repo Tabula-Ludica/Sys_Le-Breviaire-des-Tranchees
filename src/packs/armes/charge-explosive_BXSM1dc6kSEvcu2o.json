@@ -1,0 +1,28 @@
+{
+  "_id": "BXSM1dc6kSEvcu2o",
+  "_key": "!items!BXSM1dc6kSEvcu2o",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Charge explosive",
+  "type": "arme",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "categorie": "explosif",
+    "degats": "2d10",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": 5,
+    "particularites": [
+      "zone"
+    ],
+    "quantite": 1,
+    "equipee": true,
+    "description": "<p>Une action pour la poser ; Explosifs pour la régler</p>"
+  }
+}

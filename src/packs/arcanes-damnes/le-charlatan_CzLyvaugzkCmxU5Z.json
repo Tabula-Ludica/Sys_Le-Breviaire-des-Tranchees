@@ -1,0 +1,41 @@
+{
+  "_id": "CzLyvaugzkCmxU5Z",
+  "_key": "!items!CzLyvaugzkCmxU5Z",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Charlatan",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/02.svg",
+  "system": {
+    "numero": 2,
+    "camp": "damnes",
+    "sens": "Mensonge, illusion, marchandage",
+    "grace": {
+      "titre": "Le Tour de passe-passe",
+      "texte": "Réussite, et il dérobe quelque chose à l&#39;ennemi : ses <strong>Munitions</strong> ou ses <strong>Vivres</strong> remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Le Marché de dupes",
+      "texte": "Un objet de sa dotation se révèle faux, enrayé ou piégé."
+    },
+    "marque": {
+      "titre": "La Langue fourchue",
+      "texte": "+2 en <strong>Tromperie</strong> et en <strong>Persuasion</strong>. Mais ses maîtres ne le croient plus : +2 à chaque jet de Disgrâce."
+    },
+    "bonus": [
+      {
+        "specialite": "tromperie",
+        "valeur": 2
+      },
+      {
+        "specialite": "persuasion",
+        "valeur": 2
+      }
+    ]
+  }
+}

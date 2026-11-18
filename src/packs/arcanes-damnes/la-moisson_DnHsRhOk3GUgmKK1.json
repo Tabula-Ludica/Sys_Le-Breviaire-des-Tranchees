@@ -1,0 +1,32 @@
+{
+  "_id": "DnHsRhOk3GUgmKK1",
+  "_key": "!items!DnHsRhOk3GUgmKK1",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Moisson",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/14.svg",
+  "system": {
+    "numero": 14,
+    "camp": "damnes",
+    "sens": "Mort, récolte des âmes",
+    "grace": {
+      "titre": "La Récolte",
+      "texte": "Un ennemi au seuil de la mort meurt aussitôt, et son âme nourrit le Calice : <strong>+1d6</strong>."
+    },
+    "damnation": {
+      "titre": "Le Prix",
+      "texte": "Quelqu&#39;un paie à sa place : un PNJ allié ou proche meurt. Toute l&#39;escouade fait un test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "marque": {
+      "titre": "L'Odeur du charnier",
+      "texte": "Les morts-vivants l&#39;ignorent tant qu&#39;il ne les attaque pas. Mais les vivants sentent la mort sur lui : il est <strong>défavorisé</strong> en <strong>Persuasion</strong>."
+    },
+    "bonus": []
+  }
+}

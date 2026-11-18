@@ -1,0 +1,26 @@
+{
+  "_id": "krbES4E36yPAmcM9",
+  "_key": "!items!krbES4E36yPAmcM9",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Baïonnette (sur fusil)",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": "1d6",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p>Ne nécessite pas de changer d&#39;arme</p>"
+  }
+}

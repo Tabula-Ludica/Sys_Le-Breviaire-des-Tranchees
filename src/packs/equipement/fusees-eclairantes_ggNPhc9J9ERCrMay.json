@@ -1,0 +1,25 @@
+{
+  "_id": "ggNPhc9J9ERCrMay",
+  "_key": "!items!ggNPhc9J9ERCrMay",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Fusées éclairantes",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 3,
+    "camp": "",
+    "utilisation": {
+      "type": "consommable",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": true
+    },
+    "description": "<p>Annulent la Nuit dans un rayon de 30 m pendant 3 tours.</p>"
+  }
+}

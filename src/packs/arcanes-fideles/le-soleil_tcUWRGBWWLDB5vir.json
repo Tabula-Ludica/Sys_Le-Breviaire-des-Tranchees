@@ -1,0 +1,32 @@
+{
+  "_id": "tcUWRGBWWLDB5vir",
+  "_key": "!items!tcUWRGBWWLDB5vir",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Soleil",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/20.svg",
+  "system": {
+    "numero": 20,
+    "camp": "fideles",
+    "sens": "Gloire, joie, vérité",
+    "grace": {
+      "titre": "La Gloire",
+      "texte": "Une réussite éclatante : chaque allié qui en est témoin voit sa <strong>Foi</strong> remonter d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Exposé",
+      "texte": "Il est en pleine lumière, au propre (cible de tous les tirs) comme au figuré (honte publique, faute révélée)."
+    },
+    "marque": {
+      "titre": "La Peau brûlante",
+      "texte": "Le soleil le brûle : il est <strong>défavorisé</strong> à tous ses jets en plein jour, et <strong>favorisé</strong> à tous ses jets de nuit."
+    },
+    "bonus": []
+  }
+}

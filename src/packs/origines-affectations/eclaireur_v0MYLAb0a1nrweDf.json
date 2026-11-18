@@ -1,0 +1,42 @@
+{
+  "_id": "v0MYLAb0a1nrweDf",
+  "_key": "!items!v0MYLAb0a1nrweDf",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Éclaireur",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "eclaireur",
+    "expert": "discretion",
+    "formes": [
+      "vigilance",
+      "athletisme"
+    ],
+    "substitutions": [
+      "instinctDeLaBete"
+    ],
+    "dotation": "Carabine, couteau, jumelles, carte, cisailles à barbelés",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.Cky7AFeRXM88Rhij",
+      "Compendium.breviaire.armes.Item.Lfk2E7sN6KIlidQd",
+      "Compendium.breviaire.equipement.Item.Kh807ntnrEZOtpTN",
+      "Compendium.breviaire.equipement.Item.TusUYUXOiY8E82Cl",
+      "Compendium.breviaire.equipement.Item.RaZ1yTejGGlVPWEZ"
+    ],
+    "usure": {
+      "munitions": 0,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

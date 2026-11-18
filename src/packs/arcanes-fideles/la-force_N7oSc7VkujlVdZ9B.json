@@ -1,0 +1,41 @@
+{
+  "_id": "N7oSc7VkujlVdZ9B",
+  "_key": "!items!N7oSc7VkujlVdZ9B",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Force",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/12.svg",
+  "system": {
+    "numero": 12,
+    "camp": "fideles",
+    "sens": "Courage, maîtrise de soi",
+    "grace": {
+      "titre": "La Maîtrise",
+      "texte": "Ses <strong>Nerfs</strong> remontent d&#39;un cran, et il ignore la peur jusqu&#39;à la fin de la scène."
+    },
+    "damnation": {
+      "titre": "La Rage",
+      "texte": "Il cède à la violence : jusqu&#39;à la fin de la scène, il ne peut que se battre, quitte à frapper ce qui se trouve devant lui."
+    },
+    "marque": {
+      "titre": "Les Bras de bête",
+      "texte": "+2 en <strong>Mêlée</strong> et en <strong>Portage</strong>. Mais ses mains deviennent griffues : il est <strong>défavorisé</strong> en <strong>Coup de main</strong> et en <strong>Médecine</strong>."
+    },
+    "bonus": [
+      {
+        "specialite": "melee",
+        "valeur": 2
+      },
+      {
+        "specialite": "portage",
+        "valeur": 2
+      }
+    ]
+  }
+}

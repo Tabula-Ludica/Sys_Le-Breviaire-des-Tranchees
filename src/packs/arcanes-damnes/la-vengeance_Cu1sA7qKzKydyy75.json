@@ -1,0 +1,32 @@
+{
+  "_id": "Cu1sA7qKzKydyy75",
+  "_key": "!items!Cu1sA7qKzKydyy75",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Vengeance",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/09.svg",
+  "system": {
+    "numero": 9,
+    "camp": "damnes",
+    "sens": "Rancune, châtiment, dette",
+    "grace": {
+      "titre": "Œil pour œil",
+      "texte": "L&#39;ennemi visé subit ce qu&#39;il comptait infliger."
+    },
+    "damnation": {
+      "titre": "La Dette",
+      "texte": "Une victime passée revient réclamer : le MJ met en scène son <strong>Remords</strong>, et ses <strong>Nerfs</strong> descendent d&#39;un cran."
+    },
+    "marque": {
+      "titre": "La Rancune",
+      "texte": "Il est <strong>favorisé</strong> contre tout ennemi qui l&#39;a blessé pendant la scène. Mais il ne peut pas en laisser un s&#39;échapper : il doit réussir un jet d&#39;<strong>Âme</strong> pour renoncer à le poursuivre."
+    },
+    "bonus": []
+  }
+}

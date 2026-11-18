@@ -1,0 +1,20 @@
+{
+  "_id": "XyySB4KAyrbPxbyF",
+  "_key": "!items!XyySB4KAyrbPxbyF",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Relique mineure",
+  "type": "relique",
+  "img": "icons/svg/holy-shield.svg",
+  "system": {
+    "camp": "fideles",
+    "apport": 1,
+    "utilisee": false,
+    "description": "<p>+1d6 au Chapelet, une fois par mission.</p>"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "_id": "hDIafj2r92cfgw0x",
+  "_key": "!items!hDIafj2r92cfgw0x",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Tour",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/17.svg",
+  "system": {
+    "numero": 17,
+    "camp": "fideles",
+    "sens": "Ruine, catastrophe, orgueil puni",
+    "grace": {
+      "titre": "L'Effondrement chez l'ennemi",
+      "texte": "Une position, une structure ou une machine ennemie s&#39;effondre."
+    },
+    "damnation": {
+      "titre": "L'Effondrement",
+      "texte": "C&#39;est sa propre position qui s&#39;effondre : il est enseveli, soufflé par une explosion ou précipité dans le vide."
+    },
+    "marque": {
+      "titre": "La Fêlure",
+      "texte": "Son corps se fissure, et une lueur infernale filtre par les failles. Il voit dans le noir complet, mais il est <strong>défavorisé</strong> en <strong>Discrétion</strong> dans l&#39;obscurité."
+    },
+    "bonus": []
+  }
+}

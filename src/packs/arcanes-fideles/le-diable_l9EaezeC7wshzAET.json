@@ -1,0 +1,41 @@
+{
+  "_id": "l9EaezeC7wshzAET",
+  "_key": "!items!l9EaezeC7wshzAET",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Diable",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/16.svg",
+  "system": {
+    "numero": 16,
+    "camp": "fideles",
+    "sens": "Tentation, chaînes, vice",
+    "grace": {
+      "titre": "Le Diable paie",
+      "texte": "Réussite, et son <strong>prochain pacte</strong> ne lui donne pas de Corruption."
+    },
+    "damnation": {
+      "titre": "Le Diable réclame",
+      "texte": "Il gagne <strong>1 point de Corruption</strong>."
+    },
+    "marque": {
+      "titre": "Les Cornes",
+      "texte": "+2 en <strong>Intimidation</strong> et en <strong>Volonté</strong>. Mais des cornes lui percent le front : s&#39;il est vu, l&#39;Inquisition le traquera."
+    },
+    "bonus": [
+      {
+        "specialite": "intimidation",
+        "valeur": 2
+      },
+      {
+        "specialite": "volonte",
+        "valeur": 2
+      }
+    ]
+  }
+}

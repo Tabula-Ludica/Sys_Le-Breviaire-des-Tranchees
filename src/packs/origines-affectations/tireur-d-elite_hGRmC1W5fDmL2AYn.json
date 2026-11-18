@@ -1,0 +1,40 @@
+{
+  "_id": "hGRmC1W5fDmL2AYn",
+  "_key": "!items!hGRmC1W5fDmL2AYn",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Tireur d'élite",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "tireur",
+    "expert": "tir",
+    "formes": [
+      "discretion",
+      "vigilance"
+    ],
+    "substitutions": [
+      "calculBalistique"
+    ],
+    "dotation": "Fusil à lunette, cape de camouflage, couteau",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.qB3HgGZLDQwj2Mkl",
+      "Compendium.breviaire.equipement.Item.Kz9z3O2bpFNJIdNi",
+      "Compendium.breviaire.armes.Item.Lfk2E7sN6KIlidQd"
+    ],
+    "usure": {
+      "munitions": -1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

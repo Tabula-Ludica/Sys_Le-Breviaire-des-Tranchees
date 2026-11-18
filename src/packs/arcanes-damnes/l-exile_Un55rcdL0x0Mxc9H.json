@@ -1,0 +1,41 @@
+{
+  "_id": "Un55rcdL0x0Mxc9H",
+  "_key": "!items!Un55rcdL0x0Mxc9H",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Exilé",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/10.svg",
+  "system": {
+    "numero": 10,
+    "camp": "damnes",
+    "sens": "Solitude, chemins cachés",
+    "grace": {
+      "titre": "Le Sentier noir",
+      "texte": "Il trouve un passage caché, sûr pour lui et l&#39;escouade."
+    },
+    "damnation": {
+      "titre": "Abandonné",
+      "texte": "Il est séparé du reste de l&#39;escouade."
+    },
+    "marque": {
+      "titre": "L'Ombre",
+      "texte": "+2 en <strong>Discrétion</strong> et en <strong>Pressentiment</strong>. Mais les invocations des autres ne le touchent plus : un allié ne peut plus invoquer pour l&#39;aider."
+    },
+    "bonus": [
+      {
+        "specialite": "discretion",
+        "valeur": 2
+      },
+      {
+        "specialite": "pressentiment",
+        "valeur": 2
+      }
+    ]
+  }
+}

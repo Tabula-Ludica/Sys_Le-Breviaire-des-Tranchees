@@ -1,0 +1,32 @@
+{
+  "_id": "gIbjBVb9ovN0X2h7",
+  "_key": "!items!gIbjBVb9ovN0X2h7",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Étoile noire",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/18.svg",
+  "system": {
+    "numero": 18,
+    "camp": "damnes",
+    "sens": "Faux espoir, guide maudit",
+    "grace": {
+      "titre": "La Lueur noire",
+      "texte": "+1d6 au <strong>Calice</strong>, et les <strong>Nerfs</strong> de toute l&#39;escouade remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "Le Phare",
+      "texte": "Une lueur, un reflet, un cri : l&#39;escouade est <strong>repérée</strong>."
+    },
+    "marque": {
+      "titre": "Le Regard noir",
+      "texte": "Ses yeux deviennent entièrement noirs. Il voit les choses invisibles (esprits, illusions, démons dissimulés), mais il est <strong>défavorisé</strong> en <strong>Discrétion</strong>."
+    },
+    "bonus": []
+  }
+}

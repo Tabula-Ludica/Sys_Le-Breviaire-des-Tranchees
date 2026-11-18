@@ -1,0 +1,25 @@
+{
+  "_id": "FwTOnMutM5l8K0LK",
+  "_key": "!items!FwTOnMutM5l8K0LK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Caisse de munitions",
+  "type": "equipement",
+  "img": "icons/svg/item-bag.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "",
+    "utilisation": {
+      "type": "usure",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": true
+    },
+    "description": "<p>Munitions +1 cran au-delà du dé de base, pour une mission.</p>"
+  }
+}

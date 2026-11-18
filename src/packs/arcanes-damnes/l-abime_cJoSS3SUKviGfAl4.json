@@ -1,0 +1,32 @@
+{
+  "_id": "cJoSS3SUKviGfAl4",
+  "_key": "!items!cJoSS3SUKviGfAl4",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Abîme",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/22.svg",
+  "system": {
+    "numero": 22,
+    "camp": "damnes",
+    "sens": "Fin, vide, accomplissement infernal",
+    "grace": {
+      "titre": "L'Abîme dévore",
+      "texte": "L&#39;objectif de la scène est atteint entièrement, et même au-delà."
+    },
+    "damnation": {
+      "titre": "L'Abîme rend tout vain",
+      "texte": "L&#39;objectif de la scène devient impossible : il faut trouver une autre voie."
+    },
+    "marque": {
+      "titre": "La Porte intérieure",
+      "texte": "Il sait toujours où se trouve la Porte de l&#39;Enfer, et peut toujours retrouver le chemin de ses maîtres. Mais les démons le convoitent comme hôte : à Faveur 9, son jet d&#39;Âme pour garder le contrôle est <strong>défavorisé</strong>."
+    },
+    "bonus": []
+  }
+}

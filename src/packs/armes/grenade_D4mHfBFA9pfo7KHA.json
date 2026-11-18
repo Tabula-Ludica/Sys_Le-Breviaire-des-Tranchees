@@ -1,0 +1,28 @@
+{
+  "_id": "D4mHfBFA9pfo7KHA",
+  "_key": "!items!D4mHfBFA9pfo7KHA",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Grenade",
+  "type": "arme",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "categorie": "lancer",
+    "degats": "1d10",
+    "porteeCourte": 20,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": 3,
+    "particularites": [
+      "zone"
+    ],
+    "quantite": 1,
+    "equipee": true,
+    "description": "<p>Raté : tombe à d6 × 1,5 m du point visé</p>"
+  }
+}

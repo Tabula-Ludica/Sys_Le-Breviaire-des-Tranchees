@@ -1,0 +1,41 @@
+{
+  "_id": "paoRJ0psH2TnBtvB",
+  "_key": "!items!paoRJ0psH2TnBtvB",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Bête",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/12.svg",
+  "system": {
+    "numero": 12,
+    "camp": "damnes",
+    "sens": "Rage, instinct, violence",
+    "grace": {
+      "titre": "La Furie",
+      "texte": "Ses <strong>Nerfs</strong> remontent d&#39;un cran, et il ignore la peur jusqu&#39;à la fin de la scène."
+    },
+    "damnation": {
+      "titre": "La Rage aveugle",
+      "texte": "Jusqu&#39;à la fin de la scène, il ne peut que se battre, quitte à frapper ce qui se trouve devant lui."
+    },
+    "marque": {
+      "titre": "Les Griffes",
+      "texte": "+2 en <strong>Mêlée</strong> et en <strong>Athlétisme</strong>. Mais ses mains deviennent des serres : il est <strong>défavorisé</strong> en <strong>Coup de main</strong> et en <strong>Médecine</strong>."
+    },
+    "bonus": [
+      {
+        "specialite": "melee",
+        "valeur": 2
+      },
+      {
+        "specialite": "athletisme",
+        "valeur": 2
+      }
+    ]
+  }
+}

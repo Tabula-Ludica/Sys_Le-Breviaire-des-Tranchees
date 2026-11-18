@@ -1,0 +1,32 @@
+{
+  "_id": "crRCRqPLwhcVC3mR",
+  "_key": "!items!crRCRqPLwhcVC3mR",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "L'Antipape",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/06.svg",
+  "system": {
+    "numero": 6,
+    "camp": "damnes",
+    "sens": "Fausse foi, sacrilège",
+    "grace": {
+      "titre": "La Messe à l'envers",
+      "texte": "+2d6 au <strong>Calice</strong>."
+    },
+    "damnation": {
+      "titre": "L'Hérésie dans l'hérésie",
+      "texte": "Ses maîtres doutent de lui : +3 au prochain jet de Disgrâce, et sa <strong>Haine</strong> descend d&#39;un cran."
+    },
+    "marque": {
+      "titre": "Le Masque de sainteté",
+      "texte": "Il passe pour un saint auprès des Fidèles : il est <strong>favorisé</strong> en <strong>Tromperie</strong> face aux croyants. Mais il ne peut plus toucher une relique ni entrer dans un lieu sanctifié."
+    },
+    "bonus": []
+  }
+}

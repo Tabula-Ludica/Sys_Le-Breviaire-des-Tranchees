@@ -1,0 +1,26 @@
+{
+  "_id": "Cky7AFeRXM88Rhij",
+  "_key": "!items!Cky7AFeRXM88Rhij",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Carabine",
+  "type": "arme",
+  "img": "icons/svg/target.svg",
+  "system": {
+    "categorie": "distance",
+    "degats": "1d8",
+    "porteeCourte": 30,
+    "porteeLongue": 100,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [],
+    "quantite": null,
+    "equipee": true,
+    "description": ""
+  }
+}

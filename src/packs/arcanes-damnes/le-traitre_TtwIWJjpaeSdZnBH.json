@@ -1,0 +1,32 @@
+{
+  "_id": "TtwIWJjpaeSdZnBH",
+  "_key": "!items!TtwIWJjpaeSdZnBH",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Traître",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/07.svg",
+  "system": {
+    "numero": 7,
+    "camp": "damnes",
+    "sens": "Trahison, lien brisé",
+    "grace": {
+      "titre": "La Trahison utile",
+      "texte": "Un ennemi présent se retourne, ou livre une information vraie, le temps de la scène."
+    },
+    "damnation": {
+      "titre": "Le Couteau dans le dos",
+      "texte": "Un allié PNJ trahit l&#39;escouade, ou se révèle être un espion des Fidèles."
+    },
+    "marque": {
+      "titre": "Le Cœur froid",
+      "texte": "Il ne fait plus de test de Nerfs quand un allié tombe. Mais il ne peut plus rallier personne, ni être rallié."
+    },
+    "bonus": []
+  }
+}

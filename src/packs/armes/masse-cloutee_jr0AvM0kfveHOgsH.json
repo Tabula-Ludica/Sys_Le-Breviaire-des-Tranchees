@@ -1,0 +1,28 @@
+{
+  "_id": "jr0AvM0kfveHOgsH",
+  "_key": "!items!jr0AvM0kfveHOgsH",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Masse cloutée",
+  "type": "arme",
+  "img": "icons/svg/sword.svg",
+  "system": {
+    "categorie": "melee",
+    "degats": "1d8",
+    "porteeCourte": null,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [
+      "brutal"
+    ],
+    "quantite": null,
+    "equipee": true,
+    "description": "<p><em>Brutal</em> : ignore 1 point de Protection</p>"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_id": "MYq5gFZJYZaxwfZT",
+  "_key": "!items!MYq5gFZJYZaxwfZT",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Eau bénite (fiole)",
+  "type": "arme",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "categorie": "lancer",
+    "degats": "1d6",
+    "porteeCourte": 10,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": null,
+    "particularites": [
+      "neBlesseQueImpie",
+      "sacree"
+    ],
+    "quantite": 2,
+    "equipee": true,
+    "description": "<p>Ne blesse que les cibles <em>impies</em> (voir plus bas), mais ignore leur Protection</p>"
+  }
+}

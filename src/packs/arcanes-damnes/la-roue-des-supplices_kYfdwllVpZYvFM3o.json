@@ -1,0 +1,32 @@
+{
+  "_id": "kYfdwllVpZYvFM3o",
+  "_key": "!items!kYfdwllVpZYvFM3o",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Roue des Supplices",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/11.svg",
+  "system": {
+    "numero": 11,
+    "camp": "damnes",
+    "sens": "Hasard cruel, retournement",
+    "grace": {
+      "titre": "Le Tour de roue",
+      "texte": "La situation tourne en faveur de l&#39;escouade : l&#39;ennemi recule, un renfort arrive, une issue apparaît."
+    },
+    "damnation": {
+      "titre": "Le Retour de manivelle",
+      "texte": "La situation tourne contre l&#39;escouade."
+    },
+    "marque": {
+      "titre": "Le Joueur",
+      "texte": "Une fois par session, il peut faire <strong>relancer n&#39;importe quel dé</strong>. Mais une fois par session, le MJ peut lui faire relancer <strong>un jet qu&#39;il avait réussi</strong>."
+    },
+    "bonus": []
+  }
+}

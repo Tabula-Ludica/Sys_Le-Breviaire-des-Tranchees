@@ -1,0 +1,61 @@
+{
+  "_id": "IAIKP7WVIc9C7CDJ",
+  "_key": "!items!IAIKP7WVIc9C7CDJ",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Sultanat du Mur de Fer",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "fideles",
+    "cle": "sultanat",
+    "specialites": [
+      "tir"
+    ],
+    "titreOption": "Lignée",
+    "options": [
+      {
+        "cle": "alamut",
+        "nom": "Fida'i d'Alamut",
+        "specialites": [
+          "discretion"
+        ]
+      },
+      {
+        "cle": "sagesse",
+        "nom": "Maison de la Sagesse",
+        "specialites": [
+          "medecine"
+        ]
+      },
+      {
+        "cle": "mur",
+        "nom": "Défenseurs du Mur de Fer",
+        "specialites": [
+          "terrassement"
+        ]
+      }
+    ],
+    "particularite": {
+      "nom": "",
+      "texte": "Accès à la substitution Calcul balistique."
+    },
+    "substitutions": [
+      "calculBalistique"
+    ],
+    "usure": {
+      "munitions": 1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Accès à la substitution Calcul balistique.</p>"
+  }
+}

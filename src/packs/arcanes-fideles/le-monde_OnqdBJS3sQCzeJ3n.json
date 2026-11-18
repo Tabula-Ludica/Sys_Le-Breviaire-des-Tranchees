@@ -1,0 +1,32 @@
+{
+  "_id": "OnqdBJS3sQCzeJ3n",
+  "_key": "!items!OnqdBJS3sQCzeJ3n",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Monde",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/22.svg",
+  "system": {
+    "numero": 22,
+    "camp": "fideles",
+    "sens": "Accomplissement, voyage, totalité",
+    "grace": {
+      "titre": "L'Accomplissement",
+      "texte": "L&#39;objectif de la scène est atteint entièrement, et même au-delà."
+    },
+    "damnation": {
+      "titre": "Tout s'écroule",
+      "texte": "L&#39;objectif de la scène devient impossible : il faut trouver une autre voie."
+    },
+    "marque": {
+      "titre": "La Boussole noire",
+      "texte": "Il sait toujours où se trouvent le nord… et la Porte de l&#39;Enfer. Mais les démons le reconnaissent : ils le sentent venir de loin, et certains le prennent pour l&#39;un des leurs."
+    },
+    "bonus": []
+  }
+}

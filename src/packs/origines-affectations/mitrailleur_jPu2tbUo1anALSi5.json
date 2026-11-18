@@ -1,0 +1,39 @@
+{
+  "_id": "jPu2tbUo1anALSi5",
+  "_key": "!items!jPu2tbUo1anALSi5",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Mitrailleur",
+  "type": "affectation",
+  "img": "icons/svg/statue.svg",
+  "system": {
+    "camp": "",
+    "cle": "mitrailleur",
+    "expert": "tir",
+    "formes": [
+      "portage",
+      "mecanique"
+    ],
+    "substitutions": [],
+    "dotation": "Mitrailleuse légère, trépied, caisse de munitions, pistolet",
+    "dotationUuids": [
+      "Compendium.breviaire.armes.Item.UyHx9FePWWSgGDQV",
+      "Compendium.breviaire.equipement.Item.t2gZKWh4U4T5u3ts",
+      "Compendium.breviaire.equipement.Item.FwTOnMutM5l8K0LK",
+      "Compendium.breviaire.armes.Item.KfOupYPgT1ZhYk0i"
+    ],
+    "usure": {
+      "munitions": 1,
+      "foi": 0,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "note": "",
+    "description": ""
+  }
+}

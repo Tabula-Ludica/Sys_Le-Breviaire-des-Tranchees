@@ -1,0 +1,99 @@
+{
+  "_id": "iJHh4KRdz6GF7hrK",
+  "_key": "!items!iJHh4KRdz6GF7hrK",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Transfuge",
+  "type": "origine",
+  "img": "icons/svg/village.svg",
+  "system": {
+    "camp": "damnes",
+    "cle": "transfuge",
+    "specialites": [],
+    "titreOption": "Ancienne Origine (on en garde les Spécialités)",
+    "options": [
+      {
+        "cle": "antioche",
+        "nom": "Principauté de Nouvelle-Antioche",
+        "specialites": [
+          "tactique",
+          "tir"
+        ]
+      },
+      {
+        "cle": "pontifical",
+        "nom": "États pontificaux",
+        "specialites": [
+          "ferveur",
+          "melee"
+        ]
+      },
+      {
+        "cle": "eire",
+        "nom": "Éire",
+        "specialites": [
+          "discretion",
+          "debrouille"
+        ]
+      },
+      {
+        "cle": "alba",
+        "nom": "Royaume d'Alba",
+        "specialites": [
+          "melee",
+          "intimidation"
+        ]
+      },
+      {
+        "cle": "prusse",
+        "nom": "État libre de Prusse",
+        "specialites": [
+          "lancer",
+          "coupDeMain"
+        ]
+      },
+      {
+        "cle": "abyssinie",
+        "nom": "Abyssinie",
+        "specialites": [
+          "endurance",
+          "vigilance"
+        ]
+      },
+      {
+        "cle": "pelerins",
+        "nom": "Pèlerins des Tranchées",
+        "specialites": [
+          "ferveur",
+          "endurcissement"
+        ]
+      },
+      {
+        "cle": "sultanat",
+        "nom": "Sultanat du Mur de Fer",
+        "specialites": [
+          "tir"
+        ]
+      }
+    ],
+    "particularite": {
+      "nom": "Visage d'emprunt",
+      "texte": "peut se faire passer pour un Fidèle, favorisé en Tromperie face à eux ; +2 au jet de Disgrâce."
+    },
+    "substitutions": [],
+    "usure": {
+      "munitions": 0,
+      "foi": 1,
+      "vivres": 0,
+      "nerfs": 0
+    },
+    "protectionNaturelle": 0,
+    "corruptionDepart": 0,
+    "description": "<p>Visage d'emprunt : peut se faire passer pour un Fidèle, favorisé en Tromperie face à eux ; +2 au jet de Disgrâce.</p>"
+  }
+}

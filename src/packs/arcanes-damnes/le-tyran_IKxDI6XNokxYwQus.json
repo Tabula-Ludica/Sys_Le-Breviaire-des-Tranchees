@@ -1,0 +1,41 @@
+{
+  "_id": "IKxDI6XNokxYwQus",
+  "_key": "!items!IKxDI6XNokxYwQus",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Tyran",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/05.svg",
+  "system": {
+    "numero": 5,
+    "camp": "damnes",
+    "sens": "Domination, peur, ordre infernal",
+    "grace": {
+      "titre": "L'Ordre de fer",
+      "texte": "Chaque allié présent est <strong>favorisé</strong> à son prochain jet."
+    },
+    "damnation": {
+      "titre": "Le Caprice du maître",
+      "texte": "Un ordre absurde ou cruel arrive des maîtres. Le refuser donne +3 au prochain jet de Disgrâce."
+    },
+    "marque": {
+      "titre": "Le Joug",
+      "texte": "+2 en <strong>Commandement</strong> et en <strong>Intimidation</strong>. Mais il ne peut plus obéir à un autre Damné sans réussir un jet d&#39;<strong>Âme</strong>."
+    },
+    "bonus": [
+      {
+        "specialite": "commandement",
+        "valeur": 2
+      },
+      {
+        "specialite": "intimidation",
+        "valeur": 2
+      }
+    ]
+  }
+}

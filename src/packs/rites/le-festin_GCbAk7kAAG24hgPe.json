@@ -1,0 +1,24 @@
+{
+  "_id": "GCbAk7kAAG24hgPe",
+  "_key": "!items!GCbAk7kAAG24hgPe",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Festin",
+  "type": "rite",
+  "img": "icons/svg/book.svg",
+  "system": {
+    "camp": "damnes",
+    "niveau": "mineur",
+    "portee": null,
+    "duree": "",
+    "opposition": "aucune",
+    "specialite": "ferveur",
+    "horsCombat": true,
+    "effet": "<p>Hors combat, une fois par jour : les <strong>Vivres</strong> de toute l&#39;escouade ignorent leur prochain test d&#39;usure. Ce qu&#39;ils mangent, mieux vaut ne pas le demander.</p>\n"
+  }
+}

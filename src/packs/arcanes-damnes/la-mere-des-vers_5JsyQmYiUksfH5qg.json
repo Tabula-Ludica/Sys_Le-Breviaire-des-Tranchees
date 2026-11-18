@@ -1,0 +1,32 @@
+{
+  "_id": "5JsyQmYiUksfH5qg",
+  "_key": "!items!5JsyQmYiUksfH5qg",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Mère des Vers",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/damnes/04.svg",
+  "system": {
+    "numero": 4,
+    "camp": "damnes",
+    "sens": "Pourriture, fécondité corrompue",
+    "grace": {
+      "titre": "Le Festin",
+      "texte": "Les <strong>Vivres</strong> de toute l&#39;escouade remontent d&#39;un cran."
+    },
+    "damnation": {
+      "titre": "La Pourriture",
+      "texte": "Les <strong>Vivres</strong> de toute l&#39;escouade descendent d&#39;un cran."
+    },
+    "marque": {
+      "titre": "La Chair grouillante",
+      "texte": "Au début de chacun de ses tours, il récupère <strong>1 Blessure</strong>. Mais des vers sortent de ses plaies : il est <strong>défavorisé</strong> en <strong>Persuasion</strong> et en <strong>Tromperie</strong> face à tous."
+    },
+    "bonus": []
+  }
+}

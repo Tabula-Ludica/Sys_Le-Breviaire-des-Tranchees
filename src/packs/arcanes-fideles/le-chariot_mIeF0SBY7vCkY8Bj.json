@@ -1,0 +1,32 @@
+{
+  "_id": "mIeF0SBY7vCkY8Bj",
+  "_key": "!items!mIeF0SBY7vCkY8Bj",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Chariot",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/08.svg",
+  "system": {
+    "numero": 8,
+    "camp": "fideles",
+    "sens": "Conquête, victoire, élan",
+    "grace": {
+      "titre": "L'Élan",
+      "texte": "Le personnage peut enchaîner <strong>immédiatement</strong> une seconde action, sur un jet <strong>favorisé</strong>."
+    },
+    "damnation": {
+      "titre": "La Débandade",
+      "texte": "L&#39;élan l&#39;emporte trop loin : il se retrouve isolé, à découvert ou en terrain ennemi."
+    },
+    "marque": {
+      "titre": "Les Jambes de l'Enfer",
+      "texte": "Il réussit automatiquement tous les jets d&#39;<strong>Endurance</strong> liés à la marche. Mais il ne supporte plus l&#39;immobilité : il est <strong>défavorisé</strong> en <strong>Discrétion</strong>."
+    },
+    "bonus": []
+  }
+}

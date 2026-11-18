@@ -1,0 +1,88 @@
+{
+  "_id": "iCcZf2CFlBjdFSs4",
+  "_key": "!actors!iCcZf2CFlBjdFSs4",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Sous-officier hérétique",
+  "type": "ennemi",
+  "img": "icons/svg/mystery-man.svg",
+  "system": {
+    "camp": "damnes",
+    "role": "aguerri",
+    "menace": 12,
+    "blessures": {
+      "value": 11,
+      "max": 11
+    },
+    "protection": 2,
+    "deplacement": 9,
+    "traits": [
+      "chef",
+      "impie"
+    ],
+    "traitsLibres": "",
+    "notes": ""
+  },
+  "prototypeToken": {
+    "name": "Sous-officier hérétique",
+    "actorLink": false,
+    "disposition": -1,
+    "displayBars": 20,
+    "bar1": {
+      "attribute": "blessures"
+    },
+    "width": 1,
+    "height": 1
+  },
+  "items": [
+    {
+      "_id": "uBCPU2lyrn0cmFek",
+      "_key": "!actors.items!iCcZf2CFlBjdFSs4.uBCPU2lyrn0cmFek",
+      "flags": {},
+      "sort": 0,
+      "name": "Pistolet",
+      "type": "arme",
+      "img": "icons/svg/target.svg",
+      "effects": [],
+      "system": {
+        "categorie": "distance",
+        "degats": "1d6",
+        "porteeCourte": 10,
+        "porteeLongue": 30,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    },
+    {
+      "_id": "xWxvvDL1whldcNPq",
+      "_key": "!actors.items!iCcZf2CFlBjdFSs4.xWxvvDL1whldcNPq",
+      "flags": {},
+      "sort": 0,
+      "name": "Sabre",
+      "type": "arme",
+      "img": "icons/svg/sword.svg",
+      "effects": [],
+      "system": {
+        "categorie": "melee",
+        "degats": "1d8",
+        "porteeCourte": null,
+        "porteeLongue": null,
+        "allonge": 1.5,
+        "zone": null,
+        "particularites": [],
+        "quantite": null,
+        "equipee": true,
+        "description": ""
+      }
+    }
+  ]
+}

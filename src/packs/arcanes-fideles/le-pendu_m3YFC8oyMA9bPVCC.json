@@ -1,0 +1,32 @@
+{
+  "_id": "m3YFC8oyMA9bPVCC",
+  "_key": "!items!m3YFC8oyMA9bPVCC",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Pendu",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/13.svg",
+  "system": {
+    "numero": 13,
+    "camp": "fideles",
+    "sens": "Sacrifice, attente, renoncement",
+    "grace": {
+      "titre": "Le Sacrifice accepté",
+      "texte": "Le Ciel prend le coût à sa charge : cette action ne consomme <strong>aucune ressource</strong>, et son prochain test d&#39;usure est réussi d&#39;office."
+    },
+    "damnation": {
+      "titre": "Suspendu",
+      "texte": "Il est immobilisé : coincé dans les barbelés, enseveli, pris au piège ou capturé."
+    },
+    "marque": {
+      "titre": "La Corde",
+      "texte": "Une fois par mission, il sent venir un danger mortel juste avant qu&#39;il frappe. Mais il garde une trace de corde au cou, et ses <strong>Vivres</strong> ne remontent plus au-delà de <strong>d6</strong>."
+    },
+    "bonus": []
+  }
+}

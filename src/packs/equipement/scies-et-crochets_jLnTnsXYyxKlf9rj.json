@@ -1,0 +1,25 @@
+{
+  "_id": "jLnTnsXYyxKlf9rj",
+  "_key": "!items!jLnTnsXYyxKlf9rj",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Scies et crochets",
+  "type": "equipement",
+  "img": "icons/svg/heal.svg",
+  "system": {
+    "quantite": 1,
+    "camp": "damnes",
+    "utilisation": {
+      "type": "soin",
+      "usure": "munitions",
+      "crans": 1,
+      "consomme": false
+    },
+    "description": "<p>Instruments du Chirurgien de chair : action Soigner.</p>"
+  }
+}

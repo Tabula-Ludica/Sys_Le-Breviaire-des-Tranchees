@@ -1,0 +1,32 @@
+{
+  "_id": "lJhQntPnPeKuLoeg",
+  "_key": "!items!lJhQntPnPeKuLoeg",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Pape",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/06.svg",
+  "system": {
+    "numero": 6,
+    "camp": "fideles",
+    "sens": "Foi, tradition, enseignement",
+    "grace": {
+      "titre": "Bénédiction",
+      "texte": "+2d6 au Chapelet."
+    },
+    "damnation": {
+      "titre": "Soupçon d'hérésie",
+      "texte": "Un aumônier ou un inquisiteur a remarqué quelque chose. La Foi du personnage descend d&#39;un cran."
+    },
+    "marque": {
+      "titre": "La Fausse sainteté",
+      "texte": "Les Fidèles le prennent pour un saint : il est <strong>favorisé</strong> en <strong>Persuasion</strong> face aux croyants. Mais l&#39;eau bénite le brûle."
+    },
+    "bonus": []
+  }
+}

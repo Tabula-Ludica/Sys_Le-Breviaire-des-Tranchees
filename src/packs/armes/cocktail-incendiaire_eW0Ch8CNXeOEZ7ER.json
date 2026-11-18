@@ -1,0 +1,29 @@
+{
+  "_id": "eW0Ch8CNXeOEZ7ER",
+  "_key": "!items!eW0Ch8CNXeOEZ7ER",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Cocktail incendiaire",
+  "type": "arme",
+  "img": "icons/svg/explosion.svg",
+  "system": {
+    "categorie": "lancer",
+    "degats": "1d6",
+    "porteeCourte": 15,
+    "porteeLongue": null,
+    "allonge": 1.5,
+    "zone": 2,
+    "particularites": [
+      "enflamme",
+      "zone"
+    ],
+    "quantite": 1,
+    "equipee": true,
+    "description": "<p><em>Enflammé</em> : d4 par tour jusqu&#39;à ce qu&#39;on s&#39;éteigne (une action)</p>"
+  }
+}

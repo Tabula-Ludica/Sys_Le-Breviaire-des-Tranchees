@@ -1,0 +1,32 @@
+{
+  "_id": "mT45lCjbGGHgWrct",
+  "_key": "!items!mT45lCjbGGHgWrct",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "La Mort",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/14.svg",
+  "system": {
+    "numero": 14,
+    "camp": "fideles",
+    "sens": "Fin, deuil, transformation",
+    "grace": {
+      "titre": "Épargné",
+      "texte": "Il échappe à une mort certaine, pour cette fois."
+    },
+    "damnation": {
+      "titre": "Le Prix",
+      "texte": "Quelqu&#39;un paie à sa place : un PNJ allié ou proche meurt. Toute l&#39;escouade fait un test d&#39;usure de <strong>Nerfs</strong>."
+    },
+    "marque": {
+      "titre": "L'Odeur du charnier",
+      "texte": "Les morts-vivants et les charognards l&#39;ignorent tant qu&#39;il ne les attaque pas. Mais les vivants sentent la mort sur lui : il est <strong>défavorisé</strong> en <strong>Persuasion</strong>."
+    },
+    "bonus": []
+  }
+}

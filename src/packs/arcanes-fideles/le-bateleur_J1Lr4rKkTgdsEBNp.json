@@ -1,0 +1,41 @@
+{
+  "_id": "J1Lr4rKkTgdsEBNp",
+  "_key": "!items!J1Lr4rKkTgdsEBNp",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "effects": [],
+  "name": "Le Bateleur",
+  "type": "arcane",
+  "img": "systems/breviaire/assets/arcanes/fideles/02.svg",
+  "system": {
+    "numero": 2,
+    "camp": "fideles",
+    "sens": "Habileté, ruse, débuts",
+    "grace": {
+      "titre": "Tour de main",
+      "texte": "Réussite, et un dé d&#39;usure au choix du joueur <strong>remonte d&#39;un cran</strong>."
+    },
+    "damnation": {
+      "titre": "Escamotage",
+      "texte": "Un objet important de sa dotation est perdu, cassé ou enrayé."
+    },
+    "marque": {
+      "titre": "Les Doigts de l'Autre",
+      "texte": "+2 en <strong>Coup de main</strong> et en <strong>Tromperie</strong>. Mais ses mains sont glacées et son ombre bouge toute seule : les animaux et les enfants le fuient."
+    },
+    "bonus": [
+      {
+        "specialite": "coupDeMain",
+        "valeur": 2
+      },
+      {
+        "specialite": "tromperie",
+        "valeur": 2
+      }
+    ]
+  }
+}
