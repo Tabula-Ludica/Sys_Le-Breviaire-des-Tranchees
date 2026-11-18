@@ -18,7 +18,9 @@
     "porteeLongue": null,
     "allonge": 1.5,
     "zone": null,
-    "particularites": [],
+    "particularites": [
+      "impie"
+    ],
     "quantite": 2,
     "equipee": true,
     "description": "<p>Lancée à 10 m : d6 dégâts, et la cible fait un test d'usure de Nerfs.</p>"

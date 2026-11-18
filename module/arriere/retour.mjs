@@ -3,7 +3,7 @@
  * chacune avec ses boutons. Ouverte depuis la fiche (propriétaire) ou depuis le widget du MJ (toute l'escouade).
  */
 
-import { SYSTEME, CARACS } from "../config.mjs";
+import { CARACS } from "../config.mjs";
 import { terme } from "../lexique.mjs";
 import { themeSombre } from "../settings.mjs";
 import * as R from "../logique/regles.mjs";

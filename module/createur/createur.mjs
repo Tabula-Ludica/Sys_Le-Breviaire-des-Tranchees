@@ -145,7 +145,7 @@ export class CreateurPersonnage extends HandlebarsApplicationMixin(ApplicationV2
       origines: Object.fromEntries([["", "—"], ...origines.map(o => [o.system.cle, o.name])]),
       origine: origine ? {
         nom: origine.name,
-        specialites: origine.system.specialites.map(libelleSpe).join(", "),
+        specialites: [...origine.system.specialites].map(libelleSpe).join(", "),
         particularite: origine.system.particularite,
         titreOption: origine.system.titreOption,
         options: origine.system.options.length ? Object.fromEntries([["", "—"], ...origine.system.options.map(o => [o.cle, o.nom])]) : null,
@@ -156,7 +156,7 @@ export class CreateurPersonnage extends HandlebarsApplicationMixin(ApplicationV2
       affectation: affectation ? {
         nom: affectation.name,
         expert: affectation.system.expert ? libelleSpe(affectation.system.expert) : "",
-        formes: affectation.system.formes.map(libelleSpe).join(", "),
+        formes: [...affectation.system.formes].map(libelleSpe).join(", "),
         dotation: affectation.system.dotation,
         note: affectation.system.note,
         usure: this.#texteAjustements(affectation.system.usure, camp)

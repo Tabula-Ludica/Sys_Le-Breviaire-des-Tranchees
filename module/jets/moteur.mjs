@@ -97,6 +97,7 @@ export async function lancerJet(actor, demande = {}) {
   if (arme && actor.type === "personnage" && arme.system.categorie === "distance" && actor.system.usure.munitions.value === 0) {
     return ui.notifications.warn(loc("BREVIAIRE.Combat.sansMunitions"));
   }
+  if (arme?.system.quantite === 0) return ui.notifications.warn(game.i18n.format("BREVIAIRE.Utiliser.plusAucun", { objet: arme.name }));
   const { DialogueJet } = await import("./dialogue-jet.mjs");
   const opts = await DialogueJet.demander(actor, demande);
   if (!opts) return null;
@@ -176,6 +177,10 @@ export async function executerJet(actor, opts) {
     await tirerArcane({ actor, contexte: d.naturel === "miracle" ? "grace" : "damnation" });
   }
   await tirerMarquesDesPaliers(actor, d);
+  // Grenades, charges, fioles : comptées à l'unité (ch. IV §6)
+  if (arme && arme.system.quantite != null && ["lancer", "explosif"].includes(arme.system.categorie)) {
+    await arme.update({ "system.quantite": Math.max(0, arme.system.quantite - 1) });
+  }
   // Après un tir : test d'usure de Munitions, défavorisé en rafale (ch. IV §4) ; le Viseur est consommé
   if (arme && arme.system.categorie === "distance") {
     if (personnage) {
@@ -354,7 +359,7 @@ export async function rendreCarte(d) {
   const contexte = {
     d,
     riteEffet: rite && d.reussite ? rite.system.effet : null,
-    sousTitreRite: d.rite ? `${loc(`BREVIAIRE.NiveauRite.${d.rite.niveau}`)} · ${loc("BREVIAIRE.Specialite.ferveur")}` : null,
+    sousTitreRite: d.rite ? `${loc(`BREVIAIRE.NiveauRite.${d.rite.niveau}`)} · ${loc(`BREVIAIRE.Specialite.${d.specialite ?? "ferveur"}`)}` : null,
     camp: d.camp,
     titre: titreDuJet(d, actor),
     acteur: { nom: actor?.name ?? "?", img: actor?.img },
@@ -426,7 +431,7 @@ async function actionCarte(message, action) {
     const texte = await appliquerSoins(d);
     if (!texte) return;
     d.soin.applique = texte;
-    return message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
+    return majCarteJet(message, d);
   }
 
   // Prière ou pacte après coup (variante)
@@ -445,7 +450,13 @@ async function actionCarte(message, action) {
   resoudre(d);
   await appliquerSuites(actor, d);
   await tirerMarquesDesPaliers(actor, d);
-  await message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
+  await majCarteJet(message, d);
+}
+
+/** Réécrit une carte de jet ; si elle appartient à un autre (le MJ a lancé pour un joueur), le MJ s'en charge. */
+function majCarteJet(message, d) {
+  if (message.isOwner) return rendreCarte(d).then(content => message.update({ content, [`flags.${SYSTEME}.jet`]: d }));
+  return game.users.activeGM?.query("breviaire.carte", { messageId: message.id, type: "jet", d }, { timeout: 10000 });
 }
 
 /** Dégâts d'une arme (voir combat/degats.mjs). */
@@ -490,7 +501,6 @@ async function defendre(message, d, specialite) {
     defense: { specialite, total: j.total, reussite: j.reussite },
     gagnant: R.resoudreOpposition({ reussite: d.reussite, total: d.total }, { reussite: j.reussite, total: j.total })
   };
-  if (message.isOwner) return message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
-  return game.users.activeGM?.query("breviaire.carte", { messageId: message.id, type: "jet", d }, { timeout: 10000 });
+  return majCarteJet(message, d);
 }
 

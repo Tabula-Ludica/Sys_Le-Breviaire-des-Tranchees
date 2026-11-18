@@ -39,10 +39,10 @@ export class BreviaireCombat extends Combat {
   }
 
   /** Initiative affichée de chaque combattant selon sa phase et le tour en cours. */
-  initiativeDe(c) {
+  initiativeDe(c, round = this.round) {
     const f = c.flags?.[SYSTEME] ?? {};
     if (f.phase == null) return null;
-    if (this.round <= 1) {
+    if (round <= 1) {
       if (f.eclair) return R.PHASES.eclair;
       const surpris = this.getFlag(SYSTEME, "embuscade");
       const pj = c.actor?.type === "personnage";
@@ -52,19 +52,18 @@ export class BreviaireCombat extends Combat {
     return f.phase;
   }
 
-  async appliquerPhases() {
-    const majs = this.combatants.map(c => ({ _id: c.id, initiative: this.initiativeDe(c) }))
+  async appliquerPhases(round = this.round) {
+    // Un joueur ne peut modifier que ses propres combattants
+    const majs = this.combatants.filter(c => c.isOwner).map(c => ({ _id: c.id, initiative: this.initiativeDe(c, round) }))
       .filter(m => m.initiative !== null && m.initiative !== this.combatants.get(m._id).initiative);
     if (majs.length) await this.updateEmbeddedDocuments("Combatant", majs);
   }
 
   async nextRound() {
-    const r = await super.nextRound();
-    if (game.user.isGM) {
-      // Assaut éclair et embuscade ne durent qu'un tour ; une initiative reprise compte à partir de ce tour-ci
-      await this.appliquerPhases();
-    }
-    return r;
+    // Assaut éclair et embuscade ne durent qu'un tour ; une initiative reprise compte au tour suivant.
+    // Les phases changent avant le changement de tour, pour que le tour 2 commence par le bon combattant.
+    if (game.user.isGM) await this.appliquerPhases(this.round + 1);
+    return super.nextRound();
   }
 
   /** Embuscade : « pj » ou « ennemis » sont surpris au premier tour (ou null). */
@@ -98,7 +97,7 @@ export function assautEclairPossible(actor) {
 
 export async function assautEclair(actor) {
   if (!assautEclairPossible(actor)) return;
-  const { combat, c } = combatEtCombattant(actor);
+  const { c } = combatEtCombattant(actor);
   await actor.update({ "system.usages.mission.assautEclair": true });
   await c.update({ [`flags.${SYSTEME}.eclair`]: true, [`flags.${SYSTEME}.phase`]: c.getFlag(SYSTEME, "phase") ?? R.PHASES.lente });
   await c.update({ initiative: R.PHASES.eclair });

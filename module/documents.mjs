@@ -4,7 +4,6 @@
 
 import { campDuMonde, terme } from "./lexique.mjs";
 import * as R from "./logique/regles.mjs";
-import { SYSTEME } from "./config.mjs";
 
 export class BreviaireActor extends Actor {
   /** Valeurs par défaut à la création : camp de la campagne, token lié pour les personnages. */
@@ -53,6 +52,10 @@ export class BreviaireActor extends Actor {
     await super._onUpdate(changed, options, userId);
     if (userId !== game.user.id || this.type !== "personnage") return;
     const b = options.breviaire ?? {};
+    // Soigné au-dessus de 0 (soins, repos, arrière, fiche) : il n'est plus hors de combat
+    if (foundry.utils.getProperty(changed, "system.blessures.value") > 0 && this.statuses.has("horsDeCombat")) {
+      await this.toggleStatusEffect("horsDeCombat", { active: false });
+    }
     if (b.paliers?.length && !b.sansMarque) {
       const { tirerArcane } = await import("./arcanes/arcanes.mjs");
       for (const p of b.paliers) await tirerArcane({ actor: this, contexte: "marque" });

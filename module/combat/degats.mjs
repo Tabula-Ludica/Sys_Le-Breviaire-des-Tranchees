@@ -5,7 +5,6 @@
 
 import { SYSTEME, BLESSURES_GRAVES } from "../config.mjs";
 import * as R from "../logique/regles.mjs";
-import { terme } from "../lexique.mjs";
 import { themeSombre } from "../settings.mjs";
 import { etat } from "./etats.mjs";
 import { perdreInitiative } from "./combat.mjs";
@@ -43,6 +42,8 @@ export async function lancerDegats(attaquant, armeId, { cibles = [] } = {}) {
     brutal: p.has("brutal"),
     sacre: attaqueSacree(attaquant, arme),
     eauBenite: p.has("neBlesseQueImpie"),
+    // Arme Impie (rite noir, fiole de sang maudit) : la cible blessée fait un test d'usure de Nerfs
+    impie: p.has("impie"),
     zone: p.has("zone"),
     cibles: cibles.map(uuid => ({ uuid, deFace: true, moitie: false, applique: null }))
   };
@@ -116,7 +117,7 @@ async function actionDegats(message, i, action) {
   else if (action === "appliquer") {
     const r = degatsPour(d, c);
     c.applique = r.degats;
-    await appliquerDegats(r.cible, r.degats, { blessureGrave: r.blessureGrave });
+    await appliquerDegats(r.cible, r.degats, { blessureGrave: r.blessureGrave, nerfs: d.impie });
   }
   // La carte appartient à l'attaquant : le MJ la met à jour pour les joueurs (requête), sinon son auteur
   if (message.isOwner) return message.update({ content: await rendreCarteDegats(d), [`flags.${SYSTEME}.degats`]: d });
@@ -126,7 +127,8 @@ async function actionDegats(message, i, action) {
 /** Requête du MJ : réécrire une carte (dégâts ou opposition) au nom d'un joueur. */
 export async function majCarte({ messageId, type, d }) {
   const message = game.messages.get(messageId);
-  if (!message) return false;
+  // Seules les cartes du système sont réécrites, et toujours depuis leurs données (jamais du HTML reçu)
+  if (!game.user.isGM || !["degats", "jet"].includes(type) || !message?.getFlag(SYSTEME, type)) return false;
   if (type === "degats") await message.update({ content: await rendreCarteDegats(d), [`flags.${SYSTEME}.degats`]: d });
   if (type === "jet") {
     const { rendreCarte } = await import("../jets/moteur.mjs");
@@ -143,7 +145,7 @@ export async function majCarte({ messageId, type, d }) {
  * Retire les Blessures. Blessure grave sur 6+ en un coup ou en tombant à 0 (sauf Insensible) :
  * 1d6 sur la table, test d'usure de Nerfs, phase lente. À 0 : hors de combat (personnage) ou vaincu (ennemi).
  */
-export async function appliquerDegats(cible, degats, { blessureGrave = false } = {}) {
+export async function appliquerDegats(cible, degats, { blessureGrave = false, nerfs = false } = {}) {
   if (!cible) return;
   const avant = cible.system.blessures.value;
   const apres = Math.max(0, avant - degats);
@@ -199,7 +201,7 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false } =
   });
 
   // Test d'usure de Nerfs après la carte (personnage, Blessure grave)
-  if (rolls.length && cible.type === "personnage") {
+  if ((rolls.length || (nerfs && degats > 0)) && cible.type === "personnage") {
     const { testUsure } = await import("../jets/usure.mjs");
     await testUsure(cible, "nerfs");
   }
@@ -217,10 +219,12 @@ const TABLE_PANIQUE = [null, "fuite", "fuite", "terre", "terre", "furie", "furie
  */
 export async function debutDeTour(combat) {
   if (game.user !== game.users.activeGM) return;
+  await combat.appliquerPhases?.();
   const c = combat.combatant;
   const actor = c?.actor;
   if (!actor || c.defeated) return;
-  const camp = actor.system.camp ?? game.settings.get(SYSTEME, "camp");
+  // « À couvert » dure jusqu'à son prochain tour ; « A plongé » ne vaut que pour le tir reçu
+  for (const id of ["aCouvert", "plonge"]) if (actor.statuses.has(id)) await actor.toggleStatusEffect(id, { active: false });
   const parties = [];
   const boutons = [];
 

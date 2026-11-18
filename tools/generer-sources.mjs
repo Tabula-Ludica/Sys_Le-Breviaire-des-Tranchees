@@ -294,7 +294,7 @@ function armes() {
     name: "Fiole de sang maudit", type: "arme", img: IMG.lancer,
     system: {
       categorie: "lancer", degats: "1d6", porteeCourte: 10, porteeLongue: null, allonge: 1.5, zone: null,
-      particularites: [], quantite: 2, equipee: true,
+      particularites: ["impie"], quantite: 2, equipee: true,
       description: "<p>Lancée à 10 m : d6 dégâts, et la cible fait un test d'usure de Nerfs.</p>"
     }
   }));
@@ -489,9 +489,9 @@ const usure = u => Object.fromEntries(["munitions", "foi", "vivres", "nerfs"].ma
 
 /** Dotation de chaque Affectation (ch. VIII) : objets des compendiums, répétés pour les quantités. */
 const DOTATIONS = {
-  fantassin: ["Fusil", "Baïonnette (sur fusil)", "Pelle de tranchée", "Grenade"],
+  fantassin: ["Fusil", "Baïonnette (sur fusil)", "Pelle de tranchée", "Grenade", "Grenade"],
   mitrailleur: ["Mitrailleuse légère", "Trépied", "Caisse de munitions", "Pistolet"],
-  nettoyeur: ["Masse cloutée", "Couteau de tranchée", "Pistolet", "Grenade", "Bouclier de tranchée"],
+  nettoyeur: ["Masse cloutée", "Couteau de tranchée", "Pistolet", "Grenade", "Grenade", "Grenade", "Bouclier de tranchée"],
   sapeur: ["Pistolet", "Pelle de tranchée", "Charge explosive", "Charge explosive", "Charge explosive", "Détonateur", "Lampe"],
   tireur: ["Fusil à lunette", "Cape de camouflage", "Couteau de tranchée"],
   eclaireur: ["Carabine", "Couteau de tranchée", "Jumelles", "Carte d'état-major", "Cisailles à barbelés"],

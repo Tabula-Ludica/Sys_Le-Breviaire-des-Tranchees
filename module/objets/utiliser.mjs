@@ -84,6 +84,8 @@ export async function appliquerSoins(d) {
   const maj = { "system.blessures.value": valeur };
   if (horsDeCombat && cible.type === "personnage") Object.assign(maj, { "system.mort.stabilise": true, "system.mort.echecs": 0 });
   await cible.update(maj);
+  // Un jet de Médecine réussi arrête l'Hémorragie (ch. IV §7)
+  if (cible.statuses?.has("hemorragie")) await cible.toggleStatusEffect("hemorragie", { active: false });
   return fmt(horsDeCombat ? "BREVIAIRE.Utiliser.stabilise" : "BREVIAIRE.Utiliser.soigne", { nom: cible.name, n: roll.total });
 }
 

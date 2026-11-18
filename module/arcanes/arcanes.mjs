@@ -200,8 +200,8 @@ export function brancherCarteArcane(message, html) {
   for (const bouton of html.querySelectorAll("[data-brev-arcane]")) {
     const e = d.effets[Number(bouton.dataset.brevArcane)];
     const actor = d.acteur ? fromUuidSync(d.acteur) : null;
-    // Effets sur l'escouade : le MJ ; sur le personnage : son propriétaire ; réserve : tout le monde (requête au MJ)
-    const autorise = e?.type === "reserve" || game.user.isGM || (e?.cible === "soi" && actor?.isOwner);
+    // Effets sur l'escouade : le MJ ; sur le personnage ou la réserve : son propriétaire (qui peut réécrire la carte)
+    const autorise = game.user.isGM || (e?.cible !== "escouade" && actor?.isOwner && message.isOwner);
     if (!autorise) { bouton.remove(); continue; }
     bouton.addEventListener("click", async ev => {
       ev.preventDefault();
