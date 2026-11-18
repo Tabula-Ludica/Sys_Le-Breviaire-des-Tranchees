@@ -109,6 +109,18 @@
       "flags": {}
     },
     {
+      "name": "specialites",
+      "label": "Spécialités et substitutions",
+      "path": "packs/specialites",
+      "type": "JournalEntry",
+      "system": "breviaire",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "flags": {}
+    },
+    {
       "name": "origines-affectations",
       "label": "Origines et Affectations",
       "path": "packs/origines-affectations",
@@ -236,6 +248,7 @@
       "color": "#7d1710",
       "packs": [
         "regles",
+        "specialites",
         "origines-affectations",
         "armes",
         "protections",

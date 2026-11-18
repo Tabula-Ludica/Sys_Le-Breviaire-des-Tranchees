@@ -547,6 +547,30 @@ function originesAffectations() {
 }
 
 /* -------------------------------------------- */
+/*  Spécialités et substitutions (ch. II §2–4)  */
+/* -------------------------------------------- */
+
+function specialites() {
+  for (const camp of ["fideles", "damnes"]) {
+    const md = adapter(lire("regles/commun/02-caracteristiques.md"), camp);
+    const sections = md.split(/^## /m).slice(1).filter(s => /^[234]\./.test(s));
+    const journal = doc("journal", `specialites:${camp}`, {
+      name: camp === "damnes" ? "Spécialités et substitutions (Damnés)" : "Spécialités et substitutions (Fidèles)",
+      categories: []
+    });
+    journal.pages = sections.map((s, i) => {
+      const titre = s.split("\n")[0].replace(/^\d+\.\s*/, "").trim();
+      return embarquer(journal, "journal.pages", `specialites:${i}`, {
+        name: titre, type: "text", sort: (i + 1) * 100000,
+        title: { show: true, level: 1 }, text: { format: 1, content: html(`## ${s}`) }, system: {}, image: {}, video: {}, src: null,
+        ownership: { default: -1 }
+      });
+    });
+    ajouter("specialites", journal);
+  }
+}
+
+/* -------------------------------------------- */
 /*  Règles en journal (une entrée par camp)     */
 /* -------------------------------------------- */
 
@@ -583,6 +607,7 @@ equipement();
 bestiaires();
 rites();
 originesAffectations();
+specialites();
 regles();
 
 fs.rmSync(SORTIE, { recursive: true, force: true });

@@ -97,7 +97,24 @@ const adaptateur = {
       }));
       return items.length ? { id, label: loc(`TYPES.Item.${type}`), items } : null;
     };
+    // Combat et arrière : des actions sans objet (identifiants « combat:… », « arriere »)
+    const special = [];
+    if (actor.type === "personnage" && game.combat?.combattantDe?.(actor)) {
+      special.push({ id: "combat", label: loc("BREVIAIRE.Combat.titreGroupe"), items: [
+        { id: "combat:viser", name: loc("BREVIAIRE.Combat.viser"), img: "icons/svg/target.svg", dim: !actor.statuses.has("viseur") },
+        { id: "combat:couvert", name: loc("BREVIAIRE.Combat.aCouvert"), img: "icons/svg/shield.svg", dim: !actor.statuses.has("aCouvert") },
+        { id: "combat:plonger", name: loc("BREVIAIRE.Combat.plonger"), img: "icons/svg/falling.svg" },
+        { id: "combat:reprendre", name: loc("BREVIAIRE.Combat.reprendre"), img: "icons/svg/clockwork.svg" },
+        ...(actor.statuses.has("panique") ? [{ id: "combat:reprise", name: loc("BREVIAIRE.Combat.seReprendre"), img: "icons/svg/terror.svg" }] : [])
+      ] });
+    }
+    if (actor.type === "personnage") {
+      special.push({ id: "arriere", label: loc("BREVIAIRE.Arriere.ouvrir"), items: [
+        { id: "arriere", name: loc("BREVIAIRE.Arriere.ouvrir"), img: "icons/svg/house.svg" }
+      ] });
+    }
     return [
+      ...special,
       groupe("armes", "arme", i => i.system.degats),
       groupe("rites", "rite", i => loc(`BREVIAIRE.NiveauRite.${i.system.niveau}`)),
       groupe("reliques", "relique", i => `+${i.system.apport}d6`),
@@ -107,6 +124,23 @@ const adaptateur = {
   },
 
   async useAction(actor, itemId) {
+    if (itemId === "arriere") {
+      const { RetourArriere } = await import("../arriere/retour.mjs");
+      return RetourArriere.ouvrir(actor);
+    }
+    if (itemId?.startsWith?.("combat:")) {
+      const action = itemId.slice(7);
+      const combat = await import("../combat/combat.mjs");
+      if (action === "viser") return actor.toggleStatusEffect("viseur");
+      if (action === "couvert") return actor.toggleStatusEffect("aCouvert");
+      if (action === "reprendre") return combat.reprendreInitiative(actor);
+      if (action === "reprise") return (await import("../combat/degats.mjs")).seReprendre(actor);
+      if (action === "plonger") {
+        const m = await lancerJet(actor, { specialite: "esquive", titre: loc("BREVIAIRE.Combat.plonger"), type: "reaction" });
+        if (m?.getFlag("breviaire", "jet")?.reussite) await actor.toggleStatusEffect("plonge", { active: true });
+      }
+      return;
+    }
     const item = actor.items.get(itemId);
     if (item?.type === "arme") return lancerJet(actor, { armeId: itemId });
     if (item?.type === "rite") {

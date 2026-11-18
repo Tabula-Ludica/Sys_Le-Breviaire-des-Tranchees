@@ -765,7 +765,9 @@
         "egalite": "Égalité : rien ne se passe."
       },
       "embuscadeAide": "Le camp surpris passe tout entier en phase lente au premier tour.",
-      "aucunCombat": "Aucun combat en cours."
+      "aucunCombat": "Aucun combat en cours.",
+      "notable": "Ennemi notable abattu : +1d6 au Calice (une fois par scène).",
+      "titreGroupe": "Combat"
     },
     "Createur": {
       "titre": "Créer un personnage : {nom}",

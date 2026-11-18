@@ -1,0 +1,83 @@
+{
+  "_id": "3mXM1p1CpGB1zLjY",
+  "_key": "!journal!3mXM1p1CpGB1zLjY",
+  "folder": null,
+  "sort": 0,
+  "flags": {},
+  "ownership": {
+    "default": 0
+  },
+  "name": "Spécialités et substitutions (Damnés)",
+  "categories": [],
+  "pages": [
+    {
+      "_id": "5sQgV15Btz0X0YeV",
+      "_key": "!journal.pages!3mXM1p1CpGB1zLjY.5sQgV15Btz0X0YeV",
+      "flags": {},
+      "sort": 100000,
+      "name": "Les Spécialités",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h2>2. Les Spécialités</h2>\n<p>Une Spécialité est un savoir-faire précis. Elle a <strong>deux rangs</strong> :</p>\n<table>\n<thead>\n<tr>\n<th>Rang</th>\n<th>Bonus à la caractéristique</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Formé</strong></td>\n<td>+2</td>\n</tr>\n<tr>\n<td><strong>Expert</strong></td>\n<td>+4</td>\n</tr>\n</tbody></table>\n<p>Le bonus ne s&#39;applique <strong>que</strong> lorsque l&#39;action entre dans le domaine de la Spécialité. Un tireur Expert vise mieux, mais il ne court pas plus vite.</p>\n<h3>D&#39;où viennent les Spécialités</h3>\n<p>À la création, un personnage reçoit ses Spécialités de deux sources (voir le chapitre VIII) :</p>\n<ul>\n<li>son <strong>Affectation</strong>, c&#39;est-à-dire son métier au front ;</li>\n<li>son <strong>Origine</strong>, c&#39;est-à-dire sa vie d&#39;avant.</li>\n</ul>\n<p>Si les deux sources donnent <strong>la même Spécialité</strong>, elle passe directement au rang <strong>Expert</strong>. On ne peut pas aller au-delà d&#39;Expert.</p>\n<h3>Une Spécialité, plusieurs usages</h3>\n<p>Chaque Spécialité est rattachée à une <strong>caractéristique habituelle</strong>. Le MJ peut accepter une autre caractéristique quand la situation le justifie.</p>\n<blockquote>\n<p><em>Soigner une plaie au calme demande l&#39;<strong>Esprit</strong>. Recoudre un camarade sous les obus, c&#39;est du <strong>Nerf</strong>. La Spécialité Médecine s&#39;applique dans les deux cas.</em></p>\n</blockquote>\n<h3>Le plafond</h3>\n<p>Après tous les bonus et modificateurs, le score à atteindre ne peut <strong>jamais dépasser 19</strong>. Le 20 naturel reste une Damnation, quoi qu&#39;il arrive.</p>\n<p>À l&#39;inverse, si le score tombe à <strong>0 ou moins</strong>, l&#39;action n&#39;est possible qu&#39;avec un 1 naturel… ou en priant et en pactisant.</p>\n<hr>\n"
+      },
+      "system": {},
+      "image": {},
+      "video": {},
+      "src": null,
+      "ownership": {
+        "default": -1
+      }
+    },
+    {
+      "_id": "8iBZ7vvP5pIfu1gf",
+      "_key": "!journal.pages!3mXM1p1CpGB1zLjY.8iBZ7vvP5pIfu1gf",
+      "flags": {},
+      "sort": 200000,
+      "name": "Liste des Spécialités",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h2>3. Liste des Spécialités</h2>\n<h3>Chair</h3>\n<table>\n<thead>\n<tr>\n<th>Spécialité</th>\n<th>Domaine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Mêlée</strong></td>\n<td>Baïonnette, masse de tranchée, couteau, poings</td>\n</tr>\n<tr>\n<td><strong>Terrassement</strong></td>\n<td>Creuser, fortifier, étayer, déblayer</td>\n</tr>\n<tr>\n<td><strong>Endurance</strong></td>\n<td>Marches forcées, froid, faim, privation de sommeil</td>\n</tr>\n<tr>\n<td><strong>Portage</strong></td>\n<td>Charges lourdes, traîner un blessé, transporter une mitrailleuse</td>\n</tr>\n<tr>\n<td><strong>Athlétisme</strong></td>\n<td>Grimper, sauter, nager, franchir un obstacle</td>\n</tr>\n</tbody></table>\n<h3>Nerf</h3>\n<table>\n<thead>\n<tr>\n<th>Spécialité</th>\n<th>Domaine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Tir</strong></td>\n<td>Fusils, pistolets, armes automatiques</td>\n</tr>\n<tr>\n<td><strong>Lancer</strong></td>\n<td>Grenades, couteaux, cocktails incendiaires</td>\n</tr>\n<tr>\n<td><strong>Discrétion</strong></td>\n<td>Ramper, se cacher, patrouiller de nuit</td>\n</tr>\n<tr>\n<td><strong>Esquive</strong></td>\n<td>Se jeter à couvert, éviter un coup ou un éclat</td>\n</tr>\n<tr>\n<td><strong>Conduite</strong></td>\n<td>Motocyclettes, camions, chars, montures</td>\n</tr>\n<tr>\n<td><strong>Coup de main</strong></td>\n<td>Désamorcer, crocheter, voler, gestes précis sous la pression</td>\n</tr>\n</tbody></table>\n<h3>Esprit</h3>\n<table>\n<thead>\n<tr>\n<th>Spécialité</th>\n<th>Domaine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Médecine</strong></td>\n<td>Premiers soins, chirurgie, remèdes</td>\n</tr>\n<tr>\n<td><strong>Mécanique</strong></td>\n<td>Réparer les armes, les moteurs, les machines de guerre</td>\n</tr>\n<tr>\n<td><strong>Explosifs</strong></td>\n<td>Mines, charges, sapes, démolition</td>\n</tr>\n<tr>\n<td><strong>Tactique</strong></td>\n<td>Lire le terrain, préparer un assaut, anticiper l&#39;ennemi</td>\n</tr>\n<tr>\n<td><strong>Vigilance</strong></td>\n<td>Repérer un piège, un tireur, un mouvement dans le brouillard</td>\n</tr>\n<tr>\n<td><strong>Érudition</strong></td>\n<td>Théologie, histoire, langues anciennes, cartographie</td>\n</tr>\n</tbody></table>\n<h3>Verbe</h3>\n<table>\n<thead>\n<tr>\n<th>Spécialité</th>\n<th>Domaine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Commandement</strong></td>\n<td>Donner des ordres, rallier, faire tenir une ligne</td>\n</tr>\n<tr>\n<td><strong>Persuasion</strong></td>\n<td>Convaincre, plaider, réconforter</td>\n</tr>\n<tr>\n<td><strong>Tromperie</strong></td>\n<td>Mentir, bluffer, se déguiser</td>\n</tr>\n<tr>\n<td><strong>Intimidation</strong></td>\n<td>Menacer, faire plier, interroger durement</td>\n</tr>\n<tr>\n<td><strong>Débrouille</strong></td>\n<td>Marchander, troquer, trouver ce qui manque</td>\n</tr>\n</tbody></table>\n<h3>Âme</h3>\n<table>\n<thead>\n<tr>\n<th>Spécialité</th>\n<th>Domaine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Ferveur</strong></td>\n<td>Tenir face à la peur, invoquer sous le feu, rites infernaux</td>\n</tr>\n<tr>\n<td><strong>Exorcisme</strong></td>\n<td>Repousser, lier ou chasser les créatures infernales</td>\n</tr>\n<tr>\n<td><strong>Pressentiment</strong></td>\n<td>Sentir la présence du surnaturel, le danger, une malédiction</td>\n</tr>\n<tr>\n<td><strong>Endurcissement</strong></td>\n<td>Encaisser l&#39;horreur, la mort des camarades, la vision de l&#39;Enfer</td>\n</tr>\n<tr>\n<td><strong>Volonté</strong></td>\n<td>Résister à la tentation, à la possession, aux murmures</td>\n</tr>\n</tbody></table>\n<hr>\n"
+      },
+      "system": {},
+      "image": {},
+      "video": {},
+      "src": null,
+      "ownership": {
+        "default": -1
+      }
+    },
+    {
+      "_id": "iIbzaIH8j4oHDgXJ",
+      "_key": "!journal.pages!3mXM1p1CpGB1zLjY.iIbzaIH8j4oHDgXJ",
+      "flags": {},
+      "sort": 300000,
+      "name": "Les Spécialités de substitution",
+      "type": "text",
+      "title": {
+        "show": true,
+        "level": 1
+      },
+      "text": {
+        "format": 1,
+        "content": "<h2>4. Les Spécialités de substitution</h2>\n<p>Quelques Spécialités rares permettent d&#39;utiliser <strong>une autre caractéristique</strong> que l&#39;habituelle pour un domaine donné. Elles sont propres à certaines Affectations ou Origines. Elles n&#39;ont pas de rang : elles changent seulement la caractéristique utilisée, et on y ajoute le bonus de la Spécialité normale si le personnage la possède.</p>\n<table>\n<thead>\n<tr>\n<th>Substitution</th>\n<th>Effet</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Prêche aux armes</strong></td>\n<td><em>Commandement</em> avec l&#39;<strong>Âme</strong> au lieu du Verbe : il n&#39;ordonne pas, il inspire.</td>\n</tr>\n<tr>\n<td><strong>Brute</strong></td>\n<td><em>Intimidation</em> avec la <strong>Chair</strong> au lieu du Verbe : sa carrure parle pour lui.</td>\n</tr>\n<tr>\n<td><strong>Calcul balistique</strong></td>\n<td><em>Tir</em> avec l&#39;<strong>Esprit</strong> au lieu du Nerf, à longue portée et après avoir pris le temps de viser.</td>\n</tr>\n<tr>\n<td><strong>Chirurgien de tranchée</strong></td>\n<td><em>Médecine</em> avec le <strong>Nerf</strong>, même au calme : ses mains ne tremblent jamais.</td>\n</tr>\n<tr>\n<td><strong>Instinct de la bête</strong></td>\n<td><em>Vigilance</em> avec l&#39;<strong>Âme</strong> au lieu de l&#39;Esprit : il sent le danger plus qu&#39;il ne le voit.</td>\n</tr>\n</tbody></table>\n<blockquote>\n<p><em>Le prédicateur noir Benedetto a Verbe 8 mais Âme 14, et il est Formé en Commandement. Grâce à Prêche aux armes, il rallie les troupes sur <strong>14 + 2 = 16</strong> au lieu de 10.</em></p>\n</blockquote>\n<hr>\n"
+      },
+      "system": {},
+      "image": {},
+      "video": {},
+      "src": null,
+      "ownership": {
+        "default": -1
+      }
+    }
+  ]
+}

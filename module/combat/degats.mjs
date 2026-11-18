@@ -179,6 +179,16 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false } =
       const c = game.combat?.combattantDe?.(cible);
       if (c && game.user.isGM) await c.update({ defeated: true });
       lignes.push(`<b>${loc("BREVIAIRE.Combat.vaincu")}</b>`);
+      // Calice (Damnés) : abattre un ennemi notable (officier, prêtre, champion) donne +1d6, une fois par scène
+      const notable = ["elite", "monstre"].includes(cible.system.role) || cible.system.traits.has("chef");
+      if (notable && game.settings.get(SYSTEME, "camp") === "damnes" && game.user.isGM && !game.combat?.getFlag(SYSTEME, "notable")) {
+        const { demander } = await import("../reserve/reserve.mjs");
+        const res = await demander("ajouter", { n: 1 });
+        if (res?.ok !== false) {
+          await game.combat?.setFlag(SYSTEME, "notable", true);
+          lignes.push(loc("BREVIAIRE.Combat.notable"));
+        }
+      }
     }
   }
 
