@@ -63,5 +63,12 @@
   </div>
   {{/if}}{{/if}}
 
+  {{#if tentation}}
+  <label class="brev-tentation">
+    <span><i class="fa-solid fa-hand"></i> {{tentation.libelle}}<small>{{tentation.aide}}</small></span>
+    <select name="tentation">{{selectOptions tentation.choix selected=e.tentation}}</select>
+  </label>
+  {{/if}}
+
   <button type="submit" class="brev-lancer"><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Jet.lancer'}}</button>
 </div>

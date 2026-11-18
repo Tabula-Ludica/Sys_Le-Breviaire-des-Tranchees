@@ -470,7 +470,9 @@
       "annonceMission": "Début de mission : {reserve} remplie à {n}d6.{benediction}",
       "annonceBenediction": " Bénédiction papale : +{n}d6.",
       "annonceMesse": "{messe} : {reserve} revient à {n}d6, les dés perdus sont rendus.",
-      "annonceScene": "Fin de scène : morphine et effets de scène effacés."
+      "annonceScene": "Fin de scène : morphine et effets de scène effacés.",
+      "session": "Nouvelle session : la {tentation} redevient possible",
+      "annonceSession": "Nouvelle session : chaque personnage peut de nouveau recevoir une {tentation}."
     },
     "Rite": {
       "paye": "Un dé de {reserve} est dépensé.",
@@ -488,6 +490,188 @@
       "effetReserve": "Appliquer : +{n}d6 à {reserve}",
       "effetUsure": "Appliquer : {usure} {signe} cran",
       "effetUsureEscouade": "Appliquer : {usure} de l’escouade {signe} cran"
+    },
+    "Corruption": {
+      "chute": {
+        "fideles": "{nom} est perdu. Jusqu’à la fin de la scène, tous ses jets sont des réussites automatiques : l’Enfer lui prête sa force. Ensuite, le personnage passe au MJ.",
+        "damnes": "L’âme de {nom} est dévorée. Jusqu’à la fin de la scène, tous ses jets sont des réussites automatiques. Ensuite, il ne reste qu’un démon dans son corps, joué par le MJ."
+      },
+      "automatique": "{etat} : réussite automatique jusqu’à la fin de la scène.",
+      "controle": "Jet d’Âme : le démon prend-il le contrôle ?",
+      "controlePerdu": "Le démon prend le contrôle pendant un tour : le MJ joue le personnage.",
+      "tentation": {
+        "aucune": "Pas de proposition",
+        "aide": {
+          "fideles": "Proposée par le MJ, une fois par session (dès {corruption} 3)",
+          "damnes": "Donné par le MJ, une fois par session (dès {corruption} 3)"
+        },
+        "accepter": {
+          "fideles": "Accepter : réussite automatique, +1 {corruption}",
+          "damnes": "Obéir : réussite automatique, +1 {corruption}"
+        },
+        "refuser": {
+          "fideles": "Refuser : test d’usure de Nerfs",
+          "damnes": "Refuser : +3 au prochain jet de Disgrâce"
+        },
+        "accepte": "{tentation} acceptée : réussite automatique, +1 {corruption}.",
+        "refuse": {
+          "fideles": "{tentation} refusée : test d’usure de Nerfs.",
+          "damnes": "{tentation} refusé : +3 au prochain jet de Disgrâce."
+        }
+      }
+    },
+    "Arriere": {
+      "ouvrir": "Retour à l’arrière",
+      "ouvrirEscouade": "Retour à l’arrière : ouvrir la fenêtre de chaque membre de l’escouade",
+      "titre": "Retour à l’arrière : {nom}",
+      "intro": "Entre deux missions, dans l’ordre. Chaque résultat est annoncé dans le chat.",
+      "etape": {
+        "jugement": {
+          "fideles": "Le jugement des supérieurs",
+          "damnes": "Le jugement des maîtres"
+        }
+      },
+      "bilan": "Le bilan",
+      "missions": "missions survécues",
+      "boutonMission": "Mission survécue (+1)",
+      "missionSurvecue": "{nom} a survécu à sa {n}ᵉ mission.",
+      "nouveauTitre": "Nouveau titre : {titre} !",
+      "prochainTitre": "{titre} dans {n} mission(s)",
+      "cochees": "Spécialités cochées",
+      "aucuneCoche": "Aucune Spécialité cochée : pas d’Épreuve d’expérience.",
+      "boutonEpreuves": "Passer les Épreuves d’expérience",
+      "epreuves": "Épreuves d’expérience",
+      "epreuveCarac": "Épreuve de caractéristique",
+      "frole": "A frôlé la mort ou la folie (accordée par le MJ) :",
+      "maximum": "maximum atteint",
+      "soins": "Les soins",
+      "boutonSoins": "Soigner les Blessures",
+      "soinsTexte": "{nom} retrouve toutes ses Blessures ({max}).",
+      "convalescenceReste": "{n} Blessure(s) grave(s) : un jet de Chair chacune.",
+      "convalescence": "Convalescence : {blessure}",
+      "convalescenceEchec": "Échec : le joueur choisit de manquer la prochaine mission, ou d’y partir avec la Blessure grave.",
+      "convalescenceAide": "Réussite : guérie (une Mutilation laisse sa séquelle). Échec : manquer la prochaine mission, ou partir avec la Blessure grave.",
+      "jetChair": "Jet de Chair",
+      "sequelle": "Séquelle permanente",
+      "ravitaillement": "Le ravitaillement",
+      "ravitaillementAide": "Munitions et Vivres reviennent au dé de base ; Nerfs et {foi} remontent d’un cran, sans dépasser le dé de base.",
+      "boutonRavitaillement": "Ravitailler",
+      "messeAide": "revient à son niveau de départ (bouton du MJ).",
+      "tempsLibre": "Le temps libre",
+      "activite": {
+        "reposer": {
+          "fideles": "Se reposer",
+          "damnes": "Se reposer"
+        },
+        "recueillir": {
+          "fideles": "Se recueillir",
+          "damnes": "Célébrer un rite noir"
+        },
+        "requisitionner": {
+          "fideles": "Réquisitionner",
+          "damnes": "Réquisitionner"
+        },
+        "entrainer": {
+          "fideles": "S’entraîner",
+          "damnes": "S’entraîner"
+        },
+        "renseigner": {
+          "fideles": "Se renseigner",
+          "damnes": "Se renseigner"
+        },
+        "expier": {
+          "fideles": "Expier",
+          "damnes": "Payer la Dîme"
+        },
+        "ecrire": {
+          "fideles": "Écrire chez soi",
+          "damnes": "Écrire chez soi"
+        }
+      },
+      "activiteAide": {
+        "reposer": "Nerfs +1 cran (sans dépasser le dé de base).",
+        "recueillir": "Foi (Haine) +1 cran (sans dépasser le dé de base).",
+        "requisitionner": "Jet de Débrouille (Commandement dès Sous-officier). Réussite : un objet de la liste de réquisition ; 1 naturel : un objet rare.",
+        "entrainer": "Relancer une Épreuve d’expérience ratée à ce retour (à faire à la main).",
+        "renseigner": "Jet d’Esprit ou de Débrouille. Réussite : le MJ révèle une information vraie sur la prochaine mission.",
+        "expier": "Confession ou pénitence (Dîme chez les Damnés) : voir l’étape 6.",
+        "ecrire": "Nerfs +1 cran et Foi (Haine) +1 cran, si la lettre est lue à la table. Une fois par campagne."
+      },
+      "lettreLue": "La lettre doit être lue à la table.",
+      "lettreDejaEcrite": "Ce personnage a déjà écrit chez lui (une fois par campagne).",
+      "dejaFait": "Déjà fait pour ce retour.",
+      "palier": "palier",
+      "baisseFaite": "baisse déjà faite",
+      "baisse": "{corruption} descend à {valeur}.",
+      "baisseDejaFaite": "Une seule baisse de {corruption} par retour : rien ne change.",
+      "baissePalier": "{corruption} ne descend jamais sous le dernier palier atteint ({palier}) : rien ne change.",
+      "confession": "Confession",
+      "penitence": "Pénitence",
+      "voeuTenu": "Vœu tenu (−1)",
+      "voeuRompuBouton": "Vœu rompu (+1)",
+      "voeuRompu": "Vœu rompu : +1 {corruption}.",
+      "dime": "La Dîme : offrir une âme (−1)",
+      "caseConfession": "S’est confessé",
+      "caseMarqueVue": "Marque vue pendant la mission",
+      "caseEchec": "Mission échouée",
+      "ordresRefuses": "Ordres refusés",
+      "soupcon": "Jet de Soupçon",
+      "soupconInutile": "Moins de 3 en Corruption : pas de jet de Soupçon.",
+      "detailSoupcon": "d20 {d20} + {marques} (Marques) + {confession} (confession) + {vue} (Marque vue)",
+      "disgrace": "Jet de Disgrâce",
+      "detailDisgrace": "d20 {d20} + {echec} (mission échouée) + {ordres} (Ordres refusés) + {transfuge} (Transfuge) − {dons} (Dons)",
+      "total": "Total :",
+      "passe": "Moins de 20 : rien ne se passe. Pour cette fois.",
+      "inquisition": "L’Inquisition s’intéresse à lui",
+      "maitres": "Les maîtres sont mécontents",
+      "tableSoupcon": {
+        "surveillance": {
+          "titre": "Surveillance",
+          "texte": "un inquisiteur ou un agent rejoint l’escouade pour la prochaine mission."
+        },
+        "interrogatoire": {
+          "titre": "Interrogatoire",
+          "texte": "une scène à jouer. Mal mené, il fait perdre le Rang."
+        },
+        "punitive": {
+          "titre": "Mission punitive",
+          "texte": "l’escouade entière est envoyée là où personne ne revient."
+        },
+        "excommunication": {
+          "titre": "Excommunication",
+          "texte": "le personnage ne peut plus jamais puiser dans le Chapelet."
+        },
+        "bucher": {
+          "titre": "Le bûcher",
+          "texte": "arrestation. Il faut fuir, ou être sauvé par l’escouade."
+        }
+      },
+      "tableDisgrace": {
+        "rappel": {
+          "titre": "Rappel à l’ordre",
+          "texte": "un démon surveillant accompagne l’escouade pendant la prochaine mission."
+        },
+        "chatiment": {
+          "titre": "Châtiment",
+          "texte": "le personnage subit une Blessure grave avant de repartir."
+        },
+        "sacrificielle": {
+          "titre": "Mission sacrificielle",
+          "texte": "l’escouade est envoyée là où elle ne reviendra sans doute pas."
+        },
+        "decheance": {
+          "titre": "Déchéance",
+          "texte": "il perd son Rang."
+        },
+        "chiens": {
+          "titre": "Livré aux chiens",
+          "texte": "ses propres maîtres le traquent. Il faut fuir, ou acheter son pardon."
+        }
+      },
+      "depart": "La prochaine mission",
+      "departAide": "Efface les usages « une fois par mission » et rend les reliques. Pensez au bouton Début de mission du widget (MJ) pour remplir la réserve.",
+      "boutonDepart": "Départ en mission",
+      "departTexte": "{nom} repart au front."
     }
   }
 }

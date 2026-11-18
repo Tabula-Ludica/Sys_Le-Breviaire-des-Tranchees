@@ -28,7 +28,7 @@
   <h3 class="brev-panneau-titre"><i class="fa-solid fa-droplet"></i> {{corruption.label}} <small>{{corruption.etat}} · {{localize 'BREVIAIRE.Fiche.deSang'}} {{corruption.deSang}}</small></h3>
   <div class="brev-chapelet">
     {{#each corruption.cases}}
-    <button type="button" class="brev-grain {{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}}" data-action="corruption" data-n="{{n}}" aria-label="{{n}}" aria-pressed="{{pleine}}">{{#if palier}}✠{{else}}{{n}}{{/if}}</button>
+    <button type="button" class="brev-grain {{#if pleine}}pleine{{/if}} {{#if palier}}palier{{/if}} {{#if scelle}}scelle{{/if}}" data-action="corruption" data-n="{{n}}" aria-label="{{n}}" aria-pressed="{{pleine}}">{{#if palier}}✠{{else}}{{n}}{{/if}}</button>
     {{/each}}
   </div>
 

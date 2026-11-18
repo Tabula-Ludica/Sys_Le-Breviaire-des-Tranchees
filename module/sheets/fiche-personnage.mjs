@@ -43,7 +43,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       celebrer: this.#celebrer,
       jetDeMort: this.#jetDeMort,
       testUsure: this.#testUsure,
-      utiliserRelique: this.#utiliserRelique
+      utiliserRelique: this.#utiliserRelique,
+      retour: this.#retour
     }
   };
 
@@ -139,7 +140,9 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       cases: Array.from({ length: CORRUPTION_MAX }, (_, i) => ({
         n: i + 1,
         pleine: i < sys.corruption.value,
-        palier: [3, 6, 9].includes(i + 1)
+        palier: [3, 6, 9].includes(i + 1),
+        // Sous le dernier palier atteint : on n'en redescend jamais (ch. IX §3)
+        scelle: i < sys.corruption.palier
       }))
     };
     context.marques = sys.marques.map(m => ({
@@ -244,6 +247,11 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
   static #testUsure(event, target) {
     const { usure, defavorise } = target.dataset;
     return testUsure(this.document, usure, { defavorise: defavorise === "true" });
+  }
+
+  static async #retour() {
+    const { RetourArriere } = await import("../arriere/retour.mjs");
+    return RetourArriere.ouvrir(this.document);
   }
 
   static async #utiliserRelique(event, target) {

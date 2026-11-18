@@ -1,0 +1,82 @@
+<div class="brev-retour">
+  <p class="brev-ra-intro">{{localize 'BREVIAIRE.Arriere.intro'}}</p>
+
+  <section class="brev-ra-etape">
+    <h3><span>1</span> {{localize 'BREVIAIRE.Arriere.bilan'}}</h3>
+    <p><b>{{bilan.missions}}</b> {{localize 'BREVIAIRE.Arriere.missions'}} · {{bilan.titre}}{{#if bilan.prochain}} <small>({{bilan.prochain}})</small>{{/if}}</p>
+    <button type="button" data-action="bilan" {{#if bilan.fait}}disabled{{/if}}><i class="fa-solid {{#if bilan.fait}}fa-check{{else}}fa-person-walking-arrow-loop-left{{/if}}"></i> {{localize 'BREVIAIRE.Arriere.boutonMission'}}</button>
+    <p class="brev-ra-aide">{{#if bilan.cochees.length}}{{localize 'BREVIAIRE.Arriere.cochees'}} : {{#each bilan.cochees}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}{{else}}{{localize 'BREVIAIRE.Arriere.aucuneCoche'}}{{/if}}</p>
+    <button type="button" data-action="epreuves" {{#unless bilan.cochees.length}}disabled{{/unless}}><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Arriere.boutonEpreuves'}}</button>
+    <div class="brev-ra-ligne">
+      <span>{{localize 'BREVIAIRE.Arriere.frole'}}</span>
+      <select {{#if bilan.epreuveCaracFaite}}disabled{{/if}}>{{selectOptions bilan.caracs}}</select>
+      <button type="button" data-action="epreuveCarac" {{#if bilan.epreuveCaracFaite}}disabled{{/if}}><i class="fa-solid fa-dice-d20"></i></button>
+    </div>
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>2</span> {{localize 'BREVIAIRE.Arriere.soins'}}</h3>
+    <p>{{localize 'BREVIAIRE.Fiche.blessures'}} : <b>{{soins.blessures}}</b></p>
+    <button type="button" data-action="soigner"><i class="fa-solid fa-kit-medical"></i> {{localize 'BREVIAIRE.Arriere.boutonSoins'}}</button>
+    {{#each soins.graves}}
+    <div class="brev-ra-ligne">
+      <span><i class="fa-solid fa-bone"></i> {{nom}}</span>
+      <button type="button" data-action="convalescence" data-index="{{index}}"><i class="fa-solid fa-dice-d20"></i> {{localize 'BREVIAIRE.Arriere.jetChair'}}</button>
+    </div>
+    {{/each}}
+    {{#if soins.graves.length}}<p class="brev-ra-aide">{{localize 'BREVIAIRE.Arriere.convalescenceAide'}}</p>{{/if}}
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>3</span> {{localize 'BREVIAIRE.Arriere.ravitaillement'}}</h3>
+    <p class="brev-ra-aide">{{ravitaillement.aide}}</p>
+    <button type="button" data-action="ravitailler" {{#if ravitaillement.fait}}disabled{{/if}}><i class="fa-solid {{#if ravitaillement.fait}}fa-check{{else}}fa-box-open{{/if}}"></i> {{localize 'BREVIAIRE.Arriere.boutonRavitaillement'}}</button>
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>4</span> {{t.messe}}</h3>
+    <p class="brev-ra-aide">{{t.chapelet}} : {{localize 'BREVIAIRE.Arriere.messeAide'}}</p>
+    {{#if gm}}<button type="button" data-action="messe"><i class="fa-solid fa-church"></i> {{t.messe}}</button>{{/if}}
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>5</span> {{localize 'BREVIAIRE.Arriere.tempsLibre'}}</h3>
+    {{#if tempsLibre.choisie}}<p><i class="fa-solid fa-check"></i> {{tempsLibre.choisie}}</p>{{/if}}
+    <div class="brev-ra-activites">
+      {{#each tempsLibre.activites}}
+      <button type="button" data-action="activite" data-activite="{{cle}}" data-tooltip="{{aide}}" {{#if desactive}}disabled{{/if}}>{{label}}</button>
+      {{/each}}
+    </div>
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>6</span> {{t.jugement}}</h3>
+    <p>{{t.corruption}} : <b>{{jugement.corruption}}</b> · {{localize 'BREVIAIRE.Arriere.palier'}} {{jugement.palier}}{{#if jugement.baisse}} · <i class="fa-solid fa-check"></i> {{localize 'BREVIAIRE.Arriere.baisseFaite'}}{{/if}}</p>
+    {{#if fideles}}
+    <div class="brev-ra-boutons">
+      <button type="button" data-action="confession"><i class="fa-solid fa-person-praying"></i> {{localize 'BREVIAIRE.Arriere.confession'}}</button>
+      <button type="button" data-action="penitenceTenue"><i class="fa-solid fa-link"></i> {{localize 'BREVIAIRE.Arriere.voeuTenu'}}</button>
+      <button type="button" data-action="penitenceRompue"><i class="fa-solid fa-link-slash"></i> {{localize 'BREVIAIRE.Arriere.voeuRompuBouton'}}</button>
+    </div>
+    <div class="brev-ra-cases">
+      <button type="button" class="brev-ra-case {{#if jugement.confession}}on{{/if}}" data-action="bascule" data-chemin="system.soupcon.confession"><i class="fa-regular {{#if jugement.confession}}fa-square-check{{else}}fa-square{{/if}}"></i> {{localize 'BREVIAIRE.Arriere.caseConfession'}} (+2)</button>
+      <button type="button" class="brev-ra-case {{#if jugement.marqueVue}}on{{/if}}" data-action="bascule" data-chemin="system.soupcon.marqueVue"><i class="fa-regular {{#if jugement.marqueVue}}fa-square-check{{else}}fa-square{{/if}}"></i> {{localize 'BREVIAIRE.Arriere.caseMarqueVue'}} (+3)</button>
+    </div>
+    <button type="button" data-action="soupcon" class="brev-ra-fort"><i class="fa-solid fa-eye"></i> {{localize 'BREVIAIRE.Arriere.soupcon'}} (+{{jugement.nbMarques}}×2 {{t.marques}})</button>
+    {{#unless jugement.soupconRequis}}<p class="brev-ra-aide">{{localize 'BREVIAIRE.Arriere.soupconInutile'}}</p>{{/unless}}
+    {{else}}
+    <button type="button" data-action="dime"><i class="fa-solid fa-hand-holding-droplet"></i> {{localize 'BREVIAIRE.Arriere.dime'}}</button>
+    <div class="brev-ra-cases">
+      <button type="button" class="brev-ra-case {{#if jugement.missionEchouee}}on{{/if}}" data-action="bascule" data-chemin="system.disgrace.missionEchouee"><i class="fa-regular {{#if jugement.missionEchouee}}fa-square-check{{else}}fa-square{{/if}}"></i> {{localize 'BREVIAIRE.Arriere.caseEchec'}} (+3)</button>
+      <span class="brev-ra-case">{{localize 'BREVIAIRE.Arriere.ordresRefuses'}} : {{jugement.ordresRefuses}} (+3 ×)</span>
+    </div>
+    <button type="button" data-action="disgrace" class="brev-ra-fort"><i class="fa-solid fa-skull"></i> {{localize 'BREVIAIRE.Arriere.disgrace'}} (−{{jugement.nbMarques}}×2 {{t.marques}})</button>
+    {{/if}}
+  </section>
+
+  <section class="brev-ra-etape">
+    <h3><span>7</span> {{localize 'BREVIAIRE.Arriere.depart'}}</h3>
+    <p class="brev-ra-aide">{{localize 'BREVIAIRE.Arriere.departAide'}}</p>
+    <button type="button" data-action="depart" class="brev-ra-fort"><i class="fa-solid fa-flag"></i> {{localize 'BREVIAIRE.Arriere.boutonDepart'}}</button>
+  </section>
+</div>

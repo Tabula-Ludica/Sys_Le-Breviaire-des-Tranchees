@@ -7,7 +7,7 @@
 import { SYSTEME, CARACS, SPECIALITES, SUBSTITUTIONS, DIFFICULTES, COUVERTS, PORTEES } from "../config.mjs";
 import { MALUS_PLANCHER } from "../logique/regles.mjs";
 import { terme } from "../lexique.mjs";
-import { calculer, raisonSansPriere, specialiteDeLArme } from "./moteur.mjs";
+import { calculer, raisonSansPriere, specialiteDeLArme, tentationPossible } from "./moteur.mjs";
 import { themeSombre } from "../settings.mjs";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
@@ -58,7 +58,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
       defavorise: !!demande.defavorise,
       enjeu: actor.type === "personnage" && (demande.type ?? "action") === "action",
       priere: false,
-      pacte: false
+      pacte: false,
+      tentation: ""
     };
   }
 
@@ -98,6 +99,15 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
         raison: sansPriere && sansPriere !== "ennemi" ? loc(`BREVIAIRE.Jet.sansPriere.${sansPriere}`) : "",
         avant: game.settings.get(SYSTEME, "modePriere") === "avant"
       },
+      tentation: tentationPossible(actor) && e.type === "action" ? {
+        libelle: t("Tentation"),
+        aide: game.i18n.format(`BREVIAIRE.Corruption.tentation.aide.${camp}`, { corruption: t("Corruption") }),
+        choix: {
+          "": loc("BREVIAIRE.Corruption.tentation.aucune"),
+          acceptee: game.i18n.format(`BREVIAIRE.Corruption.tentation.accepter.${camp}`, { corruption: t("Corruption") }),
+          refusee: loc(`BREVIAIRE.Corruption.tentation.refuser.${camp}`)
+        }
+      } : null,
       deSang: personnage ? `d${actor.system.deSang}` : null,
       corruption: t("Corruption"),
       plancher: MALUS_PLANCHER,
@@ -132,7 +142,8 @@ export class DialogueJet extends HandlebarsApplicationMixin(ApplicationV2) {
       defavorise: !!fd.defavorise,
       enjeu: !!fd.enjeu,
       priere: !!fd.priere,
-      pacte: !!fd.pacte
+      pacte: !!fd.pacte,
+      tentation: fd.tentation ?? ""
     });
     if (this.#etat.specialite !== avant) this.#etat.substitution = "";
     return this.#etat.specialite !== avant;

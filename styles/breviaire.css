@@ -1858,3 +1858,80 @@ body.vade-touch #brev-reserve .brev-r-mj button { width: 2.4rem; height: 2.2rem;
 .brev-carte-arcane .brev-ca-boutons button:disabled { opacity: .45; cursor: default; }
 body.vade-touch .brev-carte-arcane .brev-ca-boutons button { min-height: 44px; }
 .brev-carte-arcane.brev-clair.contexte-grace { --cj-accent: #7d5d17; }
+
+/* Tentation / Ordre dans le dialogue de jet */
+.breviaire.dialogue-jet .brev-tentation {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .5rem; align-items: center;
+  margin: .5rem 0; padding: .45rem .55rem;
+  border: 1px solid rgba(160, 30, 20, .55); border-radius: 3px;
+  background: linear-gradient(90deg, rgba(120, 15, 10, .22), transparent);
+}
+.breviaire.dialogue-jet .brev-tentation > span { display: flex; flex-direction: column; font-weight: 600; color: var(--brev-sang); }
+.breviaire.dialogue-jet .brev-tentation small { font-weight: 400; font-size: .8rem; color: var(--brev-encre-douce); }
+
+/* Annonce dans le chat (chute, Inquisition…) */
+.brev-carte-alerte {
+  margin: -2px; padding: .55rem .6rem;
+  color: #eadbc5; font-family: "EB Garamond", Georgia, serif; font-size: 15px;
+  background: radial-gradient(ellipse at 50% 120%, rgba(220, 50, 30, .35), transparent 65%), #1b1210;
+  border: 1px solid #8a1a12;
+}
+.brev-carte-alerte h3 { margin: 0 0 .3rem; border: none; font-family: "Cormorant SC", serif; font-size: 1.25rem; color: #e0574b; }
+.brev-carte-alerte p { margin: .2rem 0; }
+.brev-carte-alerte .brev-alerte-total { font-size: 1.1rem; }
+
+/* =====================================================================
+   Retour à l'arrière
+   ===================================================================== */
+.breviaire.retour-arriere {
+  --brev-fond: #e8dcc0; --brev-encre: #22180f; --brev-encre-douce: #5f4a34; --brev-or: #9a7632; --brev-sang: #8a1a12;
+}
+.breviaire.retour-arriere.brev-sombre {
+  --brev-fond: #211915; --brev-encre: #eadbc5; --brev-encre-douce: #b29b80; --brev-or: #b48a4a; --brev-sang: #e0574b;
+}
+.breviaire.retour-arriere .window-content {
+  padding: .6rem .7rem;
+  color: var(--brev-encre);
+  font-family: "EB Garamond", Georgia, serif; font-size: 15px;
+  background: radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .12), transparent 55%), var(--brev-fond);
+}
+.brev-retour .brev-ra-intro { margin: 0 0 .5rem; font-style: italic; color: var(--brev-encre-douce); }
+.brev-retour .brev-ra-etape { margin-bottom: .6rem; padding: .45rem .6rem .55rem; border: 1px solid rgba(154, 118, 50, .5); background: rgba(0, 0, 0, .06); }
+.breviaire.brev-sombre .brev-retour .brev-ra-etape { background: rgba(255, 255, 255, .03); }
+.brev-retour h3 {
+  display: flex; align-items: center; gap: .45rem; margin: 0 0 .35rem; padding: 0 0 .25rem; border-bottom: 1px solid var(--brev-or);
+  font-family: "Cormorant SC", serif; font-weight: 600; font-size: 1.15rem; color: var(--brev-encre);
+}
+.brev-retour h3 span {
+  display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  font-size: .9rem; color: #1d1712; background: linear-gradient(180deg, #e2c47a, #9a7632);
+}
+.brev-retour p { margin: .25rem 0; }
+.brev-retour .brev-ra-aide { font-size: .85rem; color: var(--brev-encre-douce); }
+.brev-retour button {
+  min-height: 32px; margin: .15rem 0; padding: 0 .6rem; width: auto;
+  font-family: "EB Garamond", serif; font-size: .92rem; color: var(--brev-encre);
+  background: rgba(0, 0, 0, .1); border: 1px solid var(--brev-or); border-radius: 3px;
+}
+.breviaire.brev-sombre .brev-retour button { background: rgba(255, 255, 255, .05); }
+.brev-retour button:hover:not(:disabled) { box-shadow: 0 0 6px var(--brev-or); }
+.brev-retour button:disabled { opacity: .45; }
+.brev-retour .brev-ra-fort { border-color: var(--brev-sang); color: var(--brev-sang); font-weight: 600; }
+.brev-retour .brev-ra-ligne { display: flex; align-items: center; gap: .4rem; }
+.brev-retour .brev-ra-ligne > span { flex: 1; }
+.brev-retour .brev-ra-ligne select { width: auto; flex: 0 1 11rem; }
+.brev-retour .brev-ra-activites, .brev-retour .brev-ra-boutons, .brev-retour .brev-ra-cases { display: flex; flex-wrap: wrap; gap: .3rem; }
+.brev-retour .brev-ra-case { border-style: dashed; }
+.brev-retour .brev-ra-case.on { border-style: solid; }
+body.vade-touch .brev-retour button { min-height: 44px; }
+.breviaire .brev-bandeau-outils { display: flex; align-items: center; gap: .4rem; }
+.breviaire.fiche .window-content .brev-retour-bouton {
+  width: 30px; height: 30px; min-height: 30px; padding: 0; flex: none;
+  display: grid; place-items: center;
+  color: var(--brev-or-clair, #e2c47a); background: rgba(0, 0, 0, .35);
+  border: 1px solid var(--brev-or); border-radius: 3px;
+}
+.breviaire.fiche .window-content .brev-retour-bouton:hover { box-shadow: 0 0 8px var(--brev-or); }
+body.vade-touch .breviaire.fiche .window-content .brev-retour-bouton { width: 44px; height: 44px; }
+.breviaire .brev-grain.scelle { box-shadow: inset 0 -3px 0 rgba(160, 25, 15, .85); }
+.brev-retour span.brev-ra-case { display: inline-flex; align-items: center; padding: 0 .6rem; min-height: 32px; margin: .15rem 0; font-size: .92rem; border: 1px dashed var(--brev-or); border-radius: 3px; }

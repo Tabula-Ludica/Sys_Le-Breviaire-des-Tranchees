@@ -66,6 +66,12 @@ export function specialiteDeLArme(arme) {
   return { melee: "melee", distance: "tir", lancer: "lancer", explosif: "lancer" }[arme?.system.categorie] ?? "melee";
 }
 
+/** Le MJ peut proposer une Tentation (un Ordre) : Corruption 3+, une fois par session (ch. IX). */
+export function tentationPossible(actor) {
+  return actor?.type === "personnage" && actor.system.corruption.value >= R.PALIERS[0]
+    && actor.system.corruption.value < R.CORRUPTION_MAX && !actor.system.usages.session?.tentation;
+}
+
 /** Peut-on prier ? (null si oui, sinon la clé de la raison) */
 export function raisonSansPriere(actor) {
   if (actor.type !== "personnage") return "ennemi";
@@ -102,6 +108,7 @@ export async function executerJet(actor, opts) {
 
   const priere = personnage && opts.priere && !raisonSansPriere(actor);
   const pacte = personnage && opts.pacte;
+  const tentation = personnage && tentationPossible(actor) ? (opts.tentation || "") : "";
 
   const parties = [`${mode === "normal" ? "1d20" : mode === "favorise" ? "2d20kl" : "2d20kh"}`];
   if (priere) parties.push("1d6");
@@ -136,6 +143,9 @@ export async function executerJet(actor, opts) {
     rite: opts.rite ?? null,
     priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, sys.corruption.value) } : null,
     pacte: pacte ? { faces: sys.deSang, resultat: deSang } : null,
+    titre: opts.titre ?? null,
+    tentation: tentation || null,
+    automatique: tentation === "acceptee" ? "tentation" : (actor.perdu ? "perdu" : null),
     applique: {}
   };
   resoudre(d);
@@ -157,12 +167,18 @@ export async function executerJet(actor, opts) {
     const { tirerArcane } = await import("../arcanes/arcanes.mjs");
     await tirerArcane({ actor, contexte: d.naturel === "miracle" ? "grace" : "damnation" });
   }
-  // Palier de Corruption ou de Faveur franchi par un pacte : tirage d'une Marque ou d'un Don (ch. IX)
   await tirerMarquesDesPaliers(actor, d);
+  // Tentation refusée (Fidèles) : test d'usure de Nerfs (ch. IX §1)
+  if (d.tentation === "refusee" && d.camp === "fideles") {
+    const { testUsure } = await import("./usure.mjs");
+    await testUsure(actor, "nerfs");
+  }
+  // Faveur 9, « Au bord » : après chaque pacte, jet d'Âme ou le démon prend le contrôle un tour (ch. IX Damnés)
+  if (d.pacte && d.camp === "damnes" && actor.system.corruption.value === 9) await jetDeControle(actor);
   return message;
 }
 
-/** Un pacte a fait franchir un palier (3, 6, 9) : on tire une Marque par palier. */
+/** Palier franchi par ce jet (pacte, Tentation) : une Marque ou un Don par palier, après la carte du jet. */
 export async function tirerMarquesDesPaliers(actor, d) {
   const paliers = d.applique?.paliers ?? [];
   if (!paliers.length || actor?.type !== "personnage" || d.applique.marquesTirees) return;
@@ -171,10 +187,20 @@ export async function tirerMarquesDesPaliers(actor, d) {
   for (const p of paliers) await tirerArcane({ actor, contexte: "marque" });
 }
 
+/** Jet d'Âme de contrôle (Faveur 9). */
+export async function jetDeControle(actor) {
+  return executerJet(actor, { type: "controle", carac: "ame", titre: loc("BREVIAIRE.Corruption.controle") });
+}
+
 /** Résultat à partir du d20 gardé et des dés soustraits. */
 function resoudre(d) {
   const soustraction = (d.priere?.resultat ?? 0) + (d.pacte?.resultat ?? 0);
   Object.assign(d, R.resoudreJet({ d20: d.d20, score: d.score, soustraction }), { soustraction });
+  // Réussite automatique : Tentation (ou Ordre) acceptée, personnage perdu ou dévoré (ch. IX)
+  if (d.automatique) {
+    d.reussite = true;
+    if (d.naturel === "damnation") d.naturel = null;
+  }
 }
 
 /* -------------------------------------------- */
@@ -209,7 +235,20 @@ export async function appliquerSuites(actor, d) {
     const apres = Math.min(R.CORRUPTION_MAX, avant + 1);
     maj["system.corruption.value"] = apres;
     a.pacte = true;
-    a.paliers = R.paliersFranchis(avant, apres);
+    a.paliers = R.PALIERS.filter(p => p > sys.corruption.palier && apres >= p);
+  }
+
+  // Tentation (ou Ordre) : une fois par session ; acceptée +1, refusée chez les Damnés +3 au prochain jet de Disgrâce
+  if (d.tentation && !a.tentation) {
+    a.tentation = true;
+    maj["system.usages.session.tentation"] = true;
+    if (d.tentation === "acceptee") {
+      const avant = maj["system.corruption.value"] ?? sys.corruption.value;
+      maj["system.corruption.value"] = Math.min(R.CORRUPTION_MAX, avant + 1);
+      a.paliers = R.PALIERS.filter(p => p > sys.corruption.palier && avant + 1 >= p);
+    } else if (d.camp === "damnes") {
+      maj["system.disgrace.ordresRefuses"] = sys.disgrace.ordresRefuses + 1;
+    }
   }
 
   if (d.type === "action" && d.specialite) {
@@ -234,7 +273,7 @@ export async function appliquerSuites(actor, d) {
     a.mortTotal = (maj["system.mort.echecs"] ?? sys.mort.echecs) >= 3;
   }
 
-  if (!foundry.utils.isEmpty(maj)) await actor.update(maj);
+  if (!foundry.utils.isEmpty(maj)) await actor.update(maj, { breviaire: { sansMarque: true } });
 }
 
 /* -------------------------------------------- */
@@ -243,6 +282,7 @@ export async function appliquerSuites(actor, d) {
 
 /** Libellé du jet : « Tir », « Chirurgien de tranchée », « Nerf », « Menace », « Jet de Mort »… */
 function titreDuJet(d, actor) {
+  if (d.titre) return d.titre;
   if (d.type === "mort") return loc("BREVIAIRE.Jet.mort");
   if (d.rite) return d.rite.nom;
   if (actor?.type === "ennemi") return loc("BREVIAIRE.Fiche.menace");
@@ -273,6 +313,12 @@ export async function rendreCarte(d) {
       ? { icone: "fa-solid fa-kit-medical", texte: d.soin.applique, fort: true }
       : { icone: "fa-solid fa-user-injured", texte: game.i18n.format("BREVIAIRE.Utiliser.patient", { nom: d.soin.nom }) });
   }
+  if (d.tentation) {
+    const cle = d.tentation === "acceptee" ? "accepte" : `refuse.${d.camp}`;
+    effets.push({ icone: "fa-solid fa-hand", texte: game.i18n.format(`BREVIAIRE.Corruption.tentation.${cle}`, { tentation: t("Tentation"), corruption: t("Corruption") }), fort: true });
+  }
+  if (d.automatique === "perdu") effets.push({ icone: "fa-solid fa-fire", texte: game.i18n.format("BREVIAIRE.Corruption.automatique", { etat: t("Perdu") }), fort: true });
+  if (d.type === "controle" && !d.reussite) effets.push({ icone: "fa-solid fa-mask", texte: loc("BREVIAIRE.Corruption.controlePerdu"), fort: true });
   if (d.applique.coche) effets.push({ icone: "fa-solid fa-check", texte: game.i18n.format("BREVIAIRE.Jet.coche", { specialite: loc(`BREVIAIRE.Specialite.${d.specialite}`) }) });
   if (d.type === "mort") {
     effets.push(d.applique.mortTotal
@@ -371,8 +417,8 @@ async function actionCarte(message, action) {
   await game.dice3d?.showForRoll(roll, game.user, true);
   resoudre(d);
   await appliquerSuites(actor, d);
-  await message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
   await tirerMarquesDesPaliers(actor, d);
+  await message.update({ content: await rendreCarte(d), [`flags.${SYSTEME}.jet`]: d });
 }
 
 /** Dégâts bruts d'une arme (la Protection et les Blessures graves arrivent avec le combat, étape 7). */

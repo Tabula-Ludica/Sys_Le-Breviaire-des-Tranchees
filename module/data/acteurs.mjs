@@ -52,6 +52,8 @@ export class PersonnageData extends foundry.abstract.TypeDataModel {
       soupcon: new f.SchemaField({ confession: new f.BooleanField(), marqueVue: new f.BooleanField() }),
       disgrace: new f.SchemaField({ ordresRefuses: entier(0, 0, 99), missionEchouee: new f.BooleanField() }),
       excommunie: new f.BooleanField(),
+      // « Écrire chez soi » : une fois par campagne (ch. VI §4)
+      lettreEcrite: new f.BooleanField(),
 
       protectionNaturelle: entier(0, 0, 10),
 

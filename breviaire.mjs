@@ -21,6 +21,8 @@ import { testUsure } from "./module/jets/usure.mjs";
 import * as reserve from "./module/reserve/reserve.mjs";
 import { rendreWidget, finDeScene } from "./module/reserve/widget.mjs";
 import * as arcanes from "./module/arcanes/arcanes.mjs";
+import * as arriere from "./module/arriere/arriere.mjs";
+import { RetourArriere } from "./module/arriere/retour.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
 
@@ -91,7 +93,8 @@ Hooks.once("init", () => {
     regles, terme, campDuMonde, config: CONFIG_BREVIAIRE,
     lancerJet: moteur.lancerJet, executerJet: moteur.executerJet, testUsure,
     reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene,
-    tirerArcane: arcanes.tirerArcane
+    tirerArcane: arcanes.tirerArcane,
+    arriere: { ...arriere, ouvrir: actor => RetourArriere.ouvrir(actor) }
   };
 });
 

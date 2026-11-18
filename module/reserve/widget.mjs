@@ -55,6 +55,8 @@ export function rendreWidget() {
       <button type="button" data-r="messe" data-tooltip="${t("Messe")}"><i class="fa-solid fa-church"></i></button>
       <button type="button" data-r="escouade" data-tooltip="${loc("BREVIAIRE.Reserve.escouade")}"><i class="fa-solid fa-users"></i></button>
       <button type="button" data-r="scene" data-tooltip="${loc("BREVIAIRE.Reserve.finScene")}"><i class="fa-solid fa-clapperboard"></i></button>
+      <button type="button" data-r="session" data-tooltip="${fmt("BREVIAIRE.Reserve.session", { tentation: t("Tentation") })}"><i class="fa-solid fa-moon"></i></button>
+      <button type="button" data-r="arriere" data-tooltip="${loc("BREVIAIRE.Arriere.ouvrirEscouade")}"><i class="fa-solid fa-campground"></i></button>
     </div>` : ""}`;
 }
 
@@ -80,6 +82,16 @@ async function onClick(event) {
     }
     case "escouade": return choisirEscouade();
     case "scene": return finDeScene();
+    case "session": {
+      const { nouvelleSession } = await import("../arriere/arriere.mjs");
+      await nouvelleSession(game.actors.filter(a => a.type === "personnage"));
+      return annoncer(fmt("BREVIAIRE.Reserve.annonceSession", { tentation: terme("Tentation", camp) }));
+    }
+    case "arriere": {
+      const { RetourArriere } = await import("../arriere/retour.mjs");
+      const membres = escouade().length ? escouade() : game.actors.filter(a => a.type === "personnage" && a.hasPlayerOwner);
+      return membres.forEach(a => RetourArriere.ouvrir(a));
+    }
   }
 }
 

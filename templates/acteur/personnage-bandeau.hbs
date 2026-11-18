@@ -13,12 +13,15 @@
     </div>
 
     <div class="brev-bandeau-droite">
-      {{#if avecModeEdition}}
-      <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">
-        <span class="brev-interrupteur-piste"><span class="brev-interrupteur-bouton"></span></span>
-        <span>{{localize 'BREVIAIRE.Fiche.edition'}}</span>
-      </button>
-      {{/if}}
+      <div class="brev-bandeau-outils">
+        <button type="button" class="brev-retour-bouton brev-jeu" data-action="retour" data-tooltip="{{localize 'BREVIAIRE.Arriere.ouvrir'}}"><i class="fa-solid fa-campground"></i></button>
+        {{#if avecModeEdition}}
+        <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">
+          <span class="brev-interrupteur-piste"><span class="brev-interrupteur-bouton"></span></span>
+          <span>{{localize 'BREVIAIRE.Fiche.edition'}}</span>
+        </button>
+        {{/if}}
+      </div>
       <div class="brev-titre-bloc">
         <div class="brev-sceau-missions" data-tooltip="{{localize 'BREVIAIRE.Fiche.missions'}}">
           {{#if edition}}<input type="number" name="system.missions" value="{{system.missions}}" min="0">{{else}}<b>{{system.missions}}</b>{{/if}}
