@@ -5,7 +5,7 @@ Système **Foundry VTT v14** pour *Le Bréviaire des Tranchées*, jeu de rôle n
 - Règles : https://tabula-ludica.github.io/Le-Breviaire-des-Tranchees/
 - Dépôt des règles : [Tabula-Ludica/Le-Breviaire-des-Tranchees](https://github.com/Tabula-Ludica/Le-Breviaire-des-Tranchees)
 
-> **État : 1.0 (prototype jouable).** Toutes les règles du Bréviaire sont branchées ; les règles encore marquées « prototype » sur le site peuvent bouger.
+> **État : 0.9 (complet, en test).** Toutes les règles du Bréviaire sont branchées ; les règles encore marquées « prototype » sur le site peuvent bouger.
 
 ## Ce que fait le système
 
