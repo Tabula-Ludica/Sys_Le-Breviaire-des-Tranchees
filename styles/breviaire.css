@@ -1973,3 +1973,61 @@ body.vade-touch .breviaire.fiche .window-content .brev-combat-actions button { m
 .brev-carte-degats .brev-cd-fait { color: var(--cj-or); text-align: center; }
 .brev-carte-jet .brev-cj-opposition { color: var(--cj-encre); }
 .brev-carte-degats .brev-cd-options button { font-family: "EB Garamond", serif; }
+
+/* =====================================================================
+   Créateur de personnage
+   ===================================================================== */
+.breviaire.createur { --brev-fond: #e8dcc0; --brev-encre: #22180f; --brev-encre-douce: #5f4a34; --brev-or: #9a7632; --brev-sang: #8a1a12; }
+.breviaire.createur.brev-sombre { --brev-fond: #211915; --brev-encre: #eadbc5; --brev-encre-douce: #b29b80; --brev-or: #b48a4a; --brev-sang: #e0574b; }
+.breviaire.createur .window-content {
+  padding: 0; color: var(--brev-encre); font-family: "EB Garamond", Georgia, serif; font-size: 15px;
+  background: radial-gradient(ellipse at 50% 120%, rgba(239, 91, 60, .12), transparent 55%), var(--brev-fond);
+}
+.brev-createur { display: flex; flex-direction: column; height: 100%; }
+.brev-createur .brev-cr-etapes { display: flex; flex-wrap: wrap; gap: 2px; padding: .4rem; border-bottom: 1px solid var(--brev-or); background: rgba(0, 0, 0, .2); }
+.brev-createur .brev-cr-etapes button { flex: 1 1 auto; width: auto; min-height: 30px; margin: 0; padding: 0 .4rem; font-family: "Cormorant SC", serif; font-size: .9rem; color: var(--brev-encre-douce); background: transparent; border: 1px solid transparent; }
+.brev-createur .brev-cr-etapes button span { display: inline-grid; place-items: center; width: 1.2rem; height: 1.2rem; margin-right: .25rem; border-radius: 50%; font-size: .75rem; border: 1px solid var(--brev-or); }
+.brev-createur .brev-cr-etapes button.active { color: var(--brev-encre); border-color: var(--brev-or); background: rgba(180, 138, 74, .2); }
+.brev-createur .brev-cr-page { flex: 1; overflow-y: auto; padding: .7rem .9rem; }
+.brev-createur .brev-cr-intro { margin: 0 0 .6rem; font-style: italic; color: var(--brev-encre-douce); }
+.brev-createur button { width: auto; min-height: 32px; font-family: "EB Garamond", serif; color: var(--brev-encre); background: rgba(0, 0, 0, .1); border: 1px solid var(--brev-or); border-radius: 3px; }
+.breviaire.brev-sombre .brev-createur button { background: rgba(255, 255, 255, .05); }
+.brev-createur button:disabled { opacity: .45; }
+.brev-createur .brev-cr-fort { border-color: var(--brev-sang); color: var(--brev-sang); font-weight: 600; }
+.brev-createur .brev-cr-arcanes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; margin-top: .6rem; }
+.brev-createur .brev-cr-arcane { display: flex; flex-direction: column; align-items: center; gap: .3rem; padding: .5rem; border: 1px solid rgba(154, 118, 50, .5); background: rgba(0, 0, 0, .08); text-align: center; }
+.brev-createur .brev-cr-arcane h4 { margin: 0; font-family: "Cormorant SC", serif; font-size: 1.1rem; color: var(--brev-or); border: none; }
+.brev-createur .brev-cr-arcane img, .brev-createur .brev-cr-dos { width: 110px; aspect-ratio: 5 / 8; object-fit: cover; border: 1px solid var(--brev-or); border-radius: 5px; box-shadow: 0 4px 10px rgba(0, 0, 0, .45); }
+.brev-createur .brev-cr-dos { display: grid; place-items: center; font-size: 2rem; color: var(--brev-or); background: repeating-linear-gradient(45deg, #2a1d15, #2a1d15 6px, #1b130e 6px, #1b130e 12px); }
+.brev-createur .brev-cr-arcane em { font-size: .85rem; color: var(--brev-encre-douce); }
+.brev-createur .brev-cr-arcane label { width: 100%; text-align: left; }
+.brev-createur .brev-cr-arcane textarea { width: 100%; min-height: 4rem; resize: vertical; }
+.brev-createur .brev-cr-champ { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: .5rem; align-items: center; margin: .35rem 0; }
+.brev-createur .brev-cr-champ span { font-family: "Cormorant SC", serif; font-weight: 600; }
+.brev-createur .brev-cr-fiche { margin: .4rem 0; padding: .45rem .6rem; border-left: 3px solid var(--brev-or); background: rgba(0, 0, 0, .07); }
+.brev-createur .brev-cr-fiche p { margin: .15rem 0; }
+.brev-createur .brev-cr-alerte { margin: .5rem 0; padding: .4rem .6rem; color: var(--brev-sang); border: 1px dashed var(--brev-sang); }
+.brev-createur .brev-cr-alerte ul { margin: .2rem 0 0 1rem; padding: 0; }
+.brev-createur .brev-cr-sous { margin: .8rem 0 .3rem; font-family: "Cormorant SC", serif; border-bottom: 1px solid var(--brev-or); }
+.brev-createur .brev-cr-spe { display: flex; flex-wrap: wrap; gap: .3rem; list-style: none; margin: 0; padding: 0; }
+.brev-createur .brev-cr-spe li { padding: .15rem .5rem; border: 1px solid rgba(154, 118, 50, .6); border-radius: 3px; }
+.brev-createur .brev-cr-spe li.expert { border-color: var(--brev-sang); font-weight: 600; }
+.brev-createur .brev-cr-spe small { color: var(--brev-encre-douce); }
+.brev-createur .brev-cr-caracs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; }
+.brev-createur .brev-cr-carac { display: flex; flex-direction: column; gap: .3rem; align-items: center; padding: .5rem; text-align: center; border: 1px solid rgba(154, 118, 50, .5); }
+.brev-createur .brev-cr-carac b { font-family: "Cormorant SC", serif; font-size: 1.1rem; }
+.brev-createur .brev-cr-carac small { font-size: .78rem; color: var(--brev-encre-douce); }
+.brev-createur .brev-cr-usures { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; }
+.brev-createur .brev-cr-usures div { display: flex; flex-direction: column; align-items: center; padding: .5rem; border: 1px solid var(--brev-or); }
+.brev-createur .brev-cr-usures b { font-size: 1.5rem; color: var(--brev-or); }
+.brev-createur .brev-cr-pied { display: flex; justify-content: space-between; padding: .5rem .7rem; border-top: 1px solid var(--brev-or); }
+.breviaire.createur.brev-etroit .brev-cr-arcanes, .breviaire.createur .brev-cr-arcanes { container-type: inline-size; }
+@media (max-width: 700px) {
+  .brev-createur .brev-cr-arcanes, .brev-createur .brev-cr-caracs { grid-template-columns: 1fr 1fr; }
+  .brev-createur .brev-cr-champ { grid-template-columns: 1fr; }
+}
+body.vade-touch .brev-createur button, body.vade-touch .brev-createur select { min-height: 44px; }
+@keyframes brev-appel { 0%, 100% { box-shadow: 0 0 0 rgba(224, 87, 75, 0); } 50% { box-shadow: 0 0 10px rgba(224, 87, 75, .9); } }
+.breviaire.fiche .window-content .brev-retour-bouton.brev-appel { border-color: var(--brev-sang); color: #f0d27a; animation: brev-appel 2s ease-in-out infinite; }
+.brev-createur .brev-cr-etapes { flex-wrap: nowrap; overflow-x: auto; }
+.brev-createur .brev-cr-etapes button { flex: 1 0 auto; font-size: .82rem; padding: 0 .3rem; }

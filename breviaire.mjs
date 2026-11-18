@@ -23,6 +23,7 @@ import { rendreWidget, finDeScene } from "./module/reserve/widget.mjs";
 import * as arcanes from "./module/arcanes/arcanes.mjs";
 import * as arriere from "./module/arriere/arriere.mjs";
 import { RetourArriere } from "./module/arriere/retour.mjs";
+import { CreateurPersonnage } from "./module/createur/createur.mjs";
 import { BreviaireCombat, assautEclair, reprendreInitiative } from "./module/combat/combat.mjs";
 import { enregistrerEtats } from "./module/combat/etats.mjs";
 import * as degats from "./module/combat/degats.mjs";
@@ -104,6 +105,7 @@ Hooks.once("init", () => {
     lancerJet: moteur.lancerJet, executerJet: moteur.executerJet, testUsure,
     reserve: { etat: reserve.etat, demander: reserve.demander, escouade: reserve.escouade }, finDeScene,
     tirerArcane: arcanes.tirerArcane,
+    createur: actor => CreateurPersonnage.ouvrir(actor),
     arriere: { ...arriere, ouvrir: actor => RetourArriere.ouvrir(actor) },
     combat: { assautEclair, reprendreInitiative, appliquerDegats: degats.appliquerDegats, testNerfsEnnemi: degats.testNerfsEnnemi, seReprendre: degats.seReprendre }
   };

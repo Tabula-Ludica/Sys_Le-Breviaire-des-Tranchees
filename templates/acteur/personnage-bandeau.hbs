@@ -14,6 +14,7 @@
 
     <div class="brev-bandeau-droite">
       <div class="brev-bandeau-outils">
+        {{#if (or edition sansOrigine)}}<button type="button" class="brev-retour-bouton brev-jeu {{#if sansOrigine}}brev-appel{{/if}}" data-action="createur" data-tooltip="{{localize 'BREVIAIRE.Createur.ouvrir'}}"><i class="fa-solid fa-feather-pointed"></i></button>{{/if}}
         <button type="button" class="brev-retour-bouton brev-jeu" data-action="retour" data-tooltip="{{localize 'BREVIAIRE.Arriere.ouvrir'}}"><i class="fa-solid fa-campground"></i></button>
         {{#if avecModeEdition}}
         <button type="button" class="brev-interrupteur {{#if edition}}actif{{/if}}" data-action="basculerEdition" aria-pressed="{{edition}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.editionAide'}}">

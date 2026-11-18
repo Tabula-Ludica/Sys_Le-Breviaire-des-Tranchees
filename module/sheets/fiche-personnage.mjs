@@ -46,7 +46,8 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
       testUsure: this.#testUsure,
       utiliserRelique: this.#utiliserRelique,
       retour: this.#retour,
-      combat: this.#combat
+      combat: this.#combat,
+      createur: this.#createur
     }
   };
 
@@ -224,6 +225,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
 
     context.biographie = await enrichir(sys.histoire.biographie, actor);
     context.combat = this.#contexteCombat();
+    context.sansOrigine = !sys.origine.cle;
     return context;
   }
 
@@ -293,6 +295,11 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
         return seReprendre(actor);
       }
     }
+  }
+
+  static async #createur() {
+    const { CreateurPersonnage } = await import("../createur/createur.mjs");
+    return CreateurPersonnage.ouvrir(this.document);
   }
 
   static async #retour() {

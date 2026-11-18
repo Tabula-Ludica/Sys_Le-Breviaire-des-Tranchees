@@ -1,0 +1,124 @@
+<div class="brev-createur">
+  <nav class="brev-cr-etapes">
+    {{#each etapes}}
+    <button type="button" class="{{#if active}}active{{/if}}" data-action="etape" data-i="{{i}}"><span>{{n}}</span>{{label}}</button>
+    {{/each}}
+  </nav>
+
+  <div class="brev-cr-page">
+  {{#if (eq etape "arcanes")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.arcanes'}}</p>
+    <button type="button" class="brev-cr-fort" data-action="tirerTout"><i class="fa-solid fa-layer-group"></i> {{localize 'BREVIAIRE.Createur.tirerTout'}} ({{paquet}})</button>
+    <div class="brev-cr-arcanes">
+      {{#each arcanes}}
+      <div class="brev-cr-arcane">
+        <h4>{{label}}</h4>
+        {{#if carte}}
+        <img src="{{carte.img}}" alt="{{carte.nom}}">
+        <b>{{carte.chiffre}} · {{carte.nom}}</b>
+        <em>{{carte.sens}}</em>
+        {{else}}
+        <div class="brev-cr-dos"><i class="fa-solid fa-question"></i></div>
+        {{/if}}
+        <button type="button" data-action="tirer" data-position="{{position}}"><i class="fa-solid fa-rotate"></i> {{#if carte}}{{localize 'BREVIAIRE.Createur.retirer'}}{{else}}{{localize 'BREVIAIRE.Createur.tirer'}}{{/if}}</button>
+        <label><small>{{question}}</small>
+          <textarea name="reponses.{{position}}" rows="3">{{reponse}}</textarea></label>
+      </div>
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{#if (eq etape "origine")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.origine'}}</p>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.etape.origine'}}</span><select name="origine">{{selectOptions origines selected=e.origine}}</select></label>
+    {{#if origine}}
+    <div class="brev-cr-fiche">
+      <p><b>{{localize 'BREVIAIRE.Fiche.specialites'}} :</b> {{origine.specialites}}</p>
+      {{#if origine.particularite.nom}}<p><b>{{origine.particularite.nom}} :</b> {{origine.particularite.texte}}</p>{{else}}<p>{{origine.particularite.texte}}</p>{{/if}}
+      {{#if origine.usure}}<p><b>{{localize 'BREVIAIRE.Createur.ajustements'}} :</b> {{origine.usure}}</p>{{/if}}
+    </div>
+    {{#if origine.options}}
+    <label class="brev-cr-champ"><span>{{origine.titreOption}}</span><select name="option">{{selectOptions origine.options selected=e.option}}</select></label>
+    {{/if}}
+    {{/if}}
+  {{/if}}
+
+  {{#if (eq etape "affectation")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.affectation'}}</p>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.etape.affectation'}}</span><select name="affectation">{{selectOptions affectations selected=e.affectation}}</select></label>
+    {{#if affectation}}
+    <div class="brev-cr-fiche">
+      <p><b>{{localize 'BREVIAIRE.RangSpecialite.2'}} :</b> {{affectation.expert}} · <b>{{localize 'BREVIAIRE.RangSpecialite.1'}} :</b> {{affectation.formes}}</p>
+      <p><b>{{localize 'BREVIAIRE.Createur.dotation'}} :</b> {{affectation.dotation}}</p>
+      {{#if affectation.usure}}<p><b>{{localize 'BREVIAIRE.Createur.ajustements'}} :</b> {{affectation.usure}}</p>{{/if}}
+      {{#if affectation.note}}<p><em>{{affectation.note}}</em></p>{{/if}}
+    </div>
+    {{/if}}
+    {{#if libres.length}}
+    <p class="brev-cr-alerte">{{localize 'BREVIAIRE.Createur.doublons'}}</p>
+    {{#each libres}}
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.libre'}} {{n}}</span><select name="libres.{{i}}">{{selectOptions choix selected=valeur}}</select></label>
+    {{/each}}
+    {{/if}}
+    <h4 class="brev-cr-sous">{{localize 'BREVIAIRE.Createur.resultat'}}</h4>
+    <ul class="brev-cr-spe">
+      {{#each specialites}}<li class="{{#if expert}}expert{{/if}}">{{label}} <small>{{rang}}</small></li>{{/each}}
+    </ul>
+    {{#if substitutions.length}}<p><b>{{localize 'BREVIAIRE.Fiche.substitutions'}} :</b> {{#each substitutions}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</p>{{/if}}
+  {{/if}}
+
+  {{#if (eq etape "caracs")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.caracs'}}</p>
+    <div class="brev-cr-caracs">
+      {{#each caracs}}
+      <label class="brev-cr-carac"><b>{{label}}</b><select name="caracs.{{cle}}">{{selectOptions ../valeurs selected=valeur}}</select><small>{{aide}}</small></label>
+      {{/each}}
+    </div>
+    {{#unless caracsOk}}<p class="brev-cr-alerte">{{localize 'BREVIAIRE.Createur.manque.caracs'}}</p>{{/unless}}
+  {{/if}}
+
+  {{#if (eq etape "rang")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.rang'}}</p>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Fiche.rang'}}</span><select name="rang">{{selectOptions rangs selected=e.rang}}</select></label>
+    <p class="brev-cr-fiche">{{rangAide}}</p>
+  {{/if}}
+
+  {{#if (eq etape "usure")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.usure'}}</p>
+    <div class="brev-cr-usures">
+      {{#each usure}}<div><small>{{label}}</small><b>{{de}}</b></div>{{/each}}
+    </div>
+    {{#each bonus}}<p class="brev-cr-fiche">{{this}}</p>{{/each}}
+  {{/if}}
+
+  {{#if (eq etape "finitions")}}
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.intro.finitions'}}</p>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Fiche.nom'}}</span><input type="text" name="nom" value="{{e.nom}}"></label>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Fiche.surnom'}}</span><input type="text" name="surnom" value="{{e.surnom}}"></label>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.detail'}}</span><input type="text" name="detail" value="{{e.detail}}"></label>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.lien'}}</span><input type="text" name="lien" value="{{e.lien}}"></label>
+    {{#if heritage}}
+    <h4 class="brev-cr-sous">{{localize 'BREVIAIRE.Createur.heritage'}}</h4>
+    <p class="brev-cr-intro">{{localize 'BREVIAIRE.Createur.heritageAide'}}</p>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.defunt'}}</span><select name="defunt">{{selectOptions heritage.defunts selected=e.defunt}}</select></label>
+    {{#if heritage.specialites}}
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.heritageSpe'}}</span><select name="heritageSpe">{{selectOptions heritage.specialites selected=e.heritageSpe}}</select></label>
+    <label class="brev-cr-champ"><span>{{localize 'BREVIAIRE.Createur.heritageObjet'}}</span><select name="heritageObjet">{{selectOptions heritage.objets selected=e.heritageObjet}}</select></label>
+    {{/if}}
+    {{/if}}
+    <label class="brev-cr-case"><input type="checkbox" name="dotation" {{checked e.dotation}}> {{localize 'BREVIAIRE.Createur.ajouterDotation'}}</label>
+    {{#if manques.length}}
+    <div class="brev-cr-alerte"><b>{{localize 'BREVIAIRE.Createur.reste'}}</b><ul>{{#each manques}}<li>{{this}}</li>{{/each}}</ul></div>
+    {{/if}}
+  {{/if}}
+  </div>
+
+  <footer class="brev-cr-pied">
+    <button type="button" data-action="precedent" {{#if premiere}}disabled{{/if}}><i class="fa-solid fa-arrow-left"></i> {{localize 'BREVIAIRE.Createur.precedent'}}</button>
+    {{#if derniere}}
+    <button type="button" class="brev-cr-fort" data-action="creer" {{#unless pret}}disabled{{/unless}}><i class="fa-solid fa-feather-pointed"></i> {{localize 'BREVIAIRE.Createur.creer'}}</button>
+    {{else}}
+    <button type="button" data-action="suivant">{{localize 'BREVIAIRE.Createur.suivant'}} <i class="fa-solid fa-arrow-right"></i></button>
+    {{/if}}
+  </footer>
+</div>

@@ -766,6 +766,97 @@
       },
       "embuscadeAide": "Le camp surpris passe tout entier en phase lente au premier tour.",
       "aucunCombat": "Aucun combat en cours."
+    },
+    "Createur": {
+      "titre": "Créer un personnage : {nom}",
+      "ouvrir": "Assistant de création",
+      "etape": {
+        "arcanes": "Arcanes",
+        "origine": "Origine",
+        "affectation": "Affectation",
+        "caracs": "Caractéristiques",
+        "rang": "Rang",
+        "usure": "Usure",
+        "finitions": "Finitions"
+      },
+      "intro": {
+        "arcanes": "On tire trois arcanes, tous différents. Chacun pose une question : la réponse est l’histoire du personnage.",
+        "origine": "D’où vient-il ? L’Origine donne des Spécialités, une particularité et des ajustements aux dés d’usure.",
+        "affectation": "Son métier au front : une Spécialité Experte, deux Formées, une dotation. Les doublons avec l’Origine montent d’un rang, ou ouvrent une Spécialité libre.",
+        "caracs": "Répartir 14, 12, 11, 10 et 8 entre les cinq caractéristiques (choisir une valeur l’échange avec la caractéristique qui l’avait).",
+        "rang": "Le Rang découle de l’histoire et ne donne aucun bonus aux dés. Pas plus d’un Officier ou d’un Prélat par escouade.",
+        "usure": "Chaque dé d’usure part d’un d8, ajusté par l’Origine et l’Affectation (entre d4 et d12). C’est aussi le dé de base du ravitaillement.",
+        "finitions": "Un nom, un surnom, un détail qui se voit, et un lien avec un autre membre de l’escouade."
+      },
+      "question": {
+        "fideles": {
+          "passe": "Quel événement t’a mené au front ?",
+          "serment": "Qu’as-tu juré, et à qui ?",
+          "peche": "Quelle faute ou quelle faiblesse te ronge ?"
+        },
+        "damnes": {
+          "passe": "Qu’est-ce qui t’a poussé vers l’Enfer ?",
+          "serment": "Qu’as-tu juré à l’Enfer, et en échange de quoi ?",
+          "peche": "Que reste-t-il d’humain en toi ?"
+        }
+      },
+      "tirerTout": "Tirer les trois arcanes",
+      "tirer": "Tirer",
+      "retirer": "Retirer",
+      "paquetVide": "Aucun arcane disponible : le paquet est-il importé ?",
+      "ajustements": "Dés d’usure",
+      "dotation": "Dotation",
+      "doublons": "Doublon Experte + Formée : choisissez une Spécialité libre (Formée).",
+      "libre": "Spécialité libre",
+      "resultat": "Spécialités de départ",
+      "caracAide": {
+        "chair": "Force et résistance du corps",
+        "nerf": "Réflexes et sang-froid",
+        "esprit": "Intelligence et attention",
+        "verbe": "Ascendant sur les autres",
+        "ame": "Volonté, lien avec l’invisible"
+      },
+      "rangAide": {
+        "conscrit": {
+          "fideles": "Droits : aucun, sinon celui de se taire. Devoirs : obéir, et mourir s’il le faut.",
+          "damnes": "Droits : aucun, sinon celui de survivre. Devoirs : obéir aux maîtres, nourrir le Calice."
+        },
+        "sousofficier": {
+          "fideles": "Droits : donner des ordres à l’escouade, demander du ravitaillement. Devoirs : répondre des hommes, tenir la position.",
+          "damnes": "Droits : commander l’escouade, choisir les offrandes. Devoirs : répondre de l’escouade devant les maîtres."
+        },
+        "officier": {
+          "fideles": "Droits : commander, accéder aux plans, réquisitionner. Devoirs : répondre des pertes ; être une cible prioritaire.",
+          "damnes": "Droits : commander, accéder aux ordres de l’Enfer, réquisitionner. Devoirs : répondre des échecs ; la Disgrâce le guette."
+        },
+        "prelat": {
+          "fideles": "Droits : autorité religieuse, sacrements, absolution. Devoirs : répondre devant l’Église… et l’Inquisition.",
+          "damnes": "Droits : parler au nom d’un démon, présider la Messe noire. Devoirs : servir son démon… jusqu’au bout."
+        }
+      },
+      "bonusProtection": "Protection naturelle +{n}.",
+      "bonusCorruption": "Commence à {corruption} {n}.",
+      "detail": "Un détail qui se voit",
+      "lien": "Lien avec l’escouade",
+      "ajouterDotation": "Ajouter la dotation de l’Affectation et la dotation commune (casque, masque à gaz…)",
+      "reste": "Il reste à faire :",
+      "manque": {
+        "arcanes": "tirer les trois arcanes",
+        "origine": "choisir une Origine",
+        "affectation": "choisir une Affectation",
+        "libres": "choisir la ou les Spécialités libres",
+        "caracs": "répartir 14, 12, 11, 10 et 8",
+        "nom": "donner un nom"
+      },
+      "precedent": "Précédent",
+      "suivant": "Suivant",
+      "creer": "Créer le personnage",
+      "cree": "{nom} est prêt à monter au front.",
+      "heritage": "Héritage (facultatif)",
+      "heritageAide": "La relève : s’il a connu un camarade tombé, il hérite d’une de ses Spécialités Formée et d’un de ses objets. Pas d’héritage d’un personnage perdu à l’Enfer.",
+      "defunt": "Camarade tombé",
+      "heritageSpe": "Spécialité héritée",
+      "heritageObjet": "Objet hérité"
     }
   }
 }
