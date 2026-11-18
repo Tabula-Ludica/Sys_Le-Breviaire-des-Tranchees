@@ -24,7 +24,7 @@ import * as arcanes from "./module/arcanes/arcanes.mjs";
 import * as arriere from "./module/arriere/arriere.mjs";
 import { RetourArriere } from "./module/arriere/retour.mjs";
 import { CreateurPersonnage } from "./module/createur/createur.mjs";
-import { BreviaireCombat, assautEclair, reprendreInitiative } from "./module/combat/combat.mjs";
+import { BreviaireCombat, assautEclair, reprendreInitiative, tourSuivant } from "./module/combat/combat.mjs";
 import { enregistrerEtats } from "./module/combat/etats.mjs";
 import * as degats from "./module/combat/degats.mjs";
 
@@ -89,6 +89,7 @@ Hooks.once("init", () => {
   reserve.enregistrerRequetes();
   // Un joueur fait réécrire par le MJ une carte qui ne lui appartient pas (défense en mêlée, dégâts appliqués)
   CONFIG.queries["breviaire.carte"] = degats.majCarte;
+  CONFIG.queries["breviaire.tourSuivant"] = tourSuivant;
   // La réserve et l'escouade sont diffusées à tous les clients : chacun redessine son widget
   for (const cle of ["reserve", "escouade"]) {
     const reglage = game.settings.settings.get(`breviaire.${cle}`);

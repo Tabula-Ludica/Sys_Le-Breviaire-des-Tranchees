@@ -219,7 +219,6 @@ const TABLE_PANIQUE = [null, "fuite", "fuite", "terre", "terre", "furie", "furie
  */
 export async function debutDeTour(combat) {
   if (game.user !== game.users.activeGM) return;
-  await combat.appliquerPhases?.();
   const c = combat.combatant;
   const actor = c?.actor;
   if (!actor || c.defeated) return;

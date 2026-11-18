@@ -61,8 +61,13 @@ export class BreviaireCombat extends Combat {
 
   async nextRound() {
     // Assaut éclair et embuscade ne durent qu'un tour ; une initiative reprise compte au tour suivant.
-    // Les phases changent avant le changement de tour, pour que le tour 2 commence par le bon combattant.
-    if (game.user.isGM) await this.appliquerPhases(this.round + 1);
+    // Les phases changent avant le changement de tour, pour que le tour suivant commence par le bon combattant.
+    // Un joueur ne peut pas modifier les autres combattants : il demande au MJ actif de passer le tour.
+    if (!game.user.isGM && game.users.activeGM) {
+      await game.users.activeGM.query("breviaire.tourSuivant", { combatId: this.id }, { timeout: 10000 });
+      return this;
+    }
+    await this.appliquerPhases(this.round + 1);
     return super.nextRound();
   }
 
@@ -76,6 +81,15 @@ export class BreviaireCombat extends Combat {
   combattantDe(actor) {
     return this.combatants.find(c => c.actor === actor || c.actorId === actor.id);
   }
+}
+
+/** Requête du MJ : passer au tour suivant pour un joueur, seulement quand plus personne ne doit jouer ce tour-ci. */
+export async function tourSuivant({ combatId }) {
+  const combat = game.combats.get(combatId);
+  if (!game.user.isGM || !combat?.started) return false;
+  if (combat.turns.slice((combat.turn ?? 0) + 1).some(c => !c.defeated)) return false;
+  await combat.nextRound();
+  return true;
 }
 
 /* -------------------------------------------- */
