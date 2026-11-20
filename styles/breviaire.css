@@ -2031,3 +2031,9 @@ body.vade-touch .brev-createur button, body.vade-touch .brev-createur select { m
 .breviaire.fiche .window-content .brev-retour-bouton.brev-appel { border-color: var(--brev-sang); color: #f0d27a; animation: brev-appel 2s ease-in-out infinite; }
 .brev-createur .brev-cr-etapes { flex-wrap: nowrap; overflow-x: auto; }
 .brev-createur .brev-cr-etapes button { flex: 1 0 auto; font-size: .82rem; padding: 0 .3rem; }
+.breviaire .brev-notable { display: inline-flex; align-items: center; gap: .25rem; font-size: .85rem; white-space: nowrap; }
+.breviaire .brev-notable input { width: auto; height: auto; margin: 0; }
+.breviaire .brev-graves-ennemi { list-style: none; margin: 0 0 .5rem; padding: 0; }
+.breviaire .brev-graves-ennemi li { display: grid; grid-template-columns: auto minmax(0, 1fr) 28px; gap: .4rem; align-items: center; padding: .2rem 0; border-bottom: 1px solid rgba(154, 118, 50, .3); }
+.breviaire .brev-graves-ennemi small { color: var(--brev-encre-douce); }
+.breviaire.fiche .window-content .brev-graves-ennemi button { width: 28px; height: 28px; min-height: 28px; padding: 0; }

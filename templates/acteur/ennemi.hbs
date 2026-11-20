@@ -14,6 +14,7 @@
       <div class="brev-ruban">
         <select name="system.role">{{selectOptions roles selected=system.role}}</select>
         <select name="system.camp">{{selectOptions camps selected=system.camp}}</select>
+        {{#if isGM}}<label class="brev-notable" data-tooltip="{{localize 'BREVIAIRE.Fiche.notableAide'}}"><input type="checkbox" class="brev-jeu" name="system.notable" {{checked system.notable}}> <i class="fa-solid fa-crown"></i> {{localize 'BREVIAIRE.Fiche.notable'}}</label>{{/if}}
       </div>
     </div>
   </header>
@@ -50,6 +51,16 @@
     {{/each}}
   </div>
   <input type="text" class="brev-plein" name="system.traitsLibres" value="{{system.traitsLibres}}" placeholder="{{localize 'BREVIAIRE.Fiche.traitsLibres'}}">
+
+  {{#if graves.length}}
+  <h3 class="brev-titre-section"><span><i class="fa-solid fa-bone"></i> {{localize 'BREVIAIRE.Fiche.blessuresGraves'}}</span></h3>
+  <ul class="brev-graves-ennemi">
+    {{#each graves}}
+    <li><b>{{nom}}</b> <small>{{effet}}</small>
+      <button type="button" class="brev-jeu" data-action="guerir" data-index="{{i}}" data-tooltip="{{localize 'BREVIAIRE.Fiche.retirer'}}"><i class="fa-solid fa-xmark"></i></button></li>
+    {{/each}}
+  </ul>
+  {{/if}}
 
   <div class="brev-entete-liste">
     <h3 class="brev-titre-section"><span><i class="fa-solid fa-gun"></i> {{localize 'BREVIAIRE.Fiche.attaques'}}</span></h3>

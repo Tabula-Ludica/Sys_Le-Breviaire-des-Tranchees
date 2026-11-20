@@ -336,7 +336,10 @@
       "versTitre": "{titre} à {seuil} missions",
       "titreMax": "Titre le plus haut",
       "aucunArcane": "Pas encore tiré",
-      "jetsEtSuivi": "Mort et suivi"
+      "jetsEtSuivi": "Mort et suivi",
+      "notable": "Notable",
+      "notableAide": "Cible importante (officier, prêtre, champion) : l'abattre propose +1d6 au Calice (Damnés).",
+      "retirer": "Retirer"
     },
     "Objet": {
       "categorie": "Catégorie",
@@ -686,12 +689,13 @@
       "assautEclairTexte": "{nom} lance un Assaut éclair : il agit avant tout le monde à ce premier tour (une fois par mission).",
       "embuscade": {
         "pj": "Embuscade : l’escouade est surprise et passe tout entière en phase lente au premier tour.",
-        "ennemis": "Embuscade : les ennemis sont surpris et jouent en dernier au premier tour.",
-        "aucune": "Pas d’embuscade."
+        "aucune": "Pas d’embuscade.",
+        "ennemis-apres": "Embuscade : les ennemis sont surpris et jouent en dernier au premier round.",
+        "ennemis-avec": "Embuscade : les ennemis sont surpris et jouent avec les personnages lents au premier round.",
+        "ennemis-saute": "Embuscade : les ennemis sont surpris et ne jouent pas au premier round."
       },
       "embuscadeTitre": "Embuscade : qui est surpris ?",
       "embuscadePj": "L’escouade",
-      "embuscadeEnnemis": "Les ennemis",
       "embuscadeAucune": "Personne",
       "tour": "Tour",
       "sansPhase": "Pas d’initiative",
@@ -764,10 +768,15 @@
         "blocage": "Personne ne réussit : rien ne se passe.",
         "egalite": "Égalité : rien ne se passe."
       },
-      "embuscadeAide": "Le camp surpris passe tout entier en phase lente au premier tour.",
+      "embuscadeAide": "Qui est surpris ? Des personnages surpris jouent en phase lente au premier round. Pour des ennemis, choisissez quand ils jouent.",
       "aucunCombat": "Aucun combat en cours.",
-      "notable": "Ennemi notable abattu : +1d6 au Calice (une fois par scène).",
-      "titreGroupe": "Combat"
+      "notable": "Ennemi notable abattu : +1d6 au Calice",
+      "titreGroupe": "Combat",
+      "embuscadeEnnemisApres": "Ennemis, après les lents",
+      "embuscadeEnnemisAvec": "Ennemis, avec les lents",
+      "embuscadeEnnemisSaute": "Ennemis, sautent le round",
+      "surprisPasse": "{nom} est surpris : il ne joue pas ce round.",
+      "notableDeja": "Le Calice a déjà reçu son dé d'ennemi notable dans cette scène."
     },
     "Createur": {
       "titre": "Créer un personnage : {nom}",

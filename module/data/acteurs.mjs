@@ -134,6 +134,9 @@ export class EnnemiData extends foundry.abstract.TypeDataModel {
       deplacement: new f.NumberField({ required: true, nullable: false, min: 0, initial: DEPLACEMENT.normal }),
       traits: new f.SetField(new f.StringField({ choices: TRAITS })),
       traitsLibres: texte(),
+      // Cible importante désignée par le MJ : l'abattre peut nourrir le Calice (+1d6, une fois par scène)
+      notable: new f.BooleanField(),
+      blessuresGraves: new f.ArrayField(new f.SchemaField({ type: choix(BLESSURES_GRAVES, "commotion") })),
       notes: new f.HTMLField({ required: true, blank: true })
     };
   }

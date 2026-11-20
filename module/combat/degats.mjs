@@ -154,6 +154,7 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false, ne
   const insensible = cible.type === "ennemi" && cible.system.traits.has("insensible");
   const lignes = [fmt("BREVIAIRE.Combat.blessuresRetirees", { nom: cible.name, n: degats, reste: apres })];
   const rolls = [];
+  let calice = false;
 
   if ((blessureGrave || tombe) && degats > 0 && !insensible) {
     const roll = await new Roll("1d6").evaluate();
@@ -169,6 +170,9 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false, ne
       if (type === "hemorragie") await etat(cible, "hemorragie", true);
       lignes.push(loc("BREVIAIRE.Combat.suitesGrave"));
       await perdreInitiative(cible);
+    } else {
+      await cible.update({ "system.blessuresGraves": [...cible.system.toObject().blessuresGraves, { type }] });
+      if (type === "hemorragie") await etat(cible, "hemorragie", true);
     }
   }
 
@@ -181,23 +185,18 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false, ne
       const c = game.combat?.combattantDe?.(cible);
       if (c && game.user.isGM) await c.update({ defeated: true });
       lignes.push(`<b>${loc("BREVIAIRE.Combat.vaincu")}</b>`);
-      // Calice (Damnés) : abattre un ennemi notable (officier, prêtre, champion) donne +1d6, une fois par scène
-      const notable = ["elite", "monstre"].includes(cible.system.role) || cible.system.traits.has("chef");
-      if (notable && game.settings.get(SYSTEME, "camp") === "damnes" && game.user.isGM && !game.combat?.getFlag(SYSTEME, "notable")) {
-        const { demander } = await import("../reserve/reserve.mjs");
-        const res = await demander("ajouter", { n: 1 });
-        if (res?.ok !== false) {
-          await game.combat?.setFlag(SYSTEME, "notable", true);
-          lignes.push(loc("BREVIAIRE.Combat.notable"));
-        }
-      }
+      // Calice (Damnés) : une cible désignée notable par le MJ propose +1d6 (bouton du MJ, une fois par scène)
+      if (cible.system.notable && game.settings.get(SYSTEME, "camp") === "damnes") calice = true;
     }
   }
 
   await ChatMessage.create({
     speaker: ChatMessage.getSpeaker({ actor: cible }),
     rolls,
-    content: `<div class="brev-carte-jet brev-carte-utilisation">${lignes.map(l => `<p class="brev-cj-texte">${l}</p>`).join("")}</div>`
+    content: `<div class="brev-carte-jet brev-carte-utilisation">${lignes.map(l => `<p class="brev-cj-texte">${l}</p>`).join("")}`
+      + (calice ? `<div class="brev-cj-boutons"><button type="button" data-brev-calice><i class="fa-solid fa-wine-glass"></i> ${loc("BREVIAIRE.Combat.notable")}</button></div>` : "")
+      + "</div>",
+    flags: calice ? { [SYSTEME]: { calice: true } } : {}
   });
 
   // Test d'usure de Nerfs après la carte (personnage, Blessure grave)
@@ -222,6 +221,11 @@ export async function debutDeTour(combat) {
   const c = combat.combatant;
   const actor = c?.actor;
   if (!actor || c.defeated) return;
+  // Embuscade : des ennemis surpris peuvent sauter le premier tour (choix du MJ)
+  if (combat.round <= 1 && actor.type === "ennemi" && combat.getFlag(SYSTEME, "embuscade") === "ennemis-saute") {
+    await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content: `<div class="brev-carte-jet brev-carte-utilisation"><p class="brev-cj-texte">${fmt("BREVIAIRE.Combat.surprisPasse", { nom: actor.name })}</p></div>` });
+    return combat.nextTurn();
+  }
   // « À couvert » dure jusqu'à son prochain tour ; « A plongé » ne vaut que pour le tir reçu
   for (const id of ["aCouvert", "plonge"]) if (actor.statuses.has(id)) await actor.toggleStatusEffect(id, { active: false });
   const parties = [];
@@ -260,6 +264,25 @@ async function appliquerDegatsSimples(actor, n) {
   const apres = Math.max(0, actor.system.blessures.value - n);
   await actor.update({ "system.blessures.value": apres });
   if (apres === 0) await etat(actor, actor.type === "personnage" ? "horsDeCombat" : "dead", true);
+}
+
+/** Bouton du MJ : un ennemi notable est tombé, +1d6 au Calice (une fois par scène, retenue sur le combat). */
+export function brancherCarteCalice(message, html) {
+  if (!message.getFlag(SYSTEME, "calice")) return;
+  html.querySelector(".brev-carte-jet")?.classList.add(themeSombre("damnes") ? "brev-sombre" : "brev-clair");
+  const bouton = html.querySelector("[data-brev-calice]");
+  if (!bouton) return;
+  if (!game.user.isGM || message.getFlag(SYSTEME, "caliceDonne")) { bouton.remove(); return; }
+  bouton.addEventListener("click", async ev => {
+    ev.preventDefault();
+    if (game.combat?.getFlag(SYSTEME, "notable")) return ui.notifications.warn(loc("BREVIAIRE.Combat.notableDeja"));
+    bouton.disabled = true;
+    const { demander } = await import("../reserve/reserve.mjs");
+    const res = await demander("ajouter", { n: 1 });
+    if (!res?.ok) return;
+    await game.combat?.setFlag(SYSTEME, "notable", true);
+    await message.setFlag(SYSTEME, "caliceDonne", true);
+  });
 }
 
 export function brancherCarteTour(message, html) {

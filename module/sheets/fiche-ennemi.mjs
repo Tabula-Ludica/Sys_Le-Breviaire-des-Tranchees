@@ -16,7 +16,8 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
       jet: this.#jet,
       blessures: this.#blessures,
       trait: this.#trait,
-      nerfs: this.#nerfs
+      nerfs: this.#nerfs,
+      guerir: this.#guerir
     }
   };
 
@@ -44,7 +45,18 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
     }));
     context.autres = this.document.items.filter(i => i.type !== "arme").map(i => ({ id: i.id, name: i.name, img: i.img }));
     context.notesHTML = await enrichir(sys.notes, this.document);
+    context.isGM = game.user.isGM;
+    context.graves = sys.blessuresGraves.map((b, i) => ({
+      i, nom: loc(`BREVIAIRE.BlessureGrave.${b.type}`), effet: loc(`BREVIAIRE.Combat.effetGrave.${b.type}`)
+    }));
     return context;
+  }
+
+  /** Une Blessure grave soignée ou oubliée : retirée de la liste. */
+  static #guerir(event, target) {
+    const liste = this.document.system.toObject().blessuresGraves;
+    liste.splice(Number(target.dataset.index), 1);
+    return this.document.update({ "system.blessuresGraves": liste });
   }
 
   /** Jet sous la Menace, avec ou sans arme. */

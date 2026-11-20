@@ -95,7 +95,9 @@ async function onClick(event) {
         content: `<p>${loc("BREVIAIRE.Combat.embuscadeAide")}</p>`,
         buttons: [
           { action: "pj", label: loc("BREVIAIRE.Combat.embuscadePj") },
-          { action: "ennemis", label: loc("BREVIAIRE.Combat.embuscadeEnnemis") },
+          { action: "ennemis-apres", label: loc("BREVIAIRE.Combat.embuscadeEnnemisApres") },
+          { action: "ennemis-avec", label: loc("BREVIAIRE.Combat.embuscadeEnnemisAvec") },
+          { action: "ennemis-saute", label: loc("BREVIAIRE.Combat.embuscadeEnnemisSaute") },
           { action: "aucune", label: loc("BREVIAIRE.Combat.embuscadeAucune") }
         ]
       });

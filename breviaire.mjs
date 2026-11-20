@@ -118,6 +118,7 @@ Hooks.on("renderChatMessageHTML", (message, html) => {
   arcanes.brancherCarteArcane(message, html);
   degats.brancherCarteDegats(message, html);
   degats.brancherCarteTour(message, html);
+  degats.brancherCarteCalice(message, html);
 });
 
 // Le bandeau de combat des fiches suit le suivi de combat

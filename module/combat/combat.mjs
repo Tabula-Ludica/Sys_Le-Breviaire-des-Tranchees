@@ -4,7 +4,8 @@
  * Tous les ennemis jouent en phase 2. La phase « de fond » est gardée dans flags.breviaire.phase ;
  * l'initiative affichée en découle, avec les exceptions du premier tour :
  *  - Assaut éclair (origine Prusse) : 4 au premier tour, une fois par mission ;
- *  - Embuscade : le camp surpris passe en phase lente au premier tour (ennemis : 0,5, après les personnages lents).
+ *  - Embuscade : les personnages surpris passent en phase lente au premier tour ; pour des ennemis surpris,
+ *    le MJ choisit : après les personnages lents (0,5), avec eux (1), ou ils sautent le premier tour.
  * Reprendre l'initiative : un personnage en phase lente relance son Nerf ; réussite → rapide au tour suivant.
  * Perdre l'initiative : Blessure grave ou panique → phase lente tout de suite.
  */
@@ -47,7 +48,8 @@ export class BreviaireCombat extends Combat {
       const surpris = this.getFlag(SYSTEME, "embuscade");
       const pj = c.actor?.type === "personnage";
       if (surpris === "pj" && pj) return R.PHASES.lente;
-      if (surpris === "ennemis" && !pj) return 0.5;
+      if (surpris === "ennemis-avec" && !pj) return R.PHASES.lente;
+      if (surpris?.startsWith("ennemis") && !pj) return 0.5;
     }
     return f.phase;
   }
@@ -75,7 +77,7 @@ export class BreviaireCombat extends Combat {
   async embuscade(camp) {
     await this.setFlag(SYSTEME, "embuscade", camp);
     await this.appliquerPhases();
-    ChatMessage.create({ content: `<div class="brev-carte-jet brev-carte-utilisation"><p class="brev-cj-texte">${camp ? loc(`BREVIAIRE.Combat.embuscade.${camp}`) : loc("BREVIAIRE.Combat.embuscade.aucune")}</p></div>` });
+    ChatMessage.create({ content: `<div class="brev-carte-jet brev-carte-utilisation"><p class="brev-cj-texte">${loc(`BREVIAIRE.Combat.embuscade.${camp ?? "aucune"}`)}</p></div>` });
   }
 
   combattantDe(actor) {

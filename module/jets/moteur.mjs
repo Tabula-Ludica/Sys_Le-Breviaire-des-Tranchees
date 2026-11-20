@@ -239,16 +239,10 @@ export async function appliquerSuites(actor, d) {
   const maj = {};
   const a = d.applique;
 
-  if (d.priere && !d.reussite && !a.foi) {
+  // Prière ratée ou rite raté : la Foi (ou la Haine) descend d'un cran, un seul même si les deux ratent (décision d'Argan)
+  if (!d.reussite && (d.priere || d.rite) && !a.foi && !a.rite) {
     maj["system.usure.foi.value"] = Math.max(0, sys.usure.foi.value - 1);
-    a.foi = true;
-  }
-
-  // Rite raté : la Foi (ou la Haine) du célébrant descend d'un cran (ch. X)
-  if (d.rite && !d.reussite && !a.rite) {
-    const foi = maj["system.usure.foi.value"] ?? sys.usure.foi.value;
-    maj["system.usure.foi.value"] = Math.max(0, foi - 1);
-    a.rite = true;
+    if (d.rite) a.rite = true; else a.foi = true;
   }
 
   if (d.pacte && !a.pacte) {
