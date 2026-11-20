@@ -19,7 +19,8 @@ export async function testUsure(actor, cle, { defavorise = false } = {}) {
   const faces = R.faces(u.value);
   const roll = await new Roll(defavorise ? `2d${faces}kl` : `1d${faces}`).evaluate();
   const des = roll.dice[0].results.map(r => r.result);
-  const res = R.resoudreUsure(u.value, des);
+  // Munitions : testées à chaque tir, elles ne descendent que sur un 1 (ch. I §3)
+  const res = R.resoudreUsure(u.value, des, cle === "munitions" ? 1 : 2);
   if (res.descend) await actor.update({ [`system.usure.${cle}.value`]: res.cran });
   // Nerfs épuisés : paniqué, et phase lente (ch. IV §8)
   if (cle === "nerfs" && res.cran === 0) {

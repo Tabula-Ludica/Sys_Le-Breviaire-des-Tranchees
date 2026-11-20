@@ -316,7 +316,7 @@ const EQUIPEMENT = [
   ["Trousse de chirurgie", "", { type: "soin" }, 1, "Action Soigner : jet de Médecine, +1d6 Blessures au patient (ch. IV §7)."],
   ["Morphine", "", { type: "morphine", consomme: true }, 2, "Ignore les effets d'une Blessure grave jusqu'à la fin de la scène."],
   ["Sérum infernal", "damnes", { type: "morphine", consomme: true }, 2, "Comme la morphine."],
-  ["Caisse de munitions", "", { type: "usure", usure: "munitions", crans: 1, consomme: true }, 1, "Munitions +1 cran au-delà du dé de base, pour une mission."],
+  ["Caisse de munitions", "", { type: "usure", usure: "munitions", crans: 1, consomme: true }, 1, "Munitions +1 cran au-delà de la dotation, pour une mission (maximum d12)."],
   ["Rations supplémentaires", "", { type: "usure", usure: "vivres", crans: 1, consomme: true }, 1, "Vivres +1 cran au-delà du dé de base, pour une mission."],
   ["Fusées éclairantes", "", { type: "consommable", consomme: true }, 3, "Annulent la Nuit dans un rayon de 30 m pendant 3 tours."],
   ["Masque à gaz", "", null, 1, "Dotation de tous."],

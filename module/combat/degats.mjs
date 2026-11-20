@@ -228,6 +228,17 @@ export async function debutDeTour(combat) {
     await ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content: `<div class="brev-carte-jet brev-carte-utilisation"><p class="brev-cj-texte">${fmt("BREVIAIRE.Combat.surprisPasse", { nom: actor.name })}</p></div>` });
     return combat.nextTurn();
   }
+  // Tir de suppression : les cibles de ce tireur sont libérées à son tour ; s'il est lui-même cloué, il doit réussir un jet
+  const { liberer } = await import("./suppression.mjs");
+  await liberer(combat, actor);
+  if (actor.statuses.has("cloue")) {
+    await ChatMessage.create({
+      speaker: ChatMessage.getSpeaker({ actor }),
+      content: `<div class="brev-carte-jet brev-carte-utilisation brev-carte-tour"><p class="brev-cj-texte">${fmt("BREVIAIRE.Combat.suppression.tour", { nom: foundry.utils.escapeHTML(actor.name), jet: actor.type === "personnage" ? loc("BREVIAIRE.Carac.nerf") : loc("BREVIAIRE.Fiche.menace") })}</p>`
+        + `<div class="brev-cj-boutons"><button type="button" data-brev-tour="cloue"><i class="fa-solid fa-person-rifle"></i> ${loc("BREVIAIRE.Combat.suppression.bouton")}</button></div></div>`,
+      flags: { [SYSTEME]: { tour: { acteur: actor.uuid } } }
+    });
+  }
   // « À couvert » dure jusqu'à son prochain tour ; « A plongé » ne vaut que pour le tir reçu
   for (const id of ["aCouvert", "plonge"]) if (actor.statuses.has(id)) await actor.toggleStatusEffect(id, { active: false });
   const parties = [];
@@ -305,6 +316,11 @@ export function brancherCarteTour(message, html) {
       ev.preventDefault();
       const { lancerJet } = await import("../jets/moteur.mjs");
       if (b.dataset.brevTour === "mort") return lancerJet(actor, { type: "mort" });
+      if (b.dataset.brevTour === "cloue") {
+        b.disabled = true;
+        const { executerJet } = await import("../jets/moteur.mjs");
+        return executerJet(actor, { type: "cloue", carac: actor.type === "personnage" ? "nerf" : null, titre: loc("BREVIAIRE.Combat.suppression.bouton") });
+      }
       // Un seul des deux choix par tour : les boutons sont désactivés après le clic
       for (const autre of html.querySelectorAll("[data-brev-tour]")) autre.disabled = true;
       if (b.dataset.brevTour === "reprendre") return seReprendre(actor);

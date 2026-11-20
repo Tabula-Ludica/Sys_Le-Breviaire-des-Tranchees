@@ -53,7 +53,8 @@ export function FicheBreviaire(Base) {
         onglet: this.#onglet,
         quantite: this.#quantite,
         basculerEdition: this.#basculerEdition,
-        utiliser: this.#utiliser
+        utiliser: this.#utiliser,
+        suppression: this.#suppression
       }
     };
 
@@ -188,6 +189,14 @@ export function FicheBreviaire(Base) {
       if (!objet) return;
       const { utiliserObjet } = await import("../objets/utiliser.mjs");
       return utiliserObjet(this.document, objet);
+    }
+
+    /** Tir de suppression avec une arme à distance (ch. IV §4). */
+    static async #suppression(event, target) {
+      const arme = this._objetDe(target);
+      if (!arme) return;
+      const { tirDeSuppression } = await import("../combat/suppression.mjs");
+      return tirDeSuppression(this.document, arme);
     }
 
     /** Quantité d'un objet : +1 / −1 (jamais sous 0). */

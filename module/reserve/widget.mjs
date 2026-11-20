@@ -51,6 +51,7 @@ export function rendreWidget() {
     ${gm ? `<div class="brev-r-mj">
       <button type="button" data-r="moins" data-tooltip="−1d6"><i class="fa-solid fa-minus"></i></button>
       <button type="button" data-r="plus" data-tooltip="+1d6"><i class="fa-solid fa-plus"></i></button>
+      <button type="button" data-r="dotation" data-tooltip="${loc("BREVIAIRE.Arriere.dotationBouton")}"><i class="fa-solid fa-box"></i></button>
       <button type="button" data-r="remplir" data-tooltip="${fmt("BREVIAIRE.Reserve.remplir", { n: parJoueur() })}"><i class="fa-solid fa-flag"></i></button>
       <button type="button" data-r="messe" data-tooltip="${t("Messe")}"><i class="fa-solid fa-church"></i></button>
       <button type="button" data-r="escouade" data-tooltip="${loc("BREVIAIRE.Reserve.escouade")}"><i class="fa-solid fa-users"></i></button>
@@ -68,6 +69,28 @@ async function onClick(event) {
   switch (bouton.dataset.r) {
     case "moins": return demander("ajouter", { n: -1 });
     case "plus": return demander("ajouter", { n: 1 });
+    case "dotation": {
+      const { appliquerDotation, DOTATIONS } = await import("../arriere/arriere.mjs");
+      const membres = escouade();
+      if (!membres.length) return ui.notifications.warn(loc("BREVIAIRE.Arriere.dotationSansEscouade"));
+      const options = Object.keys(DOTATIONS).map(k => `<option value="${k}" ${k === "ordinaire" ? "selected" : ""}>${loc(`BREVIAIRE.Arriere.dotation.${k}`)}</option>`).join("");
+      const cases = membres.map(a => `<label class="checkbox"><input type="checkbox" name="caisse" value="${a.id}"> ${foundry.utils.escapeHTML(a.name)}</label>`).join("");
+      const choix = await foundry.applications.api.DialogV2.prompt({
+        window: { title: loc("BREVIAIRE.Arriere.dotationBouton") },
+        content: `<p>${loc("BREVIAIRE.Arriere.dotationAide")}</p><div class="form-group"><select name="dotation">${options}</select></div>`
+          + `<p><b>${loc("BREVIAIRE.Arriere.caisseQui")}</b></p>${cases}`,
+        ok: {
+          label: loc("BREVIAIRE.Arriere.dotationAppliquer"),
+          callback: (event, bouton) => ({
+            dotation: bouton.form.elements.dotation.value,
+            caisses: new Set([...bouton.form.querySelectorAll("input[name=caisse]:checked")].map(i => i.value))
+          })
+        },
+        rejectClose: false
+      });
+      if (choix) await appliquerDotation(membres, choix.dotation, choix.caisses);
+      return;
+    }
     case "remplir": {
       const res = await demander("remplir");
       if (res.ok) annoncer(fmt("BREVIAIRE.Reserve.annonceMission", {

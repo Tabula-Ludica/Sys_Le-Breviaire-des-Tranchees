@@ -22,7 +22,7 @@
     "options": [],
     "particularite": {
       "nom": "Assaut éclair",
-      "texte": "une fois par mission, agir avant tout le monde au premier tour d'un affrontement."
+      "texte": "une fois par mission, au premier tour d'un affrontement, joue en phase d'assaut, avant tout le monde (même en embuscade)."
     },
     "substitutions": [],
     "usure": {
@@ -33,6 +33,6 @@
     },
     "protectionNaturelle": 0,
     "corruptionDepart": 0,
-    "description": "<p>Assaut éclair : une fois par mission, agir avant tout le monde au premier tour d'un affrontement.</p>"
+    "description": "<p>Assaut éclair : une fois par mission, au premier tour d'un affrontement, joue en phase d'assaut, avant tout le monde (même en embuscade).</p>"
   }
 }

@@ -142,13 +142,15 @@ export async function convalescence(actor, index) {
 /*  3. Ravitaillement                           */
 /* -------------------------------------------- */
 
-/** Munitions et Vivres au dé de base ; Nerfs et Foi +1 cran sans dépasser le dé de base (ch. VI §3). */
+/**
+ * Vivres au dé de base ; Nerfs et Foi +1 cran sans dépasser le dé de base (ch. VI §3).
+ * Les Munitions ne bougent pas ici : la dotation de la prochaine mission les fixe (ch. VI §6).
+ */
 export async function ravitailler(actor) {
   const sys = actor.system;
   if (sys.usages.mission?.ravitaillement) return ui.notifications.warn(loc(`${A}.dejaFait`));
   const u = sys.usure;
   const maj = {
-    "system.usure.munitions.value": Math.max(u.munitions.value, u.munitions.base),
     "system.usure.vivres.value": Math.max(u.vivres.value, u.vivres.base),
     "system.usure.nerfs.value": cranVersBase(u.nerfs),
     "system.usure.foi.value": cranVersBase(u.foi),
@@ -156,7 +158,7 @@ export async function ravitailler(actor) {
   };
   await actor.update(maj);
   const de = c => c ? `d${R.faces(c)}` : loc("BREVIAIRE.Usure.epuise");
-  return annoncer(actor, loc(`${A}.ravitaillement`), USURES.map(k => {
+  return annoncer(actor, loc(`${A}.ravitaillement`), USURES.filter(k => k !== "munitions").map(k => {
     const nom = k === "foi" ? t(actor, "Foi") : loc(`BREVIAIRE.Usure.${k}`);
     return `<b>${nom}</b> : ${de(u[k].value)} → ${de(maj[`system.usure.${k}.value`])}`;
   }));
@@ -304,6 +306,28 @@ export async function depart(actor) {
   const reliques = actor.items.filter(i => i.type === "relique" && i.system.utilisee).map(i => ({ _id: i.id, "system.utilisee": false }));
   if (reliques.length) await actor.updateEmbeddedDocuments("Item", reliques);
   return annoncer(actor, loc(`${A}.depart`), [fmt(`${A}.departTexte`, { nom: actor.name })]);
+}
+
+/** Dotation de mission (ch. VI §6) : décalage du dé de base des Munitions. */
+export const DOTATIONS = { raid: -1, ordinaire: 0, assaut: 1, siege: 2 };
+
+/**
+ * Fixe les Munitions de chaque personnage pour la mission : dé de base + dotation, +1 cran avec une caisse
+ * de munitions réquisitionnée, jamais au-delà de d12.
+ * shortcut: jamais sous d4 (un raid ne laisse pas un soldat à sec avant le départ), à revoir si la règle tranche.
+ */
+export async function appliquerDotation(actors, dotation, caisses = new Set()) {
+  const lignes = [];
+  for (const a of actors) {
+    const base = a.system.usure.munitions.base;
+    const cran = Math.clamp(base + DOTATIONS[dotation] + (caisses.has(a.id) ? 1 : 0), 1, R.CRAN_MAX);
+    await a.update({ "system.usure.munitions.value": cran });
+    lignes.push(`<b>${a.name}</b> : d${R.faces(cran)}${caisses.has(a.id) ? ` (${loc(`${A}.caisse`)})` : ""}`);
+  }
+  return ChatMessage.create({
+    content: `<div class="brev-carte-jet brev-carte-utilisation"><h3>${fmt(`${A}.dotationTitre`, { dotation: loc(`${A}.dotation.${dotation}`) })}</h3>`
+      + lignes.map(l => `<p>${l}</p>`).join("") + "</div>"
+  });
 }
 
 /** Nouvelle session : la Tentation (l'Ordre) redevient possible. */

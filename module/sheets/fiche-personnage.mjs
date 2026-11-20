@@ -184,6 +184,7 @@ export class FichePersonnage extends FicheBreviaire(foundry.applications.sheets.
     context.armes = parType("arme").map(i => ({
       id: i.id, name: i.name, img: i.img, equipee: i.system.equipee,
       categorie: loc(`BREVIAIRE.CategorieArme.${i.system.categorie}`),
+      suppression: i.system.categorie === "distance",
       degats: i.system.degats,
       portee: i.system.distance && i.system.porteeCourte != null
         ? `${i.system.porteeCourte} / ${i.system.porteeLongue ?? "—"} m`

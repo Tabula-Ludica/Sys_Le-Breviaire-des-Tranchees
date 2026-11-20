@@ -26,6 +26,7 @@ import { RetourArriere } from "./module/arriere/retour.mjs";
 import { CreateurPersonnage } from "./module/createur/createur.mjs";
 import { BreviaireCombat, assautEclair, reprendreInitiative, tourSuivant } from "./module/combat/combat.mjs";
 import { enregistrerEtats } from "./module/combat/etats.mjs";
+import { clouer } from "./module/combat/suppression.mjs";
 import * as degats from "./module/combat/degats.mjs";
 
 const TYPES_OBJET = ["arme", "protection", "equipement", "relique", "arcane", "rite", "origine", "affectation"];
@@ -90,6 +91,7 @@ Hooks.once("init", () => {
   // Un joueur fait réécrire par le MJ une carte qui ne lui appartient pas (défense en mêlée, dégâts appliqués)
   CONFIG.queries["breviaire.carte"] = degats.majCarte;
   CONFIG.queries["breviaire.tourSuivant"] = tourSuivant;
+  CONFIG.queries["breviaire.clouer"] = clouer;
   // La réserve et l'escouade sont diffusées à tous les clients : chacun redessine son widget
   for (const cle of ["reserve", "escouade"]) {
     const reglage = game.settings.settings.get(`breviaire.${cle}`);

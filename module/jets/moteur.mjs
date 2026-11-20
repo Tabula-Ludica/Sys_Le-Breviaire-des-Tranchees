@@ -123,18 +123,21 @@ export async function executerJet(actor, opts) {
   const pacte = personnage && opts.pacte;
   const tentation = personnage && tentationPossible(actor) ? (opts.tentation || "") : "";
 
-  const parties = [`${mode === "normal" ? "1d20" : mode === "favorise" ? "2d20kl" : "2d20kh"}`];
+  const arme = opts.armeId ? actor.items.get(opts.armeId) : null;
+  // Mêlée contre une cible, ou défense : jet en opposition, où le dé gardé dépend du score final (ch. I)
+  const opposition = arme && arme.system.categorie === "melee" && opts.cibles?.length ? { etat: "attente" } : null;
+  const oppose = !!opposition || opts.type === "defense";
+  const parties = [`${mode === "normal" ? "1d20" : oppose ? "2d20" : mode === "favorise" ? "2d20kl" : "2d20kh"}`];
   if (priere) parties.push("1d6");
   if (pacte) parties.push(`1d${sys.deSang}`);
   const roll = await new Roll(parties.join(" + ")).evaluate();
 
   const [termeD20, ...autres] = roll.dice;
   const des = termeD20.results.map(r => r.result);
-  const d20 = R.deGarde(des, mode);
+  const d20 = R.deGarde(des, mode);  // recalculé par resoudre() en opposition
   const dePriere = priere ? autres.shift().total : null;
   const deSang = pacte ? autres.shift().total : null;
 
-  const arme = opts.armeId ? actor.items.get(opts.armeId) : null;
   const d = {
     type: opts.type ?? "action",
     acteur: actor.uuid,
@@ -160,7 +163,8 @@ export async function executerJet(actor, opts) {
     cibles: opts.cibles ?? [],
     rafale: !!opts.rafale,
     // Mêlée contre une cible : jet en opposition (ch. IV §5) ; la cible se défend depuis la carte
-    opposition: arme && arme.system.categorie === "melee" && opts.cibles?.length ? { etat: "attente" } : null,
+    opposition,
+    oppose,
     tentation: tentation || null,
     automatique: tentation === "acceptee" ? "tentation" : (actor.perdu ? "perdu" : null),
     applique: {}
@@ -221,10 +225,11 @@ export async function jetDeControle(actor) {
   return executerJet(actor, { type: "controle", carac: "ame", titre: loc("BREVIAIRE.Corruption.controle") });
 }
 
-/** Résultat à partir du d20 gardé et des dés soustraits. */
+/** Résultat : prière et pacte ajoutent leur dé au score visé (ch. I §2). */
 function resoudre(d) {
-  const soustraction = (d.priere?.resultat ?? 0) + (d.pacte?.resultat ?? 0);
-  Object.assign(d, R.resoudreJet({ d20: d.d20, score: d.score, soustraction }), { soustraction });
+  const bonus = (d.priere?.resultat ?? 0) + (d.pacte?.resultat ?? 0);
+  if (d.oppose) d.d20 = R.deGardeOpposition(d.des, d.mode, d.score + bonus);
+  Object.assign(d, R.resoudreJet({ d20: d.d20, score: d.score, bonus }), { bonus });
   // Réussite automatique : Tentation (ou Ordre) acceptée, personnage perdu ou dévoré (ch. IX)
   if (d.automatique) {
     d.reussite = true;
@@ -341,6 +346,7 @@ export async function rendreCarte(d) {
     effets.push({ icone: "fa-solid fa-hand", texte: game.i18n.format(`BREVIAIRE.Corruption.tentation.${cle}`, { tentation: t("Tentation"), corruption: t("Corruption") }), fort: true });
   }
   if (d.automatique === "perdu") effets.push({ icone: "fa-solid fa-fire", texte: game.i18n.format("BREVIAIRE.Corruption.automatique", { etat: t("Perdu") }), fort: true });
+  if (d.type === "cloue") effets.push({ icone: "fa-solid fa-person-rifle", texte: loc(d.reussite ? "BREVIAIRE.Combat.suppression.agit" : "BREVIAIRE.Combat.suppression.tapi"), fort: !d.reussite });
   if (d.type === "controle" && !d.reussite) effets.push({ icone: "fa-solid fa-mask", texte: loc("BREVIAIRE.Corruption.controlePerdu"), fort: true });
   if (d.applique.coche) effets.push({ icone: "fa-solid fa-check", texte: game.i18n.format("BREVIAIRE.Jet.coche", { specialite: loc(`BREVIAIRE.Specialite.${d.specialite}`) }) });
   if (d.type === "mort") {

@@ -252,7 +252,8 @@
       "aCouvert": "À couvert",
       "plonge": "A plongé",
       "enflamme": "Enflammé",
-      "dead": "Mort"
+      "dead": "Mort",
+      "cloue": "Cloué"
     },
     "RoleEnnemi": {
       "chair": "Chair à canon",
@@ -562,7 +563,7 @@
       "jetChair": "Jet de Chair",
       "sequelle": "Séquelle permanente",
       "ravitaillement": "Le ravitaillement",
-      "ravitaillementAide": "Munitions et Vivres reviennent au dé de base ; Nerfs et {foi} remontent d’un cran, sans dépasser le dé de base.",
+      "ravitaillementAide": "Vivres au dé de base ; Nerfs et {foi} remontent d’un cran, sans dépasser le dé de base. Les Munitions seront fixées par la dotation de la prochaine mission.",
       "boutonRavitaillement": "Ravitailler",
       "messeAide": "revient à son niveau de départ (bouton du MJ).",
       "tempsLibre": "Le temps libre",
@@ -677,9 +678,22 @@
         }
       },
       "depart": "La prochaine mission",
-      "departAide": "Efface les usages « une fois par mission » et rend les reliques. Pensez au bouton Début de mission du widget (MJ) pour remplir la réserve.",
+      "departAide": "Efface les usages « une fois par mission » et rend les reliques. Le MJ fixe ensuite la dotation de Munitions (bouton du widget) et remplit la réserve.",
       "boutonDepart": "Départ en mission",
-      "departTexte": "{nom} repart au front."
+      "departTexte": "{nom} repart au front.",
+      "dotationBouton": "Dotation de mission (Munitions)",
+      "dotationAide": "Avec les ordres, fixez la dotation : elle décale le dé de base des Munitions de chaque personnage de l’escouade.",
+      "dotation": {
+        "raid": "Raid, infiltration, patrouille légère (−1 cran)",
+        "ordinaire": "Mission ordinaire (dé de base)",
+        "assaut": "Assaut, tenir une position (+1 cran)",
+        "siege": "Siège, défense jusqu’au dernier (+2 crans)"
+      },
+      "caisseQui": "Caisse de munitions réquisitionnée (+1 cran, maximum d12) :",
+      "caisse": "caisse de munitions",
+      "dotationAppliquer": "Appliquer",
+      "dotationTitre": "Dotation : {dotation}",
+      "dotationSansEscouade": "Aucun personnage dans l’escouade : réglez d’abord l’escouade dans le widget."
     },
     "Combat": {
       "initiative": "Initiative (Nerf)",
@@ -779,7 +793,19 @@
       "notableDeja": "Le Calice a déjà reçu son dé d'ennemi notable dans cette scène.",
       "paniqueChoix": "{nom} est paniqué : réaction de panique (1d6), ou jet d'Âme pour se reprendre à la place.",
       "reaction": "Réaction (1d6)",
-      "noteArmureLourde": "Armure lourde : Discrétion et Athlétisme défavorisés"
+      "noteArmureLourde": "Armure lourde : Discrétion et Athlétisme défavorisés",
+      "suppression": {
+        "action": "Tir de suppression : pas de jet de Tir, test de Munitions défavorisé. Ciblez d’abord (Rafale : jusqu’à 3 cibles à 3 m ou moins les unes des autres).",
+        "sansCible": "Ciblez d’abord la ou les cibles à clouer.",
+        "trop": "Cette arme ne cloue que {n} cible(s) : les premières ciblées sont retenues.",
+        "titre": "Tir de suppression ({arme})",
+        "cloue": "{nom} est cloué jusqu’au prochain tour du tireur.",
+        "ignore": "{nom} ignore la suppression.",
+        "tour": "{nom} est cloué : pour tirer ou se déplacer, il doit d’abord réussir un jet ({jet}). En cas d’échec, il reste tapi et perd son tour.",
+        "bouton": "Cloué : jet pour agir",
+        "agit": "Il se relève : il peut tirer ou se déplacer.",
+        "tapi": "Il reste tapi et perd son tour."
+      }
     },
     "Createur": {
       "titre": "Créer un personnage : {nom}",

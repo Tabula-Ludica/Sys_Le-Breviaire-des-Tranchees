@@ -16,16 +16,28 @@ test("favorisé / défavorisé s'annulent", () => {
   assert.equal(R.deGarde([4, 17], "defavorise"), 17);
 });
 
-test("jet : exemple du chapitre I (13 − 3 = 10 contre 9, raté)", () => {
-  const r = R.resoudreJet({ d20: 13, score: 9, soustraction: 3 });
-  assert.equal(r.total, 10);
+test("jet : exemple du chapitre I (13 contre 9 + 3 = 12, raté)", () => {
+  const r = R.resoudreJet({ d20: 13, score: 9, bonus: 3 });
+  assert.equal(r.total, 13);
+  assert.equal(r.scoreFinal, 12);
   assert.equal(r.reussite, false);
   assert.equal(r.ecart, -1);
+  // Le bonus dépasse le plafond de 19
+  assert.equal(R.resoudreJet({ d20: 19, score: 17, bonus: 3 }).scoreFinal, 20);
+});
+
+test("opposition : égalité au défenseur, dé gardé selon le meilleur résultat", () => {
+  assert.equal(R.resoudreOpposition({ reussite: true, total: 8 }, { reussite: true, total: 8 }), "b");
+  assert.equal(R.deGardeOpposition([4, 12], "favorise", 14), 12);
+  assert.equal(R.deGardeOpposition([4, 16], "favorise", 14), 4);
+  assert.equal(R.deGardeOpposition([4, 12], "defavorise", 14), 4);
+  assert.equal(R.deGardeOpposition([4, 16], "defavorise", 14), 16);
+  assert.equal(R.deGardeOpposition([20, 3], "favorise", 19), 3);
 });
 
 test("jet : 1 naturel réussit même à score 0, 20 naturel échoue même avec prière", () => {
   assert.equal(R.resoudreJet({ d20: 1, score: -2 }).reussite, true);
-  const d = R.resoudreJet({ d20: 20, score: 19, soustraction: 6 });
+  const d = R.resoudreJet({ d20: 20, score: 19, bonus: 6 });
   assert.equal(d.reussite, false);
   assert.equal(d.naturel, "damnation");
 });
@@ -40,6 +52,9 @@ test("usure : 1–2 fait descendre, défavorisé garde le plus bas", () => {
   assert.deepEqual(R.resoudreUsure(3, [2]), { resultat: 2, descend: true, cran: 2 });
   assert.equal(R.resoudreUsure(3, [5, 1]).cran, 2);
   assert.equal(R.resoudreUsure(1, [1]).cran, 0);
+  // Munitions : seulement sur 1
+  assert.equal(R.resoudreUsure(3, [2], 1).descend, false);
+  assert.equal(R.resoudreUsure(3, [1], 1).cran, 2);
   assert.equal(R.faces(0), 0);
   assert.equal(R.faces(5), 12);
 });
@@ -84,9 +99,10 @@ test("prière : qui peut prier, dé retiré, coche", () => {
   assert.equal(R.raisonSansPriere({ foi: 0, corruption: 0 }), "foiEpuisee");
   assert.equal(R.raisonSansPriere({ foi: 3, corruption: 9 }), "sursis");
   assert.equal(R.raisonSansPriere({ foi: 3, corruption: 4 }), null);
-  assert.equal(R.deRetire(1, 0), true);
-  assert.equal(R.deRetire(2, 5), false);
-  assert.equal(R.deRetire(2, 6), true);
+  assert.equal(R.deRetire(3, 0), true);
+  assert.equal(R.deRetire(4, 5), false);
+  assert.equal(R.deRetire(4, 6), true);
+  assert.equal(R.deRetire(5, 6), false);
   assert.equal(R.meriteCoche({ enjeu: true, reussite: false }), true);
   assert.equal(R.meriteCoche({ enjeu: true, reussite: false, priere: true }), false);
   assert.equal(R.meriteCoche({ enjeu: true, reussite: true, naturel: "miracle" }), true);

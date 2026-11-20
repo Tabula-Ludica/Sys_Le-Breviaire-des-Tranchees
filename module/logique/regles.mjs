@@ -43,25 +43,38 @@ export function deGarde(des, mode) {
   return des[0];
 }
 
+/** Un d20 réussit-il contre ce score ? 1 réussit toujours, 20 échoue toujours. */
+const reussit = (d20, score) => d20 === 1 || (d20 !== 20 && d20 <= score);
+
 /**
- * Résultat d'un jet d'action. Le d20 se lit avant toute soustraction :
- * 1 naturel → Miracle (réussite), 20 naturel → Damnation (échec, même avec prière ou pacte).
+ * Dé gardé en opposition (ch. I) : favorisé, le meilleur résultat, c'est-à-dire le plus haut des dés
+ * qui réussissent encore ; défavorisé, le moins bon. Un dé raté vaut toujours moins qu'un dé réussi.
  */
-export function resoudreJet({ d20, score, soustraction = 0 }) {
-  const total = d20 - soustraction;
-  let naturel = null;
-  let reussite = total <= score;
-  if (d20 === 1) { naturel = "miracle"; reussite = true; }
-  else if (d20 === 20) { naturel = "damnation"; reussite = false; }
-  return { total, reussite, naturel, ecart: score - total };
+export function deGardeOpposition(des, mode, score) {
+  if (mode === "normal") return des[0];
+  const valeur = d => reussit(d, score) ? d : -d;
+  const tries = [...des].sort((x, y) => valeur(x) - valeur(y));
+  return mode === "favorise" ? tries.at(-1) : tries[0];
 }
 
-/** Jet en opposition : celui qui réussit avec le résultat le plus élevé l'emporte (ch. I). */
+/**
+ * Résultat d'un jet d'action. Prière et pacte ajoutent leur dé au score visé, même au-delà de 19 (ch. I §2).
+ * Le d20 se lit tel quel : 1 naturel → Miracle (réussite), 20 naturel → Damnation (échec, même avec prière ou pacte).
+ */
+export function resoudreJet({ d20, score, bonus = 0 }) {
+  const scoreFinal = score + bonus;
+  let naturel = null;
+  let reussite = d20 <= scoreFinal;
+  if (d20 === 1) { naturel = "miracle"; reussite = true; }
+  else if (d20 === 20) { naturel = "damnation"; reussite = false; }
+  return { total: d20, scoreFinal, reussite, naturel, ecart: scoreFinal - d20 };
+}
+
+/** Jet en opposition : celui qui réussit avec le résultat le plus élevé l'emporte ; égalité au défenseur (b). */
 export function resoudreOpposition(a, b) {
   if (a.reussite && !b.reussite) return "a";
   if (b.reussite && !a.reussite) return "b";
   if (!a.reussite && !b.reussite) return "blocage";
-  if (a.total === b.total) return "egalite";
   return a.total > b.total ? "a" : "b";
 }
 
@@ -78,10 +91,13 @@ export const faces = cran => FACES[Math.max(0, Math.min(CRAN_MAX, cran))];
 export const changerCran = (cran, delta, plafond = CRAN_MAX) =>
   Math.max(0, Math.min(plafond, cran + delta));
 
-/** Test d'usure : sur 1 ou 2, le dé descend d'un cran. Défavorisé : deux dés, on garde le plus bas. */
-export function resoudreUsure(cran, des) {
+/**
+ * Test d'usure : sur 1 ou 2, le dé descend d'un cran (sur 1 seulement pour les Munitions, testées à chaque tir).
+ * Défavorisé : deux dés, on garde le plus bas.
+ */
+export function resoudreUsure(cran, des, seuil = 2) {
   const resultat = Math.min(...des);
-  const descend = resultat <= 2;
+  const descend = resultat <= seuil;
   return { resultat, descend, cran: descend ? changerCran(cran, -1) : cran };
 }
 
@@ -175,8 +191,8 @@ export function raisonSansPriere({ foi, corruption, excommunie = false }) {
   return null;
 }
 
-/** Le dé de prière est-il retiré de la réserve ? Sur 1, ou sur 1–2 à partir de Corruption 6 (Souillé). */
-export const deRetire = (resultat, corruption) => resultat === 1 || (corruption >= 6 && resultat === 2);
+/** Le dé de prière est-il retiré de la réserve ? Sur 1 à 3, ou sur 1 à 4 pour un Fidèle Souillé (Corruption 6+). */
+export const deRetire = (resultat, corruption) => resultat <= (corruption >= 6 ? 4 : 3);
 
 /**
  * Coche d'expérience (ch. V) : jet à enjeu raté, ou 1 naturel, sans prière ni pacte.

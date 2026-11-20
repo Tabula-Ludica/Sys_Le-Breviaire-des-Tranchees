@@ -39,6 +39,7 @@ export class FicheEnnemi extends FicheBreviaire(foundry.applications.sheets.Acto
     context.attaques = this.document.items.filter(i => i.type === "arme").map(i => ({
       id: i.id, name: i.name, img: i.img,
       degats: i.system.degats,
+      suppression: i.system.categorie === "distance",
       portee: i.system.distance && i.system.porteeCourte != null
         ? `${i.system.porteeCourte} / ${i.system.porteeLongue ?? "—"} m` : "",
       particularites: [...i.system.particularites].map(p => loc(`BREVIAIRE.Particularite.${p}`)).join(", ")

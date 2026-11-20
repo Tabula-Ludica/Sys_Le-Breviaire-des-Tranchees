@@ -2037,3 +2037,4 @@ body.vade-touch .brev-createur button, body.vade-touch .brev-createur select { m
 .breviaire .brev-graves-ennemi li { display: grid; grid-template-columns: auto minmax(0, 1fr) 28px; gap: .4rem; align-items: center; padding: .2rem 0; border-bottom: 1px solid rgba(154, 118, 50, .3); }
 .breviaire .brev-graves-ennemi small { color: var(--brev-encre-douce); }
 .breviaire.fiche .window-content .brev-graves-ennemi button { width: 28px; height: 28px; min-height: 28px; padding: 0; }
+.brev-carte-jet .brev-cj-score s { font-size: .8rem; opacity: .6; margin-right: .15rem; }

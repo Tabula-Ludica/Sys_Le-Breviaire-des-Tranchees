@@ -76,6 +76,7 @@
         {{#if particularites}}<span class="brev-carte-texte">{{particularites}}</span>{{/if}}
       </button>
       <div class="brev-carte-actions">
+        {{#if suppression}}<button type="button" class="brev-jeu" data-action="suppression" data-tooltip="{{localize 'BREVIAIRE.Combat.suppression.action'}}" aria-label="{{localize 'BREVIAIRE.Combat.suppression.action'}}"><i class="fa-solid fa-wind"></i></button>{{/if}}
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
         <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
       </div>

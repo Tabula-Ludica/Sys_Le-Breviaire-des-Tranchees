@@ -20,6 +20,6 @@
       "crans": 1,
       "consomme": true
     },
-    "description": "<p>Munitions +1 cran au-delà du dé de base, pour une mission.</p>"
+    "description": "<p>Munitions +1 cran au-delà de la dotation, pour une mission (maximum d12).</p>"
   }
 }

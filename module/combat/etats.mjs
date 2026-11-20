@@ -12,6 +12,7 @@ export const ETATS_COMBAT = [
   { id: "viseur", img: "icons/svg/target.svg" },
   { id: "aCouvert", img: "icons/svg/shield.svg" },
   { id: "plonge", img: "icons/svg/falling.svg" },
+  { id: "cloue", img: "icons/svg/downgrade.svg" },
   { id: "stabilise", img: "icons/svg/regen.svg" },
   { id: "enflamme", img: "icons/svg/fire.svg" },
   { id: "dead", img: "icons/svg/skull.svg" }

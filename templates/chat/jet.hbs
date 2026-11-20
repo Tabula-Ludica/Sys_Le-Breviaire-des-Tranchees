@@ -7,14 +7,15 @@
       <small>{{#if carac}}{{carac}} {{d.base}}{{#if bonus}} + {{bonus}}{{/if}}{{else}}{{d.base}}{{/if}}{{#if d.modificateur}} · {{localize 'BREVIAIRE.Jet.situation'}} {{d.modificateur}}{{/if}}{{#if mode}} · {{mode}}{{/if}}</small>
       {{#if arme}}<small class="brev-cj-arme"><i class="fa-solid fa-gun"></i> {{arme.nom}} ({{arme.degats}})</small>{{/if}}
     </div>
-    <div class="brev-cj-score" title="{{localize 'BREVIAIRE.Jet.scoreVise'}}"><span>≤</span><b>{{d.score}}</b></div>
+    <div class="brev-cj-score" title="{{localize 'BREVIAIRE.Jet.scoreVise'}}"><span>≤</span>{{#if d.bonus}}<s>{{d.score}}</s>{{/if}}<b>{{#if d.bonus}}{{d.scoreFinal}}{{else}}{{d.score}}{{/if}}</b></div>
   </header>
 
   <div class="brev-cj-des">
     {{#each des}}<span class="brev-cj-d20 {{#if garde}}garde{{else}}{{#if ../gardeUnique}}ecarte{{/if}}{{/if}} {{naturel}}">{{v}}</span>{{/each}}
-    {{#if d.priere}}<span class="brev-cj-op">−</span><span class="brev-cj-d6 {{#if d.priere.retire}}retire{{/if}}" title="{{libellePriere}}"><i class="fa-solid fa-hands-praying"></i>{{d.priere.resultat}}</span>{{/if}}
-    {{#if d.pacte}}<span class="brev-cj-op">−</span><span class="brev-cj-sang" title="d{{d.pacte.faces}}"><i class="fa-solid fa-droplet"></i>{{d.pacte.resultat}}</span>{{/if}}
-    {{#if d.soustraction}}<span class="brev-cj-op">=</span><span class="brev-cj-total">{{d.total}}</span>{{/if}}
+    {{#if d.bonus}}<span class="brev-cj-op">≤</span><span class="brev-cj-total" title="{{localize 'BREVIAIRE.Jet.scoreVise'}}">{{d.score}}</span>{{/if}}
+    {{#if d.priere}}<span class="brev-cj-op">+</span><span class="brev-cj-d6 {{#if d.priere.retire}}retire{{/if}}" title="{{libellePriere}}"><i class="fa-solid fa-hands-praying"></i>{{d.priere.resultat}}</span>{{/if}}
+    {{#if d.pacte}}<span class="brev-cj-op">+</span><span class="brev-cj-sang" title="d{{d.pacte.faces}}"><i class="fa-solid fa-droplet"></i>{{d.pacte.resultat}}</span>{{/if}}
+    {{#if d.bonus}}<span class="brev-cj-op">=</span><span class="brev-cj-total">{{d.scoreFinal}}</span>{{/if}}
   </div>
 
   <div class="brev-cj-verdict">

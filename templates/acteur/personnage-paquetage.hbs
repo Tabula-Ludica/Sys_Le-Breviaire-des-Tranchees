@@ -25,6 +25,7 @@
         {{#if particularites.length}}<span class="brev-mini-puces">{{#each particularites}}<span>{{this}}</span>{{/each}}</span>{{/if}}
       </button>
       <div class="brev-carte-actions">
+        {{#if suppression}}<button type="button" class="brev-jeu" data-action="suppression" data-tooltip="{{localize 'BREVIAIRE.Combat.suppression.action'}}" aria-label="{{localize 'BREVIAIRE.Combat.suppression.action'}}"><i class="fa-solid fa-wind"></i></button>{{/if}}
         <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" title="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-hand-fist{{else}}fa-box-archive{{/if}}"></i></button>
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
         <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
@@ -58,6 +59,7 @@
         </span>
       </div>
       <div class="brev-carte-actions">
+        {{#if suppression}}<button type="button" class="brev-jeu" data-action="suppression" data-tooltip="{{localize 'BREVIAIRE.Combat.suppression.action'}}" aria-label="{{localize 'BREVIAIRE.Combat.suppression.action'}}"><i class="fa-solid fa-wind"></i></button>{{/if}}
         <button type="button" data-action="basculerEquipe" aria-pressed="{{equipee}}" title="{{localize 'BREVIAIRE.Fiche.equipee'}}"><i class="fa-solid {{#if equipee}}fa-shirt{{else}}fa-box-archive{{/if}}"></i></button>
         <button type="button" data-action="editerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.editer'}}"><i class="fa-solid fa-pen"></i></button>
         <button type="button" class="brev-seulement-edition" data-action="supprimerObjet" aria-label="{{localize 'BREVIAIRE.Fiche.supprimer'}}"><i class="fa-solid fa-trash"></i></button>
