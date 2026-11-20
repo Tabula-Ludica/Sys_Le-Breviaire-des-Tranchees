@@ -498,7 +498,8 @@ body.vade-touch .breviaire.fiche { --brev-cible: 44px; }
 .breviaire.brev-sombre .brev-carte { background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(0, 0, 0, .2)); }
 .breviaire .brev-carte > img { width: 44px; height: 44px; flex: none; object-fit: cover; border: 1px solid var(--brev-or); background: var(--brev-fond-sombre); }
 .breviaire .brev-carte-corps { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: .15rem; }
-.breviaire.fiche .window-content button.brev-carte-corps { align-items: flex-start; justify-content: center; flex-direction: column; text-align: left; padding: .1rem .2rem; }
+/* Foundry fixe la hauteur des boutons : le corps d’une carte doit grandir avec ses lignes (puces, quantités) */
+.breviaire.fiche .window-content button.brev-carte-corps { align-items: flex-start; justify-content: center; flex-direction: column; text-align: left; padding: .1rem .2rem; height: auto; overflow: hidden; }
 .breviaire .brev-carte-corps > b { font-weight: 600; font-size: 1.05rem; line-height: 1.15; }
 .breviaire .brev-carte-texte { font-size: .9rem; color: var(--brev-encre-douce); }
 .breviaire .brev-carte-actions { display: flex; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
