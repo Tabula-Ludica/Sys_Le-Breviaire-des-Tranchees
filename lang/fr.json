@@ -776,7 +776,10 @@
       "embuscadeEnnemisAvec": "Ennemis, avec les lents",
       "embuscadeEnnemisSaute": "Ennemis, sautent le round",
       "surprisPasse": "{nom} est surpris : il ne joue pas ce round.",
-      "notableDeja": "Le Calice a déjà reçu son dé d'ennemi notable dans cette scène."
+      "notableDeja": "Le Calice a déjà reçu son dé d'ennemi notable dans cette scène.",
+      "paniqueChoix": "{nom} est paniqué : réaction de panique (1d6), ou jet d'Âme pour se reprendre à la place.",
+      "reaction": "Réaction (1d6)",
+      "noteArmureLourde": "Armure lourde : Discrétion et Athlétisme défavorisés"
     },
     "Createur": {
       "titre": "Créer un personnage : {nom}",

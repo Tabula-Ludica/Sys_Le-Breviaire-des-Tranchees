@@ -150,6 +150,8 @@ export async function appliquerDegats(cible, degats, { blessureGrave = false, ne
   const avant = cible.system.blessures.value;
   const apres = Math.max(0, avant - degats);
   await cible.update({ "system.blessures.value": apres });
+  // Viser : perdu si le tireur est touché avant de tirer (ch. IV §3)
+  if (degats > 0) await etat(cible, "viseur", false);
   const tombe = avant > 0 && apres === 0;
   const insensible = cible.type === "ennemi" && cible.system.traits.has("insensible");
   const lignes = [fmt("BREVIAIRE.Combat.blessuresRetirees", { nom: cible.name, n: degats, reste: apres })];
@@ -242,13 +244,12 @@ export async function debutDeTour(combat) {
     boutons.push({ action: "mort", icone: "fa-solid fa-skull", label: loc("BREVIAIRE.Jet.mort") });
   } else if (actor.statuses.has("panique")) {
     const immunise = actor.type === "ennemi" && (actor.system.traits.has("fanatique") || actor.system.traits.has("demon"));
-    if (!immunise) {
-      const roll = await new Roll("1d6").evaluate();
-      await game.dice3d?.showForRoll(roll, game.user, true);
-      const cle = TABLE_PANIQUE[roll.total];
-      parties.push(`<b>${loc("BREVIAIRE.Etat.panique")} (${roll.total}) : ${loc(`BREVIAIRE.Combat.panique.${cle}.titre`)}</b> — ${loc(`BREVIAIRE.Combat.panique.${cle}.texte`)}`);
-      if (actor.type === "personnage") boutons.push({ action: "reprendre", icone: "fa-solid fa-hand-fist", label: loc("BREVIAIRE.Combat.seReprendre") });
-    }
+    if (actor.type === "personnage") {
+      // Le joueur choisit : la réaction de panique (1d6) ou, à la place, un jet d'Âme pour se reprendre (ch. IV §8)
+      parties.push(fmt("BREVIAIRE.Combat.paniqueChoix", { nom: actor.name }));
+      boutons.push({ action: "reaction", icone: "fa-solid fa-dice-six", label: loc("BREVIAIRE.Combat.reaction") });
+      boutons.push({ action: "reprendre", icone: "fa-solid fa-hand-fist", label: loc("BREVIAIRE.Combat.seReprendre") });
+    } else if (!immunise) parties.push(await reactionPanique());
   }
   if (!parties.length) return;
   return ChatMessage.create({
@@ -258,6 +259,14 @@ export async function debutDeTour(combat) {
       + "</div>",
     flags: { [SYSTEME]: { tour: { acteur: actor.uuid } } }
   });
+}
+
+/** Réaction de panique : 1d6 sur la table (fuite, terré, furie). */
+async function reactionPanique() {
+  const roll = await new Roll("1d6").evaluate();
+  await game.dice3d?.showForRoll(roll, game.user, true);
+  const cle = TABLE_PANIQUE[roll.total];
+  return `<b>${loc("BREVIAIRE.Etat.panique")} (${roll.total}) : ${loc(`BREVIAIRE.Combat.panique.${cle}.titre`)}</b> — ${loc(`BREVIAIRE.Combat.panique.${cle}.texte`)}`;
 }
 
 async function appliquerDegatsSimples(actor, n) {
@@ -296,7 +305,12 @@ export function brancherCarteTour(message, html) {
       ev.preventDefault();
       const { lancerJet } = await import("../jets/moteur.mjs");
       if (b.dataset.brevTour === "mort") return lancerJet(actor, { type: "mort" });
+      // Un seul des deux choix par tour : les boutons sont désactivés après le clic
+      for (const autre of html.querySelectorAll("[data-brev-tour]")) autre.disabled = true;
       if (b.dataset.brevTour === "reprendre") return seReprendre(actor);
+      if (b.dataset.brevTour === "reaction") {
+        return ChatMessage.create({ speaker: ChatMessage.getSpeaker({ actor }), content: `<div class="brev-carte-jet brev-carte-utilisation"><p class="brev-cj-texte">${await reactionPanique()}</p></div>` });
+      }
     });
   }
 }

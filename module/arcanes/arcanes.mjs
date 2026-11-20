@@ -12,7 +12,7 @@
 import { SYSTEME } from "../config.mjs";
 import { terme } from "../lexique.mjs";
 import { demander, escouade } from "../reserve/reserve.mjs";
-import { CRAN_MAX } from "../logique/regles.mjs";
+import { CRAN_MAX, CORRUPTION_MAX, baisseAutorisee } from "../logique/regles.mjs";
 import { themeSombre } from "../settings.mjs";
 
 const loc = cle => game.i18n.localize(cle);
@@ -169,6 +169,10 @@ export function effetsChiffres(html) {
   const texte = String(html ?? "").replace(/<[^>]+>/g, "").replace(/&#39;/g, "'").replace(/\s+/g, " ");
   const effets = [];
   for (const m of texte.matchAll(/\+(\d+)d6 (?:au|dans le|du) (Chapelet|Calice)/gi)) effets.push({ type: "reserve", n: Number(m[1]) });
+  // Le Jugement (−1), Le Diable / Le Prince (+1) : Corruption ou Faveur du personnage
+  for (const m of texte.matchAll(/(perd|gagne) 1 point de (?:Corruption|Faveur)/gi)) {
+    effets.push({ type: "corruption", cible: "soi", delta: m[1].toLowerCase() === "perd" ? -1 : 1 });
+  }
   // « ses Munitions ou ses Vivres remontent » : deux boutons, un seul utilisable (même groupe)
   const usure = /(?:(Nerfs|Munitions|Vivres|Foi|Haine) ou (?:les |ses |sa |son )?)?(?:les |ses |sa |son )?(Nerfs|Munitions|Vivres|Foi|Haine)( de toute l'escouade)?(?: du personnage)? (remontent|remonte|descendent|descend) d'un cran/gi;
   let groupe = 0;
@@ -186,6 +190,7 @@ export function effetsChiffres(html) {
 }
 
 function libelleEffet(e, camp) {
+  if (e.type === "corruption") return `${terme("Corruption", camp)} ${e.delta > 0 ? "+1" : "−1"}`;
   if (e.type === "reserve") return fmt("BREVIAIRE.Arcane.effetReserve", { n: e.n, reserve: terme("Chapelet", camp) });
   const usure = e.usure === "foi" ? terme("Foi", camp) : loc(`BREVIAIRE.Usure.${e.usure}`);
   return fmt(e.cible === "escouade" ? "BREVIAIRE.Arcane.effetUsureEscouade" : "BREVIAIRE.Arcane.effetUsure",
@@ -218,6 +223,12 @@ async function appliquerEffet(message, index) {
   if (e.type === "reserve") {
     const res = await demander("ajouter", { n: e.n });
     if (!res.ok) return;
+  } else if (e.type === "corruption") {
+    // La baisse respecte le dernier palier atteint (ch. IX) ; la hausse peut faire tirer une Marque
+    const a = fromUuidSync(d.acteur);
+    if (!a?.isOwner || a.type !== "personnage") return;
+    const c = a.system.corruption;
+    await a.update({ "system.corruption.value": e.delta < 0 ? baisseAutorisee(c.value, c.palier) : Math.min(CORRUPTION_MAX, c.value + 1) });
   } else {
     const cibles = e.cible === "escouade" ? escouade() : [fromUuidSync(d.acteur)].filter(Boolean);
     for (const a of cibles) {

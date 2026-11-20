@@ -73,10 +73,18 @@ export function tentationPossible(actor) {
 }
 
 /** Peut-on prier ? (null si oui, sinon la clé de la raison) */
+/**
+ * Corruption qui pèse sur la prière : chez les Fidèles seulement (Souillé : dés retirés sur 1–2 ; 9 : plus de prière).
+ * La Faveur des Damnés n'a pas ces effets (ch. IX des Damnés) : l'invocation suit la règle de base.
+ */
+function corruptionPriere(actor) {
+  return actor.system.camp === "fideles" ? actor.system.corruption.value : 0;
+}
+
 export function raisonSansPriere(actor) {
   if (actor.type !== "personnage") return "ennemi";
   const sys = actor.system;
-  const raison = R.raisonSansPriere({ foi: sys.usure.foi.value, corruption: sys.corruption.value, excommunie: sys.excommunie });
+  const raison = R.raisonSansPriere({ foi: sys.usure.foi.value, corruption: corruptionPriere(actor), excommunie: sys.excommunie });
   if (raison) return raison;
   if (etatReserve().des <= 0) return "reserveVide";
   if (!mjDisponible()) return "sansMJ";
@@ -146,7 +154,7 @@ export async function executerJet(actor, opts) {
     enjeu: !!opts.enjeu,
     soin: opts.soin ? { ...opts.soin, applique: null } : null,
     rite: opts.rite ?? null,
-    priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, sys.corruption.value) } : null,
+    priere: priere ? { faces: 6, resultat: dePriere, retire: R.deRetire(dePriere, corruptionPriere(actor)) } : null,
     pacte: pacte ? { faces: sys.deSang, resultat: deSang } : null,
     titre: opts.titre ?? null,
     cibles: opts.cibles ?? [],
@@ -433,7 +441,7 @@ async function actionCarte(message, action) {
   let roll;
   if (action === "prier" && !d.priere && !raisonSansPriere(actor)) {
     roll = await new Roll("1d6").evaluate();
-    d.priere = { faces: 6, resultat: roll.total, retire: R.deRetire(roll.total, sys.corruption.value), apres: true };
+    d.priere = { faces: 6, resultat: roll.total, retire: R.deRetire(roll.total, corruptionPriere(actor)), apres: true };
     await demander("priere", { retire: d.priere.retire });
   } else if (action === "pactiser" && !d.pacte) {
     roll = await new Roll(`1d${sys.deSang}`).evaluate();
